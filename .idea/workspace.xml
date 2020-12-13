@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fd4835b1-7c5d-4b38-a46a-3bbc1698edca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/admin_includes/Admin_Header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/admin_includes/Admin_Sidebar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dietician_includes/Dietician_Header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dietician_includes/Dietician_Sidebar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layouts/dietician.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/dietician.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/guest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/notadmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/calorie/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/calorie/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/criterias/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-login/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/consultants/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/consultants/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/consultants/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/recipes/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/recipes/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dietician-panel/recipes/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/login/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/blog-categories/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/blog-categories/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/blog-categories/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/criterias/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/criterias/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/criterias/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/diseases/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/diseases/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/diseases/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/doctors/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/doctors/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/doctors/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercise-categories/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercise-categories/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercise-categories/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercises/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercises/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/exercises/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/nutrients/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/nutrients/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/nutrients/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipe-categories/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipe-categories/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipe-categories/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipes/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipes/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/recipes/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/settings/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/settings/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/settings/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/slides/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/slides/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/slides/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/users/add/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/users/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/panel/users/update/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/owl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/vuetify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/admin_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-thumb-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-thumb-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-thumb-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-thumb-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/blog-thumb-05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/doctors/doctor-thumb-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature-06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/features/feature.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/footer-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/icon-01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/icon-02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/icon-03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img-01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img-02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img-04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/location.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/login-banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/my-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/patients/patient9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/search-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/specialities/specialities-01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/specialities/specialities-02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/specialities/specialities-03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/specialities/specialities-04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/specialities/specialities-05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/video-call.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/admin_script.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kAD0rp2iuzaHasaxyH0NWUfYG0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/panel" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adorr\Desktop\dietician\pages\panel" />
+      <recent name="C:\Users\adorr\Desktop\dietician\pages" />
+      <recent name="C:\Users\adorr\Desktop\dietician\pages\dietician-panel" />
+      <recent name="C:\Users\adorr\Desktop\dietician\middleware" />
+      <recent name="C:\Users\adorr\Desktop\dietician\layouts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd4835b1-7c5d-4b38-a46a-3bbc1698edca" name="Default Changelist" comment="" />
+      <created>1605134285302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605134285302</updated>
+      <workItem from="1605134288158" duration="160000" />
+      <workItem from="1605162160768" duration="21953000" />
+      <workItem from="1605249272448" duration="3254000" />
+      <workItem from="1605257554329" duration="15417000" />
+      <workItem from="1605375462498" duration="1074000" />
+      <workItem from="1605593761305" duration="14296000" />
+      <workItem from="1605679229833" duration="2011000" />
+      <workItem from="1605767139252" duration="7569000" />
+      <workItem from="1605853273381" duration="4622000" />
+      <workItem from="1605859835006" duration="9739000" />
+      <workItem from="1606113405450" duration="15846000" />
+      <workItem from="1606198752035" duration="5441000" />
+      <workItem from="1606284882153" duration="2296000" />
+      <workItem from="1606291741591" duration="11340000" />
+      <workItem from="1606372104016" duration="713000" />
+      <workItem from="1606377067388" duration="3549000" />
+      <workItem from="1606393566889" duration="6205000" />
+      <workItem from="1606457725562" duration="7808000" />
+      <workItem from="1606716620740" duration="15478000" />
+      <workItem from="1606802820886" duration="21426000" />
+      <workItem from="1606889185209" duration="19003000" />
+      <workItem from="1606914166067" duration="5728000" />
+      <workItem from="1606975840234" duration="17288000" />
+      <workItem from="1607321047148" duration="1739000" />
+      <workItem from="1607330235834" duration="14423000" />
+      <workItem from="1607407645309" duration="11971000" />
+      <workItem from="1607494119906" duration="21760000" />
+      <workItem from="1607581202666" duration="1150000" />
+      <workItem from="1607669757884" duration="969000" />
+      <workItem from="1607688118282" duration="5357000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
