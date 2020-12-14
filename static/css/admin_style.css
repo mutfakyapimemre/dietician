@@ -4116,3 +4116,32 @@ table.table-inbox tbody tr.checked {
 		display: none;
 	}
 }
+.btn-green-light{
+	border: 2px solid #09e5ab;
+	padding: 10px 15px !important;
+	text-align: center;
+	font-size: 15px;
+	color: #09e5ab!important;
+	font-weight: 500;
+  }
+  .btn-green-light:hover{
+	background-color: #09e5ab;
+	border-color: #09e5ab;
+	color: #fff!important;
+  }
+  .btn-info-light{
+	border: 2px solid #009efb;
+	padding: 10px 15px !important;
+	text-align: center;
+	font-size: 15px;
+	color: #009efb!important;
+	font-weight: 500;
+  }
+  .btn-info-light:hover{
+	background-color: #009efb;
+	border-color: #009efb;
+	color: #fff!important;
+  }
+.v-application--wrap {
+	min-height: auto!important;
+}

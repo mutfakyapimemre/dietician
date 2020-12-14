@@ -30,10 +30,10 @@
             <div class="profile-sidebar">
               <div class="widget-profile pro-widget-content">
                 <div class="profile-info-widget">
-                  <a href="#" class="booking-doc-img">
+                  <nuxt-link to="/profile" tag="a" class="booking-doc-img">
                     <img v-bind:src="img_url+'/public/storage/'+data.img_url" class="img-fluid"
                          v-bind:alt="data.name">
-                  </a>
+                  </nuxt-link>
                   <div class="profile-det-info">
                     <h3>{{ data.name }}</h3>
 
@@ -47,67 +47,67 @@
               <div class="dashboard-widget">
                 <nav class="dashboard-menu">
                   <ul>
-                    <li class="active">
-                      <nuxt-link to="/profile" tag="a">
+                    <nuxt-link to="/profile" tag="li" exact-active-class="active">
+                      <a>
                         <i class="fa fa-user-cog"></i>
                         <span>Kayıt Bilgileri</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/diet-list" tag="a">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/diet-list" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-calendar-check"></i>
                         <span>Diyet Listesi</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/dietician-list" tag="a">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/dietician-list" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-user-md"></i>
                         <span>Diyetisyenlerim</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/liked-foods-list" tag="a">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/liked-foods-list" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-drumstick-bite"></i>
                         <span>Sevdiğim Besinler / Yemekler</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/unliked-foods-list" tag="a">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/unliked-foods-list" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-stroopwafel"></i>
                         <span>Sevmediğim Besinler / Yemekler</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/allergen-foods-list" tag="a">
-                        <i class="fa fa-cloud-meatball"></i>
-                        <span>Alerjen Olduğum Besinler / Yemekler</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/reports" tag="a">
-                        <i class="fa fa-clipboard-list"></i>
-                        <span>Raporlar</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/messages">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/allergen-foods-list" tag="li" active-class="active">
+                      <a>
+                      <i class="fa fa-cloud-meatball"></i>
+                      <span>Alerjen Olduğum Besinler / Yemekler</span>
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/reports" tag="li" active-class="active">
+                      <a>
+                      <i class="fa fa-clipboard-list"></i>
+                      <span>Raporlar</span>
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/messages" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-comments"></i>
                         <span>Mesajlar</span>
                         <small class="unread-msg">23</small>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/social-media" tag="a">
-                        <i class="fa fa-share-alt"></i>
-                        <span>Sosyal Medya</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/password-update" tag="a">
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/social-media" tag="li" active-class="active">
+                      <a>
+                      <i class="fa fa-share-alt"></i>
+                      <span>Sosyal Medya</span>
+                      </a>
+                    </nuxt-link>
+                    <nuxt-link to="/profile/password-update" tag="li" active-class="active">
+                      <a>
                         <i class="fa fa-lock"></i>
                         <span>Şifre Güncelle</span>
-                      </nuxt-link>
-                    </li>
+                      </a>
+                    </nuxt-link>
                     <li>
                       <a href="javascript:void(0)" @click.prevent="logout">
                         <i class="fa fa-sign-out-alt"></i>

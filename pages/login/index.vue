@@ -52,23 +52,32 @@
                         <form @submit.prevent="handleSubmit(onLogin)" ref="userLogin" enctype="multipart/form-data">
                           <div class="form-group form-focus">
                             <ValidationProvider name="Email Adresiniz" rules="required|email" v-slot="{ errors }">
-                              <input id="loginEmail" name="email" v-model="email" type="email" class="form-control floating"/>
-                              <label for="loginEmail" class="focus-label">Email Adresiniz</label>
+                               <v-text-field
+                                label="Email Adresiniz"
+                                hide-details="auto"
+                                name="email"
+                                v-model="email"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
 
                           <div class="form-group form-focus">
                             <ValidationProvider name="Şifreniz" rules="required" v-slot="{ errors }">
-                              <input id="loginPassword" name="password" v-model="password" type="password" class="form-control floating" aria-label="Şifreniz"/>
-                              <label for="loginPassword" class="focus-label">Şifreniz</label>
+                               <v-text-field
+                                label="Şifreniz"
+                                hide-details="auto"
+                                type="password"
+                                name="password"
+                                v-model="password"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
                           <div class="text-right">
                             <nuxt-link to="/forgot-password" tag="a" class="forgot-link">Şifremi Unuttum.</nuxt-link>
                           </div>
-                          <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Giriş Yap</button>
+                          <button class="btn btn-green-light login-btn" type="submit">Giriş Yap</button>
                         </form>
                       </ValidationObserver>
                     </div>
@@ -83,40 +92,65 @@
                         <form @submit.prevent="handleSubmit(onRegister)" ref="userRegister" enctype="multipart/form-data">
                           <div class="form-group form-focus">
                             <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{errors}">
-                              <input id="registerName" name="name" v-model="name" type="text" class="form-control floating"/>
-                              <label for="registerName" class="focus-label">Adınız ve Soyadınız</label>
+                              <v-text-field
+                                label="Adınız ve Soyadınız"
+                                hide-details="auto"
+                                type="text"
+                                name="name"
+                                v-model="name"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
                           <div class="form-group form-focus">
                             <ValidationProvider name="Email Adresiniz" rules="required|email" v-slot="{errors}">
-                              <input id="registerEmail" name="email" v-model="email" type="email" class="form-control floating"/>
-                              <label for="registerEmail" class="focus-label">Email Adresiniz</label>
+                              <v-text-field
+                                label="Email Adresiniz"
+                                hide-details="auto"
+                                type="email"
+                                name="email"
+                                v-model="email"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
                           <div class="form-group form-focus">
                             <ValidationProvider name="Telefon Numaranız" rules="required|phone" v-slot="{errors}">
-                              <input id="registerPhone" name="phone" v-model="phone" type="text" class="form-control floating"/>
-                              <label for="registerPhone" class="focus-label">Telefon Numaranız</label>
+                              <v-text-field
+                                label="Telefon Numaranız"
+                                hide-details="auto"
+                                type="text"
+                                name="phone"
+                                v-model="phone"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
                           <div class="form-group form-focus">
                             <ValidationProvider name="Şifreniz" rules="required" v-slot="{errors}">
-                              <input id="registerPassword" name="password" v-model="password" type="password" class="form-control floating"/>
-                              <label for="registerPassword" class="focus-label">Şifreniz</label>
+                              <v-text-field
+                                label="Şifreniz"
+                                hide-details="auto"
+                                type="password"
+                                name="password"
+                                v-model="password"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
                           <div class="form-group form-focus">
                             <ValidationProvider name="Tekrar Şifreniz" rules="required" v-slot="{errors}">
-                              <input id="registerPasswordConfirmation" name="password_confirmation" v-model="password_confirmation" type="password" class="form-control floating"/>
-                              <label for="registerPasswordConfirmation" class="focus-label">Tekrar Şifreniz</label>
+                              <v-text-field
+                                label="Şifreniz"
+                                hide-details="auto"
+                                type="password"
+                                name="password_confirmation"
+                                v-model="password_confirmation"
+                              ></v-text-field>
                               <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                             </ValidationProvider>
                           </div>
-                          <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Kayıt Ol</button>
+                          <button class="btn btn-green-light login-btn" type="submit">Kayıt Ol</button>
                         </form>
                       </ValidationObserver>
                     </div>

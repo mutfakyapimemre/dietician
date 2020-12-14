@@ -9,12 +9,12 @@
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title">Ölçütler</h3>
+                <h3 class="page-title">Makale Kategorileri</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
                   </li>
-                  <li class="breadcrumb-item active">Ölçütler</li>
+                  <li class="breadcrumb-item active">Makale Kategorileri</li>
                 </ul>
               </div>
             </div>
@@ -29,7 +29,7 @@
 
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Ölçütler
+                  <h4 class="card-title">Makale Kategorileri
 
                   </h4>
                 </div>
@@ -44,7 +44,7 @@
                         <v-btn @click="page = 1; retrieveData('get-by-search');" class="my-auto py-auto mx-3">
                           Ara
                         </v-btn>
-                        <nuxt-link to="/panel/criterias/add" tag="a" class="float-right btn btn-primary text-white my-auto py-auto">
+                        <nuxt-link to="/panel/blog-categories/add" tag="a" class="float-right btn btn-primary text-white my-auto py-auto">
                           <i class="fa fa-plus"></i> Ekle
                         </nuxt-link>
                       </span>
