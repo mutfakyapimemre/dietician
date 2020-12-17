@@ -66,18 +66,18 @@
       <!-- User Menu -->
       <li class="nav-item dropdown has-arrow">
         <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						<span class="user-img"><img v-bind:src="img_url+'/public/storage/'+userData.img_url" width="31" class="rounded-circle"
+						<span class="user-img"><img v-bind:src="img_url+'/public/storage/'+userData.profile_photo" width="31" class="rounded-circle"
                                         v-bind:alt="userData.name"></span>
         </a>
         <div class="dropdown-menu">
           <div class="user-header">
             <div class="avatar avatar-sm">
-              <img v-bind:src="img_url+'/public/storage/'+userData.img_url" class="avatar-img rounded-circle"
+              <img v-bind:src="img_url+'/public/storage/'+userData.profile_photo" class="avatar-img rounded-circle"
                    v-bind:alt="userData.name">
             </div>
             <div class="user-text">
               <h6><span v-if="userData !== null">{{ userData.name }}</span></h6>
-              <p class="text-muted mb-0">Administrator</p>
+              <p class="text-muted mb-0">Diyetisyen</p>
             </div>
           </div>
           <nuxt-link v-if="userData !==null && userData._id !== null" class="dropdown-item" to="/profile">Profilim</nuxt-link>
@@ -104,9 +104,6 @@ export default {
     img_url() {
       return process.env.apiPublicUrl;
     },
-  },
-  mounted() {
-    console.log(this.userData)
   },
   methods: {
     logout() {

@@ -425,15 +425,6 @@ export default {
         isActive: data.isActive
       };
     },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
-    },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {
         this.$izitoast.success({

@@ -197,7 +197,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);

@@ -192,7 +192,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);
@@ -210,9 +209,6 @@ export default {
       this.retrieveData();
     },
     editData(id) {
-      console.log(id);
-      //this.$router.push({name: "/panel/diseases/update/", params: {id: id}});
-
       this.$router.push("/panel/diseases/update/" + id)
     },
     deleteData(id) {

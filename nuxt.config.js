@@ -78,5 +78,4 @@ export default {
       context.nuxt = {serverRendered: true, routePath};
     }
   },
-
 }

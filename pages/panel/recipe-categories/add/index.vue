@@ -262,7 +262,6 @@ export default {
         credentials: 'same-origin',
       })
         .then(response => {
-          console.log(response);
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
@@ -275,10 +274,6 @@ export default {
             this.inputData.id = response.data.data.$oid
             this.options.params.title = response.data.name
             this.e1 = 2
-
-            /*setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/recipe-categories"))
-            }, 2000)*/
           } else {
             this.$izitoast.error({
               title: response.data.title,
@@ -327,7 +322,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);
@@ -454,15 +448,6 @@ export default {
         isCover: data.isCover,
         isActive: data.isActive
       };
-    },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
     },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {

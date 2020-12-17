@@ -37,7 +37,7 @@
                       <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                     </ValidationProvider>
                   </div>
-                  <button class="btn btn-green-light login-btn" type="submit">Giriş Yap</button>
+                  <button class="btn btn-green-light rounded-0 login-btn" type="submit">Giriş Yap</button>
                 </form>
               </ValidationObserver>
 							<!-- /Form -->

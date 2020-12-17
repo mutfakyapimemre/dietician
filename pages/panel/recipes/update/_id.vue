@@ -401,7 +401,6 @@ export default {
     try {
 
       const {data} = await $axios.get(process.env.apiBaseUrl + "panel/recipes/update/" + params.id)
-      console.log(data);
       if(data.data.values.length ===0 || data.data.values.length === null || data.data.values.length === undefined){
         data.data.values.push({
           title: '',
@@ -429,8 +428,7 @@ export default {
 
       return data
     } catch (e) {
-      console.log(e);
-      //error({message: 'Yemek Tarifi Bilgisi Bulunamadı.', statusCode: 404})
+      error({message: 'Yemek Tarifi Bilgisi Bulunamadı.', statusCode: 404})
     }
   },
   methods: {
@@ -455,7 +453,6 @@ export default {
         this.page,
         this.pageSize
       );
-      console.log(this.data);
       this.$axios.get(`${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=recipes_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=recipes_id&where_value=${this.data._id.$oid}&joins=recipes_file`, {
         json: true,
         withCredentials: false,
@@ -622,15 +619,6 @@ export default {
     },
     removeProperty2(id) {
       this.data.recipes_criteria_values.splice(id, 1);
-    },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
     },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {

@@ -43,13 +43,13 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                           <div class="form-group">
                             <label for="unit">Birim</label>
-                            <input type="number" v-on:input="changeValue" min="1" step="1" id="unit" name="unit" v-model="unit"  class="form-control">
+                            <input type="number" v-on:input="changeValue" min="1" step="1" id="unit" name="unit" v-model="unit"  class="form-control rounded-0">
                           </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                           <div class="form-group">
                             <label for="criteriaValue">Ölçüt</label>
-                            <select v-on:change="setCriteriaValue" id="criteriaValue" class="form-control">
+                            <select v-on:change="setCriteriaValue" id="criteriaValue" class="form-control rounded-0">
                               <option value="0">Ölçüt Seçiniz</option>
                               <option v-if="data!==null && data!==undefined && data!=='' && values!==null && values!==undefined && values!=='' && criterias!==null && criterias!==undefined && criterias!==''" v-bind:value="criteria.title+criteria.value+criteria.type" v-bind:data-type="criteria.type" v-bind:data-value="criteria.value" v-for="criteria in criterias">
                                 {{ criteria.title }}
@@ -277,7 +277,6 @@ export default {
 
       return data
     } catch (e) {
-      console.log(e)
       error({message: 'Besin Bilgisi Bulunamadı.', statusCode: 404})
     }
   },

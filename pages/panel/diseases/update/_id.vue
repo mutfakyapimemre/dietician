@@ -225,7 +225,6 @@ export default {
     try {
 
       const {data} = await $axios.get(process.env.apiBaseUrl + "panel/diseases/update/" + params.id)
-      console.log(data);
       if(data.data.values.length ===0 || data.data.values.length === null || data.data.values.length === undefined){
         data.data.values.push({
           title: '',
@@ -238,7 +237,6 @@ export default {
 
       return data
     } catch (e) {
-      console.log(e);
       error({message: 'Hastalık Bilgisi Bulunamadı.', statusCode: 404})
     }
   },
@@ -430,15 +428,6 @@ export default {
     },
     removeProperty2(id) {
       this.data.criteria_values.splice(id, 1);
-    },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
     },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {

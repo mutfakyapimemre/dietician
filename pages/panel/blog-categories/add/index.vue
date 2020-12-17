@@ -164,7 +164,6 @@ export default {
         credentials: 'same-origin',
       })
         .then(response => {
-          console.log(response);
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
@@ -177,10 +176,6 @@ export default {
             this.inputData.id = response.data.data.$oid
             this.options.params.title = response.data.name
             this.e1 = 2
-
-            /*setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/criterias"))
-            }, 2000)*/
           } else {
             this.$izitoast.error({
               title: response.data.title,

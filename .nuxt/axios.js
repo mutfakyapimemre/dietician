@@ -60,6 +60,11 @@ const createAxiosInstance = axiosOptions => {
   // Extend axios proto
   extendAxiosInstance(axios)
 
+  // Intercept to apply default headers
+  axios.onRequest((config) => {
+    config.headers = { ...axios.defaults.headers.common, ...config.headers }
+  })
+
   // Setup interceptors
 
   setupProgress(axios)
@@ -127,7 +132,7 @@ const setupProgress = (axios) => {
   })
 
   const onProgress = e => {
-    if (!currentRequests) {
+    if (!currentRequests || !e.total) {
       return
     }
     const progress = ((e.loaded * 100) / (e.total * currentRequests))

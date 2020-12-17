@@ -83,12 +83,6 @@
                       <span>Alerjen Olduğum Besinler / Yemekler</span>
                       </a>
                     </nuxt-link>
-                    <nuxt-link to="/profile/reports" tag="li" active-class="active">
-                      <a>
-                      <i class="fa fa-clipboard-list"></i>
-                      <span>Raporlar</span>
-                      </a>
-                    </nuxt-link>
                     <nuxt-link to="/profile/messages" tag="li" active-class="active">
                       <a>
                         <i class="fa fa-comments"></i>
@@ -1210,7 +1204,7 @@
                                                alt="Profil Resminiz">
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
-                                          <input type="file" accept="image/*" placeholder="Profil Resminiz" name="profile_photo">
+                                          <input type="file" accept="image/*" class="form-control" placeholder="Profil Resminiz" name="profile_photo">
                                         </div>
                                       </div>
                                     </td>
@@ -1224,7 +1218,7 @@
                                                alt="İşyerinizin Logosu">
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
-                                          <input type="file" accept="image/*" placeholder="İşyerinizin Logosu" name="company_logo">
+                                          <input type="file" accept="image/*" class="form-control" placeholder="İşyerinizin Logosu" name="company_logo">
                                         </div>
                                       </div>
                                     </td>
@@ -1232,7 +1226,7 @@
                                   <tr>
                                     <td><b>Klinik Fotoğrafları :</b></td>
                                     <td colspan="2">
-                                      <input type="file" accept="image/*" placeholder="Klinik Fotoğrafları" name="clinic_photos[]" multiple>
+                                      <input type="file" accept="image/*" class="form-control" placeholder="Klinik Fotoğrafları" name="clinic_photos[]" multiple>
                                     </td>
                                   </tr>
                                   </tbody>
@@ -1240,7 +1234,7 @@
                                   <tr>
                                     <td colspan="3">
                                       <div class="form-group">
-                                        <button class="btn btn-primary login-btn text-white float-right" type="submit">Bilgilerimi
+                                        <button class="btn btn-green-light login-btn float-right" type="submit">Bilgilerimi
                                           Güncelle
                                         </button>
                                       </div>
@@ -1315,10 +1309,6 @@ export default {
         return data
       }
     } catch (e) {
-      console.log(store.getters.loggedInUser)
-      console.log(process.env.apiBaseUrl + "dietician/profile/")
-      console.log(e);
-
       error({message: 'Kullanıcı Bilgisi Bulunamadı.', statusCode: 404})
     }
   },
@@ -1446,7 +1436,6 @@ export default {
               message: response.data.msg,
               position: 'topCenter'
             })
-            console.log(response.data.data)
             Cookie.set("userData", Base64.encode(JSON.stringify(response.data.data)))
             localStorage.setItem("userData", Base64.encode(JSON.stringify(response.data.data)))
             setTimeout(() => {

@@ -92,12 +92,6 @@
                       <span>Alerjen Olduğum Besinler / Yemekler</span>
                       </a>
                     </nuxt-link>
-                    <nuxt-link to="/profile/reports" tag="li" active-class="active">
-                      <a>
-                      <i class="fa fa-clipboard-list"></i>
-                      <span>Raporlar</span>
-                      </a>
-                    </nuxt-link>
                     <nuxt-link to="/profile/messages" tag="li" active-class="active">
                       <a>
                         <i class="fa fa-comments"></i>
@@ -324,10 +318,6 @@ export default {
         return data
       }
     } catch (e) {
-      console.log(store.getters.loggedInUser)
-      console.log(process.env.apiBaseUrl + "dietician/profile/")
-      console.log(e);
-
       error({message: 'Kullanıcı Bilgisi Bulunamadı.', statusCode: 404})
     }
   },
@@ -367,7 +357,6 @@ export default {
               message: response.data.msg,
               position: 'topCenter'
             })
-            console.log(response.data.data)
             Cookie.set("userData", Base64.encode(JSON.stringify(response.data.data)))
             localStorage.setItem("userData", Base64.encode(JSON.stringify(response.data.data)))
             setTimeout(() => {

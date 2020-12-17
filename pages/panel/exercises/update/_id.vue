@@ -280,7 +280,6 @@ export default {
 
       return data
     } catch (e) {
-      //console.log(e);
       error({message: 'Egzersiz Bilgisi Bulunamadı.', statusCode: 404})
     }
   },
@@ -306,7 +305,6 @@ export default {
         this.page,
         this.pageSize
       );
-      console.log(this.data);
       this.$axios.get(`${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=exercises_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=exercise_id&where_value=${this.data._id.$oid}&joins=exercises_file`, {
         json: true,
         withCredentials: false,
@@ -450,15 +448,6 @@ export default {
         isCover: data.isCover,
         isActive: data.isActive
       };
-    },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
     },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {

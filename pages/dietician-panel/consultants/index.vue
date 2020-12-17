@@ -37,13 +37,10 @@
                   <v-card tile>
                     <v-card-title class="d-flex justify-content-between">
                       <span class="justify-content-center flex-grow-1">
-                        <v-text-field v-model="searchTitle" label="Arama Yapın..." class="my-auto py-auto"></v-text-field>
+                        <v-text-field v-on:keyup.enter="page = 1; retrieveData('get-by-search');" v-model="searchTitle" label="Arama Yapın..." class="my-auto py-auto"></v-text-field>
                       </span>
                       <span class="justify-content-end flex-shrink-1">
-                        <v-btn @click="page = 1; retrieveData('get-by-search');" class="my-auto py-auto mx-3">
-                          Ara
-                        </v-btn>
-                        <nuxt-link to="/dietician-panel/consultants/add" tag="a" class="btn btn-primary text-white float-right"><i class="fa fa-plus"></i> Ekle</nuxt-link>
+                        <nuxt-link to="/dietician-panel/consultants/add" tag="a" class="btn btn-info-light"><i class="fa fa-plus"></i> Ekle</nuxt-link>
                       </span>
                     </v-card-title>
 
@@ -166,7 +163,7 @@ export default {
         this.page,
         this.pageSize
       );
-      this.$axios.get(`${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id&where_value=${this.userData._id}`, {
+      this.$axios.get(`${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id,status&where_value=${this.userData._id},!='dietician'`, {
         json: true,
         withCredentials: false,
         mode: 'no-cors',
@@ -184,7 +181,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);
@@ -245,7 +241,7 @@ export default {
         email: data.email,
         phone: data.phone,
         tc: data.tc,
-        img_url : this.img_url+'public/storage/'+data.img_url,
+        img_url : this.img_url+'public/storage/'+(data.status === "dietician" ? data.profile_photo :data.img_url),
         isActive: data.isActive,
       };
     },

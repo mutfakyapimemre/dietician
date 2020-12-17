@@ -2680,11 +2680,16 @@ html.menu-opened body {
 
 .section-search {
   background: #f9f9f9 url(../img/search-bg.png) no-repeat bottom center;
-  min-height: 450px;
   background-size: 100% auto;
   position: relative;
   background-blend-mode: Darken;
   padding: 80px 0;
+}
+
+@media only screen and (min-width:767px){
+  .section-search {
+    min-height: 350px;
+  }
 }
 
 .section-header {
@@ -3140,7 +3145,7 @@ html.menu-opened body {
 }
 
 .section-doctor .profile-widget {
-  box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
 }
 
@@ -3155,24 +3160,7 @@ html.menu-opened body {
   margin-top: 20px;
 }
 
-.about-content a {
-  background-color: #0de0fe;
-  border-radius: 4px;
-  color: #fff;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 30px;
-  min-width: 150px;
-  padding: 15px 20px;
-  text-align: center;
-}
 
-.about-content a:hover, .about-content a:focus {
-  background-color: #01cae4;
-  border-color: #01cae4;
-  color: #fff;
-}
 
 .section-features {
   background-color: #fff;
@@ -8795,7 +8783,6 @@ html.menu-opened body {
 }
 .btn-green-light{
   border: 2px solid #09e5ab;
-  padding: 10px 15px !important;
   text-align: center;
   font-size: 15px;
   color: #09e5ab!important;
@@ -8808,7 +8795,6 @@ html.menu-opened body {
 }
 .btn-info-light{
   border: 2px solid #009efb;
-  padding: 10px 15px !important;
   text-align: center;
   font-size: 15px;
   color: #009efb!important;

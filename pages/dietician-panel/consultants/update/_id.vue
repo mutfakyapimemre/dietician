@@ -397,7 +397,7 @@
                                   <tr>
                                     <td colspan="3">
                                       <div class="form-group">
-                                        <button class="btn btn-primary login-btn text-white float-right" type="submit">
+                                        <button class="btn btn-info-light login-btn float-right" type="submit">
                                           Danışan Bilgilerini Güncelle
                                         </button>
                                       </div>

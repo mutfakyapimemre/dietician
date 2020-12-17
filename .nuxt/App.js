@@ -12,10 +12,11 @@ import '..\\node_modules\\vue2-dropzone\\dist\\vue2Dropzone.min.css'
 import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
 import _77068119 from '..\\layouts\\admin.vue'
+import _4eb135f0 from '..\\layouts\\adminlogin.vue'
 import _6f6c098b from '..\\layouts\\default.vue'
 import _6225df5c from '..\\layouts\\dietician.vue'
 
-const layouts = { "_admin": sanitizeComponent(_77068119),"_default": sanitizeComponent(_6f6c098b),"_dietician": sanitizeComponent(_6225df5c) }
+const layouts = { "_admin": sanitizeComponent(_77068119),"_adminlogin": sanitizeComponent(_4eb135f0),"_default": sanitizeComponent(_6f6c098b),"_dietician": sanitizeComponent(_6225df5c) }
 
 export default {
   render (h, props) {

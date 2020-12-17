@@ -264,7 +264,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);
@@ -418,15 +417,6 @@ export default {
         }
       }
     },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
-    },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {
         this.$izitoast.success({
@@ -462,20 +452,13 @@ export default {
         credentials: 'same-origin',
       })
         .then(response => {
-          console.log(response);
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
               message: response.data.msg,
               position: 'topCenter'
             })
-            //this.$refs.myDropzone.options.url = process.env.apiBaseUrl + "panel/diseases/create-file/" + response.data.data.$oid
-            //this.$refs.myDropzone.dropzone.options.url = process.env.apiBaseUrl + "panel/diseases/create-file/" + response.data.data.$oid
-            //this.options.url = process.env.apiBaseUrl + "panel/diseases/create-file/" + response.data.data.$oid
             this.inputData.id = response.data.data.$oid
-            //this.options.params.title = response.data.name
-            //this.e1 = 2
-
             setTimeout(() => {
               this.$router.go(decodeURIComponent("/panel/diseases"))
             }, 2000)

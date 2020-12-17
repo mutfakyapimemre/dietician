@@ -19,7 +19,7 @@
     <!-- /Breadcrumb -->
   <div class="main-wrapper">
     <!-- Home Banner -->
-    <section class="section section-search">
+    <section class="section section-search py-5">
       <div class="container-fluid">
         <div class="banner-wrapper">
           <div class="banner-header text-center">
@@ -31,7 +31,7 @@
           <div class="search-box">
             <form onsubmit="return false">
               <div class="form-group search-info w-100">
-                <input type="text" class="form-control" v-model="search" placeholder="Ölçüt Aramak İçin Buraya Yazın..."/>
+                <input type="text" class="form-control rounded-0" v-on:keyup.prevent="getCriterias()" v-model="search" placeholder="Ölçüt Aramak İçin Buraya Yazın..."/>
               </div>
             </form>
           </div>
@@ -46,7 +46,7 @@
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
             <h3 class="text-center" v-if="search !== null && search !== '' && search !== undefined">"{{search}}" Aramasıyla İle İlgili Ölçütler</h3>
             <h3 class="text-center" v-if="search === null || search === '' || search === undefined">Tüm Ölçütler</h3>
-            <table class="table table-bordered table-striped mb-2 w-100" v-if="criterias !== null && criterias !== '' && criterias !== undefined" v-for="criteria in filteredList">
+            <table class="table table-bordered table-striped mb-2 w-100" v-if="criterias !== null && criterias !== '' && criterias !== undefined" v-for="criteria in criterias">
               <thead>
               <tr>
                 <th colspan="2" class="text-center">
@@ -154,30 +154,27 @@ export default {
     img_url() {
       return process.env.apiPublicUrl;
     },
-    filteredList() {
-      if(this.search !== null){
-        return this.criterias.filter(post => {
-          return post.name.toLowerCase().includes(this.search.toLowerCase())
-        })
-      }else{
-        return this.criterias
-      }
-
-    }
   },
   methods: {
     getCriterias(param){
-      if(param){
-        this.$store.dispatch("getCriterias",{criteriasURL:param}).then((response) => {
-          this.criterias = this.$store.getters.criterias
-        })
-      }else{
-        this.$store.dispatch("getCriterias",{criteriasURL:"criteria?page="+this.pagination.current}).then((response) => {
+      if(this.search !== null){
+          this.$store.dispatch("getCriterias",{criteriasURL:"criteria?page="+this.pagination.current+"&search="+decodeURIComponent(this.search)}).then((response) => {
           this.criterias = this.$store.getters.criterias.data
           this.pagination.current = this.$store.getters.criterias.current_page;
           this.pagination.total = this.$store.getters.criterias.last_page;
-          console.log(this.pagination.total)
         })
+      }else{
+        if(param){
+          this.$store.dispatch("getCriterias",{criteriasURL:param}).then((response) => {
+            this.criterias = this.$store.getters.criterias
+          })
+        }else{
+          this.$store.dispatch("getCriterias",{criteriasURL:"criteria?page="+this.pagination.current}).then((response) => {
+            this.criterias = this.$store.getters.criterias.data
+            this.pagination.current = this.$store.getters.criterias.current_page;
+            this.pagination.total = this.$store.getters.criterias.last_page;
+          })
+        }
       }
     },
     onPageChange() {

@@ -105,9 +105,6 @@ export default {
       return process.env.apiPublicUrl;
     },
   },
-  mounted() {
-    console.log(this.userData)
-  },
   methods: {
     logout() {
       this.$store.dispatch("logout")

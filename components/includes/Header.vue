@@ -26,6 +26,9 @@
             <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
           </li>
           <li>
+            <nuxt-link to="/dieticians" tag="a">Diyetisyenler</nuxt-link>
+          </li>
+          <li>
             <nuxt-link to="/calorie" tag="a">Kaç Kalori?</nuxt-link>
           </li>
           <li>

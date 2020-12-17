@@ -467,7 +467,6 @@ export default {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
-          console.log(response.data);
         })
         .catch(err => console.log(err))
         .finally(() => this.loading = false);
@@ -644,15 +643,6 @@ export default {
         }
       }
     },
-    onFileAdded(e) {
-      console.log(e);
-    },
-    onError(e) {
-      console.log(e);
-    },
-    onSuccess(e) {
-      console.log(e);
-    },
     onComplete(e) {
       if (JSON.parse(e.xhr.response).success) {
         this.$izitoast.success({
@@ -687,7 +677,6 @@ export default {
         credentials: 'same-origin',
       })
         .then(response => {
-          console.log(response);
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,

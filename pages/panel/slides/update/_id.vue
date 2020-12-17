@@ -122,7 +122,6 @@ export default {
   methods: {
     editSlides() {
       let formData = new FormData(this.$refs.slidesForm);
-      console.log(this.data)
       this.$axios.post(process.env.apiBaseUrl + "panel/sliders/update/" + this.data._id, formData, {
         json: true,
         withCredentials: false,

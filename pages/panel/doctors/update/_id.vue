@@ -230,7 +230,6 @@ export default {
   methods: {
     editDoctors() {
       let formData = new FormData(this.$refs.doctorsForm);
-      console.log(this.data)
       this.$axios.post(process.env.apiBaseUrl+"panel/doctors/update/"+ this.data._id, formData, {
         json: true,
         withCredentials: false,

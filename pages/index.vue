@@ -2,7 +2,7 @@
 <v-app class="h-auto">
   <div class="main-wrapper">
     <!-- Home Banner -->
-    <section class="section section-search">
+    <section class="section section-search pt-5 bg-white">
       <div class="container-fluid">
         <div class="banner-wrapper">
           <div class="banner-header text-center">
@@ -12,15 +12,11 @@
           </div>
 
           <!-- Search -->
-          <div class="search-box">
-            <form action="https://doccure-laravel.dreamguystech.com/template/public/search">
+          <div class="search-box justify-content-center">
+            <form onsubmit="return false" class="justify-content-center">
               <div class="form-group search-info w-100">
-                <input type="text" class="form-control" placeholder="Diyetisyen, Besin, Yemek Tarifi Ara"/>
+                <input type="text" class="form-control rounded-0" v-on:keyup.prevent="goToSearch()" placeholder="Diyetisyen, Besin, Yemek Tarifi Ara"/>
               </div>
-              <button type="submit" class="btn btn-primary search-btn">
-                <i class="fa fa-search"></i>
-                <span>Search</span>
-              </button>
             </form>
           </div>
           <!-- /Search -->
@@ -30,27 +26,26 @@
     <!-- /Home Banner -->
 
     <!-- News Headline -->
-    <section class="section section-blogs">
+    <section class="section section-blogs py-2">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-            <no-ssr>
+            <client-only>
             <carousel v-if="data.sliders !== null && data.sliders !== '' && data.sliders !== undefined && data.sliders.length>0" :navs="true" :dots="false" :autoplay="true" :items="1" :loop="true">
-              <img class="img-fluid" style="max-height: 500px;object-fit: cover" v-bind:src="base_img_url+'/public/storage/'+slide.img_url" v-bind:alt="slide.title" v-for="slide in data.sliders"/>
+              <img class="img-fluid" style="max-height: 450px;object-fit: cover" v-bind:src="base_img_url+'/public/storage/'+slide.img_url" v-bind:alt="slide.title" v-for="slide in data.sliders"/>
             </carousel>
-            </no-ssr>
+            </client-only>
           </div>
           <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
             <h3>Reklamlar</h3>
           </div>
         </div>
-
       </div>
     </section>
     <!-- News Headline -->
 
     <!-- Popular Section -->
-    <section class="section section-doctor">
+    <section class="section section-doctor slider py-0 bg-white">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -59,30 +54,27 @@
               <p>Lorem Ipsum is simply dummy text</p>
             </div>
             <div class="about-content">
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when
-                looking at its layout. The point of using Lorem Ipsum.</p>
-              <p>web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                uncover many web sites still in their infancy. Various versions have evolved over the years,
-                sometimes</p>
-              <a href="javascript:;">Read More..</a>
+              
+              <nuxt-link to="/dieticians" tag="a" class="btn rounded-0 btn-info-light">Diyetisyenlerimiz</nuxt-link>
             </div>
           </div>
           <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-            <div class="doctor-slider slider">
-              <VueSlickCarousel :arrows="true" :dots="true" :infinite="true" :variableWidth="true" :prevArrow="true" :nextArrow="true">
+            <div class="doctor-slider bg-white">
+              <carousel v-if="data.sliders !== null && data.sliders !== '' && data.sliders !== undefined && data.sliders.length>0" :navs="true" :dots="false" :autoplay="true" :items="4" :loop="true" :responsive="{0:{items:1,nav:true},578:{items:1,nav:true},768:{items:2,nav:true},991:{items:3,nav:true},1400:{items:4,nav:true}}">
+              
                 <!-- Doctor Widget -->
-                <div v-if="data.doctors !== null && data.doctors !== '' && data.doctors !== undefined && data.doctors.length>0" v-for="doctor in data.doctors" class="profile-widget">
+                <div v-if="data.doctors !== null && data.doctors !== '' && data.doctors !== undefined && data.doctors.length>0" v-for="doctor in data.doctors" class="h-100 profile-widget mx-1">
                   <div class="doc-img">
                     <nuxt-link tag="a" v-bind:to="'/profile/'+doctor.slug">
-                      <img class="img-fluid" v-bind:alt="doctor.name" v-bind:src="base_img_url+'/public/storage/'+doctor.profile_photo"/>
+                      <img class="img-fluid" style="min-height:273px" v-bind:alt="doctor.name" v-bind:src="base_img_url+'/public/storage/'+(doctor.profile_photo.img_url === null || doctor.profile_photo.img_url === '' || doctor.profile_photo.img_url === undefined ? null : doctor.profile_photo.img_url)"/>
                     </nuxt-link>
                   </div>
-                  <div class="pro-content">
+                  <div class="pro-content h-100">
                     <h3 class="title">
                       <nuxt-link tag="a" v-bind:to="'/profile/'+doctor.slug">{{ doctor.name }}</nuxt-link>
                       <i class="fa fa-check-circle verified"></i>
                     </h3>
-                    <p class="speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+                    <p class="speciality">{{doctor.hospitalName}} - {{doctor.department}}</p>
                     <!--<div class="rating">
                       <i class="fa fa-star filled"></i>
                       <i class="fa fa-star filled"></i>
@@ -92,22 +84,22 @@
                       <span class="d-inline-block average-rating">(17)</span>
                     </div>-->
                     <ul class="available-info">
-                      <li><i class="fa fa-map-marker-alt"></i> {{doctor.city}}, {{ doctor.town }}</li>
+                      <li><i class="fa fa-map-marker-alt"></i> {{doctor.company_city}}, {{ doctor.company_town }}</li>
                       <li v-if="doctor.appointment_hour !== undefined && doctor.appointment_hour !== null && doctor.appointment_hour !== ''"><i class="fa fa-clock"></i> {{ doctor.appointment_hour }}</li>
                       <li v-if="doctor.price !== undefined && doctor.price !== null && doctor.price !== ''"><i class="fa fa-money-bill-alt"></i> {{doctor.price}}<i class="fa fa-info-circle" data-toggle="tooltip" title="Fiyatlar Değişkenlik Gösterebilir"></i></li>
                     </ul>
-                    <div class="row row-sm">
-                      <div class="col-6">
-                        <a href="doctor-profile.html" class="btn view-btn">View Profile</a>
+                    <div class="d-flex">
+                      <div class="flex-grow-1">
+                        <nuxt-link v-bind:to="'/profile/'+doctor.slug" class="btn btn-green-light rounded-0">Profilini Görüntüle</nuxt-link>
                       </div>
-                      <div class="col-6">
-                        <a href="booking.html" class="btn book-btn">Book Now</a>
+                      <div class="flex-shrink-1">
+                        <nuxt-link v-bind:to="'/make-appointment/'+doctor.slug"  class="btn btn-info-light rounded-0">Randevu Al</nuxt-link>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- /Doctor Widget -->
-              </VueSlickCarousel>
+              </carousel>
             </div>
           </div>
         </div>
@@ -167,7 +159,7 @@
           </div>
         </div>
         <div class="view-all text-center">
-          <a href="blog-list.html" class="btn btn-primary">Tümünü Görüntüle</a>
+          <nuxt-link to="/blogs" class="btn btn-info-light rounded-0" tag="a">Tümünü Görüntüle</nuxt-link>
         </div>
       </div>
     </section>
@@ -178,15 +170,10 @@
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
 import Cookie from "js-cookie";
 import {Base64} from "js-base64";
 // optional style for arrows & dots
-//import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
-  components: {
-    VueSlickCarousel,
-  },
   computed:{
     base_img_url() {
       return process.env.apiPublicUrl;
@@ -200,9 +187,21 @@ export default {
   async asyncData({error, $axios}) {
     try {
       let {data} = await $axios.get(  process.env.apiBaseUrl+"home")
+      
       return data
     } catch (e) {
       error({message: 'Site Ayarı Bulunamadı.', statusCode: 404})
+    }
+  },
+  methods:{
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    },
+    goToSearch(){
+      this.$router.go(decodeURIComponent( "/profile"))
     }
   }
 };

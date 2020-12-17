@@ -13,7 +13,9 @@ export const state = () => ({
   userData: {},
   siteSettings: {},
   nutrients: [],
-  criterias: []
+  criterias: [],
+  doctors:[],
+  searchs:[]
 });
 
 /**
@@ -47,6 +49,12 @@ export const mutations = {
   },
   setCriterias(state, criterias) {
     state.criterias = criterias
+  },
+  setDoctors(state, doctors) {
+    state.doctors = doctors
+  },
+  setSearchs(state, searchs) {
+    state.searchs = searchs
   }
 
 }
@@ -122,7 +130,6 @@ export const actions = {
    */
   LoginUser(vuexContext, loginData) {
     let loginLink = null;
-    console.log(loginData.get("isUser"))
     if (loginData.get("isUser") === "false") {
       loginLink = "panel/login";
     }
@@ -218,7 +225,6 @@ export const actions = {
     }
     return this.$axios.get(process.env.apiBaseUrl + nutrientsURL).then(response => {
       if (response.data !== null && response.data !== undefined && response.data !== "") {
-        console.log(response.data.data);
         vuexContext.commit("setNutrients", response.data.data)
       }
     })
@@ -233,9 +239,35 @@ export const actions = {
     }
     return this.$axios.get(process.env.apiBaseUrl + criteriasURL).then(response => {
       if (response.data !== null && response.data !== undefined && response.data !== "") {
-        console.log(response.data.data.data);
-
         vuexContext.commit("setCriterias", response.data.data)
+      }
+    })
+  },
+  /**
+   * Doctors Function
+   */
+  getDoctors(vuexContext, context) {
+    let doctorsURL = "doctors";
+    if (context.doctorsURL) {
+      doctorsURL = context.doctorsURL
+    }
+    return this.$axios.get(process.env.apiBaseUrl + doctorsURL).then(response => {
+      if (response.data !== null && response.data !== undefined && response.data !== "") {
+        vuexContext.commit("setDoctors", response.data.data.doctors)
+      }
+    })
+  },
+  /**
+   * Search Data Function
+   */
+  getSearchs(vuexContext, context) {
+    let searchsURL = "search";
+    if (context.searchsURL) {
+      searchsURL = context.searchsURL
+    }
+    return this.$axios.get(process.env.apiBaseUrl + searchsURL).then(response => {
+      if (response.data !== null && response.data !== undefined && response.data !== "") {
+        vuexContext.commit("setSearchs", response.data.data)
       }
     })
   }
@@ -282,5 +314,17 @@ export const getters = {
    */
   criterias(state) {
     return state.criterias
+  },
+  /**
+   * Get Doctors Function
+   */
+  doctors(state) {
+    return state.doctors
+  },
+  /**
+   * Get Search Data Function
+   */
+  searchs(state) {
+    return state.searchs
   }
 }

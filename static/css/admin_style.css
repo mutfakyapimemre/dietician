@@ -4118,7 +4118,6 @@ table.table-inbox tbody tr.checked {
 }
 .btn-green-light{
 	border: 2px solid #09e5ab;
-	padding: 10px 15px !important;
 	text-align: center;
 	font-size: 15px;
 	color: #09e5ab!important;
@@ -4131,7 +4130,6 @@ table.table-inbox tbody tr.checked {
   }
   .btn-info-light{
 	border: 2px solid #009efb;
-	padding: 10px 15px !important;
 	text-align: center;
 	font-size: 15px;
 	color: #009efb!important;

@@ -42,6 +42,13 @@
     "_name": "_6fe57bdc"
   },
   {
+    "name": "dieticians",
+    "path": "/dieticians",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\dieticians\\\\index.vue",
+    "chunkName": "pages/dieticians/index",
+    "_name": "_a42b9890"
+  },
+  {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\login\\\\index.vue",
@@ -61,6 +68,13 @@
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\index.vue",
     "chunkName": "pages/profile/index",
     "_name": "_805b1eb0"
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\search.vue",
+    "chunkName": "pages/search",
+    "_name": "_84253b72"
   },
   {
     "name": "dietician-panel-consultants",
@@ -159,6 +173,20 @@
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\users\\\\index.vue",
     "chunkName": "pages/panel/users/index",
     "_name": "_33b1e5bf"
+  },
+  {
+    "name": "profile-password-update",
+    "path": "/profile/password-update",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\password-update.vue",
+    "chunkName": "pages/profile/password-update",
+    "_name": "_38ab0a11"
+  },
+  {
+    "name": "profile-social-media",
+    "path": "/profile/social-media",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\social-media.vue",
+    "chunkName": "pages/profile/social-media",
+    "_name": "_56f3b61e"
   },
   {
     "name": "dietician-panel-consultants-add",

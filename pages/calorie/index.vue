@@ -19,7 +19,7 @@
     <!-- /Breadcrumb -->
   <div class="main-wrapper">
     <!-- Home Banner -->
-    <section class="section section-search">
+    <section class="section section-search py-5">
       <div class="container-fluid">
         <div class="banner-wrapper">
           <div class="banner-header text-center">
@@ -31,7 +31,7 @@
           <div class="search-box">
             <form onsubmit="return false">
               <div class="form-group search-info w-100">
-                <input type="text" class="form-control" v-model="search" placeholder="Besin Aramak İçin Buraya Yazın..."/>
+                <input type="text" class="form-control rounded-0" v-on:keyup.prevent="getNutrients()" v-model="search" placeholder="Besin Aramak İçin Buraya Yazın..."/>
               </div>
             </form>
           </div>
@@ -47,7 +47,7 @@
             <h3 class="text-center" v-if="search !== null && search !== '' && search !== undefined">"{{search}}" Aramasıyla İle İlgili Besinler</h3>
             <h3 class="text-center" v-if="search === null || search === '' || search === undefined">Tüm Besinler</h3>
             <div class="row row-grid">
-              <div v-if="nutrients !== null && nutrients !== '' && nutrients !== undefined" v-for="nutrient in filteredList" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div v-if="nutrients !== null && nutrients !== '' && nutrients !== undefined" v-for="nutrient in nutrients" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="profile-widget">
                   <div class="doc-img">
                     <nuxt-link v-bind:to="/calorie/+nutrient.slug" tag="a">
@@ -62,7 +62,7 @@
 
                     <div class="row row-sm">
                       <div class="col-12">
-                        <nuxt-link tag="a" v-bind:to="/calorie/+nutrient.slug" class="btn view-btn">Besin Detayı</nuxt-link>
+                        <nuxt-link tag="a" v-bind:to="/calorie/+nutrient.slug" class="btn btn-info-light rounded-0 view-btn">Besin Detayı</nuxt-link>
                       </div>
                     </div>
                   </div>
@@ -156,34 +156,31 @@ export default {
     img_url() {
       return process.env.apiPublicUrl;
     },
-    filteredList() {
-      if(this.search !== null){
-        return this.nutrients.filter(post => {
-          return post.name.toLowerCase().includes(this.search.toLowerCase())
-        })
-      }else{
-        return this.nutrients
-      }
-
-    }
   },
   methods: {
     getNutrients(param){
-      if(param){
-        this.$store.dispatch("getNutrients",{nutrientsURL:param}).then((response) => {
+      if(this.search !== null){
+          this.$store.dispatch("getNutrients",{nutrientsURL:"nutrients?page="+this.pagination.current+"&search="+decodeURIComponent(this.search)}).then((response) => {
           this.nutrients = this.$store.getters.nutrients.data
           this.pagination.current = this.$store.getters.nutrients.current_page;
           this.pagination.total = this.$store.getters.nutrients.last_page;
         })
       }else{
-        this.$store.dispatch("getNutrients",{nutrientsURL:"nutrients?page="+this.pagination.current}).then((response) => {
-
-          this.nutrients = this.$store.getters.nutrients.data
-          this.pagination.current = this.$store.getters.nutrients.current_page;
-          this.pagination.total = this.$store.getters.nutrients.last_page;
-          console.log(this.nutrients)
-        })
+        if(param){
+          this.$store.dispatch("getNutrients",{nutrientsURL:param}).then((response) => {
+            this.nutrients = this.$store.getters.nutrients.data
+            this.pagination.current = this.$store.getters.nutrients.current_page;
+            this.pagination.total = this.$store.getters.nutrients.last_page;
+          })
+        }else{
+          this.$store.dispatch("getNutrients",{nutrientsURL:"nutrients?page="+this.pagination.current}).then((response) => {
+            this.nutrients = this.$store.getters.nutrients.data
+            this.pagination.current = this.$store.getters.nutrients.current_page;
+            this.pagination.total = this.$store.getters.nutrients.last_page;
+          })
+        }
       }
+      
     },
     onPageChange() {
       this.getNutrients();

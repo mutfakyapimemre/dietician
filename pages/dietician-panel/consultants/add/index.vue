@@ -63,7 +63,7 @@
                       <v-text-field label="Danışmanın Telefon Numarası" name="phone" v-model="consultant.phone" required
                                     counter="11"></v-text-field>
                       <div class="form-group">
-                        <button class="btn btn-primary login-btn text-white" type="submit">Danışmanı Bul ve Diyetisyen
+                        <button class="btn btn-info-light login-btn" type="submit">Danışmanı Bul ve Diyetisyen
                           Bildirimi Yolla
                         </button>
                       </div>
@@ -121,6 +121,7 @@ export default {
   },
   data() {
     return {
+      data:null,
       rules: [
         value => !!value || 'Zorunludur.',
         value => (value && value.length >= 3) || 'Alanı Minimum 11 Karakter Olmalıdır',
@@ -156,16 +157,16 @@ export default {
         credentials: 'same-origin',
       })
         .then(response => {
-          console.log(response);
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
               message: response.data.msg,
               position: 'topCenter'
             })
+            this.data = response.data.data
             setTimeout(() => {
               this.$router.go(decodeURIComponent("/dietician-panel/consultants"))
-            }, 2000)
+            }, 3000)
           } else {
             this.$izitoast.error({
               title: response.data.title,
