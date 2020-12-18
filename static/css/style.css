@@ -1282,6 +1282,7 @@ button.bg-danger:hover {
 
 .avatar-group .avatar:hover {
   z-index: 1;
+  isolation:isolate
 }
 
 /*-----------------
@@ -1829,6 +1830,7 @@ button.bg-danger:hover {
 .slick-prev {
   left: 0;
   z-index: 1;
+  isolation:isolate
 }
 
 [dir='rtl'] .slick-prev {
@@ -1907,6 +1909,7 @@ button.bg-danger:hover {
   top: -18px;
   font-size: 12px;
   z-index: 1;
+  isolation:isolate
 }
 
 .form-focus .form-control:focus ~ .focus-label,
@@ -1916,6 +1919,7 @@ button.bg-danger:hover {
   top: -18px;
   font-size: 12px;
   z-index: 1;
+  isolation:isolate
 }
 
 .form-focus .form-control::-webkit-input-placeholder {
@@ -1937,6 +1941,7 @@ button.bg-danger:hover {
   top: -20px;
   font-size: 12px;
   z-index: 1;
+  isolation:isolate
 }
 
 .form-focus .select2-container .select2-selection--single {
@@ -5820,6 +5825,7 @@ html.menu-opened body {
 .fc-toolbar button:hover,
 .fc-toolbar .ui-state-hover {
   z-index: 0;
+  isolation:isolate
 }
 
 .fc th.fc-widget-header {

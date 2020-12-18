@@ -58,49 +58,29 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-              <h3
-                class="text-center"
-                v-if="search !== null && search !== '' && search !== undefined"
-              >
-                "{{ search }}" Aramasıyla İle İlgili "{{ categories.name }}" Kategorisine
-                Ait Yemek Tarifleri
+              <h3 class="text-center" v-if="search !== null && search !== '' && search !== undefined">
+                "{{ search }}" Aramasıyla İle İlgili "{{ categories.name }}" Kategorisine Ait Yemek Tarifleri
               </h3>
-              <h3
-                class="text-center"
-                v-if="search === null || search === '' || search === undefined"
-              >
+              <h3 class="text-center" v-if="search === null || search === '' || search === undefined">
                 "{{ categories.name }}" Kategorisine Ait Tüm Yemek Tarifleri
               </h3>
-              <div class="row row-grid">
-                <div
-                  v-if="recipes !== null && recipes !== '' && recipes !== undefined"
-                  v-for="recipe in recipes"
-                  class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
-                >
+              <div class="row row-grid" v-if="recipes !== null && recipes !== '' && recipes !== undefined">
+                <div v-bind:key="index" v-for="(recipe, index) in recipes" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
                   <div class="profile-widget">
                     <div class="doc-img">
                       <nuxt-link v-bind:to="/recipe/ + recipe.slug" tag="a">
-                        <img
-                          height="300"
-                          v-bind:alt="recipe.name"
-                          v-bind:src="img_url + 'public/storage/' + recipe.img_url"
-                        />
+                        <img height="300" v-bind:alt="recipe.name" v-bind:src="img_url + 'public/storage/' + recipe.img_url" />
                       </nuxt-link>
                     </div>
                     <div class="pro-content">
                       <h3 class="title">
-                        <nuxt-link v-bind:to="/recipe/ + recipe.slug" tag="a">{{
-                          recipe.name
-                        }}</nuxt-link>
+                        <nuxt-link v-bind:to="/recipe/ + recipe.slug" tag="a">{{ recipe.name }}</nuxt-link>
                       </h3>
                       <p class="speciality">{{ recipe.description }}</p>
 
                       <div class="row row-sm">
                         <div class="col-12">
-                          <nuxt-link
-                            tag="a"
-                            v-bind:to="/recipe/ + recipe.slug"
-                            class="btn btn-info-light rounded-0 view-btn"
+                          <nuxt-link tag="a" v-bind:to="/recipe/ + recipe.slug" class="btn btn-info-light rounded-0 view-btn"
                             >Yemek Tarifi Detayı</nuxt-link
                           >
                         </div>
@@ -109,11 +89,7 @@
                   </div>
                 </div>
               </div>
-              <v-pagination
-                v-model="pagination.current"
-                :length="pagination.total"
-                @input="onPageChange"
-              ></v-pagination>
+              <v-pagination v-model="pagination.current" :length="pagination.total" @input="onPageChange"></v-pagination>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
               <div class="profile-sidebar">
@@ -126,9 +102,7 @@
                       <h3>Richard Wilson</h3>
                       <div class="patient-details">
                         <h5><i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
-                        <h5 class="mb-0">
-                          <i class="fa fa-map-marker-alt"></i> Newyork, USA
-                        </h5>
+                        <h5 class="mb-0"><i class="fa fa-map-marker-alt"></i> Newyork, USA</h5>
                       </div>
                     </div>
                   </div>
@@ -208,12 +182,7 @@ export default {
         this.$store
           .dispatch("getRecipeCategories", {
             recipeCategoriesURL:
-              "recipe-categories/" +
-              this.$route.params.id +
-              "?page=" +
-              this.pagination.current +
-              "&search=" +
-              decodeURIComponent(this.search),
+              "recipe-categories/" + this.$route.params.id + "?page=" + this.pagination.current + "&search=" + decodeURIComponent(this.search),
           })
           .then((response) => {
             this.recipes = this.$store.getters.recipeCategories.recipes.data;
@@ -223,22 +192,16 @@ export default {
           });
       } else {
         if (param) {
-          this.$store
-            .dispatch("getRecipeCategories", { recipeCategoriesURL: param })
-            .then((response) => {
-              this.recipes = this.$store.getters.recipeCategories.recipes.data;
-              this.categories = this.$store.getters.recipeCategories.categories;
-              this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
-              this.pagination.total = this.$store.getters.recipeCategories.recipes.last_page;
-            });
+          this.$store.dispatch("getRecipeCategories", { recipeCategoriesURL: param }).then((response) => {
+            this.recipes = this.$store.getters.recipeCategories.recipes.data;
+            this.categories = this.$store.getters.recipeCategories.categories;
+            this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
+            this.pagination.total = this.$store.getters.recipeCategories.recipes.last_page;
+          });
         } else {
           this.$store
             .dispatch("getRecipeCategories", {
-              recipeCategoriesURL:
-                "recipe-categories/" +
-                this.$route.params.id +
-                "?page=" +
-                this.pagination.current,
+              recipeCategoriesURL: "recipe-categories/" + this.$route.params.id + "?page=" + this.pagination.current,
             })
             .then((response) => {
               this.recipes = this.$store.getters.recipeCategories.recipes.data;

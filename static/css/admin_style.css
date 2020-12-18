@@ -1349,6 +1349,7 @@ button.bg-danger:hover {
 	margin-left: -1.28125rem;
 }
 .avatar-group .avatar:hover {
+	isolation: isolate;
 	z-index: 1;
 }
 
@@ -2424,6 +2425,7 @@ html.menu-opened body {
 .fc-toolbar button:focus,
 .fc-toolbar button:hover,
 .fc-toolbar .ui-state-hover {
+	isolation: isolate;
 	z-index: 0;
 }
 .fc th.fc-widget-header {
@@ -3785,6 +3787,7 @@ table.table-inbox tbody tr.checked {
 		visibility: visible;
 	}
 	.modal-open.mini-sidebar .sidebar {
+		isolation: isolate;
 		z-index: 1051;
 	}
 	.mini-sidebar .sidebar .sidebar-menu ul > li > a span {
@@ -3863,6 +3866,7 @@ table.table-inbox tbody tr.checked {
 		-webkit-transition: all 0.4s ease;
 		-moz-transition: all 0.4s ease;
 		transition: all 0.4s ease;
+		isolation: isolate;
 		z-index: 1041;
 	}
 	.page-wrapper {
