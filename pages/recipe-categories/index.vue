@@ -66,14 +66,17 @@
               >
                 Tüm Yemek Tarifi Türleri
               </h3>
-              <div class="row row-grid">
+              <div
+                class="row row-grid"
+                v-if="
+                  recipeCategories !== null &&
+                  recipeCategories !== '' &&
+                  recipeCategories !== undefined
+                "
+              >
                 <div
-                  v-if="
-                    recipeCategories !== null &&
-                    recipeCategories !== '' &&
-                    recipeCategories !== undefined
-                  "
-                  v-for="recipeCategory in recipeCategories"
+                  v-bind:key="index"
+                  v-for="(recipeCategory, index) in recipeCategories"
                   class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
                 >
                   <div class="profile-widget">

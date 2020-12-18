@@ -3,7 +3,6 @@
   <div class="main-wrapper">
     <div class="page-wrapper">
       <div class="content container-fluid">
-
         <!-- Page Header -->
         <div class="page-header">
           <div class="row">
@@ -21,9 +20,7 @@
         <!-- /Page Header -->
 
         <div class="row">
-
           <div class="col-12">
-
             <!-- General -->
 
             <div class="card">
@@ -31,81 +28,189 @@
                 <h4 class="card-title">Ayarlar</h4>
               </div>
               <div class="card-body">
-                <ValidationObserver v-slot="{ invalid,handleSubmit }">
-                  <form @submit.prevent="handleSubmit(editSettings)" ref="settingsForm" enctype="multipart/form-data">
+                <ValidationObserver v-slot="{ handleSubmit }">
+                  <form
+                    @submit.prevent="handleSubmit(editSettings)"
+                    ref="settingsForm"
+                    enctype="multipart/form-data"
+                  >
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                      <li class="nav-item"><a class="nav-link active" href="#genel-ayarlar" data-toggle="tab">Genel
-                        Ayarlar</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#iletisim" data-toggle="tab">İletişim</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#sosyal-medya" data-toggle="tab">Sosyal Medya</a>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#genel-ayarlar" data-toggle="tab"
+                          >Genel Ayarlar</a
+                        >
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="#meta-etiketleri" data-toggle="tab">Meta
-                        Etiketleri</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#site-analizleri" data-toggle="tab">Site
-                        Analizleri</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#canli-destek" data-toggle="tab">Canlı Destek</a>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#iletisim" data-toggle="tab"
+                          >İletişim</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#sosyal-medya" data-toggle="tab"
+                          >Sosyal Medya</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#meta-etiketleri" data-toggle="tab"
+                          >Meta Etiketleri</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#site-analizleri" data-toggle="tab"
+                          >Site Analizleri</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#canli-destek" data-toggle="tab"
+                          >Canlı Destek</a
+                        >
                       </li>
                     </ul>
                     <div class="tab-content mb-3">
                       <div class="tab-pane show active" id="genel-ayarlar">
-                        <ValidationProvider name="Web Sitesi Adı" rules="required" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Web Sitesi Adı"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="title">Web Sitesi Adı</label>
-                            <input id="title" type="text" class="form-control" name="title" v-model="data.title">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="title"
+                              type="text"
+                              class="form-control"
+                              name="title"
+                              v-model="data.title"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
-                        <ValidationProvider name="Firma Adı" rules="required" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Firma Adı"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="company_name">Firma Adı</label>
-                            <input id="company_name" type="text" class="form-control" name="company_name" v-model="data.company_name">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="company_name"
+                              type="text"
+                              class="form-control"
+                              name="company_name"
+                              v-model="data.company_name"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                         <div class="row">
                           <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                            <img v-bind:src="decodeURIComponent(siteSettings.baseURL)+'/public/storage/'+data.logo" v-bind:alt="data.company_name">
+                            <img
+                              v-bind:src="
+                                decodeURIComponent(siteSettings.baseURL) +
+                                '/public/storage/' +
+                                data.logo
+                              "
+                              v-bind:alt="data.company_name"
+                            />
                           </div>
                           <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                             <div class="form-group">
                               <label>Website Logosu</label>
-                              <input type="file" id="logo" ref="logo" name="logo" class="form-control">
+                              <input
+                                type="file"
+                                id="logo"
+                                ref="logo"
+                                name="logo"
+                                class="form-control"
+                              />
                             </div>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                            <img v-bind:src="decodeURIComponent(siteSettings.baseURL)+'/public/storage/'+data.favicon" v-bind:alt="data.company_name">
+                            <img
+                              v-bind:src="
+                                decodeURIComponent(siteSettings.baseURL) +
+                                '/public/storage/' +
+                                data.favicon
+                              "
+                              v-bind:alt="data.company_name"
+                            />
                           </div>
                           <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                             <div class="form-group mb-0">
                               <label>Favicon</label>
-                              <input type="file" id="favicon" ref="favicon" name="favicon" class="form-control">
+                              <input
+                                type="file"
+                                id="favicon"
+                                ref="favicon"
+                                name="favicon"
+                                class="form-control"
+                              />
                             </div>
                           </div>
                         </div>
-
                       </div>
                       <div class="tab-pane" id="iletisim">
-                        <ValidationProvider name="Telefon" rules="required" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Telefon"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input id="phone" type="text" class="form-control" name="phone" v-model="data.phone">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="phone"
+                              type="text"
+                              class="form-control"
+                              name="phone"
+                              v-model="data.phone"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
-                        <ValidationProvider name="Email" rules="required|email" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Email"
+                          rules="required|email"
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="email">Email</label>
-                            <input id="email" type="text" class="form-control" name="email" v-model="data.email">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="email"
+                              type="text"
+                              class="form-control"
+                              name="email"
+                              v-model="data.email"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
-                        <ValidationProvider name="Adres" rules="required" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Adres"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="address">Adres</label>
-                            <input id="address" type="text" class="form-control" name="address" v-model="address">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="address"
+                              type="text"
+                              class="form-control"
+                              name="address"
+                              v-model="address"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                       </div>
@@ -113,83 +218,180 @@
                         <ValidationProvider name="Facebook" rules="" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="facebook">Facebook</label>
-                            <input id="facebook" type="text" class="form-control" name="facebook" v-model="data.facebook">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="facebook"
+                              type="text"
+                              class="form-control"
+                              name="facebook"
+                              v-model="data.facebook"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                         <ValidationProvider name="Facebook" rules="" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="twitter">Twitter</label>
-                            <input id="twitter" type="text" class="form-control" name="twitter" v-model="data.twitter">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="twitter"
+                              type="text"
+                              class="form-control"
+                              name="twitter"
+                              v-model="data.twitter"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                         <ValidationProvider name="Instagram" rules="" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="instagram">Instagram</label>
-                            <input id="instagram" type="text" class="form-control" name="instagram" v-model="data.instagram">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="instagram"
+                              type="text"
+                              class="form-control"
+                              name="instagram"
+                              v-model="data.instagram"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                         <ValidationProvider name="Linkedin" rules="" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="linkedin">Linkedin</label>
-                            <input id="linkedin" type="text" class="form-control" name="linkedin" v-model="data.linkedin">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="linkedin"
+                              type="text"
+                              class="form-control"
+                              name="linkedin"
+                              v-model="data.linkedin"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                         <ValidationProvider name="Youtube" rules="" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="youtube">Youtube</label>
-                            <input id="youtube" type="text" class="form-control" name="youtube" v-model="data.youtube">
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <input
+                              id="youtube"
+                              type="text"
+                              class="form-control"
+                              name="youtube"
+                              v-model="data.youtube"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                       </div>
                       <div class="tab-pane" id="meta-etiketleri">
-                        <ValidationProvider name="Meta Keywords" rules="" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Meta Keywords"
+                          rules=""
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="metaKeywords">Meta Keywords</label>
-                            <textarea name="metaKeywords" id="metaKeywords" class="form-control" v-model="data.metaKeywords"></textarea>
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <textarea
+                              name="metaKeywords"
+                              id="metaKeywords"
+                              class="form-control"
+                              v-model="data.metaKeywords"
+                            ></textarea>
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
-                        <ValidationProvider name="Meta Description" rules="" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Meta Description"
+                          rules=""
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="metaDescription">Meta Description</label>
-                            <textarea name="metaDescription" id="metaDescription" class="form-control" v-model="data.metaDescription"></textarea>
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <textarea
+                              name="metaDescription"
+                              id="metaDescription"
+                              class="form-control"
+                              v-model="data.metaDescription"
+                            ></textarea>
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                       </div>
                       <div class="tab-pane" id="site-analizleri">
-                        <ValidationProvider name="Google Analytics" rules="" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Google Analytics"
+                          rules=""
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="analytics">Google Analytics</label>
-                            <textarea name="analytics" id="analytics" class="form-control" v-model="data.analytics"></textarea>
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <textarea
+                              name="analytics"
+                              id="analytics"
+                              class="form-control"
+                              v-model="data.analytics"
+                            ></textarea>
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
-                        <ValidationProvider name="Yandex Metrica" rules="" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Yandex Metrica"
+                          rules=""
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="metrica">Yandex Metrica</label>
-                            <textarea name="metrica" id="metrica" class="form-control" v-model="data.metrica"></textarea>
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <textarea
+                              name="metrica"
+                              id="metrica"
+                              class="form-control"
+                              v-model="data.metrica"
+                            ></textarea>
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                       </div>
                       <div class="tab-pane" id="canli-destek">
-                        <ValidationProvider name="Canlı Destek" rules="" v-slot="{ errors }">
+                        <ValidationProvider
+                          name="Canlı Destek"
+                          rules=""
+                          v-slot="{ errors }"
+                        >
                           <div class="form-group">
                             <label for="liveSupport">Canlı Destek</label>
-                            <textarea name="liveSupport" id="liveSupport" class="form-control" v-model="data.liveSupport"></textarea>
-                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                            <textarea
+                              name="liveSupport"
+                              id="liveSupport"
+                              class="form-control"
+                              v-model="data.liveSupport"
+                            ></textarea>
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
                         </ValidationProvider>
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary login-btn" type="submit">Gönder</button>
+                      <button class="btn btn-primary login-btn" type="submit">
+                        Gönder
+                      </button>
                     </div>
                   </form>
                 </ValidationObserver>
@@ -197,10 +399,8 @@
             </div>
 
             <!-- /General -->
-
           </div>
         </div>
-
       </div>
     </div>
     <!-- /Page Wrapper -->
@@ -208,26 +408,26 @@
   <!-- /Main Wrapper -->
 </template>
 <script>
-import Cookie from "js-cookie"
-import {Base64} from 'js-base64';
+import Cookie from "js-cookie";
+import { Base64 } from "js-base64";
 
-import {ValidationObserver, ValidationProvider} from "vee-validate"
+import { ValidationObserver, ValidationProvider } from "vee-validate";
 
 export default {
   middleware: ["session-control", "admin"],
   layout: "admin",
   components: {
     ValidationObserver,
-    ValidationProvider
+    ValidationProvider,
   },
   data() {
     return {
-      data:{
+      data: {
         title: null,
         company_name: null,
         phone: null,
         email: null,
-        address:null,
+        address: null,
         facebook: null,
         twitter: null,
         instagram: null,
@@ -239,59 +439,72 @@ export default {
         metrica: null,
         liveSupport: null,
         logo: null,
-        favicon:null
+        favicon: null,
       },
       siteSettings: this.$store.getters.siteSettings,
-      userData: (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== "" ? JSON.parse(Base64.decode(Cookie.get("userData"))) : null),
-    }
+      userData:
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
+          ? JSON.parse(Base64.decode(Cookie.get("userData")))
+          : null,
+    };
   },
-  validate({params}) {
-    return (params.id !== null ? params.id : null)
+  validate({ params }) {
+    return params.id !== null ? params.id : null;
   },
-  async asyncData({params, error, $axios}) {
+  async asyncData({ params, error, $axios }) {
     try {
-      const {data} = await $axios.get(  process.env.apiBaseUrl+"panel/settings/update/" + params.id)
+      const { data } = await $axios.get(
+        process.env.apiBaseUrl + "panel/settings/update/" + params.id
+      );
 
-      return data
+      return data;
     } catch (e) {
-      error({message: 'Site Ayarı Bulunamadı.', statusCode: 404})
+      error({ message: "Site Ayarı Bulunamadı.", statusCode: 404 });
     }
   },
   methods: {
     editSettings() {
       let formData = new FormData(this.$refs.settingsForm);
-      this.$axios.post(process.env.apiBaseUrl+"panel/settings/update/"+ this.data._id.$oid, formData, {
-        json: true,
-        withCredentials: false,
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Credentials': true,
-          "Content-Type":"multipart/form-data; boundary="+formData._boundary,
-          "Authorization": "Bearer " + this.userData.api_token
-        },
-      })
-        .then(response => {
+      this.$axios
+        .post(
+          process.env.apiBaseUrl + "panel/settings/update/" + this.data._id.$oid,
+          formData,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+          }
+        )
+        .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
               message: response.data.msg,
-              position: 'topCenter'
-            })
+              position: "topCenter",
+            });
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/settings"))
-            }, 2000)
+              this.$router.go(decodeURIComponent("/panel/settings"));
+            }, 2000);
           } else {
             this.$izitoast.error({
               title: response.data.title,
               message: response.data.msg,
-              position: 'topCenter'
-            })
+              position: "topCenter",
+            });
           }
-        })
-    }
-  }
-}
+        });
+    },
+  },
+};
 </script>

@@ -58,7 +58,7 @@
                       disable-pagination
                       :hide-default-footer="true"
                     >
-                      <template v-slot:item.img_url="{ item }">
+                      <template v-slot:[`item.img_url`]="{ item }">
                         <img v-bind:src="item.img_url" width="150" height="150" />
                       </template>
                       <template v-slot:[`item.actions`]="{ item }">

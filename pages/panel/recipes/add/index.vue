@@ -29,7 +29,7 @@
                   <h4 class="card-title">Yemek Tarifi Ekle</h4>
                 </div>
                 <div class="card-body">
-                  <ValidationObserver v-slot="{ invalid, handleSubmit }">
+                  <ValidationObserver v-slot="{ handleSubmit }">
                     <form
                       @submit.prevent="handleSubmit(saveRecipes)"
                       ref="recipesForm"
@@ -91,8 +91,9 @@
                                     Yemek Tarifi Türü Seçiniz.
                                   </option>
                                   <option
+                                    v-bind:key="index"
                                     v-bind:value="category._id.$oid"
-                                    v-for="category in allCategories"
+                                    v-for="(category, index) in allCategories"
                                   >
                                     {{ category.name }}
                                   </option>
@@ -190,15 +191,17 @@
                             <v-tabs-items v-model="tab">
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text>
+                                  <v-card-text
+                                    v-if="
+                                      inputs !== null &&
+                                      inputs !== undefined &&
+                                      inputs !== ''
+                                    "
+                                  >
                                     <div
                                       class="row"
-                                      v-if="
-                                        inputs !== null &&
-                                        inputs !== undefined &&
-                                        inputs !== ''
-                                      "
-                                      v-for="input in inputs"
+                                      v-bind:key="index"
+                                      v-for="(input, index) in inputs"
                                     >
                                       <div
                                         class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
@@ -300,24 +303,26 @@
                               </v-tab-item>
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text>
+                                  <v-card-text
+                                    v-if="
+                                      inputs2 !== null &&
+                                      inputs2 !== undefined &&
+                                      inputs2 !== '' &&
+                                      allCriterias !== null &&
+                                      allCriterias !== undefined &&
+                                      allCriterias !== '' > 0 &&
+                                      allNutrients !== null &&
+                                      allNutrients !== undefined &&
+                                      allNutrients !== '' &&
+                                      allCategories !== null &&
+                                      allCategories !== undefined &&
+                                      allCategories !== ''
+                                    "
+                                  >
                                     <div
                                       class="row"
-                                      v-if="
-                                        inputs2 !== null &&
-                                        inputs2 !== undefined &&
-                                        inputs2 !== '' &&
-                                        allCriterias !== null &&
-                                        allCriterias !== undefined &&
-                                        allCriterias !== '' > 0 &&
-                                        allNutrients !== null &&
-                                        allNutrients !== undefined &&
-                                        allNutrients !== '' &&
-                                        allCategories !== null &&
-                                        allCategories !== undefined &&
-                                        allCategories !== ''
-                                      "
-                                      v-for="input2 in inputs2"
+                                      v-bind:key="index"
+                                      v-for="(input2, index) in inputs2"
                                     >
                                       <div
                                         class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
@@ -342,7 +347,8 @@
                                               </option>
                                               <option
                                                 v-bind:value="criteria.name"
-                                                v-for="criteria in allCriterias"
+                                                v-bind:key="index"
+                                                v-for="(criteria, index) in allCriterias"
                                               >
                                                 {{ criteria.name }}
                                               </option>
@@ -426,7 +432,8 @@
                                               </option>
                                               <option
                                                 v-bind:value="nutrient._id.$oid"
-                                                v-for="nutrient in allNutrients"
+                                                v-bind:key="index"
+                                                v-for="(nutrient, index) in allNutrients"
                                               >
                                                 {{ nutrient.name }}
                                               </option>
@@ -504,14 +511,14 @@
                                     disable-pagination
                                     :hide-default-footer="true"
                                   >
-                                    <template v-slot:item.img_url="{ item }">
+                                    <template v-slot:[`item.img_url`]="{ item }">
                                       <img
                                         v-bind:src="item.img_url"
                                         width="150"
                                         height="150"
                                       />
                                     </template>
-                                    <template v-slot:item.isCover="{ item }">
+                                    <template v-slot:[`item.isCover`]="{ item }">
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -522,7 +529,7 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:item.isActive="{ item }">
+                                    <template v-slot:[`item.isActive`]="{ item }">
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"

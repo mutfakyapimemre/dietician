@@ -29,7 +29,7 @@
                   <h4 class="card-title">Yemek Tarifi Düzenle</h4>
                 </div>
                 <div class="card-body">
-                  <ValidationObserver v-slot="{ invalid, handleSubmit }">
+                  <ValidationObserver v-slot="{ handleSubmit }">
                     <form
                       @submit.prevent="handleSubmit(editRecipes)"
                       ref="recipesForm"
@@ -92,7 +92,8 @@
                                   </option>
                                   <option
                                     v-bind:value="category._id.$oid"
-                                    v-for="category in data.categories"
+                                    v-bind:key="index"
+                                    v-for="(category, index) in data.categories"
                                   >
                                     {{ category.name }}
                                   </option>
@@ -189,15 +190,17 @@
                             <v-tabs-items v-model="tab">
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text>
+                                  <v-card-text
+                                    v-if="
+                                      data.values !== null &&
+                                      data.values !== undefined &&
+                                      data.values !== '' &&
+                                      data.values.length > 0
+                                    "
+                                  >
                                     <div
                                       class="row"
-                                      v-if="
-                                        data.values !== null &&
-                                        data.values !== undefined &&
-                                        data.values !== '' &&
-                                        data.values.length > 0
-                                      "
+                                      v-bind:key="index"
                                       v-for="(input, index) in data.values"
                                     >
                                       <div
@@ -300,15 +303,17 @@
                               </v-tab-item>
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text>
+                                  <v-card-text
+                                    v-if="
+                                      data.criterias !== null &&
+                                      data.criterias !== undefined &&
+                                      data.criterias !== '' &&
+                                      data.criterias.length > 0
+                                    "
+                                  >
                                     <div
                                       class="row"
-                                      v-if="
-                                        data.criterias !== null &&
-                                        data.criterias !== undefined &&
-                                        data.criterias !== '' &&
-                                        data.criterias.length > 0
-                                      "
+                                      v-bind:key="index"
                                       v-for="(
                                         input, index
                                       ) in data.recipes_criteria_values"
@@ -336,7 +341,10 @@
                                               <option
                                                 v-bind:value="criteria.name"
                                                 :selected="criteria.name === input.title"
-                                                v-for="criteria in data.criterias"
+                                                v-bind:key="index"
+                                                v-for="(
+                                                  criteria, index
+                                                ) in data.criterias"
                                               >
                                                 {{ criteria.name }}
                                               </option>
@@ -424,7 +432,10 @@
                                                   nutrient._id.$oid ===
                                                   input.recipe_criteria_id
                                                 "
-                                                v-for="nutrient in data.nutrients"
+                                                v-bind:key="index"
+                                                v-for="(
+                                                  nutrient, index
+                                                ) in data.nutrients"
                                               >
                                                 {{ nutrient.name }}
                                               </option>
@@ -510,14 +521,14 @@
                                     disable-pagination
                                     :hide-default-footer="true"
                                   >
-                                    <template v-slot:item.img_url="{ item }">
+                                    <template v-slot:[`item.img_url`]="{ item }">
                                       <img
                                         v-bind:src="item.img_url"
                                         width="150"
                                         height="150"
                                       />
                                     </template>
-                                    <template v-slot:item.isCover="{ item }">
+                                    <template v-slot:[`item.isCover`]="{ item }">
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -528,7 +539,7 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:item.isActive="{ item }">
+                                    <template v-slot:[`item.isActive`]="{ item }">
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"

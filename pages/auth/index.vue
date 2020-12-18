@@ -1,54 +1,66 @@
 <template>
   <v-app class="h-100 align-middle align-items-center">
     <div class="login-wrapper align-middle align-items-center">
-			<div class="container">
-				<div class="loginbox">
-					<div class="login-left">
-						<img class="img-fluid" src="/img/logo.png" alt="Logo">
-					</div>
-					<div class="login-right bg-white">
-						<div class="login-right-wrap">
-							<h1>Klinik Diyetisyen</h1>
-							<p class="account-subtitle">Yönetim Paneline Giriş Yap</p>
+      <div class="container">
+        <div class="loginbox">
+          <div class="login-left">
+            <img class="img-fluid" src="/img/logo.png" alt="Logo" />
+          </div>
+          <div class="login-right bg-white">
+            <div class="login-right-wrap">
+              <h1>Klinik Diyetisyen</h1>
+              <p class="account-subtitle">Yönetim Paneline Giriş Yap</p>
 
-							<!-- Form -->
-							<ValidationObserver v-slot="{ invalid,handleSubmit }">
-                <form @submit.prevent="handleSubmit(onSubmit)" ref="userLogin" enctype="multipart/form-data">
+              <!-- Form -->
+              <ValidationObserver v-slot="{ handleSubmit }">
+                <form
+                  @submit.prevent="handleSubmit(onSubmit)"
+                  ref="userLogin"
+                  enctype="multipart/form-data"
+                >
                   <div class="form-group form-focus">
-                    <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+                    <ValidationProvider
+                      name="email"
+                      rules="required|email"
+                      v-slot="{ errors }"
+                    >
                       <v-text-field
-                                label="Email Adresiniz"
-                                hide-details="auto"
-                                name="email"
-                                v-model="email"
-                              ></v-text-field>
+                        label="Email Adresiniz"
+                        hide-details="auto"
+                        name="email"
+                        v-model="email"
+                      ></v-text-field>
                       <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                     </ValidationProvider>
                   </div>
                   <div class="form-group form-focus">
-                    <ValidationProvider name="password" rules="required" v-slot="{ errors }">
+                    <ValidationProvider
+                      name="password"
+                      rules="required"
+                      v-slot="{ errors }"
+                    >
                       <v-text-field
-                                label="Şifreniz"
-                                hide-details="auto"
-                                type="password"
-                                name="password"
-                                v-model="password"
-                              ></v-text-field>
+                        label="Şifreniz"
+                        hide-details="auto"
+                        type="password"
+                        name="password"
+                        v-model="password"
+                      ></v-text-field>
                       <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                     </ValidationProvider>
                   </div>
-                  <button class="btn btn-green-light rounded-0 login-btn" type="submit">Giriş Yap</button>
+                  <button class="btn btn-green-light rounded-0 login-btn" type="submit">
+                    Giriş Yap
+                  </button>
                 </form>
               </ValidationObserver>
-							<!-- /Form -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+              <!-- /Form -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </v-app>
-
 </template>
 <script>
 import {
