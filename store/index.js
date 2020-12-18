@@ -13,6 +13,7 @@ export const state = () => ({
   userData: {},
   siteSettings: {},
   nutrients: [],
+  recipeCategories: [],
   criterias: [],
   doctors:[],
   searchs:[]
@@ -46,6 +47,9 @@ export const mutations = {
   },
   setNutrients(state, nutrients) {
     state.nutrients = nutrients
+  },
+  setRecipeCategories(state, recipeCategories) {
+    state.recipeCategories = recipeCategories
   },
   setCriterias(state, criterias) {
     state.criterias = criterias
@@ -230,6 +234,20 @@ export const actions = {
     })
   },
   /**
+   * Recipe Categories Function
+   */
+  getRecipeCategories(vuexContext, context) {
+    let recipeCategoriesURL = "recipe-categories";
+    if (context.recipeCategoriesURL) {
+      recipeCategoriesURL = context.recipeCategoriesURL
+    }
+    return this.$axios.get(process.env.apiBaseUrl + recipeCategoriesURL).then(response => {
+      if (response.data !== null && response.data !== undefined && response.data !== "") {
+        vuexContext.commit("setRecipeCategories", response.data.data)
+      }
+    })
+  },
+  /**
    * Criterias Function
    */
   getCriterias(vuexContext, context) {
@@ -308,6 +326,12 @@ export const getters = {
    */
   nutrients(state) {
     return state.nutrients
+  },
+  /**
+   * Get Recipe Categories Function
+   */
+  recipeCategories(state) {
+    return state.recipeCategories
   },
   /**
    * Get Criterias Function

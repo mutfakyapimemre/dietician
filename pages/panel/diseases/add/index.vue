@@ -83,7 +83,7 @@
                           </v-tabs>
 
                           <v-tabs-items v-model="tab">
-                            <v-tab-item>
+                            <v-tab-item eager>
                               <v-card flat>
                                 <v-card-text>
                                   <div class="row" v-if="inputs !== null && inputs !== undefined && inputs !== ''" v-for="input in inputs">

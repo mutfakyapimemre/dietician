@@ -13,6 +13,8 @@ const _a42b9890 = () => interopDefault(import('..\\pages\\dieticians\\index.vue'
 const _458208a8 = () => interopDefault(import('..\\pages\\login\\index.vue' /* webpackChunkName: "pages/login/index" */))
 const _456acf2d = () => interopDefault(import('..\\pages\\panel\\index.vue' /* webpackChunkName: "pages/panel/index" */))
 const _805b1eb0 = () => interopDefault(import('..\\pages\\profile\\index.vue' /* webpackChunkName: "pages/profile/index" */))
+const _3c330696 = () => interopDefault(import('..\\pages\\recipe-categories\\index.vue' /* webpackChunkName: "pages/recipe-categories/index" */))
+const _8377afa8 = () => interopDefault(import('..\\pages\\recipes\\index.vue' /* webpackChunkName: "pages/recipes/index" */))
 const _84253b72 = () => interopDefault(import('..\\pages\\search.vue' /* webpackChunkName: "pages/search" */))
 const _837e302c = () => interopDefault(import('..\\pages\\dietician-panel\\consultants\\index.vue' /* webpackChunkName: "pages/dietician-panel/consultants/index" */))
 const _72f0be7d = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\index.vue' /* webpackChunkName: "pages/dietician-panel/recipes/index" */))
@@ -59,6 +61,8 @@ const _24814ea9 = () => interopDefault(import('..\\pages\\panel\\settings\\updat
 const _8338c6ec = () => interopDefault(import('..\\pages\\panel\\slides\\update\\_id.vue' /* webpackChunkName: "pages/panel/slides/update/_id" */))
 const _beccf684 = () => interopDefault(import('..\\pages\\panel\\users\\update\\_id.vue' /* webpackChunkName: "pages/panel/users/update/_id" */))
 const _4aa67fa8 = () => interopDefault(import('..\\pages\\calorie\\_id.vue' /* webpackChunkName: "pages/calorie/_id" */))
+const _66449304 = () => interopDefault(import('..\\pages\\recipe-categories\\_id.vue' /* webpackChunkName: "pages/recipe-categories/_id" */))
+const _2a5374d8 = () => interopDefault(import('..\\pages\\recipes\\_id.vue' /* webpackChunkName: "pages/recipes/_id" */))
 const _219e6783 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -117,6 +121,14 @@ export const routerOptions = {
     path: "/profile",
     component: _805b1eb0,
     name: "profile"
+  }, {
+    path: "/recipe-categories",
+    component: _3c330696,
+    name: "recipe-categories"
+  }, {
+    path: "/recipes",
+    component: _8377afa8,
+    name: "recipes"
   }, {
     path: "/search",
     component: _84253b72,
@@ -301,6 +313,14 @@ export const routerOptions = {
     path: "/calorie/:id",
     component: _4aa67fa8,
     name: "calorie-id"
+  }, {
+    path: "/recipe-categories/:id?",
+    component: _66449304,
+    name: "recipe-categories-id"
+  }, {
+    path: "/recipes/:id",
+    component: _2a5374d8,
+    name: "recipes-id"
   }, {
     path: "/",
     component: _219e6783,

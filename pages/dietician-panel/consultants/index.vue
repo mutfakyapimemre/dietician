@@ -4,7 +4,6 @@
     <div class="main-wrapper">
       <div class="page-wrapper">
         <div class="content container-fluid">
-
           <!-- Page Header -->
           <div class="page-header">
             <div class="row">
@@ -22,25 +21,34 @@
           <!-- /Page Header -->
 
           <div class="row">
-
             <div class="col-12">
-
               <!-- General -->
 
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Danışmanlarım
-                  </h4>
+                  <h4 class="card-title">Danışmanlarım</h4>
                 </div>
                 <div class="card-body">
-
                   <v-card tile>
                     <v-card-title class="d-flex justify-content-between">
                       <span class="justify-content-center flex-grow-1">
-                        <v-text-field v-on:keyup.enter="page = 1; retrieveData('get-by-search');" v-model="searchTitle" label="Arama Yapın..." class="my-auto py-auto"></v-text-field>
+                        <v-text-field
+                          v-on:keyup.prevent="
+                            page = 1;
+                            retrieveData('get-by-search');
+                          "
+                          v-model="searchTitle"
+                          label="Arama Yapın..."
+                          class="my-auto py-auto"
+                        ></v-text-field>
                       </span>
                       <span class="justify-content-end flex-shrink-1">
-                        <nuxt-link to="/dietician-panel/consultants/add" tag="a" class="btn btn-info-light"><i class="fa fa-plus"></i> Ekle</nuxt-link>
+                        <nuxt-link
+                          to="/dietician-panel/consultants/add"
+                          tag="a"
+                          class="btn btn-info-light"
+                          ><i class="fa fa-plus"></i> Ekle</nuxt-link
+                        >
                       </span>
                     </v-card-title>
 
@@ -51,20 +59,17 @@
                       :hide-default-footer="true"
                     >
                       <template v-slot:item.img_url="{ item }">
-                        <img v-bind:src="item.img_url" width="150" height="150"/>
+                        <img v-bind:src="item.img_url" width="150" height="150" />
                       </template>
                       <template v-slot:[`item.actions`]="{ item }">
                         <v-icon small class="mr-2" @click="editData(item.id)">
                           mdi-pencil
                         </v-icon>
-                        <v-icon small @click="deleteData(item.id)">
-                          mdi-delete
-                        </v-icon>
+                        <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
                       </template>
                     </v-data-table>
                   </v-card>
                   <div class="row">
-
                     <v-col cols="12" sm="12">
                       <div class="row">
                         <v-col cols="12" lg="3">
@@ -89,16 +94,12 @@
                       </div>
                     </v-col>
                   </div>
-
-
                 </div>
               </div>
 
               <!-- /General -->
-
             </div>
           </div>
-
         </div>
       </div>
       <!-- /Page Wrapper -->
@@ -107,10 +108,10 @@
   </v-app>
 </template>
 <script>
-import Cookie from "js-cookie"
-import {Base64} from 'js-base64';
+import Cookie from "js-cookie";
+import { Base64 } from "js-base64";
 
-import {ValidationObserver, ValidationProvider} from "vee-validate"
+import { ValidationObserver, ValidationProvider } from "vee-validate";
 export default {
   middleware: ["session-control", "dietician"],
   layout: "dietician",
@@ -122,27 +123,31 @@ export default {
     img_url() {
       return process.env.apiPublicUrl;
     },
-
   },
   data() {
     return {
       data: [],
       searchTitle: null,
       headers: [
-        {text: '#', align: 'center', value: 'rank'},
-        {text: 'Görsel', align: 'center', value: 'img_url', sortable: false},
-        {text: 'Adı Soyadı', align:'center', value: 'name'},
-        {text: 'Email', align:'center', value: 'email'},
-        {text: 'Telefon', align:'center', value: 'phone'},
-        {text: 'Kimlik No', align:'center', value: 'tc'},
-        {text: 'İşlemler', align: 'center', value: 'actions', sortable: false}
+        { text: "#", align: "center", value: "rank" },
+        { text: "Görsel", align: "center", value: "img_url", sortable: false },
+        { text: "Adı Soyadı", align: "center", value: "name" },
+        { text: "Email", align: "center", value: "email" },
+        { text: "Telefon", align: "center", value: "phone" },
+        { text: "Kimlik No", align: "center", value: "tc" },
+        { text: "İşlemler", align: "center", value: "actions", sortable: false },
       ],
       page: 1,
       totalPages: 0,
       pageSize: 25,
       pageSizes: [25, 50, 100, 200, 500, 1000],
       loading: false,
-      userData: (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== "" ? JSON.parse(Base64.decode(Cookie.get("userData"))) : null),
+      userData:
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
+          ? JSON.parse(Base64.decode(Cookie.get("userData")))
+          : null,
     };
   },
   methods: {
@@ -154,36 +159,37 @@ export default {
       return params;
     },
     retrieveData(url) {
-      let urlParam = "get-all"
-      if(url !== undefined && url !== "" && url !== null){
-        urlParam = url
+      let urlParam = "get-all";
+      if (url !== undefined && url !== "" && url !== null) {
+        urlParam = url;
       }
-      const params = this.getRequestParams(
-        this.searchTitle,
-        this.page,
-        this.pageSize
-      );
-      this.$axios.get(`${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id,status&where_value=${this.userData._id},!='dietician'`, {
-        json: true,
-        withCredentials: false,
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Credentials': true,
-          "Content-type": "application/json",
-          "Authorization": "Bearer " + this.userData.api_token
-        },
-        credentials: 'same-origin',
-      })
-        .then(response => {
+      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      this.$axios
+        .get(
+          `${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id,status&where_value=${this.userData._id},!='dietician'`,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
+        .then((response) => {
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
         })
-        .catch(err => console.log(err))
-        .finally(() => this.loading = false);
+        .catch((err) => console.log(err))
+        .finally(() => (this.loading = false));
     },
     handlePageChange(value) {
       this.page = value;
@@ -199,39 +205,45 @@ export default {
     },
     editData(id) {
       //this.$router.push({name: "/dietician-panel/consultants/update/", params: {id: id}});
-      this.$router.push("/dietician-panel/consultants/update/" + id)
+      this.$router.push("/dietician-panel/consultants/update/" + id);
     },
     deleteData(id) {
-      this.$axios.update(process.env.apiBaseUrl + "dietician/users/update/" + id,{"dietician_id":null}, {
-        json: true,
-        withCredentials: false,
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Credentials': true,
-          "Content-type": "application/json",
-          "Authorization": "Bearer " + this.userData.api_token
-        },
-        credentials: 'same-origin',
-      })
-        .then(response => {
+      this.$axios
+        .update(
+          process.env.apiBaseUrl + "dietician/users/update/" + id,
+          { dietician_id: null },
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
+        .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
               title: response.data.title,
               message: response.data.msg,
-              position: 'topCenter'
-            })
+              position: "topCenter",
+            });
             this.refreshList();
           } else {
             this.$izitoast.error({
               title: response.data.title,
               message: response.data.msg,
-              position: 'topCenter'
-            })
+              position: "topCenter",
+            });
           }
-        })
+        });
     },
     getDisplayData(data) {
       return {
@@ -241,7 +253,10 @@ export default {
         email: data.email,
         phone: data.phone,
         tc: data.tc,
-        img_url : this.img_url+'public/storage/'+(data.status === "dietician" ? data.profile_photo :data.img_url),
+        img_url:
+          this.img_url +
+          "public/storage/" +
+          (data.status === "dietician" ? data.profile_photo : data.img_url),
         isActive: data.isActive,
       };
     },
@@ -249,6 +264,5 @@ export default {
   mounted() {
     this.retrieveData();
   },
-}
-
+};
 </script>

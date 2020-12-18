@@ -1,15 +1,15 @@
 {
-  "Footer": {
-    "description": "Auto imported from components/includes/Footer.vue"
+  "AdminHeader": {
+    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
   },
-  "LazyFooter": {
-    "description": "Auto imported from components/includes/Footer.vue"
+  "LazyAdminHeader": {
+    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
   },
-  "Header": {
-    "description": "Auto imported from components/includes/Header.vue"
+  "AdminSidebar": {
+    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
   },
-  "LazyHeader": {
-    "description": "Auto imported from components/includes/Header.vue"
+  "LazyAdminSidebar": {
+    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
   },
   "DieticianHeader": {
     "description": "Auto imported from components/dietician_includes/Dietician_Header.vue"
@@ -23,16 +23,16 @@
   "LazyDieticianSidebar": {
     "description": "Auto imported from components/dietician_includes/Dietician_Sidebar.vue"
   },
-  "AdminHeader": {
-    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
+  "Footer": {
+    "description": "Auto imported from components/includes/Footer.vue"
   },
-  "LazyAdminHeader": {
-    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
+  "LazyFooter": {
+    "description": "Auto imported from components/includes/Footer.vue"
   },
-  "AdminSidebar": {
-    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
+  "Header": {
+    "description": "Auto imported from components/includes/Header.vue"
   },
-  "LazyAdminSidebar": {
-    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
+  "LazyHeader": {
+    "description": "Auto imported from components/includes/Header.vue"
   }
 }
