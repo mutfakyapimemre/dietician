@@ -1,5 +1,4 @@
 <template>
-  <!-- Header -->
   <header class="header">
     <nav class="navbar navbar-expand-lg header-nav fixed-top">
       <div class="navbar-header">
@@ -10,15 +9,11 @@
             <span></span>
           </span>
         </a>
-        <nuxt-link to="/" tag="a" class="navbar-brand logo"
-          ><img src="/img/logo.png" class="img-fluid" alt="Logo" />
-        </nuxt-link>
+        <nuxt-link to="/" tag="a" class="navbar-brand logo"><img src="/img/logo.png" class="img-fluid" alt="Logo" /> </nuxt-link>
       </div>
       <div class="main-menu-wrapper">
         <div class="menu-header">
-          <nuxt-link to="/" tag="a" class="menu-logo"
-            ><img src="/img/logo.png" class="img-fluid" alt="Logo" />
-          </nuxt-link>
+          <nuxt-link to="/" tag="a" class="menu-logo"><img src="/img/logo.png" class="img-fluid" alt="Logo" /> </nuxt-link>
           <a id="menu_close" class="menu-close" href="javascript:void(0);">
             <i class="fa fa-times"></i>
           </a>
@@ -44,33 +39,17 @@
           </li>
         </ul>
       </div>
-      <ul
-        class="nav main-nav header-navbar-rht"
-        v-if="
-          isAuthenticated &&
-          userData !== null &&
-          userData !== undefined &&
-          userData !== ''
-        "
-      >
+      <ul class="nav main-nav header-navbar-rht" v-if="isAuthenticated && userData !== null && userData !== undefined && userData !== ''">
         <li class="has-submenu nav-item my-auto py-auto">
           <a href="javascript:void(0)" class="my-auto py-auto">
             <span v-if="userData == null">Hesabım</span>
             <img
-              v-bind:src="
-                img_url +
-                '/public/storage/' +
-                (userData.status === 'dietician'
-                  ? userData.profile_photo
-                  : userData.img_url)
-              "
+              v-bind:src="img_url + '/public/storage/' + (userData.status === 'dietician' ? userData.profile_photo : userData.img_url)"
               width="55"
               height="55"
               class="rounded-circle my-auto py-auto"
               v-bind:alt="userData.name" />
-            <span class="my-auto py-auto" v-if="userData !== null">{{
-              userData.name
-            }}</span>
+            <span class="my-auto py-auto" v-if="userData !== null">{{ userData.name }}</span>
             <i class="fa fa-chevron-down"></i
           ></a>
           <ul class="submenu">
@@ -81,13 +60,7 @@
               <nuxt-link
                 to="/dietician-panel"
                 tag="a"
-                v-if="
-                  isAuthenticated &&
-                  userData !== null &&
-                  userData !== undefined &&
-                  userData !== '' &&
-                  userData.status === 'dietician'
-                "
+                v-if="isAuthenticated && userData !== null && userData !== undefined && userData !== '' && userData.status === 'dietician'"
                 >Diyetisyen Paneli</nuxt-link
               >
             </li>
@@ -99,14 +72,11 @@
       </ul>
       <ul class="nav header-navbar-rht" v-if="!isAuthenticated">
         <li>
-          <nuxt-link to="/login" class="nav-link header-login" tag="a"
-            >Giriş Yap / Kayıt Ol</nuxt-link
-          >
+          <nuxt-link to="/login" class="nav-link header-login" tag="a">Giriş Yap / Kayıt Ol</nuxt-link>
         </li>
       </ul>
     </nav>
   </header>
-  <!-- /Header -->
 </template>
 
 <script>
@@ -135,15 +105,11 @@ export default {
   data() {
     return {
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
       isAuthenticated:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
           : null,
       siteSettings: this.$store.getters.siteSettings,

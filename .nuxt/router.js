@@ -60,6 +60,7 @@ const _1ccf9081 = () => interopDefault(import('..\\pages\\panel\\recipes\\update
 const _24814ea9 = () => interopDefault(import('..\\pages\\panel\\settings\\update\\_id.vue' /* webpackChunkName: "pages/panel/settings/update/_id" */))
 const _8338c6ec = () => interopDefault(import('..\\pages\\panel\\slides\\update\\_id.vue' /* webpackChunkName: "pages/panel/slides/update/_id" */))
 const _beccf684 = () => interopDefault(import('..\\pages\\panel\\users\\update\\_id.vue' /* webpackChunkName: "pages/panel/users/update/_id" */))
+const _34145226 = () => interopDefault(import('..\\pages\\profile\\dietician-applyment\\_id.vue' /* webpackChunkName: "pages/profile/dietician-applyment/_id" */))
 const _4aa67fa8 = () => interopDefault(import('..\\pages\\calorie\\_id.vue' /* webpackChunkName: "pages/calorie/_id" */))
 const _66449304 = () => interopDefault(import('..\\pages\\recipe-categories\\_id.vue' /* webpackChunkName: "pages/recipe-categories/_id" */))
 const _2a5374d8 = () => interopDefault(import('..\\pages\\recipes\\_id.vue' /* webpackChunkName: "pages/recipes/_id" */))
@@ -309,6 +310,10 @@ export const routerOptions = {
     path: "/panel/users/update/:id?",
     component: _beccf684,
     name: "panel-users-update-id"
+  }, {
+    path: "/profile/dietician-applyment/:id?",
+    component: _34145226,
+    name: "profile-dietician-applyment-id"
   }, {
     path: "/calorie/:id",
     component: _4aa67fa8,

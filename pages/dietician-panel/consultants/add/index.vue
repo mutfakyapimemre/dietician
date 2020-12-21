@@ -31,57 +31,29 @@
                 <div class="card-body">
                   <v-alert color="indigo" dark dense icon="mdi-information" prominent>
                     <h3 class="headline">Bilgi</h3>
-                    <div>
-                      Danışman Kaydı Yapabilmeniz İçin Aşağıdaki Bilgileri Doldurup
-                      Danışmanınıza İstek Gönderebilirsiniz.
-                    </div>
+                    <div>Danışman Kaydı Yapabilmeniz İçin Aşağıdaki Bilgileri Doldurup Danışmanınıza İstek Gönderebilirsiniz.</div>
 
                     <v-divider class="my-4 info" style="opacity: 0.22"></v-divider>
 
                     <div>
-                      Gönderdiğiniz İstek Danışmanınız Tarafından Kabul Edildikten Sonra
-                      E-Diyet, Egzersiz, Randevu Oluşturma Gibi İşlemler Yapılabilir.
+                      Gönderdiğiniz İstek Danışmanınız Tarafından Kabul Edildikten Sonra E-Diyet, Egzersiz, Randevu Oluşturma Gibi İşlemler
+                      Yapılabilir.
                     </div>
                   </v-alert>
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(saveConsultants)"
-                      ref="usersForm"
-                      enctype="multipart/form-data"
-                    >
-                      <v-text-field
-                        label="Danışmanın Kimlik Numarası"
-                        name="tc"
-                        v-model="consultant.tc"
-                        required
-                        counter="11"
-                      ></v-text-field>
-                      <v-text-field
-                        label="Danışmanın Telefon Numarası"
-                        name="phone"
-                        v-model="consultant.phone"
-                        required
-                        counter="11"
-                      ></v-text-field>
+                    <form @submit.prevent="handleSubmit(saveConsultants)" ref="usersForm" enctype="multipart/form-data">
+                      <v-text-field label="Danışmanın Kimlik Numarası" name="tc" v-model="consultant.tc" required counter="11"></v-text-field>
+                      <v-text-field label="Danışmanın Telefon Numarası" name="phone" v-model="consultant.phone" required counter="11"></v-text-field>
                       <div class="form-group">
-                        <button class="btn btn-info-light login-btn" type="submit">
-                          Danışmanı Bul ve Diyetisyen Bildirimi Yolla
-                        </button>
+                        <button class="btn btn-info-light login-btn" type="submit">Danışmanı Bul ve Diyetisyen Bildirimi Yolla</button>
                       </div>
                     </form>
                   </ValidationObserver>
-                  <div
-                    class="profile-header"
-                    v-if="data !== null && data !== undefined && data !== ''"
-                  >
+                  <div class="profile-header" v-if="data !== null && data !== undefined && data !== ''">
                     <div class="row align-items-center">
                       <div class="col-auto profile-image">
                         <a href="javascript:void(0)">
-                          <img
-                            v-bind:src="img_url + '/public/storage/' + data.img_url"
-                            class="img-fluid"
-                            v-bind:alt="data.name"
-                          />
+                          <img v-bind:src="img_url + '/public/storage/' + data.img_url" class="img-fluid" v-bind:alt="data.name" />
                         </a>
                       </div>
                       <div class="col ml-md-n2 profile-user-info">
@@ -132,15 +104,10 @@ export default {
   data() {
     return {
       data: null,
-      rules: [
-        (value) => !!value || "Zorunludur.",
-        (value) => (value && value.length >= 3) || "Alanı Minimum 11 Karakter Olmalıdır",
-      ],
+      rules: [(value) => !!value || "Zorunludur.", (value) => (value && value.length >= 3) || "Alanı Minimum 11 Karakter Olmalıdır"],
       consultant: { tc: null, phone: null },
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -162,8 +129,7 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
             "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-Type": "multipart/form-data; boundary=" + formData._boundary,

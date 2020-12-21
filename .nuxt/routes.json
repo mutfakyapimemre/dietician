@@ -399,6 +399,13 @@
     "_name": "_beccf684"
   },
   {
+    "name": "profile-dietician-applyment-id",
+    "path": "/profile/dietician-applyment/:id?",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\dietician-applyment\\\\_id.vue",
+    "chunkName": "pages/profile/dietician-applyment/_id",
+    "_name": "_34145226"
+  },
+  {
     "name": "calorie-id",
     "path": "/calorie/:id",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\calorie\\\\_id.vue",
