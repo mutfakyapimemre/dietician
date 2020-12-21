@@ -342,7 +342,12 @@
                                             id="city"
                                             class="form-control"
                                             v-model="data.city"
-                                            v-if="country.cities !== null && country.cities !== undefined && country.cities !== ''"
+                                            v-if="
+                                              country.cities !== null &&
+                                              country.cities !== undefined &&
+                                              country.cities !== '' &&
+                                              country.cities.length > 0
+                                            "
                                           >
                                             <option :value="null" selected="selected">İl Seçiniz.</option>
                                             <option
@@ -360,7 +365,7 @@
                                             id="city"
                                             class="form-control"
                                             v-model="data.city"
-                                            v-if="
+                                            v-else-if="
                                               country.cities === null ||
                                               country.cities !== undefined ||
                                               country.cities !== '' ||
