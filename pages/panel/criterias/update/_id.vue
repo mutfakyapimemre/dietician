@@ -155,7 +155,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/criterias");
+              this.$router.go(decodeURIComponent("/panel/criterias"));
             }, 2000);
           } else {
             this.$izitoast.error({

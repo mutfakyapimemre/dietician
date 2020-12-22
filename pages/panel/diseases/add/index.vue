@@ -497,7 +497,7 @@ export default {
             });
             this.inputData.id = response.data.data.$oid;
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/diseases");
+              this.$router.go(decodeURIComponent("/panel/diseases"));
             }, 2000);
           } else {
             this.$izitoast.error({

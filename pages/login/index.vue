@@ -176,7 +176,7 @@ export default {
             if (this.$route.query.url !== null && this.$route.query.url !== "" && this.$route.query.url !== undefined) {
               window.location.href = decodeURIComponent(this.$route.query.url);
             } else {
-              window.location.href = decodeURIComponent("/profile");
+              this.$router.go(decodeURIComponent("/profile"));
             }
           }, 2000);
         } else {

@@ -146,7 +146,7 @@ export default {
             });
             this.data = response.data.data;
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/dietician-panel/consultants");
+              this.$router.go(decodeURIComponent("/dietician-panel/consultants"));
             }, 2000);
           } else {
             this.$izitoast.error({

@@ -735,7 +735,7 @@ export default {
             this.e1 = 2;
 
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/nutrients");
+              this.$router.go(decodeURIComponent("/panel/nutrients"));
             }, 2000);
           } else {
             this.$izitoast.error({

@@ -199,7 +199,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/users");
+              this.$router.go(decodeURIComponent("/panel/users"));
             }, 2000);
           } else {
             this.$izitoast.error({

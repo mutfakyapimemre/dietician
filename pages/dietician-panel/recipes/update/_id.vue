@@ -727,7 +727,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/dietician-panel/recipes");
+              this.$router.go(decodeURIComponent("/dietician-panel/recipes"));
             }, 2000);
           } else {
             this.$izitoast.error({

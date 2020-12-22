@@ -704,7 +704,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/nutrients");
+              this.$router.go(decodeURIComponent("/panel/nutrients"));
             }, 2000);
           } else {
             this.$izitoast.error({

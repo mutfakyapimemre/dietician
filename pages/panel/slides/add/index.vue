@@ -121,7 +121,7 @@ export default {
             });
 
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/slides");
+              this.$router.go(decodeURIComponent("/panel/slides"));
             }, 2000);
           } else {
             this.$izitoast.error({

@@ -67,7 +67,7 @@ export default {
             position: "topCenter",
           });
           setTimeout(() => {
-            window.location.href = decodeURIComponent("/admin");
+            this.$router.go(decodeURIComponent("/admin"));
           }, 2000);
         } else {
           this.$izitoast.error({

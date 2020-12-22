@@ -503,7 +503,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/diseases");
+              this.$router.go(decodeURIComponent("/panel/diseases"));
             }, 2000);
           } else {
             this.$izitoast.error({

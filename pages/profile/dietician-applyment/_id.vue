@@ -143,7 +143,7 @@ export default {
         position: "topCenter",
       });
       setTimeout(() => {
-        window.location.href = decodeURIComponent("/");
+        this.$router.go(decodeURIComponent("/"));
       }, 2000);
     },
     applyDietician() {
@@ -174,7 +174,7 @@ export default {
             Cookie.set("userData", Base64.encode(JSON.stringify(response.data.data)));
             localStorage.setItem("userData", Base64.encode(JSON.stringify(response.data.data)));
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/profile");
+              this.$router.go(decodeURIComponent("/profile"));
             }, 2000);
           } else {
             this.$izitoast.error({

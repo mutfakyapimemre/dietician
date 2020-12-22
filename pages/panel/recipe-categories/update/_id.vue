@@ -454,7 +454,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/panel/recipe-categories");
+              this.$router.go(decodeURIComponent("/panel/recipe-categories"));
             }, 2000);
           } else {
             this.$izitoast.error({

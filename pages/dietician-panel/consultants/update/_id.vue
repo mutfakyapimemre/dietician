@@ -474,7 +474,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              window.location.href = decodeURIComponent("/profile");
+              this.$router.go(decodeURIComponent("/profile"));
             }, 2000);
           } else {
             this.$izitoast.error({
