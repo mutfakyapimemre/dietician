@@ -30,61 +30,6 @@
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
             <div class="row">
               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card dash-card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar1">
-                            <div class="circle-graph1" data-percent="75">
-                              <img src="/img/icon-01.png" class="img-fluid" alt="patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Yakılan Kalori</h6>
-                            <h3>1500</h3>
-                            <p class="text-muted">Bugün</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar2">
-                            <div class="circle-graph2" data-percent="65">
-                              <img src="/img/icon-02.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Verilen Kilo</h6>
-                            <h3>160</h3>
-                            <p class="text-muted">Haftada</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget">
-                          <div class="circle-bar circle-bar3">
-                            <div class="circle-graph3" data-percent="50">
-                              <img src="/img/icon-03.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Yapılan Egzersiz</h6>
-                            <h3>85</h3>
-                            <p class="text-muted">Ayda</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <h4 class="mb-4">Kayıt Bilgileri</h4>
                 <div class="appointment-tab">
                   <!-- Appointment Tab -->
@@ -108,100 +53,100 @@
                               <tbody>
                                 <tr>
                                   <td><b>Ad Soyad :</b></td>
-                                  <td colspan="2">{{ data.name }}</td>
+                                  <td colspan="2">{{ userData.name }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Cinsiyet :</b></td>
-                                  <td colspan="2">{{ data.gender }}</td>
+                                  <td colspan="2">{{ userData.gender }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>İkamet Ettiğiniz İl :</b></td>
-                                  <td colspan="2">{{ data.city }}</td>
+                                  <td colspan="2">{{ userData.city }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>İkamet Ettiğiniz İlçe :</b></td>
-                                  <td colspan="2">{{ data.town }}</td>
+                                  <td colspan="2">{{ userData.town }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>İkamet Ettiğiniz Semt :</b></td>
-                                  <td colspan="2">{{ data.district }}</td>
+                                  <td colspan="2">{{ userData.district }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>İkamet Ettiğiniz Mahalle :</b></td>
-                                  <td colspan="2">{{ data.neighborhood }}</td>
+                                  <td colspan="2">{{ userData.neighborhood }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>İkamet Ettiğiniz Adres :</b></td>
-                                  <td colspan="2">{{ data.address }}</td>
+                                  <td colspan="2">{{ userData.address }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Doğum Tarihi :</b></td>
-                                  <td colspan="2">{{ data.birthDate }}</td>
+                                  <td colspan="2">{{ userData.birthDate }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Boy (cm) :</b></td>
-                                  <td colspan="2">{{ data.size }}</td>
+                                  <td colspan="2">{{ userData.size }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Ağırlık (kg) :</b></td>
-                                  <td colspan="2">{{ data.weight }}</td>
+                                  <td colspan="2">{{ userData.weight }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Bel (cm) :</b></td>
-                                  <td colspan="2">{{ data.waist }}</td>
+                                  <td colspan="2">{{ userData.waist }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Kalça (cm) :</b></td>
-                                  <td colspan="2">{{ data.hip }}</td>
+                                  <td colspan="2">{{ userData.hip }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Göğüs (cm) :</b></td>
-                                  <td colspan="2">{{ data.chest }}</td>
+                                  <td colspan="2">{{ userData.chest }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Boyun (cm) : </b></td>
-                                  <td colspan="2">{{ data.neck }}</td>
+                                  <td colspan="2">{{ userData.neck }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Üst Kol (cm) :</b></td>
-                                  <td colspan="2">{{ data.upperArm }}</td>
+                                  <td colspan="2">{{ userData.upperArm }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Alt Kol (cm) :</b></td>
-                                  <td colspan="2">{{ data.lowerArm }}</td>
+                                  <td colspan="2">{{ userData.lowerArm }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Kol Bileği (cm) :</b></td>
-                                  <td colspan="2">{{ data.wrist }}</td>
+                                  <td colspan="2">{{ userData.wrist }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Üst Bacak (cm) :</b></td>
-                                  <td colspan="2">{{ data.upperLeg }}</td>
+                                  <td colspan="2">{{ userData.upperLeg }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Alt Bacak (cm) :</b></td>
-                                  <td colspan="2">{{ data.lowerLeg }}</td>
+                                  <td colspan="2">{{ userData.lowerLeg }}</td>
                                 </tr>
                                 <tr>
                                   <td><b>Deri Kıvrım Kalınlığı (cm) :</b></td>
                                   <td colspan="2">
-                                    {{ data.skinfoldThickness }}
+                                    {{ userData.skinfoldThickness }}
                                   </td>
                                 </tr>
                                 <tr>
                                   <td><b>Yağ :</b></td>
-                                  <td>% {{ data.fatRatio }}</td>
-                                  <td>{{ data.fat }} KG</td>
+                                  <td>% {{ userData.fatRatio }}</td>
+                                  <td>{{ userData.fat }} KG</td>
                                 </tr>
                                 <tr>
                                   <td><b>Kas :</b></td>
-                                  <td>% {{ data.muscleRatio }}</td>
-                                  <td>{{ data.muscle }} KG</td>
+                                  <td>% {{ userData.muscleRatio }}</td>
+                                  <td>{{ userData.muscle }} KG</td>
                                 </tr>
                                 <tr>
                                   <td><b>Su :</b></td>
-                                  <td>% {{ data.waterRatio }}</td>
-                                  <td>{{ data.water }} KG</td>
+                                  <td>% {{ userData.waterRatio }}</td>
+                                  <td>{{ userData.water }} KG</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -224,7 +169,7 @@
                                       <td><b>Ad Soyad :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{ errors }">
-                                          <input id="name" type="text" class="form-control" name="name" v-model="data.name" />
+                                          <input id="name" type="text" class="form-control" name="name" v-model="userData.name" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -233,7 +178,7 @@
                                       <td><b>Cinsiyet :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Cinsiyetiniz" rules="required" v-slot="{ errors }">
-                                          <v-radio-group v-model="data.gender" name="gender" row>
+                                          <v-radio-group v-model="userData.gender" name="gender" row>
                                             <v-radio value="Erkek">
                                               <template v-slot:label> Erkek </template>
                                             </v-radio>
@@ -254,7 +199,7 @@
                                             name="city"
                                             id="city"
                                             class="form-control"
-                                            v-model="data.city"
+                                            v-model="userData.city"
                                             v-if="
                                               country.cities !== null &&
                                               country.cities !== undefined &&
@@ -262,7 +207,7 @@
                                               country.cities.length > 0
                                             "
                                           >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
+                                            <option :value="null" selected>İl Seçiniz.</option>
                                             <option
                                               v-bind:data-id="city.towns"
                                               :value="city.name"
@@ -271,21 +216,6 @@
                                             >
                                               {{ city.name }}
                                             </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getTowns"
-                                            name="city"
-                                            id="city"
-                                            class="form-control"
-                                            v-model="data.city"
-                                            v-else-if="
-                                              country.cities === null ||
-                                              country.cities !== undefined ||
-                                              country.cities !== '' ||
-                                              country.cities.length <= 0
-                                            "
-                                          >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
                                           </select>
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
@@ -300,59 +230,21 @@
                                             name="town"
                                             id="town"
                                             class="form-control"
-                                            v-model="data.town"
+                                            v-model="userData.town"
                                             v-if="
                                               country.towns !== null &&
                                               country.towns !== undefined &&
                                               country.towns !== '' &&
-                                              country.towns.length > 0 &&
-                                              (data.towns === null || data.towns === undefined || data.towns === '' || data.towns.length <= 0)
+                                              country.towns.length > 0
                                             "
                                           >
-                                            <option :value="null" v-if="data.towns.length > 0 || country.towns.length > 0" selected="selected">
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option :value="null" v-if="data.towns.length <= 0 && country.towns.length <= 0" selected="selected">
-                                              Önce İl Seçiniz.
-                                            </option>
+                                            <option :value="null" v-if="country.towns.length > 0" selected>İlçe Seçiniz.</option>
+                                            <option :value="null" v-else-if="country.towns.length <= 0" selected>Önce İl Seçiniz.</option>
                                             <option
                                               v-bind:data-id="town.districts"
                                               :value="town.name"
                                               v-bind:key="index"
                                               v-for="(town, index) in country.towns"
-                                            >
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getDistricts"
-                                            name="town"
-                                            id="town"
-                                            class="form-control"
-                                            v-model="data.town"
-                                            v-if="
-                                              (country.towns === null ||
-                                                country.towns === undefined ||
-                                                country.towns === '' ||
-                                                country.towns.length <= 0 ||
-                                                country.towns.length > 0) &&
-                                              data.towns !== null &&
-                                              data.towns !== undefined &&
-                                              data.towns !== '' &&
-                                              data.towns.length > 0
-                                            "
-                                          >
-                                            <option :value="null" v-if="data.towns.length > 0 || country.towns.length > 0" selected="selected">
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option :value="null" v-if="data.towns.length <= 0 && country.towns.length <= 0" selected="selected">
-                                              Önce İl Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              :value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in data.towns"
                                             >
                                               {{ town.name }}
                                             </option>
@@ -370,27 +262,16 @@
                                             name="district"
                                             id="district"
                                             class="form-control"
-                                            v-model="data.district"
+                                            v-model="userData.district"
                                             v-if="
                                               country.districts !== null &&
                                               country.districts !== undefined &&
                                               country.districts !== '' &&
-                                              country.districts.length > 0 &&
-                                              (data.towns === null || data.towns === undefined || data.towns === '' || data.towns.length <= 0)
+                                              country.districts.length > 0
                                             "
                                           >
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length > 0 || country.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length <= 0 && country.districts.length <= 0"
-                                              selected="selected"
-                                            >
+                                            <option :value="null" v-if="country.districts.length > 0" selected="selected">Semt Seçiniz.</option>
+                                            <option :value="null" v-else-if="country.districts.length <= 0" selected="selected">
                                               Önce İlçe Seçiniz.
                                             </option>
                                             <option
@@ -398,47 +279,6 @@
                                               :value="district.name"
                                               v-bind:key="index"
                                               v-for="(district, index) in country.districts"
-                                            >
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getNeighborhoods"
-                                            name="district"
-                                            id="district"
-                                            class="form-control"
-                                            v-model="data.district"
-                                            v-if="
-                                              (country.districts === null ||
-                                                country.districts === undefined ||
-                                                country.districts === '' ||
-                                                country.districts.length <= 0 ||
-                                                country.districts.length > 0) &&
-                                              data.towns !== null &&
-                                              data.towns !== undefined &&
-                                              data.towns !== '' &&
-                                              data.towns.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length > 0 || country.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length <= 0 && country.districts.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              :value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in data.districts"
                                             >
                                               {{ district.name }}
                                             </option>
@@ -455,30 +295,18 @@
                                             name="neighborhood"
                                             id="neighborhood"
                                             class="form-control"
-                                            v-model="data.neighborhood"
+                                            v-model="userData.neighborhood"
                                             v-if="
                                               country.neighborhoods !== null &&
                                               country.neighborhoods !== undefined &&
                                               country.neighborhoods !== '' &&
-                                              country.neighborhoods.length > 0 &&
-                                              (data.neighborhoods === null ||
-                                                data.neighborhoods === undefined ||
-                                                data.neighborhoods === '' ||
-                                                data.neighborhoods.length <= 0)
+                                              country.neighborhoods.length > 0
                                             "
                                           >
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
+                                            <option :value="null" v-if="country.neighborhoods.length > 0" selected="selected">
                                               Mahalle Seçiniz.
                                             </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
+                                            <option :value="null" v-else-if="country.neighborhoods.length <= 0" selected="selected">
                                               Önce Semt Seçiniz.
                                             </option>
                                             <option
@@ -486,41 +314,6 @@
                                               v-bind:key="index"
                                               v-for="(neighborhood, index) in country.neighborhoods"
                                             >
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            name="neighborhood"
-                                            id="neighborhood"
-                                            class="form-control"
-                                            v-model="data.neighborhood"
-                                            v-if="
-                                              (country.neighborhoods === null ||
-                                                country.neighborhoods === undefined ||
-                                                country.neighborhoods === '' ||
-                                                country.neighborhoods.length <= 0 ||
-                                                country.neighborhoods.length > 0) &&
-                                              data.neighborhoods !== null &&
-                                              data.neighborhoods !== undefined &&
-                                              data.neighborhoods !== '' &&
-                                              data.neighborhoods.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option :value="neighborhood.name" v-bind:key="index" v-for="(neighborhood, index) in data.neighborhoods">
                                               {{ neighborhood.name }}
                                             </option>
                                           </select>
@@ -538,7 +331,7 @@
                                             class="form-control"
                                             cols="30"
                                             rows="5"
-                                            v-model="data.address"
+                                            v-model="userData.address"
                                           ></textarea>
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
@@ -553,7 +346,7 @@
                                             class="form-control"
                                             name="birthDate"
                                             placeholder="Doğum Tarihi"
-                                            v-model="data.birthDate"
+                                            v-model="userData.birthDate"
                                           />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
@@ -563,7 +356,7 @@
                                       <td><b>Boy (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Boy (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="size" id="size" class="form-control" v-model="data.size" />
+                                          <input type="number" name="size" id="size" class="form-control" v-model="userData.size" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -572,7 +365,7 @@
                                       <td><b>Ağırlık (kg) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Ağırlık (kg)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="weight" id="weight" class="form-control" v-model="data.weight" />
+                                          <input type="number" name="weight" id="weight" class="form-control" v-model="userData.weight" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -581,7 +374,7 @@
                                       <td><b>Bel (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Bel (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="waist" id="waist" class="form-control" v-model="data.waist" />
+                                          <input type="number" name="waist" id="waist" class="form-control" v-model="userData.waist" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -590,7 +383,7 @@
                                       <td><b>Kalça (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Kalça (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="hip" id="hip" class="form-control" v-model="data.hip" />
+                                          <input type="number" name="hip" id="hip" class="form-control" v-model="userData.hip" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -599,7 +392,7 @@
                                       <td><b>Göğüs (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Göğüs (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="chest" id="chest" class="form-control" v-model="data.chest" />
+                                          <input type="number" name="chest" id="chest" class="form-control" v-model="userData.chest" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -608,7 +401,7 @@
                                       <td><b>Boyun (cm) : </b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Boyun (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="neck" id="neck" class="form-control" v-model="data.neck" />
+                                          <input type="number" name="neck" id="neck" class="form-control" v-model="userData.neck" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -617,7 +410,7 @@
                                       <td><b>Üst Kol (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Üst Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="data.upperArm" />
+                                          <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="userData.upperArm" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -626,7 +419,7 @@
                                       <td><b>Alt Kol (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Alt Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="data.lowerArm" />
+                                          <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="userData.lowerArm" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -635,7 +428,7 @@
                                       <td><b>Kol Bileği (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Kol Bileği (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="wrist" id="wrist" class="form-control" v-model="data.wrist" />
+                                          <input type="number" name="wrist" id="wrist" class="form-control" v-model="userData.wrist" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -644,7 +437,7 @@
                                       <td><b>Üst Bacak (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Üst Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="data.upperLeg" />
+                                          <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="userData.upperLeg" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -653,7 +446,7 @@
                                       <td><b>Alt Bacak (cm) :</b></td>
                                       <td colspan="2">
                                         <ValidationProvider name="Alt Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="data.lowerLeg" />
+                                          <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="userData.lowerLeg" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
@@ -669,7 +462,7 @@
                                             name="skinfoldThickness"
                                             id="skinfoldThickness"
                                             class="form-control"
-                                            v-model="data.skinfoldThickness"
+                                            v-model="userData.skinfoldThickness"
                                           />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
@@ -677,18 +470,18 @@
                                     </tr>
                                     <tr>
                                       <td><b>Yağ :</b></td>
-                                      <td>% {{ data.fatRatio }}</td>
-                                      <td>{{ data.fat }} KG</td>
+                                      <td>% {{ userData.fatRatio }}</td>
+                                      <td>{{ userData.fat }} KG</td>
                                     </tr>
                                     <tr>
                                       <td><b>Kas :</b></td>
-                                      <td>% {{ data.muscleRatio }}</td>
-                                      <td>{{ data.muscle }} KG</td>
+                                      <td>% {{ userData.muscleRatio }}</td>
+                                      <td>{{ userData.muscle }} KG</td>
                                     </tr>
                                     <tr>
                                       <td><b>Su :</b></td>
-                                      <td>% {{ data.waterRatio }}</td>
-                                      <td>{{ data.water }} KG</td>
+                                      <td>% {{ userData.waterRatio }}</td>
+                                      <td>{{ userData.water }} KG</td>
                                     </tr>
                                     <tr>
                                       <td><b>Profil Resminiz :</b></td>
@@ -696,7 +489,7 @@
                                         <div class="row">
                                           <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
                                             <img
-                                              v-bind:src="img_url + '/public/storage/' + data.img_url"
+                                              v-bind:src="img_url + '/public/storage/' + userData.img_url"
                                               class="img-fluid rounded-profile"
                                               alt="Profil Resminiz"
                                             />

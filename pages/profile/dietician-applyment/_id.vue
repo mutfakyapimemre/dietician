@@ -47,7 +47,7 @@
                         <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                       </ValidationProvider>
                       <v-card-actions>
-                        <v-btn text> Diyetisyeni Onayla </v-btn>
+                        <button type="submit" class="btn btn-default">Diyetisyeni Onayla</button>
                       </v-card-actions>
                     </v-card>
                   </form>
@@ -89,27 +89,7 @@ export default {
   },
   data() {
     return {
-      data: {
-        cities: [],
-        towns: [],
-        districts: [],
-        neighborhoods: [],
-        company_cities: [],
-        company_towns: [],
-        company_districts: [],
-        company_neighborhoods: [],
-        city: "",
-        town: "",
-        district: "",
-        neighborhood: "",
-        company_city: "",
-        company_town: "",
-        company_district: "",
-        company_neighborhood: "",
-      },
-      country: { cities: [], towns: [], districts: [], neighborhoods: [] },
-      country2: { cities: [], towns: [], districts: [], neighborhoods: [] },
-      months: ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"],
+      dietician_check: null,
       userData:
         Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))

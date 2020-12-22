@@ -6,19 +6,21 @@
         <nuxt-link to="/profile" tag="a" class="booking-doc-img">
           <img
             v-bind:src="
-              img_url + '/public/storage/' + (data.img_url !== undefined && data.img_url !== null && data.img_url !== '' ? data.img_url : null)
+              img_url +
+              '/public/storage/' +
+              (userData.img_url !== undefined && userData.img_url !== null && userData.img_url !== '' ? userData.img_url : null)
             "
             class="img-fluid"
-            v-bind:alt="data.name"
+            v-bind:alt="userData.name"
           />
         </nuxt-link>
         <div class="profile-det-info">
-          <h3>{{ data.name }}</h3>
+          <h3>{{ userData.name }}</h3>
 
           <div class="patient-details">
             <h5 class="mb-0">
-              <i class="fa fa-map-marker-alt"></i> {{ data.city }},
-              {{ data.town }}
+              <i class="fa fa-map-marker-alt"></i> {{ userData.city }},
+              {{ userData.town }}
             </h5>
           </div>
         </div>
@@ -117,34 +119,8 @@ export default {
           : null,
     };
   },
-  mounted() {
-    this.getData();
-  },
+  mounted() {},
   methods: {
-    getData() {
-      try {
-        this.$axios
-          .get(process.env.apiBaseUrl + "users/profile/", {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          })
-          .then((response) => {
-            this.data = response.data.data;
-          });
-      } catch (e) {
-        error({ message: "Kullanıcı Bilgisi Bulunamadı.", statusCode: 404 });
-      }
-    },
     logout() {
       this.$store.dispatch("logout");
       this.$izitoast.success({
