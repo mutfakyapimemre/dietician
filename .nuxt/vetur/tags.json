@@ -1,28 +1,4 @@
 {
-  "AdminHeader": {
-    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
-  },
-  "LazyAdminHeader": {
-    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
-  },
-  "AdminSidebar": {
-    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
-  },
-  "LazyAdminSidebar": {
-    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
-  },
-  "DieticianHeader": {
-    "description": "Auto imported from components/dietician_includes/Dietician_Header.vue"
-  },
-  "LazyDieticianHeader": {
-    "description": "Auto imported from components/dietician_includes/Dietician_Header.vue"
-  },
-  "DieticianSidebar": {
-    "description": "Auto imported from components/dietician_includes/Dietician_Sidebar.vue"
-  },
-  "LazyDieticianSidebar": {
-    "description": "Auto imported from components/dietician_includes/Dietician_Sidebar.vue"
-  },
   "Footer": {
     "description": "Auto imported from components/includes/Footer.vue"
   },
@@ -40,5 +16,29 @@
   },
   "LazySidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"
+  },
+  "DieticianHeader": {
+    "description": "Auto imported from components/dietician_includes/Dietician_Header.vue"
+  },
+  "LazyDieticianHeader": {
+    "description": "Auto imported from components/dietician_includes/Dietician_Header.vue"
+  },
+  "DieticianSidebar": {
+    "description": "Auto imported from components/dietician_includes/Dietician_Sidebar.vue"
+  },
+  "LazyDieticianSidebar": {
+    "description": "Auto imported from components/dietician_includes/Dietician_Sidebar.vue"
+  },
+  "AdminHeader": {
+    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
+  },
+  "LazyAdminHeader": {
+    "description": "Auto imported from components/admin_includes/Admin_Header.vue"
+  },
+  "AdminSidebar": {
+    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
+  },
+  "LazyAdminSidebar": {
+    "description": "Auto imported from components/admin_includes/Admin_Sidebar.vue"
   }
 }
