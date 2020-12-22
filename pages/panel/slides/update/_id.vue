@@ -30,35 +30,15 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(editSlides)"
-                      ref="slidesForm"
-                      enctype="multipart/form-data"
-                    >
-                      <ValidationProvider
-                        name="Slayt Adı"
-                        rules="required"
-                        v-slot="{ errors }"
-                      >
+                    <form @submit.prevent="handleSubmit(editSlides)" ref="slidesForm" enctype="multipart/form-data">
+                      <ValidationProvider name="Slayt Adı" rules="required" v-slot="{ errors }">
                         <div class="form-group">
                           <label for="title">Slayt Adı</label>
-                          <input
-                            id="title"
-                            type="text"
-                            class="form-control"
-                            name="title"
-                            v-model="data.title"
-                          />
-                          <small class="font-weight-bold text-danger">{{
-                            errors[0]
-                          }}</small>
+                          <input id="title" type="text" class="form-control" name="title" v-model="data.title" />
+                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                         </div>
                       </ValidationProvider>
-                      <ValidationProvider
-                        name="Slayt Açıklaması"
-                        rules="required"
-                        v-slot="{ errors }"
-                      >
+                      <ValidationProvider name="Slayt Açıklaması" rules="required" v-slot="{ errors }">
                         <div class="form-group">
                           <label for="description">Slayt Açıklaması</label>
                           <textarea
@@ -69,39 +49,22 @@
                             rows="10"
                             v-model="data.description"
                           ></textarea>
-                          <small class="font-weight-bold text-danger">{{
-                            errors[0]
-                          }}</small>
+                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                         </div>
                       </ValidationProvider>
                       <div class="row">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                          <img
-                            v-bind:src="base_img_url + '/public/storage/' + data.img_url"
-                            v-bind:alt="data.title"
-                            class="img-fluid"
-                          />
+                          <img v-bind:src="base_img_url + '/public/storage/' + data.img_url" v-bind:alt="data.title" class="img-fluid" />
                         </div>
                         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                           <div class="form-group">
                             <label for="img_url">Slayt Görseli</label>
-                            <input
-                              id="img_url"
-                              type="file"
-                              class="form-control"
-                              name="img_url"
-                              required
-                            />
+                            <input id="img_url" type="file" class="form-control" name="img_url" required />
                           </div>
                         </div>
                       </div>
 
-                      <button
-                        class="btn btn-outline-primary rounded-0 btn-lg"
-                        type="submit"
-                      >
-                        Slaytı Güncelle
-                      </button>
+                      <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Slaytı Güncelle</button>
                     </form>
                   </ValidationObserver>
                 </div>
@@ -135,9 +98,7 @@ export default {
     return {
       data: {},
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -152,9 +113,7 @@ export default {
   },
   async asyncData({ params, error, $axios }) {
     try {
-      const { data } = await $axios.get(
-        process.env.apiBaseUrl + "panel/sliders/update/" + params.id
-      );
+      const { data } = await $axios.get(process.env.apiBaseUrl + "panel/sliders/update/" + params.id);
       return data;
     } catch (e) {
       error({ message: "Slayt Bilgisi Bulunamadı.", statusCode: 404 });
@@ -164,24 +123,19 @@ export default {
     editSlides() {
       let formData = new FormData(this.$refs.slidesForm);
       this.$axios
-        .post(
-          process.env.apiBaseUrl + "panel/sliders/update/" + this.data._id,
-          formData,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-          }
-        )
+        .post(process.env.apiBaseUrl + "panel/sliders/update/" + this.data._id, formData, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -190,7 +144,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/slides"));
+              window.location.href = decodeURIComponent("/panel/slides");
             }, 2000);
           } else {
             this.$izitoast.error({

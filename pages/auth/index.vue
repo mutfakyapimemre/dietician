@@ -13,45 +13,20 @@
 
               <!-- Form -->
               <ValidationObserver v-slot="{ handleSubmit }">
-                <form
-                  @submit.prevent="handleSubmit(onSubmit)"
-                  ref="userLogin"
-                  enctype="multipart/form-data"
-                >
+                <form @submit.prevent="handleSubmit(onSubmit)" ref="userLogin" enctype="multipart/form-data">
                   <div class="form-group form-focus">
-                    <ValidationProvider
-                      name="email"
-                      rules="required|email"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        label="Email Adresiniz"
-                        hide-details="auto"
-                        name="email"
-                        v-model="email"
-                      ></v-text-field>
+                    <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+                      <v-text-field label="Email Adresiniz" hide-details="auto" name="email" v-model="email"></v-text-field>
                       <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                     </ValidationProvider>
                   </div>
                   <div class="form-group form-focus">
-                    <ValidationProvider
-                      name="password"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        label="Şifreniz"
-                        hide-details="auto"
-                        type="password"
-                        name="password"
-                        v-model="password"
-                      ></v-text-field>
+                    <ValidationProvider name="password" rules="required" v-slot="{ errors }">
+                      <v-text-field label="Şifreniz" hide-details="auto" type="password" name="password" v-model="password"></v-text-field>
                       <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                     </ValidationProvider>
                   </div>
-                  <button class="btn btn-green-light rounded-0 login-btn" type="submit">
-                    Giriş Yap
-                  </button>
+                  <button class="btn btn-green-light rounded-0 login-btn" type="submit">Giriş Yap</button>
                 </form>
               </ValidationObserver>
               <!-- /Form -->
@@ -63,10 +38,7 @@
   </v-app>
 </template>
 <script>
-import {
-  ValidationObserver,
-  ValidationProvider,
-} from "vee-validate/dist/vee-validate.full.esm";
+import { ValidationObserver, ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
 export default {
   layout: "adminlogin",
   middleware: ["session-control", "notadmin"],
@@ -95,7 +67,7 @@ export default {
             position: "topCenter",
           });
           setTimeout(() => {
-            this.$router.go(decodeURIComponent("/admin"));
+            window.location.href = decodeURIComponent("/admin");
           }, 2000);
         } else {
           this.$izitoast.error({

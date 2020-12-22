@@ -30,156 +30,66 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(saveRecipes)"
-                      ref="recipesForm"
-                      enctype="multipart/form-data"
-                    >
+                    <form @submit.prevent="handleSubmit(saveRecipes)" ref="recipesForm" enctype="multipart/form-data">
                       <v-stepper v-model="e1">
                         <v-stepper-header>
-                          <v-stepper-step :complete="e1 > 1" step="1">
-                            Yemek Tarifi Bilgileri
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 1" step="1"> Yemek Tarifi Bilgileri </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 2" step="2">
-                            Yemek Tarifi Görselleri
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 2" step="2"> Yemek Tarifi Görselleri </v-stepper-step>
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 3" step="3">
-                            Kapak Fotoğrafı Seçimi
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 3" step="3"> Kapak Fotoğrafı Seçimi </v-stepper-step>
                         </v-stepper-header>
 
                         <v-stepper-items>
                           <v-stepper-content step="1">
-                            <ValidationProvider
-                              name="Yemek Tarifi Adı"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Adı" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="title">Yemek Tarifi Adı</label>
-                                <input
-                                  id="title"
-                                  type="text"
-                                  class="form-control"
-                                  name="name"
-                                  v-model="inputData.name"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <input id="title" type="text" class="form-control" name="name" v-model="inputData.name" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider
-                              name="Yemek Tarifi Türü"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Türü" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="category_id">Yemek Tarifi Türü</label>
-                                <select
-                                  name="category_id"
-                                  id="category_id"
-                                  v-model="inputData.category_id"
-                                  class="form-control"
-                                >
-                                  <option v-bind:value="null" selected>
-                                    Yemek Tarifi Türü Seçiniz.
-                                  </option>
-                                  <option
-                                    v-bind:key="index"
-                                    v-bind:value="category._id.$oid"
-                                    v-for="(category, index) in allCategories"
-                                  >
+                                <select name="category_id" id="category_id" v-model="inputData.category_id" class="form-control">
+                                  <option v-bind:value="null" selected>Yemek Tarifi Türü Seçiniz.</option>
+                                  <option v-bind:key="index" v-bind:value="category._id.$oid" v-for="(category, index) in allCategories">
                                     {{ category.name }}
                                   </option>
                                 </select>
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider
-                              name="Yemek Tarifi Porsiyon Sayısı"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Porsiyon Sayısı" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="portion">Yemek Tarifi Porsiyon Sayısı</label>
-                                <input
-                                  id="portion"
-                                  type="text"
-                                  class="form-control"
-                                  name="portion"
-                                  v-model="inputData.portion"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <input id="portion" type="text" class="form-control" name="portion" v-model="inputData.portion" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider
-                              name="Yemek Tarifi Hazırlık Süresi"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Hazırlık Süresi" rules="required" v-slot="{ errors }">
                               <div class="form-group">
-                                <label for="prepare_time"
-                                  >Yemek Tarifi Hazırlık Süresi</label
-                                >
-                                <input
-                                  id="prepare_time"
-                                  type="text"
-                                  class="form-control"
-                                  name="prepare_time"
-                                  v-model="inputData.prepare_time"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <label for="prepare_time">Yemek Tarifi Hazırlık Süresi</label>
+                                <input id="prepare_time" type="text" class="form-control" name="prepare_time" v-model="inputData.prepare_time" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider
-                              name="Yemek Tarifi Pişirme Süresi"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Pişirme Süresi" rules="required" v-slot="{ errors }">
                               <div class="form-group">
-                                <label for="cooking_time"
-                                  >Yemek Tarifi Pişirme Süresi</label
-                                >
-                                <input
-                                  id="cooking_time"
-                                  type="text"
-                                  class="form-control"
-                                  name="cooking_time"
-                                  v-model="inputData.cooking_time"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <label for="cooking_time">Yemek Tarifi Pişirme Süresi</label>
+                                <input id="cooking_time" type="text" class="form-control" name="cooking_time" v-model="inputData.cooking_time" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider
-                              name="Yemek Tarifi Açıklaması"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Yemek Tarifi Açıklaması" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="description">Yemek Tarifi Açıklaması</label>
-                                <textarea
-                                  id="description"
-                                  class="form-control"
-                                  name="description"
-                                  v-model="inputData.description"
-                                ></textarea>
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <textarea id="description" class="form-control" name="description" v-model="inputData.description"></textarea>
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
                             <v-tabs v-model="tab" background-color="primary" dark>
@@ -191,30 +101,12 @@
                             <v-tabs-items v-model="tab">
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text
-                                    v-if="
-                                      inputs !== null &&
-                                      inputs !== undefined &&
-                                      inputs !== ''
-                                    "
-                                  >
-                                    <div
-                                      class="row"
-                                      v-bind:key="index"
-                                      v-for="(input, index) in inputs"
-                                    >
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input[0].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                  <v-card-text v-if="inputs !== null && inputs !== undefined && inputs !== ''">
+                                    <div class="row" v-bind:key="index" v-for="(input, index) in inputs">
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                        <ValidationProvider v-bind:name="input[0].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input[0].id">{{
-                                              input[0].label
-                                            }}</label>
+                                            <label v-bind:for="input[0].id">{{ input[0].label }}</label>
                                             <input
                                               v-bind:id="input[0].id"
                                               type="text"
@@ -222,24 +114,14 @@
                                               name="vitaminName[]"
                                               v-model="input[0].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input[1].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                        <ValidationProvider v-bind:name="input[1].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input[1].id">{{
-                                              input[1].label
-                                            }}</label>
+                                            <label v-bind:for="input[1].id">{{ input[1].label }}</label>
                                             <input
                                               v-bind:id="input[1].id"
                                               type="text"
@@ -247,24 +129,14 @@
                                               name="vitaminValue[]"
                                               v-model="input[1].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input[2].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                        <ValidationProvider v-bind:name="input[2].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input[2].id">{{
-                                              input[2].label
-                                            }}</label>
+                                            <label v-bind:for="input[2].id">{{ input[2].label }}</label>
                                             <input
                                               v-bind:id="input[2].id"
                                               type="text"
@@ -272,15 +144,11 @@
                                               name="vitaminType[]"
                                               v-model="input[2].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-                                      >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom">
                                         <button
                                           @click.prevent="cloneProperty"
                                           class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
@@ -319,58 +187,25 @@
                                       allCategories !== ''
                                     "
                                   >
-                                    <div
-                                      class="row"
-                                      v-bind:key="index"
-                                      v-for="(input2, index) in inputs2"
-                                    >
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input2[0].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                    <div class="row" v-bind:key="index" v-for="(input2, index) in inputs2">
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                        <ValidationProvider v-bind:name="input2[0].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input2[0].id">{{
-                                              input2[0].label
-                                            }}</label>
-                                            <select
-                                              name="criteriaName[]"
-                                              v-bind:id="input2[0].id"
-                                              v-model="input2[0].value"
-                                              class="form-control"
-                                            >
-                                              <option value="" selected>
-                                                Malzeme Ölçüt Değeri Adı Seçiniz.
-                                              </option>
-                                              <option
-                                                v-bind:value="criteria.name"
-                                                v-bind:key="index"
-                                                v-for="(criteria, index) in allCriterias"
-                                              >
+                                            <label v-bind:for="input2[0].id">{{ input2[0].label }}</label>
+                                            <select name="criteriaName[]" v-bind:id="input2[0].id" v-model="input2[0].value" class="form-control">
+                                              <option value="" selected>Malzeme Ölçüt Değeri Adı Seçiniz.</option>
+                                              <option v-bind:value="criteria.name" v-bind:key="index" v-for="(criteria, index) in allCriterias">
                                                 {{ criteria.name }}
                                               </option>
                                             </select>
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input2[1].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                                        <ValidationProvider v-bind:name="input2[1].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input2[1].id">{{
-                                              input2[1].label
-                                            }}</label>
+                                            <label v-bind:for="input2[1].id">{{ input2[1].label }}</label>
                                             <input
                                               v-bind:id="input2[1].id"
                                               type="text"
@@ -378,24 +213,14 @@
                                               name="criteriaValue[]"
                                               v-model="input2[1].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input2[2].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                                        <ValidationProvider v-bind:name="input2[2].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input2[2].id">{{
-                                              input2[2].label
-                                            }}</label>
+                                            <label v-bind:for="input2[2].id">{{ input2[2].label }}</label>
                                             <input
                                               v-bind:id="input2[2].id"
                                               type="text"
@@ -403,50 +228,25 @@
                                               name="criteriaType[]"
                                               v-model="input2[2].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-                                      >
-                                        <ValidationProvider
-                                          v-bind:name="input2[3].label"
-                                          rules="required"
-                                          v-slot="{ errors }"
-                                        >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                        <ValidationProvider v-bind:name="input2[3].label" rules="required" v-slot="{ errors }">
                                           <div class="form-group">
-                                            <label v-bind:for="input2[3].id">{{
-                                              input2[3].label
-                                            }}</label>
-                                            <select
-                                              name="criteriaNutrient[]"
-                                              v-bind:id="input2[3].id"
-                                              v-model="input2[3].value"
-                                              class="form-control"
-                                            >
-                                              <option value="" selected>
-                                                Malzeme Besini Seçiniz.
-                                              </option>
-                                              <option
-                                                v-bind:value="nutrient._id.$oid"
-                                                v-bind:key="index"
-                                                v-for="(nutrient, index) in allNutrients"
-                                              >
+                                            <label v-bind:for="input2[3].id">{{ input2[3].label }}</label>
+                                            <select name="criteriaNutrient[]" v-bind:id="input2[3].id" v-model="input2[3].value" class="form-control">
+                                              <option value="" selected>Malzeme Besini Seçiniz.</option>
+                                              <option v-bind:value="nutrient._id.$oid" v-bind:key="index" v-for="(nutrient, index) in allNutrients">
                                                 {{ nutrient.name }}
                                               </option>
                                             </select>
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div
-                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-                                      >
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom">
                                         <button
                                           @click.prevent="cloneProperty2"
                                           class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
@@ -469,10 +269,7 @@
                               </v-tab-item>
                             </v-tabs-items>
 
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              type="submit"
-                            >
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">
                               Yemek Tarifini Kayıt Et, Görsel Yüklemeye Geç
                             </button>
                           </v-stepper-content>
@@ -489,11 +286,7 @@
                                 ></dropzone>
                               </div>
                             </div>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="selectCover"
-                            >
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="selectCover">
                               Kapak Fotoğrafı Seç
                             </button>
                           </v-stepper-content>
@@ -505,18 +298,9 @@
                               </div>
                               <div class="card-body">
                                 <v-card tile>
-                                  <v-data-table
-                                    :headers="headers"
-                                    :items="data"
-                                    disable-pagination
-                                    :hide-default-footer="true"
-                                  >
+                                  <v-data-table :headers="headers" :items="data" disable-pagination :hide-default-footer="true">
                                     <template v-slot:[`item.img_url`]="{ item }">
-                                      <img
-                                        v-bind:src="item.img_url"
-                                        width="150"
-                                        height="150"
-                                      />
+                                      <img v-bind:src="item.img_url" width="150" height="150" />
                                     </template>
                                     <template v-slot:[`item.isCover`]="{ item }">
                                       <v-layout justify-center>
@@ -541,9 +325,7 @@
                                       </v-layout>
                                     </template>
                                     <template v-slot:[`item.actions`]="{ item }">
-                                      <v-icon small @click="deleteData(item.id)">
-                                        mdi-delete
-                                      </v-icon>
+                                      <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
                                     </template>
                                   </v-data-table>
                                 </v-card>
@@ -574,13 +356,7 @@
                                 </div>
                               </div>
                             </div>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="e1 = 2"
-                            >
-                              Geri Dön
-                            </button>
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 2">Geri Dön</button>
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
@@ -670,9 +446,7 @@ export default {
         headers: {
           Authorization:
             "Bearer " +
-            (Cookie.get("userData") !== null &&
-            Cookie.get("userData") !== undefined &&
-            Cookie.get("userData") !== ""
+            (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
               ? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
               : null),
         },
@@ -683,9 +457,7 @@ export default {
         parallelUploads: 10,
       },
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
       tab: null,
@@ -706,8 +478,7 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
             "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-type": "application/json",
@@ -749,8 +520,7 @@ export default {
             mode: "no-cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
               "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
@@ -781,27 +551,20 @@ export default {
     },
     deleteData(id) {
       this.$axios
-        .delete(
-          process.env.apiBaseUrl +
-            "panel/datatables/delete-file?id=" +
-            id +
-            "&table=recipes_file",
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          }
-        )
+        .delete(process.env.apiBaseUrl + "panel/datatables/delete-file?id=" + id + "&table=recipes_file", {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-type": "application/json",
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -823,26 +586,20 @@ export default {
     },
     isActiveSetter(id) {
       this.$axios
-        .get(
-          process.env.apiBaseUrl +
-            "panel/datatables/is-active-setter?table=recipes_file&id=" +
-            id,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          }
-        )
+        .get(process.env.apiBaseUrl + "panel/datatables/is-active-setter?table=recipes_file&id=" + id, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-type": "application/json",
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -864,26 +621,20 @@ export default {
     },
     isCoverSetter(id) {
       this.$axios
-        .get(
-          process.env.apiBaseUrl +
-            "panel/datatables/is-cover-setter?table=recipes_file&foreign_column=recipes_id&id=" +
-            id,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          }
-        )
+        .get(process.env.apiBaseUrl + "panel/datatables/is-cover-setter?table=recipes_file&foreign_column=recipes_id&id=" + id, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-type": "application/json",
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -996,8 +747,7 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
             "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
@@ -1012,25 +762,12 @@ export default {
               message: response.data.msg,
               position: "topCenter",
             });
-            this.$refs.myDropzone.options.url =
-              process.env.apiBaseUrl +
-              "panel/recipes/create-file/" +
-              response.data.data.$oid;
-            this.$refs.myDropzone.dropzone.options.url =
-              process.env.apiBaseUrl +
-              "panel/recipes/create-file/" +
-              response.data.data.$oid;
-            this.options.url =
-              process.env.apiBaseUrl +
-              "panel/recipes/create-file/" +
-              response.data.data.$oid;
+            this.$refs.myDropzone.options.url = process.env.apiBaseUrl + "panel/recipes/create-file/" + response.data.data.$oid;
+            this.$refs.myDropzone.dropzone.options.url = process.env.apiBaseUrl + "panel/recipes/create-file/" + response.data.data.$oid;
+            this.options.url = process.env.apiBaseUrl + "panel/recipes/create-file/" + response.data.data.$oid;
             this.inputData.id = response.data.data.$oid;
             this.options.params.title = response.data.name;
             this.e1 = 2;
-
-            /*setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/recipes"))
-            }, 2000)*/
           } else {
             this.$izitoast.error({
               title: response.data.title,

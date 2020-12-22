@@ -30,47 +30,24 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(editCriterias)"
-                      ref="criteriasForm"
-                      enctype="multipart/form-data"
-                    >
+                    <form @submit.prevent="handleSubmit(editCriterias)" ref="criteriasForm" enctype="multipart/form-data">
                       <v-stepper v-model="e1">
                         <v-stepper-header>
-                          <v-stepper-step :complete="e1 > 1" step="1">
-                            Ölçüt Bilgileri
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 1" step="1"> Ölçüt Bilgileri </v-stepper-step>
 
                           <v-divider></v-divider>
                         </v-stepper-header>
 
                         <v-stepper-items>
                           <v-stepper-content step="1">
-                            <ValidationProvider
-                              name="Ölçüt Adı"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Ölçüt Adı" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="title">Ölçüt Adı</label>
-                                <input
-                                  id="title"
-                                  type="text"
-                                  class="form-control"
-                                  name="name"
-                                  v-model="data.name"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <input id="title" type="text" class="form-control" name="name" v-model="data.name" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              type="submit"
-                            >
-                              Ölçütü Güncelle
-                            </button>
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Ölçütü Güncelle</button>
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
@@ -120,9 +97,7 @@ export default {
         images: [],
       },
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -137,9 +112,7 @@ export default {
   },
   async asyncData({ params, error, $axios }) {
     try {
-      const { data } = await $axios.get(
-        process.env.apiBaseUrl + "panel/criteria/update/" + params.id
-      );
+      const { data } = await $axios.get(process.env.apiBaseUrl + "panel/criteria/update/" + params.id);
 
       return data;
     } catch (e) {
@@ -161,24 +134,19 @@ export default {
     editCriterias() {
       let formData = new FormData(this.$refs.criteriasForm);
       this.$axios
-        .post(
-          process.env.apiBaseUrl + "panel/criteria/update/" + this.data._id.$oid,
-          formData,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-          }
-        )
+        .post(process.env.apiBaseUrl + "panel/criteria/update/" + this.data._id.$oid, formData, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -187,7 +155,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/criterias"));
+              window.location.href = decodeURIComponent("/panel/criterias");
             }, 2000);
           } else {
             this.$izitoast.error({

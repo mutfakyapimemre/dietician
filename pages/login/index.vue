@@ -174,9 +174,9 @@ export default {
           });
           setTimeout((event) => {
             if (this.$route.query.url !== null && this.$route.query.url !== "" && this.$route.query.url !== undefined) {
-              this.$router.go(decodeURIComponent(this.$route.query.url));
+              window.location.href = decodeURIComponent(this.$route.query.url);
             } else {
-              this.$router.go(decodeURIComponent("/profile"));
+              window.location.href = decodeURIComponent("/profile");
             }
           }, 2000);
         } else {

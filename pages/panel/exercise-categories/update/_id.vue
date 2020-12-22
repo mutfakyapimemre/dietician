@@ -30,55 +30,29 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(editExerciseCategories)"
-                      ref="exerciseCategoriesForm"
-                      enctype="multipart/form-data"
-                    >
+                    <form @submit.prevent="handleSubmit(editExerciseCategories)" ref="exerciseCategoriesForm" enctype="multipart/form-data">
                       <v-stepper v-model="e1">
                         <v-stepper-header>
-                          <v-stepper-step :complete="e1 > 1" step="1">
-                            Egzersiz Kategorisi Bilgileri
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 1" step="1"> Egzersiz Kategorisi Bilgileri </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 2" step="2">
-                            Egzersiz Kategorisi Görselleri
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 2" step="2"> Egzersiz Kategorisi Görselleri </v-stepper-step>
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 3" step="3">
-                            Kapak Fotoğrafı Seçimi
-                          </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 3" step="3"> Kapak Fotoğrafı Seçimi </v-stepper-step>
                         </v-stepper-header>
 
                         <v-stepper-items>
                           <v-stepper-content step="1">
-                            <ValidationProvider
-                              name="Egzersiz Kategorisi"
-                              rules="required"
-                              v-slot="{ errors }"
-                            >
+                            <ValidationProvider name="Egzersiz Kategorisi" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="title">Egzersiz Kategorisi</label>
-                                <input
-                                  id="title"
-                                  type="text"
-                                  class="form-control"
-                                  name="name"
-                                  v-model="data.name"
-                                />
-                                <small class="font-weight-bold text-danger">{{
-                                  errors[0]
-                                }}</small>
+                                <input id="title" type="text" class="form-control" name="name" v-model="data.name" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="e1 = 2"
-                            >
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 2">
                               Egzersiz Kategorisi Görseli Yükle
                             </button>
                           </v-stepper-content>
@@ -98,18 +72,8 @@
                                 ></dropzone>
                               </div>
                             </div>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="e1 = 1"
-                            >
-                              Geri Dön
-                            </button>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="selectCover"
-                            >
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 1">Geri Dön</button>
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="selectCover">
                               Kapak Fotoğrafı Seç
                             </button>
                           </v-stepper-content>
@@ -121,18 +85,9 @@
                               </div>
                               <div class="card-body">
                                 <v-card tile>
-                                  <v-data-table
-                                    :headers="headers"
-                                    :items="imageData"
-                                    disable-pagination
-                                    :hide-default-footer="true"
-                                  >
+                                  <v-data-table :headers="headers" :items="imageData" disable-pagination :hide-default-footer="true">
                                     <template v-slot:[`item.img_url`]="{ item }">
-                                      <img
-                                        v-bind:src="item.img_url"
-                                        width="150"
-                                        height="150"
-                                      />
+                                      <img v-bind:src="item.img_url" width="150" height="150" />
                                     </template>
                                     <template v-slot:[`item.isCover`]="{ item }">
                                       <v-layout justify-center>
@@ -157,9 +112,7 @@
                                       </v-layout>
                                     </template>
                                     <template v-slot:[`item.actions`]="{ item }">
-                                      <v-icon small @click="deleteData(item.id)">
-                                        mdi-delete
-                                      </v-icon>
+                                      <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
                                     </template>
                                   </v-data-table>
                                 </v-card>
@@ -190,19 +143,8 @@
                                 </div>
                               </div>
                             </div>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              role="button"
-                              @click.prevent="e1 = 2"
-                            >
-                              Geri Dön
-                            </button>
-                            <button
-                              class="btn btn-outline-primary rounded-0 btn-lg"
-                              type="submit"
-                            >
-                              Egzersiz Kategorisini Güncelle
-                            </button>
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 2">Geri Dön</button>
+                            <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Egzersiz Kategorisini Güncelle</button>
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
@@ -265,16 +207,11 @@ export default {
       pageSizes: [25, 50, 100, 200, 500, 1000],
       loading: false,
       options: {
-        url:
-          process.env.apiBaseUrl +
-          "panel/exercise-categories/create-file/" +
-          this.$route.params.id,
+        url: process.env.apiBaseUrl + "panel/exercise-categories/create-file/" + this.$route.params.id,
         headers: {
           Authorization:
             "Bearer " +
-            (Cookie.get("userData") !== null &&
-            Cookie.get("userData") !== undefined &&
-            Cookie.get("userData") !== ""
+            (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
               ? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
               : null),
         },
@@ -285,9 +222,7 @@ export default {
         parallelUploads: 10,
       },
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -302,9 +237,7 @@ export default {
   },
   async asyncData({ params, error, $axios }) {
     try {
-      const { data } = await $axios.get(
-        process.env.apiBaseUrl + "panel/exercise-categories/update/" + params.id
-      );
+      const { data } = await $axios.get(process.env.apiBaseUrl + "panel/exercise-categories/update/" + params.id);
 
       return data;
     } catch (e) {
@@ -338,8 +271,7 @@ export default {
             mode: "no-cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
               "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
@@ -369,27 +301,20 @@ export default {
     },
     deleteData(id) {
       this.$axios
-        .delete(
-          process.env.apiBaseUrl +
-            "panel/datatables/delete-file?id=" +
-            id +
-            "&table=exercise_categories_file",
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          }
-        )
+        .delete(process.env.apiBaseUrl + "panel/datatables/delete-file?id=" + id + "&table=exercise_categories_file", {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-type": "application/json",
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -411,26 +336,20 @@ export default {
     },
     isActiveSetter(id) {
       this.$axios
-        .get(
-          process.env.apiBaseUrl +
-            "panel/datatables/is-active-setter?table=exercise_categories_file&id=" +
-            id,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-type": "application/json",
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-            credentials: "same-origin",
-          }
-        )
+        .get(process.env.apiBaseUrl + "panel/datatables/is-active-setter?table=exercise_categories_file&id=" + id, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-type": "application/json",
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -453,17 +372,14 @@ export default {
     isCoverSetter(id) {
       this.$axios
         .get(
-          process.env.apiBaseUrl +
-            "panel/datatables/is-cover-setter?table=exercise_categories_file&foreign_column=exercise_category_id&id=" +
-            id,
+          process.env.apiBaseUrl + "panel/datatables/is-cover-setter?table=exercise_categories_file&foreign_column=exercise_category_id&id=" + id,
           {
             json: true,
             withCredentials: false,
             mode: "no-cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
               "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
@@ -520,26 +436,19 @@ export default {
     editExerciseCategories() {
       let formData = new FormData(this.$refs.exerciseCategoriesForm);
       this.$axios
-        .post(
-          process.env.apiBaseUrl +
-            "panel/exercise-categories/update/" +
-            this.data._id.$oid,
-          formData,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-          }
-        )
+        .post(process.env.apiBaseUrl + "panel/exercise-categories/update/" + this.data._id.$oid, formData, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -548,7 +457,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/exercise-categories"));
+              window.location.href = decodeURIComponent("/panel/exercise-categories");
             }, 2000);
           } else {
             this.$izitoast.error({

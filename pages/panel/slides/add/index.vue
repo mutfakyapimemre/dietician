@@ -30,66 +30,26 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form
-                      @submit.prevent="handleSubmit(saveSlides)"
-                      ref="slidesForm"
-                      enctype="multipart/form-data"
-                    >
-                      <ValidationProvider
-                        name="Slayt Adı"
-                        rules="required"
-                        v-slot="{ errors }"
-                      >
+                    <form @submit.prevent="handleSubmit(saveSlides)" ref="slidesForm" enctype="multipart/form-data">
+                      <ValidationProvider name="Slayt Adı" rules="required" v-slot="{ errors }">
                         <div class="form-group">
                           <label for="title">Slayt Adı</label>
-                          <input
-                            id="title"
-                            type="text"
-                            class="form-control"
-                            name="title"
-                            v-model="title"
-                          />
-                          <small class="font-weight-bold text-danger">{{
-                            errors[0]
-                          }}</small>
+                          <input id="title" type="text" class="form-control" name="title" v-model="title" />
+                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                         </div>
                       </ValidationProvider>
-                      <ValidationProvider
-                        name="Slayt Açıklaması"
-                        rules="required"
-                        v-slot="{ errors }"
-                      >
+                      <ValidationProvider name="Slayt Açıklaması" rules="required" v-slot="{ errors }">
                         <div class="form-group">
                           <label for="description">Slayt Açıklaması</label>
-                          <textarea
-                            name="description"
-                            id="description"
-                            class="form-control"
-                            cols="30"
-                            rows="10"
-                            v-model="description"
-                          ></textarea>
-                          <small class="font-weight-bold text-danger">{{
-                            errors[0]
-                          }}</small>
+                          <textarea name="description" id="description" class="form-control" cols="30" rows="10" v-model="description"></textarea>
+                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                         </div>
                       </ValidationProvider>
                       <div class="form-group">
                         <label for="img_url">Slayt Görseli</label>
-                        <input
-                          id="img_url"
-                          type="file"
-                          class="form-control"
-                          name="img_url"
-                          required
-                        />
+                        <input id="img_url" type="file" class="form-control" name="img_url" required />
                       </div>
-                      <button
-                        class="btn btn-outline-primary rounded-0 btn-lg"
-                        type="submit"
-                      >
-                        Slaytı Kayıt Et
-                      </button>
+                      <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Slaytı Kayıt Et</button>
                     </form>
                   </ValidationObserver>
                 </div>
@@ -124,9 +84,7 @@ export default {
       title: null,
       description: null,
       userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -146,8 +104,7 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
             "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
@@ -164,7 +121,7 @@ export default {
             });
 
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/slides"));
+              window.location.href = decodeURIComponent("/panel/slides");
             }, 2000);
           } else {
             this.$izitoast.error({

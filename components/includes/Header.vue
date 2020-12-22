@@ -42,7 +42,6 @@
       <ul class="nav main-nav header-navbar-rht" v-if="isAuthenticated && userData !== null && userData !== undefined && userData !== ''">
         <li class="has-submenu nav-item my-auto py-auto">
           <a href="javascript:void(0)" class="my-auto py-auto">
-            <span v-if="userData == null">Hesabım</span>
             <img
               v-bind:src="img_url + '/public/storage/' + (userData.status === 'dietician' ? userData.profile_photo : userData.img_url)"
               width="55"

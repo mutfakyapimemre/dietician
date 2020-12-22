@@ -237,7 +237,7 @@ export default {
         position: "topCenter",
       });
       setTimeout(() => {
-        this.$router.go(decodeURIComponent("/"));
+        window.location.href = decodeURIComponent("/");
       }, 2000);
     },
     updatePassword() {
@@ -267,7 +267,7 @@ export default {
             Cookie.set("userData", Base64.encode(JSON.stringify(response.data.data)));
             localStorage.setItem("userData", Base64.encode(JSON.stringify(response.data.data)));
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/profile"));
+              window.location.href = decodeURIComponent("/profile");
             }, 2000);
           } else {
             this.$izitoast.error({

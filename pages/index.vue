@@ -240,7 +240,7 @@ export default {
       }
     },
     goToSearch() {
-      this.$router.go(decodeURIComponent("/profile"));
+      window.location.href = decodeURIComponent("/profile");
     },
   },
 };

@@ -502,7 +502,7 @@ export default {
             position: "topCenter",
           });
           setTimeout(() => {
-            this.$router.go(decodeURIComponent("/profile"));
+            window.location.href = decodeURIComponent("/profile");
           }, 2000);
         } else {
           this.$izitoast.error({
@@ -529,7 +529,7 @@ export default {
             position: "topCenter",
           });
           setTimeout(() => {
-            this.$router.go(decodeURIComponent("/dietician-login"));
+            window.location.href = decodeURIComponent("/dietician-login");
           }, 2000);
         } else {
           this.$izitoast.error({
