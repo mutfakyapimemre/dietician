@@ -30,61 +30,6 @@
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
             <div class="row">
               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card dash-card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar1">
-                            <div class="circle-graph1" data-percent="75">
-                              <img src="/img/icon-01.png" class="img-fluid" alt="patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Yakılan Kalori</h6>
-                            <h3>1500</h3>
-                            <p class="text-muted">Bugün</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar2">
-                            <div class="circle-graph2" data-percent="65">
-                              <img src="/img/icon-02.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Verilen Kilo</h6>
-                            <h3>160</h3>
-                            <p class="text-muted">Haftada</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget">
-                          <div class="circle-bar circle-bar3">
-                            <div class="circle-graph3" data-percent="50">
-                              <img src="/img/icon-03.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Yapılan Egzersiz</h6>
-                            <h3>85</h3>
-                            <p class="text-muted">Ayda</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <h4 class="mb-4">Şifre Güncelle</h4>
                 <div class="appointment-tab">
                   <!-- Appointment Tab -->
@@ -213,19 +158,6 @@ export default {
           ? this.$store.getters.loggedInUser
           : null,
     };
-  },
-  async asyncData({ app, store, route, params, error, $axios }) {
-    try {
-      if (store.getters.loggedInUser.status === "dietician") {
-        let { data } = await $axios.get(process.env.apiBaseUrl + "dietician/profile/");
-        return data;
-      } else {
-        let { data } = await $axios.get(process.env.apiBaseUrl + "users/profile/");
-        return data;
-      }
-    } catch (e) {
-      error({ message: "Kullanıcı Bilgisi Bulunamadı.", statusCode: 404 });
-    }
   },
 
   methods: {
