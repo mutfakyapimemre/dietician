@@ -30,35 +30,26 @@
       <!-- /Home Banner -->
 
       <!-- News Headline -->
-      <section class="section section-blogs py-2">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-              <client-only>
-                <carousel
-                  v-if="data.sliders !== null && data.sliders !== '' && data.sliders !== undefined && data.sliders.length > 0"
-                  :navs="true"
-                  :dots="false"
-                  :autoplay="true"
-                  :items="1"
-                  :loop="true"
-                >
-                  <img
-                    class="img-fluid"
-                    style="max-height: 450px; object-fit: cover"
-                    v-bind:key="index"
-                    v-bind:src="base_img_url + '/public/storage/' + slide.img_url"
-                    v-bind:alt="slide.title"
-                    v-for="(slide, index) in data.sliders"
-                  />
-                </carousel>
-              </client-only>
-            </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-              <h3>Reklamlar</h3>
-            </div>
-          </div>
-        </div>
+      <section class="section section-blogs py-0">
+        <client-only>
+          <carousel
+            v-if="data.sliders !== null && data.sliders !== '' && data.sliders !== undefined && data.sliders.length > 0"
+            :navs="true"
+            :dots="false"
+            :autoplay="true"
+            :items="1"
+            :loop="true"
+          >
+            <img
+              class="img-fluid"
+              style="max-height: 500px; object-fit: cover"
+              v-bind:key="index"
+              v-bind:src="base_img_url + '/public/storage/' + slide.img_url"
+              v-bind:alt="slide.title"
+              v-for="(slide, index) in data.sliders"
+            />
+          </carousel>
+        </client-only>   
       </section>
       <!-- News Headline -->
 

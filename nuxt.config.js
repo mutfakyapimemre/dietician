@@ -7,10 +7,10 @@ export default {
   //mode: 'universal',
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    //apiBaseUrl: "https://api.klinikdiyetisyen.com/api/",
-    apiBaseUrl: "http://192.168.1.45/dietician/api/",
-    //apiPublicUrl:"https://api.klinikdiyetisyen.com/"
-    apiPublicUrl:"http://192.168.1.45/dietician/"
+    apiBaseUrl: "https://api.klinikdiyetisyen.com/api/",
+    //apiBaseUrl: "http://192.168.1.45/dietician/api/",
+    apiPublicUrl:"https://api.klinikdiyetisyen.com/"
+    //apiPublicUrl:"http://192.168.1.45/dietician/"
   },
   server: {
     port: 3000, // default: 3000
