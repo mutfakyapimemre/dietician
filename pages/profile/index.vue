@@ -28,9 +28,13 @@
           </div>
 
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="mb-4">Kayıt Bilgileri</h4>
+            <div class="card card-table mb-0">
+              <div class="card-header">
+                <div class="card-title my-0">
+                  <h4 class="my-0">Kayıt Bilgileri</h4>
+                </div>
+              </div>
+              <div class="card-body">
                 <div class="appointment-tab">
                   <!-- Appointment Tab -->
                   <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
@@ -46,9 +50,219 @@
                   <div class="tab-content">
                     <!-- Upcoming Appointment Tab -->
                     <div class="tab-pane show active" id="kayit_bilgilerim">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <div class="table-responsive bg-light">
+                      <div class="table-responsive bg-light">
+                        <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <b>Ad Soyad :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.name }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Cinsiyet :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.gender }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>İkamet Ettiğiniz İl :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.city }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>İkamet Ettiğiniz İlçe :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.town }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>İkamet Ettiğiniz Semt :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.district }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>İkamet Ettiğiniz Mahalle :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.neighborhood }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>İkamet Ettiğiniz Adres :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.address }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Doğum Tarihi :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.birthDate }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Boy (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.size }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Ağırlık (kg) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.weight }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Bel (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.waist }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Kalça (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.hip }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Göğüs (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.chest }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Boyun (cm) : </b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.neck }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Üst Kol (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.upperArm }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Alt Kol (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.lowerArm }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Kol Bileği (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.wrist }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Üst Bacak (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.upperLeg }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Alt Bacak (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.lowerLeg }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Deri Kıvrım Kalınlığı (cm) :</b>
+                              </td>
+                              <td colspan="2">
+                                {{ userData.skinfoldThickness }}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Yağ :</b>
+                              </td>
+                              <td>
+                                %
+                                {{ userData.fatRatio }}
+                              </td>
+                              <td>
+                                {{ userData.fat }}
+                                KG
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Kas :</b>
+                              </td>
+                              <td>
+                                %
+                                {{ userData.muscleRatio }}
+                              </td>
+                              <td>
+                                {{ userData.muscle }}
+                                KG
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Su :</b>
+                              </td>
+                              <td>
+                                %
+                                {{ userData.waterRatio }}
+                              </td>
+                              <td>
+                                {{ userData.water }}
+                                KG
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /Upcoming Appointment Tab -->
+
+                    <!-- Today Appointment Tab -->
+                    <div class="tab-pane" id="kayit_bilgisi_duzenle">
+                      <ValidationObserver v-slot="{ handleSubmit }">
+                        <form @submit.prevent="handleSubmit(updateInformation)" ref="informationForm" enctype="multipart/form-data">
+                          <div class="table-responsive">
                             <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
                               <tbody>
                                 <tr>
@@ -56,7 +270,10 @@
                                     <b>Ad Soyad :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.name }}
+                                    <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{ errors }">
+                                      <input id="name" type="text" class="form-control" name="name" v-model="userData.name" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -64,7 +281,17 @@
                                     <b>Cinsiyet :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.gender }}
+                                    <ValidationProvider name="Cinsiyetiniz" rules="required" v-slot="{ errors }">
+                                      <v-radio-group v-model="userData.gender" name="gender" row>
+                                        <v-radio value="Erkek">
+                                          <template v-slot:label> Erkek </template>
+                                        </v-radio>
+                                        <v-radio value="Kadın">
+                                          <template v-slot:label> Kadın </template>
+                                        </v-radio>
+                                      </v-radio-group>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -72,7 +299,15 @@
                                     <b>İkamet Ettiğiniz İl :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.city }}
+                                    <ValidationProvider name="İkamet Ettiğiniz İl" rules="required" v-slot="{ errors }">
+                                      <select v-on:change="getTowns" name="city" id="city" class="form-control" v-if="country.cities !== null && country.cities !== undefined && country.cities !== '' && country.cities.length > 0" ref="city">
+                                        <option :value="null" :selected="userData.city === null || userData.city === undefined || userData.city === ''">İl Seçiniz.</option>
+                                        <option v-bind:data-id="city.towns" :value="city.name" v-bind:key="index" v-for="(city, index) in country.cities" :selected="userData.city === city.name">
+                                          {{ city.name }}
+                                        </option>
+                                      </select>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -80,7 +315,16 @@
                                     <b>İkamet Ettiğiniz İlçe :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.town }}
+                                    <ValidationProvider name="İkamet Ettiğiniz İlçe" rules="required" v-slot="{ errors }">
+                                      <select v-on:change="getDistricts" name="town" id="town" class="form-control" ref="town">
+                                        <option :value="null" v-if="country.towns.length > 0" selected>İlçe Seçiniz.</option>
+                                        <option :value="null" v-else-if="country.towns.length <= 0" selected>Önce İl Seçiniz.</option>
+                                        <option v-bind:data-id="town.districts" :value="town.name" v-bind:key="index" v-for="(town, index) in country.towns" :selected="town.name === userData.town">
+                                          {{ town.name }}
+                                        </option>
+                                      </select>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -88,7 +332,16 @@
                                     <b>İkamet Ettiğiniz Semt :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.district }}
+                                    <ValidationProvider name="İkamet Ettiğiniz Semt" rules="required" v-slot="{ errors }">
+                                      <select v-on:change="getNeighborhoods" name="district" id="district" class="form-control" ref="district">
+                                        <option :value="null" v-if="country.districts.length > 0" selected>Semt Seçiniz.</option>
+                                        <option :value="userData.district" v-else-if="country.districts.length <= 0" selected>Önce İlçe Seçiniz.</option>
+                                        <option v-bind:data-id="district.neighborhoods" :value="district.name" v-bind:key="index" v-for="(district, index) in country.districts" :selected="district.name === userData.district">
+                                          {{ district.name }}
+                                        </option>
+                                      </select>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -96,7 +349,16 @@
                                     <b>İkamet Ettiğiniz Mahalle :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.neighborhood }}
+                                    <ValidationProvider name="İkamet Ettiğiniz Mahalle" rules="required" v-slot="{ errors }">
+                                      <select name="neighborhood" id="neighborhood" class="form-control" ref="neighborhood">
+                                        <option :value="null" v-if="country.neighborhoods.length > 0" selected="selected">Mahalle Seçiniz.</option>
+                                        <option :value="userData.neighborhood" v-else-if="country.neighborhoods.length <= 0" selected="selected">Önce Semt Seçiniz.</option>
+                                        <option :value="neighborhood.name" v-bind:key="index" v-for="(neighborhood, index) in country.neighborhoods" :selected="neighborhood.name === userData.neighborhood">
+                                          {{ neighborhood.name }}
+                                        </option>
+                                      </select>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -104,7 +366,10 @@
                                     <b>İkamet Ettiğiniz Adres :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.address }}
+                                    <ValidationProvider name="İkamet Ettiğiniz Adres" rules="required" v-slot="{ errors }">
+                                      <textarea name="address" id="address" class="form-control" cols="30" rows="5" v-model="userData.address"></textarea>
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -112,7 +377,10 @@
                                     <b>Doğum Tarihi :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.birthDate }}
+                                    <ValidationProvider name="Doğum Tarihi" rules="required" v-slot="{ errors }">
+                                      <input type="date" class="form-control" name="birthDate" placeholder="Doğum Tarihi" v-model="userData.birthDate" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -120,7 +388,10 @@
                                     <b>Boy (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.size }}
+                                    <ValidationProvider name="Boy (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="size" id="size" class="form-control" v-model="userData.size" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -128,7 +399,10 @@
                                     <b>Ağırlık (kg) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.weight }}
+                                    <ValidationProvider name="Ağırlık (kg)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="weight" id="weight" class="form-control" v-model="userData.weight" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -136,7 +410,10 @@
                                     <b>Bel (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.waist }}
+                                    <ValidationProvider name="Bel (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="waist" id="waist" class="form-control" v-model="userData.waist" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -144,7 +421,10 @@
                                     <b>Kalça (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.hip }}
+                                    <ValidationProvider name="Kalça (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="hip" id="hip" class="form-control" v-model="userData.hip" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -152,7 +432,10 @@
                                     <b>Göğüs (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.chest }}
+                                    <ValidationProvider name="Göğüs (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="chest" id="chest" class="form-control" v-model="userData.chest" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -160,7 +443,10 @@
                                     <b>Boyun (cm) : </b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.neck }}
+                                    <ValidationProvider name="Boyun (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="neck" id="neck" class="form-control" v-model="userData.neck" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -168,7 +454,10 @@
                                     <b>Üst Kol (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.upperArm }}
+                                    <ValidationProvider name="Üst Kol (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="userData.upperArm" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -176,7 +465,10 @@
                                     <b>Alt Kol (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.lowerArm }}
+                                    <ValidationProvider name="Alt Kol (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="userData.lowerArm" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -184,7 +476,10 @@
                                     <b>Kol Bileği (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.wrist }}
+                                    <ValidationProvider name="Kol Bileği (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="wrist" id="wrist" class="form-control" v-model="userData.wrist" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -192,7 +487,10 @@
                                     <b>Üst Bacak (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.upperLeg }}
+                                    <ValidationProvider name="Üst Bacak (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="userData.upperLeg" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -200,7 +498,10 @@
                                     <b>Alt Bacak (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.lowerLeg }}
+                                    <ValidationProvider name="Alt Bacak (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="userData.lowerLeg" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -208,7 +509,10 @@
                                     <b>Deri Kıvrım Kalınlığı (cm) :</b>
                                   </td>
                                   <td colspan="2">
-                                    {{ userData.skinfoldThickness }}
+                                    <ValidationProvider name="Deri Kıvrım Kalınlığı (cm)" rules="required" v-slot="{ errors }">
+                                      <input type="number" name="skinfoldThickness" id="skinfoldThickness" class="form-control" v-model="userData.skinfoldThickness" />
+                                      <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                    </ValidationProvider>
                                   </td>
                                 </tr>
                                 <tr>
@@ -250,346 +554,38 @@
                                     KG
                                   </td>
                                 </tr>
+                                <tr>
+                                  <td>
+                                    <b>Profil Resminiz :</b>
+                                  </td>
+                                  <td colspan="2" class="align-middle">
+                                    <div class="row">
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
+                                        <img v-bind:src="img_url + '/public/storage/' + userData.img_url" class="img-fluid rounded-profile" alt="Profil Resminiz" />
+                                      </div>
+                                      <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
+                                        <input type="file" class="form-control" accept="image/*" placeholder="Profil Resminiz" name="img_url" />
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
                               </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="3">
+                                    <div class="form-group">
+                                      <button class="btn btn-primary login-btn text-white float-right" type="submit">Bilgilerimi Güncelle</button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tfoot>
                             </table>
                           </div>
-                        </div>
-                      </div>
+                        </form>
+                      </ValidationObserver>
                     </div>
-                    <!-- /Upcoming Appointment Tab -->
-
-                    <!-- Today Appointment Tab -->
-                    <div class="tab-pane" id="kayit_bilgisi_duzenle">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <ValidationObserver v-slot="{ handleSubmit }">
-                            <form @submit.prevent="handleSubmit(updateInformation)" ref="informationForm" enctype="multipart/form-data">
-                              <div class="table-responsive">
-                                <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
-                                  <tbody>
-                                    <tr>
-                                      <td>
-                                        <b>Ad Soyad :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{ errors }">
-                                          <input id="name" type="text" class="form-control" name="name" v-model="userData.name" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Cinsiyet :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Cinsiyetiniz" rules="required" v-slot="{ errors }">
-                                          <v-radio-group v-model="userData.gender" name="gender" row>
-                                            <v-radio value="Erkek">
-                                              <template v-slot:label> Erkek </template>
-                                            </v-radio>
-                                            <v-radio value="Kadın">
-                                              <template v-slot:label> Kadın </template>
-                                            </v-radio>
-                                          </v-radio-group>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İkamet Ettiğiniz İl :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz İl" rules="required" v-slot="{ errors }">
-                                          <select v-on:change="getTowns" name="city" id="city" class="form-control" v-if="country.cities !== null && country.cities !== undefined && country.cities !== '' && country.cities.length > 0" ref="city">
-                                            <option :value="null" :selected="userData.city === null || userData.city === undefined || userData.city === ''">İl Seçiniz.</option>
-                                            <option v-bind:data-id="city.towns" :value="city.name" v-bind:key="index" v-for="(city, index) in country.cities" :selected="userData.city === city.name">
-                                              {{ city.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İkamet Ettiğiniz İlçe :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz İlçe" rules="required" v-slot="{ errors }">
-                                          <select v-on:change="getDistricts" name="town" id="town" class="form-control" ref="town">
-                                            <option :value="null" v-if="country.towns.length > 0" selected>İlçe Seçiniz.</option>
-                                            <option :value="null" v-else-if="country.towns.length <= 0" selected>Önce İl Seçiniz.</option>
-                                            <option v-bind:data-id="town.districts" :value="town.name" v-bind:key="index" v-for="(town, index) in country.towns" :selected="town.name === userData.town">
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İkamet Ettiğiniz Semt :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Semt" rules="required" v-slot="{ errors }">
-                                          <select v-on:change="getNeighborhoods" name="district" id="district" class="form-control" ref="district">
-                                            <option :value="null" v-if="country.districts.length > 0" selected>Semt Seçiniz.</option>
-                                            <option :value="userData.district" v-else-if="country.districts.length <= 0" selected>Önce İlçe Seçiniz.</option>
-                                            <option v-bind:data-id="district.neighborhoods" :value="district.name" v-bind:key="index" v-for="(district, index) in country.districts" :selected="district.name === userData.district">
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İkamet Ettiğiniz Mahalle :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Mahalle" rules="required" v-slot="{ errors }">
-                                          <select name="neighborhood" id="neighborhood" class="form-control" ref="neighborhood">
-                                            <option :value="null" v-if="country.neighborhoods.length > 0" selected="selected">Mahalle Seçiniz.</option>
-                                            <option :value="userData.neighborhood" v-else-if="country.neighborhoods.length <= 0" selected="selected">Önce Semt Seçiniz.</option>
-                                            <option :value="neighborhood.name" v-bind:key="index" v-for="(neighborhood, index) in country.neighborhoods" :selected="neighborhood.name === userData.neighborhood">
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İkamet Ettiğiniz Adres :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Adres" rules="required" v-slot="{ errors }">
-                                          <textarea name="address" id="address" class="form-control" cols="30" rows="5" v-model="userData.address"></textarea>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Doğum Tarihi :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Doğum Tarihi" rules="required" v-slot="{ errors }">
-                                          <input type="date" class="form-control" name="birthDate" placeholder="Doğum Tarihi" v-model="userData.birthDate" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Boy (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Boy (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="size" id="size" class="form-control" v-model="userData.size" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Ağırlık (kg) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Ağırlık (kg)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="weight" id="weight" class="form-control" v-model="userData.weight" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Bel (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Bel (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="waist" id="waist" class="form-control" v-model="userData.waist" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Kalça (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Kalça (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="hip" id="hip" class="form-control" v-model="userData.hip" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Göğüs (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Göğüs (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="chest" id="chest" class="form-control" v-model="userData.chest" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Boyun (cm) : </b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Boyun (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="neck" id="neck" class="form-control" v-model="userData.neck" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Üst Kol (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Üst Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="userData.upperArm" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Alt Kol (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Alt Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="userData.lowerArm" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Kol Bileği (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Kol Bileği (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="wrist" id="wrist" class="form-control" v-model="userData.wrist" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Üst Bacak (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Üst Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="userData.upperLeg" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Alt Bacak (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Alt Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="userData.lowerLeg" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Deri Kıvrım Kalınlığı (cm) :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Deri Kıvrım Kalınlığı (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="skinfoldThickness" id="skinfoldThickness" class="form-control" v-model="userData.skinfoldThickness" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Yağ :</b>
-                                      </td>
-                                      <td>
-                                        %
-                                        {{ userData.fatRatio }}
-                                      </td>
-                                      <td>
-                                        {{ userData.fat }}
-                                        KG
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Kas :</b>
-                                      </td>
-                                      <td>
-                                        %
-                                        {{ userData.muscleRatio }}
-                                      </td>
-                                      <td>
-                                        {{ userData.muscle }}
-                                        KG
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Su :</b>
-                                      </td>
-                                      <td>
-                                        %
-                                        {{ userData.waterRatio }}
-                                      </td>
-                                      <td>
-                                        {{ userData.water }}
-                                        KG
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>Profil Resminiz :</b>
-                                      </td>
-                                      <td colspan="2" class="align-middle">
-                                        <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
-                                            <img v-bind:src="img_url + '/public/storage/' + userData.img_url" class="img-fluid rounded-profile" alt="Profil Resminiz" />
-                                          </div>
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
-                                            <input type="file" class="form-control" accept="image/*" placeholder="Profil Resminiz" name="img_url" />
-                                          </div>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                  <tfoot>
-                                    <tr>
-                                      <td colspan="3">
-                                        <div class="form-group">
-                                          <button class="btn btn-primary login-btn text-white float-right" type="submit">Bilgilerimi Güncelle</button>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tfoot>
-                                </table>
-                              </div>
-                            </form>
-                          </ValidationObserver>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Today Appointment Tab -->
                   </div>
+                  
                 </div>
               </div>
             </div>
