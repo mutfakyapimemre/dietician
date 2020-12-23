@@ -24,7 +24,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-            <Sidebar></Sidebar>
+            <Sidebar v-if="userData.status !== 'dietician'"></Sidebar>
+            <DieticianSidebar v-else-if="userData.status === 'dietician'"></DieticianSidebar>
           </div>
 
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
@@ -111,6 +112,7 @@ import { Base64 } from "js-base64";
 import $ from "jquery";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import Sidebar from "~/components/includes/Sidebar";
+import DieticianSidebar from "~/components/includes/DieticianSidebar";
 
 export default {
   middleware: ["session-control", "guest"],
@@ -118,6 +120,8 @@ export default {
   components: {
     ValidationObserver,
     ValidationProvider,
+    Sidebar,
+    DieticianSidebar
   },
   computed: {
     img_url() {

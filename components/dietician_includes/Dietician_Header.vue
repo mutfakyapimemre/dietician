@@ -63,6 +63,7 @@
       </li>
       <!-- /Notifications -->
 
+
       <!-- User Menu -->
       <li class="nav-item dropdown has-arrow">
         <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -77,11 +78,11 @@
             </div>
             <div class="user-text">
               <h6><span v-if="userData !== null">{{ userData.name }}</span></h6>
-              <p class="text-muted mb-0">Diyetisyen</p>
+              <p class="text-muted mb-0">{{userData.department}}</p>
             </div>
           </div>
           <nuxt-link v-if="userData !==null && userData._id !== null" class="dropdown-item" to="/profile">Profilim</nuxt-link>
-          <nuxt-link class="dropdown-item" tag="a" to="/dietician-panel/settings">Ayarlar</nuxt-link>
+          <nuxt-link class="dropdown-item" tag="a" to="/panel/settings">Ayarlar</nuxt-link>
           <a class="dropdown-item" href="javascript:void(0)" @click="logout">Çıkış Yap</a>
         </div>
       </li>
