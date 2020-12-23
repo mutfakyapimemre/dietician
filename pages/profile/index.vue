@@ -48,7 +48,7 @@
                     <div class="tab-pane show active" id="kayit_bilgilerim">
                       <div class="card card-table mb-0">
                         <div class="card-body">
-                          <div class="table-responsive bg-light mt-5">
+                          <div class="table-responsive bg-light">
                             <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
                               <tbody>
                                 <tr>
@@ -264,7 +264,7 @@
                         <div class="card-body">
                           <ValidationObserver v-slot="{ handleSubmit }">
                             <form @submit.prevent="handleSubmit(updateInformation)" ref="informationForm" enctype="multipart/form-data">
-                              <div class="table-responsive mt-5">
+                              <div class="table-responsive">
                                 <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
                                   <tbody>
                                     <tr>

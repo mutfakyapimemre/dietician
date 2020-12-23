@@ -28,86 +28,70 @@
           </div>
 
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="mb-4">Sosyal Medya</h4>
-                <div class="appointment-tab">
-                  <!-- Appointment Tab -->
-                  <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#sosyal_medya" data-toggle="tab">Sosyal Medya</a>
-                    </li>
-                  </ul>
-                  <!-- /Appointment Tab -->
-
-                  <div class="tab-content">
-                    <!-- Today Appointment Tab -->
-                    <div class="tab-pane show active" id="sosyal_medya">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <ValidationObserver v-slot="{ handleSubmit }">
-                            <form @submit.prevent="handleSubmit(updateSocialMedia)" ref="socialMediaUpdateForm" enctype="multipart/form-data">
-                              <div class="table-responsive mt-5">
-                                <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Facebook :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="facebook" id="facebook" class="form-control" v-model="userData.facebook" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Instagram :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="instagram" id="instagram" class="form-control" v-model="userData.instagram" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Linkedin :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="linkedin" id="linkedin" class="form-control" v-model="userData.linkedin" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Twitter :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="twitter" id="twitter" class="form-control" v-model="userData.twitter" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Youtube :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="youtube" id="youtube" class="form-control" v-model="userData.youtube" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Medium :</b></td>
-                                      <td colspan="2">
-                                        <input type="text" name="medium" id="medium" class="form-control" v-model="userData.medium" />
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                  <tfoot>
-                                    <tr>
-                                      <td colspan="3">
-                                        <div class="form-group">
-                                          <button class="btn btn-green-light float-right" type="submit">Sosyal Medya Bilgilerimi Güncelle</button>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tfoot>
-                                </table>
-                              </div>
-                            </form>
-                          </ValidationObserver>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Today Appointment Tab -->
+              <div class="card card-table my-0">
+                <div class="card-header">
+                  <div class="card-title my-auto">
+                    <h4 class="my-auto">Sosyal Medya Ayarlarım</h4>
                   </div>
                 </div>
+                <div class="card-body">
+                  <ValidationObserver v-slot="{ handleSubmit }">
+                    <form @submit.prevent="handleSubmit(updateSocialMedia)" ref="socialMediaUpdateForm" enctype="multipart/form-data">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                          <tbody>
+                            <tr>
+                              <td><b>Facebook :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="facebook" id="facebook" class="form-control" v-model="userData.facebook" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><b>Instagram :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="instagram" id="instagram" class="form-control" v-model="userData.instagram" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><b>Linkedin :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="linkedin" id="linkedin" class="form-control" v-model="userData.linkedin" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><b>Twitter :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="twitter" id="twitter" class="form-control" v-model="userData.twitter" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><b>Youtube :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="youtube" id="youtube" class="form-control" v-model="userData.youtube" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><b>Medium :</b></td>
+                              <td colspan="2">
+                                <input type="text" name="medium" id="medium" class="form-control" v-model="userData.medium" />
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="3">
+                                <div class="form-group">
+                                  <button class="btn btn-green-light float-right" type="submit">Sosyal Medya Bilgilerimi Güncelle</button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </form>
+                  </ValidationObserver>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

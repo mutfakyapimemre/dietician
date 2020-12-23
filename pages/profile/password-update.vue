@@ -28,89 +28,73 @@
           </div>
 
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="mb-4">Şifre Güncelle</h4>
-                <div class="appointment-tab">
-                  <!-- Appointment Tab -->
-                  <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#sifre_guncelle" data-toggle="tab">Şifre Güncelle</a>
-                    </li>
-                  </ul>
-                  <!-- /Appointment Tab -->
-
-                  <div class="tab-content">
-                    <!-- Today Appointment Tab -->
-                    <div class="tab-pane show active" id="sifre_guncelle">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <ValidationObserver v-slot="{ handleSubmit }">
-                            <form @submit.prevent="handleSubmit(updatePassword)" ref="passwordUpdateForm" enctype="multipart/form-data">
-                              <div class="table-responsive mt-5">
-                                <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Mevcut Şifreniz :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Mevcut Şifreniz" rules="required" v-slot="{ errors }">
-                                          <input
-                                            type="password"
-                                            name="current_password"
-                                            id="current_password"
-                                            class="form-control"
-                                            required
-                                            v-model="current_password"
-                                          />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Yeni Şifreniz :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Yeni Şifreniz" rules="required" v-slot="{ errors }">
-                                          <input type="password" name="password" id="password" class="form-control" required v-model="password" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Tekrar Yeni Şifreniz :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Tekrar Yeni Şifreniz" rules="required" v-slot="{ errors }">
-                                          <input
-                                            type="password"
-                                            name="password_confirmation"
-                                            id="password_confirmation"
-                                            class="form-control"
-                                            required
-                                            v-model="password_confirmation"
-                                          />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                  <tfoot>
-                                    <tr>
-                                      <td colspan="3">
-                                        <div class="form-group">
-                                          <button class="btn btn-green-light float-right" type="submit">Şifremi Güncelle</button>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tfoot>
-                                </table>
-                              </div>
-                            </form>
-                          </ValidationObserver>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Today Appointment Tab -->
-                  </div>
+            <div class="card card-table">
+              <div class="card-header">
+                <div class="card-title my-auto">
+                  <h4 class="my-auto">Şifre Güncelle</h4>
                 </div>
+              </div>
+              <div class="card-body">
+                <ValidationObserver v-slot="{ handleSubmit }">
+                  <form @submit.prevent="handleSubmit(updatePassword)" ref="passwordUpdateForm" enctype="multipart/form-data">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                        <tbody>
+                          <tr>
+                            <td><b>Mevcut Şifreniz :</b></td>
+                            <td colspan="2">
+                              <ValidationProvider name="Mevcut Şifreniz" rules="required" v-slot="{ errors }">
+                                <input
+                                  type="password"
+                                  name="current_password"
+                                  id="current_password"
+                                  class="form-control"
+                                  required
+                                  v-model="current_password"
+                                />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                              </ValidationProvider>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><b>Yeni Şifreniz :</b></td>
+                            <td colspan="2">
+                              <ValidationProvider name="Yeni Şifreniz" rules="required" v-slot="{ errors }">
+                                <input type="password" name="password" id="password" class="form-control" required v-model="password" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                              </ValidationProvider>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><b>Tekrar Yeni Şifreniz :</b></td>
+                            <td colspan="2">
+                              <ValidationProvider name="Tekrar Yeni Şifreniz" rules="required" v-slot="{ errors }">
+                                <input
+                                  type="password"
+                                  name="password_confirmation"
+                                  id="password_confirmation"
+                                  class="form-control"
+                                  required
+                                  v-model="password_confirmation"
+                                />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                              </ValidationProvider>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="3">
+                              <div class="form-group">
+                                <button class="btn btn-green-light float-right" type="submit">Şifremi Güncelle</button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </form>
+                </ValidationObserver>
               </div>
             </div>
           </div>

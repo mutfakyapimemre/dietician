@@ -41,10 +41,10 @@
               <span>Diyet Listesi</span>
             </a>
           </nuxt-link>
-          <nuxt-link to="/profile/dietician-list" tag="li" active-class="active">
+          <nuxt-link to="/profile/my-dietician" tag="li" active-class="active">
             <a>
               <i class="fa fa-user-md"></i>
-              <span>Diyetisyenlerim</span>
+              <span>Diyetisyenim</span>
             </a>
           </nuxt-link>
           <nuxt-link to="/profile/liked-foods-list" tag="li" active-class="active">
