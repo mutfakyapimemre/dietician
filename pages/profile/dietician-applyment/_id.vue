@@ -38,16 +38,11 @@
 
                       <v-card-subtitle>Lütfen e-mail veya sms yolu ile iletilen kodu girip diyetisyen onay işlemini tamamlayın.</v-card-subtitle>
                       <ValidationProvider name="Tekrar Yeni Şifreniz" rules="required" v-slot="{ errors }">
-                        <v-text-field
-                          label="Lütfen 6 Haneli Onay Kodunuzu Girin..."
-                          hide-details="auto"
-                          class="px-3"
-                          v-model="dietician_check"
-                        ></v-text-field>
+                        <v-text-field label="Lütfen 6 Haneli Onay Kodunuzu Girin..." hide-details="auto" class="px-3" name="dietician_check" v-model="dietician_check"></v-text-field>
                         <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                       </ValidationProvider>
                       <v-card-actions>
-                        <button type="submit" class="btn btn-default">Diyetisyeni Onayla</button>
+                        <v-btn type="submit" text>Diyetisyeni Onayla</v-btn>
                       </v-card-actions>
                     </v-card>
                   </form>
@@ -90,12 +85,7 @@ export default {
   data() {
     return {
       dietician_check: null,
-      userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
-          ? JSON.parse(Base64.decode(Cookie.get("userData")))
-          : this.$store.getters.loggedInUser !== undefined && this.$store.getters.loggedInUser !== null && this.$store.getters.loggedInUser !== ""
-          ? this.$store.getters.loggedInUser
-          : null,
+      userData: Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== "" ? JSON.parse(Base64.decode(Cookie.get("userData"))) : this.$store.getters.loggedInUser !== undefined && this.$store.getters.loggedInUser !== null && this.$store.getters.loggedInUser !== "" ? this.$store.getters.loggedInUser : null,
     };
   },
   async asyncData({ app, store, route, params, error, $axios }) {

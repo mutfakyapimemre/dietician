@@ -52,101 +52,203 @@
                             <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
                               <tbody>
                                 <tr>
-                                  <td><b>Ad Soyad :</b></td>
-                                  <td colspan="2">{{ userData.name }}</td>
+                                  <td>
+                                    <b>Ad Soyad :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.name }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Cinsiyet :</b></td>
-                                  <td colspan="2">{{ userData.gender }}</td>
+                                  <td>
+                                    <b>Cinsiyet :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.gender }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>İkamet Ettiğiniz İl :</b></td>
-                                  <td colspan="2">{{ userData.city }}</td>
+                                  <td>
+                                    <b>İkamet Ettiğiniz İl :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.city }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>İkamet Ettiğiniz İlçe :</b></td>
-                                  <td colspan="2">{{ userData.town }}</td>
+                                  <td>
+                                    <b>İkamet Ettiğiniz İlçe :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.town }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>İkamet Ettiğiniz Semt :</b></td>
-                                  <td colspan="2">{{ userData.district }}</td>
+                                  <td>
+                                    <b>İkamet Ettiğiniz Semt :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.district }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>İkamet Ettiğiniz Mahalle :</b></td>
-                                  <td colspan="2">{{ userData.neighborhood }}</td>
+                                  <td>
+                                    <b>İkamet Ettiğiniz Mahalle :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.neighborhood }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>İkamet Ettiğiniz Adres :</b></td>
-                                  <td colspan="2">{{ userData.address }}</td>
+                                  <td>
+                                    <b>İkamet Ettiğiniz Adres :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.address }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Doğum Tarihi :</b></td>
-                                  <td colspan="2">{{ userData.birthDate }}</td>
+                                  <td>
+                                    <b>Doğum Tarihi :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.birthDate }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Boy (cm) :</b></td>
-                                  <td colspan="2">{{ userData.size }}</td>
+                                  <td>
+                                    <b>Boy (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.size }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Ağırlık (kg) :</b></td>
-                                  <td colspan="2">{{ userData.weight }}</td>
+                                  <td>
+                                    <b>Ağırlık (kg) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.weight }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Bel (cm) :</b></td>
-                                  <td colspan="2">{{ userData.waist }}</td>
+                                  <td>
+                                    <b>Bel (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.waist }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Kalça (cm) :</b></td>
-                                  <td colspan="2">{{ userData.hip }}</td>
+                                  <td>
+                                    <b>Kalça (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.hip }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Göğüs (cm) :</b></td>
-                                  <td colspan="2">{{ userData.chest }}</td>
+                                  <td>
+                                    <b>Göğüs (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.chest }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Boyun (cm) : </b></td>
-                                  <td colspan="2">{{ userData.neck }}</td>
+                                  <td>
+                                    <b>Boyun (cm) : </b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.neck }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Üst Kol (cm) :</b></td>
-                                  <td colspan="2">{{ userData.upperArm }}</td>
+                                  <td>
+                                    <b>Üst Kol (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.upperArm }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Alt Kol (cm) :</b></td>
-                                  <td colspan="2">{{ userData.lowerArm }}</td>
+                                  <td>
+                                    <b>Alt Kol (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.lowerArm }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Kol Bileği (cm) :</b></td>
-                                  <td colspan="2">{{ userData.wrist }}</td>
+                                  <td>
+                                    <b>Kol Bileği (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.wrist }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Üst Bacak (cm) :</b></td>
-                                  <td colspan="2">{{ userData.upperLeg }}</td>
+                                  <td>
+                                    <b>Üst Bacak (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.upperLeg }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Alt Bacak (cm) :</b></td>
-                                  <td colspan="2">{{ userData.lowerLeg }}</td>
+                                  <td>
+                                    <b>Alt Bacak (cm) :</b>
+                                  </td>
+                                  <td colspan="2">
+                                    {{ userData.lowerLeg }}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Deri Kıvrım Kalınlığı (cm) :</b></td>
+                                  <td>
+                                    <b>Deri Kıvrım Kalınlığı (cm) :</b>
+                                  </td>
                                   <td colspan="2">
                                     {{ userData.skinfoldThickness }}
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Yağ :</b></td>
-                                  <td>% {{ userData.fatRatio }}</td>
-                                  <td>{{ userData.fat }} KG</td>
+                                  <td>
+                                    <b>Yağ :</b>
+                                  </td>
+                                  <td>
+                                    %
+                                    {{ userData.fatRatio }}
+                                  </td>
+                                  <td>
+                                    {{ userData.fat }}
+                                    KG
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Kas :</b></td>
-                                  <td>% {{ userData.muscleRatio }}</td>
-                                  <td>{{ userData.muscle }} KG</td>
+                                  <td>
+                                    <b>Kas :</b>
+                                  </td>
+                                  <td>
+                                    %
+                                    {{ userData.muscleRatio }}
+                                  </td>
+                                  <td>
+                                    {{ userData.muscle }}
+                                    KG
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td><b>Su :</b></td>
-                                  <td>% {{ userData.waterRatio }}</td>
-                                  <td>{{ userData.water }} KG</td>
+                                  <td>
+                                    <b>Su :</b>
+                                  </td>
+                                  <td>
+                                    %
+                                    {{ userData.waterRatio }}
+                                  </td>
+                                  <td>
+                                    {{ userData.water }}
+                                    KG
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -166,7 +268,9 @@
                                 <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
                                   <tbody>
                                     <tr>
-                                      <td><b>Ad Soyad :</b></td>
+                                      <td>
+                                        <b>Ad Soyad :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{ errors }">
                                           <input id="name" type="text" class="form-control" name="name" v-model="userData.name" />
@@ -175,7 +279,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Cinsiyet :</b></td>
+                                      <td>
+                                        <b>Cinsiyet :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Cinsiyetiniz" rules="required" v-slot="{ errors }">
                                           <v-radio-group v-model="userData.gender" name="gender" row>
@@ -191,29 +297,14 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>İkamet Ettiğiniz İl :</b></td>
+                                      <td>
+                                        <b>İkamet Ettiğiniz İl :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="İkamet Ettiğiniz İl" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getTowns"
-                                            name="city"
-                                            id="city"
-                                            class="form-control"
-                                            v-model="userData.city"
-                                            v-if="
-                                              country.cities !== null &&
-                                              country.cities !== undefined &&
-                                              country.cities !== '' &&
-                                              country.cities.length > 0
-                                            "
-                                          >
-                                            <option :value="null" selected>İl Seçiniz.</option>
-                                            <option
-                                              v-bind:data-id="city.towns"
-                                              :value="city.name"
-                                              v-bind:key="index"
-                                              v-for="(city, index) in country.cities"
-                                            >
+                                          <select v-on:change="getTowns" name="city" id="city" class="form-control" v-if="country.cities !== null && country.cities !== undefined && country.cities !== '' && country.cities.length > 0" ref="city">
+                                            <option :value="null" :selected="userData.city === null || userData.city === undefined || userData.city === ''">İl Seçiniz.</option>
+                                            <option v-bind:data-id="city.towns" :value="city.name" v-bind:key="index" v-for="(city, index) in country.cities" :selected="userData.city === city.name">
                                               {{ city.name }}
                                             </option>
                                           </select>
@@ -222,30 +313,15 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>İkamet Ettiğiniz İlçe :</b></td>
+                                      <td>
+                                        <b>İkamet Ettiğiniz İlçe :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="İkamet Ettiğiniz İlçe" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getDistricts"
-                                            name="town"
-                                            id="town"
-                                            class="form-control"
-                                            v-model="userData.town"
-                                            v-if="
-                                              country.towns !== null &&
-                                              country.towns !== undefined &&
-                                              country.towns !== '' &&
-                                              country.towns.length > 0
-                                            "
-                                          >
+                                          <select v-on:change="getDistricts" name="town" id="town" class="form-control" ref="town">
                                             <option :value="null" v-if="country.towns.length > 0" selected>İlçe Seçiniz.</option>
                                             <option :value="null" v-else-if="country.towns.length <= 0" selected>Önce İl Seçiniz.</option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              :value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in country.towns"
-                                            >
+                                            <option v-bind:data-id="town.districts" :value="town.name" v-bind:key="index" v-for="(town, index) in country.towns" :selected="town.name === userData.town">
                                               {{ town.name }}
                                             </option>
                                           </select>
@@ -254,32 +330,15 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>İkamet Ettiğiniz Semt :</b></td>
+                                      <td>
+                                        <b>İkamet Ettiğiniz Semt :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="İkamet Ettiğiniz Semt" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getNeighborhoods"
-                                            name="district"
-                                            id="district"
-                                            class="form-control"
-                                            v-model="userData.district"
-                                            v-if="
-                                              country.districts !== null &&
-                                              country.districts !== undefined &&
-                                              country.districts !== '' &&
-                                              country.districts.length > 0
-                                            "
-                                          >
-                                            <option :value="null" v-if="country.districts.length > 0" selected="selected">Semt Seçiniz.</option>
-                                            <option :value="null" v-else-if="country.districts.length <= 0" selected="selected">
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              :value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in country.districts"
-                                            >
+                                          <select v-on:change="getNeighborhoods" name="district" id="district" class="form-control" ref="district">
+                                            <option :value="null" v-if="country.districts.length > 0" selected>Semt Seçiniz.</option>
+                                            <option :value="userData.district" v-else-if="country.districts.length <= 0" selected>Önce İlçe Seçiniz.</option>
+                                            <option v-bind:data-id="district.neighborhoods" :value="district.name" v-bind:key="index" v-for="(district, index) in country.districts" :selected="district.name === userData.district">
                                               {{ district.name }}
                                             </option>
                                           </select>
@@ -288,32 +347,15 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>İkamet Ettiğiniz Mahalle :</b></td>
+                                      <td>
+                                        <b>İkamet Ettiğiniz Mahalle :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="İkamet Ettiğiniz Mahalle" rules="required" v-slot="{ errors }">
-                                          <select
-                                            name="neighborhood"
-                                            id="neighborhood"
-                                            class="form-control"
-                                            v-model="userData.neighborhood"
-                                            v-if="
-                                              country.neighborhoods !== null &&
-                                              country.neighborhoods !== undefined &&
-                                              country.neighborhoods !== '' &&
-                                              country.neighborhoods.length > 0
-                                            "
-                                          >
-                                            <option :value="null" v-if="country.neighborhoods.length > 0" selected="selected">
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option :value="null" v-else-if="country.neighborhoods.length <= 0" selected="selected">
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="neighborhood.name"
-                                              v-bind:key="index"
-                                              v-for="(neighborhood, index) in country.neighborhoods"
-                                            >
+                                          <select name="neighborhood" id="neighborhood" class="form-control" ref="neighborhood">
+                                            <option :value="null" v-if="country.neighborhoods.length > 0" selected="selected">Mahalle Seçiniz.</option>
+                                            <option :value="userData.neighborhood" v-else-if="country.neighborhoods.length <= 0" selected="selected">Önce Semt Seçiniz.</option>
+                                            <option :value="neighborhood.name" v-bind:key="index" v-for="(neighborhood, index) in country.neighborhoods" :selected="neighborhood.name === userData.neighborhood">
                                               {{ neighborhood.name }}
                                             </option>
                                           </select>
@@ -322,38 +364,31 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>İkamet Ettiğiniz Adres :</b></td>
+                                      <td>
+                                        <b>İkamet Ettiğiniz Adres :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="İkamet Ettiğiniz Adres" rules="required" v-slot="{ errors }">
-                                          <textarea
-                                            name="address"
-                                            id="address"
-                                            class="form-control"
-                                            cols="30"
-                                            rows="5"
-                                            v-model="userData.address"
-                                          ></textarea>
+                                          <textarea name="address" id="address" class="form-control" cols="30" rows="5" v-model="userData.address"></textarea>
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Doğum Tarihi :</b></td>
+                                      <td>
+                                        <b>Doğum Tarihi :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Doğum Tarihi" rules="required" v-slot="{ errors }">
-                                          <input
-                                            type="date"
-                                            class="form-control"
-                                            name="birthDate"
-                                            placeholder="Doğum Tarihi"
-                                            v-model="userData.birthDate"
-                                          />
+                                          <input type="date" class="form-control" name="birthDate" placeholder="Doğum Tarihi" v-model="userData.birthDate" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Boy (cm) :</b></td>
+                                      <td>
+                                        <b>Boy (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Boy (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="size" id="size" class="form-control" v-model="userData.size" />
@@ -362,7 +397,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Ağırlık (kg) :</b></td>
+                                      <td>
+                                        <b>Ağırlık (kg) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Ağırlık (kg)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="weight" id="weight" class="form-control" v-model="userData.weight" />
@@ -371,7 +408,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Bel (cm) :</b></td>
+                                      <td>
+                                        <b>Bel (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Bel (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="waist" id="waist" class="form-control" v-model="userData.waist" />
@@ -380,7 +419,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Kalça (cm) :</b></td>
+                                      <td>
+                                        <b>Kalça (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Kalça (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="hip" id="hip" class="form-control" v-model="userData.hip" />
@@ -389,7 +430,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Göğüs (cm) :</b></td>
+                                      <td>
+                                        <b>Göğüs (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Göğüs (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="chest" id="chest" class="form-control" v-model="userData.chest" />
@@ -398,7 +441,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Boyun (cm) : </b></td>
+                                      <td>
+                                        <b>Boyun (cm) : </b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Boyun (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="neck" id="neck" class="form-control" v-model="userData.neck" />
@@ -407,7 +452,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Üst Kol (cm) :</b></td>
+                                      <td>
+                                        <b>Üst Kol (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Üst Kol (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="userData.upperArm" />
@@ -416,7 +463,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Alt Kol (cm) :</b></td>
+                                      <td>
+                                        <b>Alt Kol (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Alt Kol (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="userData.lowerArm" />
@@ -425,7 +474,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Kol Bileği (cm) :</b></td>
+                                      <td>
+                                        <b>Kol Bileği (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Kol Bileği (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="wrist" id="wrist" class="form-control" v-model="userData.wrist" />
@@ -434,7 +485,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Üst Bacak (cm) :</b></td>
+                                      <td>
+                                        <b>Üst Bacak (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Üst Bacak (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="userData.upperLeg" />
@@ -443,7 +496,9 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Alt Bacak (cm) :</b></td>
+                                      <td>
+                                        <b>Alt Bacak (cm) :</b>
+                                      </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Alt Bacak (cm)" rules="required" v-slot="{ errors }">
                                           <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="userData.lowerLeg" />
@@ -457,42 +512,58 @@
                                       </td>
                                       <td colspan="2">
                                         <ValidationProvider name="Deri Kıvrım Kalınlığı (cm)" rules="required" v-slot="{ errors }">
-                                          <input
-                                            type="number"
-                                            name="skinfoldThickness"
-                                            id="skinfoldThickness"
-                                            class="form-control"
-                                            v-model="userData.skinfoldThickness"
-                                          />
+                                          <input type="number" name="skinfoldThickness" id="skinfoldThickness" class="form-control" v-model="userData.skinfoldThickness" />
                                           <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Yağ :</b></td>
-                                      <td>% {{ userData.fatRatio }}</td>
-                                      <td>{{ userData.fat }} KG</td>
+                                      <td>
+                                        <b>Yağ :</b>
+                                      </td>
+                                      <td>
+                                        %
+                                        {{ userData.fatRatio }}
+                                      </td>
+                                      <td>
+                                        {{ userData.fat }}
+                                        KG
+                                      </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Kas :</b></td>
-                                      <td>% {{ userData.muscleRatio }}</td>
-                                      <td>{{ userData.muscle }} KG</td>
+                                      <td>
+                                        <b>Kas :</b>
+                                      </td>
+                                      <td>
+                                        %
+                                        {{ userData.muscleRatio }}
+                                      </td>
+                                      <td>
+                                        {{ userData.muscle }}
+                                        KG
+                                      </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Su :</b></td>
-                                      <td>% {{ userData.waterRatio }}</td>
-                                      <td>{{ userData.water }} KG</td>
+                                      <td>
+                                        <b>Su :</b>
+                                      </td>
+                                      <td>
+                                        %
+                                        {{ userData.waterRatio }}
+                                      </td>
+                                      <td>
+                                        {{ userData.water }}
+                                        KG
+                                      </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Profil Resminiz :</b></td>
+                                      <td>
+                                        <b>Profil Resminiz :</b>
+                                      </td>
                                       <td colspan="2" class="align-middle">
                                         <div class="row">
                                           <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
-                                            <img
-                                              v-bind:src="img_url + '/public/storage/' + userData.img_url"
-                                              class="img-fluid rounded-profile"
-                                              alt="Profil Resminiz"
-                                            />
+                                            <img v-bind:src="img_url + '/public/storage/' + userData.img_url" class="img-fluid rounded-profile" alt="Profil Resminiz" />
                                           </div>
                                           <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
                                             <input type="file" class="form-control" accept="image/*" placeholder="Profil Resminiz" name="img_url" />
@@ -506,1049 +577,6 @@
                                       <td colspan="3">
                                         <div class="form-group">
                                           <button class="btn btn-primary login-btn text-white float-right" type="submit">Bilgilerimi Güncelle</button>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tfoot>
-                                </table>
-                              </div>
-                            </form>
-                          </ValidationObserver>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Today Appointment Tab -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Page Content -->
-  </v-app>
-  <v-app class="h-auto" v-else-if="userData.status === 'dietician'">
-    <!-- Breadcrumb -->
-    <div class="breadcrumb-bar">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-          <div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-            <nav aria-label="breadcrumb" class="page-breadcrumb">
-              <ol class="breadcrumb pl-0">
-                <li class="breadcrumb-item">
-                  <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Profil</li>
-              </ol>
-            </nav>
-            <h2 class="breadcrumb-title">Profil</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Breadcrumb -->
-    <!-- Page Content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-            <!-- Profile Sidebar -->
-            <div class="profile-sidebar">
-              <div class="widget-profile pro-widget-content text-center justify-content-center">
-                <div class="profile-info-widget text-center justify-content-center">
-                  <nuxt-link to="/profile" class="booking-doc-img">
-                    <img
-                      v-bind:src="img_url + '/public/storage/' + data.profile_photo"
-                      class="img-fluid text-center justify-content-center"
-                      v-bind:alt="data.name"
-                    />
-                  </nuxt-link>
-                  <div class="profile-det-info">
-                    <h3>{{ data.name }}</h3>
-
-                    <div class="clinic-details text-center justify-content-center">
-                      <h5 class="mb-2">
-                        <i class="fa fa-map-marker-alt"></i> {{ data.city }},
-                        {{ data.town }}
-                      </h5>
-
-                      <h5 class="mb-2 font-weight-bold">Klinik'ten Görüntüler</h5>
-                      <ul
-                        class="clinic-gallery text-center justify-content-center px-0"
-                        v-if="
-                          data.clinic_photos !== '' &&
-                          data.clinic_photos !== null &&
-                          data.clinic_photos !== undefined &&
-                          data.clinic_photos.length > 0
-                        "
-                      >
-                        <li v-bind:key="index" v-for="(item, index) in data.clinic_photos">
-                          <a v-if="index <= 3" v-bind:href="img_url + '/public/storage/' + item.img_url" data-fancybox="gallery">
-                            <img v-if="index <= 3" v-bind:src="img_url + '/public/storage/' + item.img_url" alt="Klinik'ten Görüntüler" />
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="dashboard-widget">
-                <nav class="dashboard-menu">
-                  <ul>
-                    <li class="active">
-                      <nuxt-link to="/profile" tag="a">
-                        <i class="fa fa-user-cog"></i>
-                        <span>Kayıt Bilgileri</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/patient-list" tag="a">
-                        <i class="fa fa-calendar-check"></i>
-                        <span>Hasta Listesi</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/news-list" tag="a">
-                        <i class="fa fa-newspaper"></i>
-                        <span>Haberler</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/food-recipes-list" tag="a">
-                        <i class="fa fa-utensils"></i>
-                        <span>Yemek Tarifleri</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/messages">
-                        <i class="fa fa-comments"></i>
-                        <span>Mesajlar</span>
-                        <small class="unread-msg">23</small>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/social-media" tag="a">
-                        <i class="fa fa-share-alt"></i>
-                        <span>Sosyal Medya</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <nuxt-link to="/profile/password-update" tag="a">
-                        <i class="fa fa-lock"></i>
-                        <span>Şifre Güncelle</span>
-                      </nuxt-link>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)" @click.prevent="logout">
-                        <i class="fa fa-sign-out-alt"></i>
-                        <span>Çıkış Yap</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-            <!-- /Profile Sidebar -->
-          </div>
-
-          <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card dash-card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar1">
-                            <div class="circle-graph1" data-percent="75">
-                              <img src="/img/icon-01.png" class="img-fluid" alt="patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Danışman</h6>
-                            <h3>1500</h3>
-                            <p class="text-muted">Toplam</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget dct-border-rht">
-                          <div class="circle-bar circle-bar2">
-                            <div class="circle-graph2" data-percent="65">
-                              <img src="/img/icon-02.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Makale</h6>
-                            <h3>160</h3>
-                            <p class="text-muted">Toplam</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                        <div class="dash-widget">
-                          <div class="circle-bar circle-bar3">
-                            <div class="circle-graph3" data-percent="50">
-                              <img src="/img/icon-03.png" class="img-fluid" alt="Patient" />
-                            </div>
-                          </div>
-                          <div class="dash-widget-info">
-                            <h6>Tarif</h6>
-                            <h3>85</h3>
-                            <p class="text-muted">Toplam</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="mb-4">Kayıt Bilgileri</h4>
-                <div class="appointment-tab">
-                  <!-- Appointment Tab -->
-                  <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#diyetisyen_kayit_bilgilerim" data-toggle="tab">Kayıt Bilgilerim</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#diyetisyen_kayit_bilgisi_duzenle" data-toggle="tab">Kayıt Bilgisi Düzenle</a>
-                    </li>
-                  </ul>
-                  <!-- /Appointment Tab -->
-
-                  <div class="tab-content">
-                    <!-- Upcoming Appointment Tab -->
-                    <div class="tab-pane show active" id="diyetisyen_kayit_bilgilerim">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <div class="table-responsive bg-light mt-5">
-                            <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
-                              <tbody>
-                                <tr>
-                                  <td><b>Ad Soyad :</b></td>
-                                  <td colspan="2">{{ data.name }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>Cinsiyet :</b></td>
-                                  <td colspan="2">{{ data.gender }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İkamet Ettiğiniz İl :</b></td>
-                                  <td colspan="2">{{ data.city }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İkamet Ettiğiniz İlçe :</b></td>
-                                  <td colspan="2">{{ data.town }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İkamet Ettiğiniz Semt :</b></td>
-                                  <td colspan="2">{{ data.district }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İkamet Ettiğiniz Mahalle :</b></td>
-                                  <td colspan="2">{{ data.neighborhood }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İkamet Ettiğiniz Adres :</b></td>
-                                  <td colspan="2">{{ data.address }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>Doğum Tarihi :</b></td>
-                                  <td colspan="2">{{ data.birthDate }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İş Yerinizin Bulunduğu İl :</b></td>
-                                  <td colspan="2">{{ data.company_city }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İş Yerinizin Bulunduğu İlçe :</b></td>
-                                  <td colspan="2">{{ data.company_town }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>İş Yerinizin Bulunduğu Semt :</b></td>
-                                  <td colspan="2">
-                                    {{ data.company_district }}
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <b>İş Yerinizin Bulunduğu Mahalle :</b>
-                                  </td>
-                                  <td colspan="2">
-                                    {{ data.company_neighborhood }}
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td><b>İşyerinizin Adresi :</b></td>
-                                  <td colspan="2">
-                                    {{ data.company_address }}
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Upcoming Appointment Tab -->
-
-                    <!-- Today Appointment Tab -->
-                    <div class="tab-pane" id="diyetisyen_kayit_bilgisi_duzenle">
-                      <div class="card card-table mb-0">
-                        <div class="card-body">
-                          <ValidationObserver v-slot="{ handleSubmit }">
-                            <form @submit.prevent="handleSubmit(updateInformation)" ref="informationForm" enctype="multipart/form-data">
-                              <div class="table-responsive mt-5">
-                                <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Ad Soyad :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Adınız ve Soyadınız" rules="required" v-slot="{ errors }">
-                                          <input id="dietician_name" type="text" class="form-control" name="name" v-model="data.name" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Cinsiyet :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Cinsiyetiniz" rules="required" v-slot="{ errors }">
-                                          <v-radio-group v-model="data.gender" name="gender" row>
-                                            <v-radio value="Erkek">
-                                              <template v-slot:label> Erkek </template>
-                                            </v-radio>
-                                            <v-radio value="Kadın">
-                                              <template v-slot:label> Kadın </template>
-                                            </v-radio>
-                                          </v-radio-group>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İkamet Ettiğiniz İl :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz İl" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getTowns"
-                                            name="city"
-                                            id="dietician_city"
-                                            class="form-control"
-                                            v-model="data.city"
-                                            v-if="
-                                              country.cities !== null &&
-                                              country.cities !== undefined &&
-                                              country.cities !== '' &&
-                                              country.cities.length > 0
-                                            "
-                                          >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
-                                            <option
-                                              v-bind:data-id="city.towns"
-                                              v-bind:value="city.name"
-                                              v-bind:key="index"
-                                              v-for="(city, index) in country.cities"
-                                            >
-                                              {{ city.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getTowns"
-                                            name="city"
-                                            id="dietician_city"
-                                            class="form-control"
-                                            v-model="data.city"
-                                            v-else-if="
-                                              country.cities === null ||
-                                              country.cities === undefined ||
-                                              country.cities === '' ||
-                                              country.cities.length <= 0
-                                            "
-                                          >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İkamet Ettiğiniz İlçe :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz İlçe" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getDistricts"
-                                            name="town"
-                                            id="dietician_town"
-                                            class="form-control"
-                                            v-model="data.town"
-                                            v-if="
-                                              country.towns !== null &&
-                                              country.towns !== undefined &&
-                                              country.towns !== '' &&
-                                              country.towns.length > 0 &&
-                                              (data.towns === null || data.towns === undefined || data.towns === '' || data.towns.length <= 0)
-                                            "
-                                          >
-                                            <option :value="null" v-if="data.towns.length > 0 || country.towns.length > 0" selected="selected">
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option :value="null" v-if="data.towns.length <= 0 && country.towns.length <= 0" selected="selected">
-                                              Önce İl Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              v-bind:value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in country.towns"
-                                            >
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getDistricts"
-                                            name="town"
-                                            id="dietician_town"
-                                            class="form-control"
-                                            v-model="data.town"
-                                            v-if="
-                                              (country.towns === null ||
-                                                country.towns === undefined ||
-                                                country.towns === '' ||
-                                                country.towns.length <= 0 ||
-                                                country.towns.length > 0) &&
-                                              data.towns !== '' &&
-                                              data.towns !== null &&
-                                              data.towns !== undefined &&
-                                              data.towns.length > 0
-                                            "
-                                          >
-                                            <option :value="null" v-if="data.towns.length > 0 || country.towns.length > 0" selected="selected">
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option :value="null" v-if="data.towns.length <= 0 && country.towns.length <= 0" selected="selected">
-                                              Önce İl Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              v-bind:value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in data.towns"
-                                            >
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İkamet Ettiğiniz Semt :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Semt" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getNeighborhoods"
-                                            name="district"
-                                            id="dietician_district"
-                                            class="form-control"
-                                            v-model="data.district"
-                                            v-if="
-                                              country.districts !== null &&
-                                              country.districts !== undefined &&
-                                              country.districts !== '' &&
-                                              country.districts.length > 0 &&
-                                              (data.towns === null || data.towns === '' || data.towns === undefined || data.towns.length <= 0)
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length > 0 || country.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length <= 0 && country.districts.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              v-bind:value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in country.districts"
-                                            >
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getNeighborhoods"
-                                            name="district"
-                                            id="dietician_district"
-                                            class="form-control"
-                                            v-model="data.district"
-                                            v-if="
-                                              (country.districts === null ||
-                                                country.districts === undefined ||
-                                                country.districts === '' ||
-                                                country.districts.length <= 0 ||
-                                                country.districts.length > 0) &&
-                                              data.districts !== null &&
-                                              data.districts !== undefined &&
-                                              data.districts !== '' &&
-                                              data.districts.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length > 0 || country.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.districts.length <= 0 && country.districts.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              v-bind:value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in data.districts"
-                                            >
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İkamet Ettiğiniz Mahalle :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Mahalle" rules="required" v-slot="{ errors }">
-                                          <select
-                                            name="neighborhood"
-                                            id="dietician_neighborhood"
-                                            class="form-control"
-                                            v-model="data.neighborhood"
-                                            v-if="
-                                              country.neighborhoods !== null &&
-                                              country.neighborhoods !== undefined &&
-                                              country.neighborhoods !== '' &&
-                                              country.neighborhoods.length > 0 &&
-                                              (data.neighborhoods === null ||
-                                                data.neighborhoods === undefined ||
-                                                data.neighborhoods === '' ||
-                                                data.neighborhoods.length <= 0)
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:value="neighborhood.name"
-                                              v-bind:key="index"
-                                              v-for="(neighborhood, index) in country.neighborhoods"
-                                            >
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            name="neighborhood"
-                                            id="dietician_neighborhood"
-                                            class="form-control"
-                                            v-model="data.neighborhood"
-                                            v-if="
-                                              (country.neighborhoods === null ||
-                                                country.neighborhoods === undefined ||
-                                                country.neighborhoods === '' ||
-                                                country.neighborhoods.length <= 0 ||
-                                                country.neighborhoods.length > 0) &&
-                                              data.neighborhoods !== null &&
-                                              data.neighborhoods !== undefined &&
-                                              data.neighborhoods !== '' &&
-                                              data.neighborhoods.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:value="neighborhood.name"
-                                              v-bind:key="index"
-                                              v-for="(neighborhood, index) in data.neighborhoods"
-                                            >
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İkamet Ettiğiniz Adres :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İkamet Ettiğiniz Adres" rules="required" v-slot="{ errors }">
-                                          <textarea
-                                            name="address"
-                                            id="dietician_address"
-                                            class="form-control"
-                                            cols="30"
-                                            rows="5"
-                                            v-model="data.address"
-                                          ></textarea>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Doğum Tarihi :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="Doğum Tarihi" rules="required" v-slot="{ errors }">
-                                          <input
-                                            type="date"
-                                            class="form-control"
-                                            name="birthDate"
-                                            placeholder="Doğum Tarihi"
-                                            v-model="data.birthDate"
-                                          />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İşyerinizin Bulunduğu İl :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İş Yerinizin Bulunduğu İl" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getTowns2"
-                                            name="company_city"
-                                            id="company_city"
-                                            class="form-control"
-                                            v-model="data.company_city"
-                                            v-if="
-                                              country2.cities !== null &&
-                                              country2.cities !== undefined &&
-                                              country2.cities !== '' &&
-                                              country2.cities.length > 0
-                                            "
-                                          >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
-                                            <option
-                                              v-bind:data-id="city.towns"
-                                              v-bind:value="city.name"
-                                              v-bind:key="index"
-                                              v-for="(city, index) in country2.cities"
-                                            >
-                                              {{ city.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getTowns2"
-                                            name="company_city"
-                                            id="company_city"
-                                            class="form-control"
-                                            v-model="data.company_city"
-                                            v-if="
-                                              country2.cities === null ||
-                                              country2.cities === undefined ||
-                                              country2.cities === '' ||
-                                              country2.cities.length <= 0
-                                            "
-                                          >
-                                            <option :value="null" selected="selected">İl Seçiniz.</option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İşyerinizin Bulunduğu İlçe :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İşyerinizin Bulunduğu İlçe" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getDistricts2"
-                                            name="company_town"
-                                            id="company_town"
-                                            class="form-control"
-                                            v-model="data.company_town"
-                                            v-if="
-                                              country2.towns !== null &&
-                                              country2.towns !== undefined &&
-                                              country2.towns !== '' &&
-                                              country2.towns.length > 0 &&
-                                              (data.company_towns === null ||
-                                                data.company_towns === undefined ||
-                                                data.company_towns === '' ||
-                                                data.company_towns.length <= 0)
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_towns.length > 0 || country2.towns.length > 0"
-                                              selected="selected"
-                                            >
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_towns.length <= 0 && country2.towns.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İl Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              v-bind:value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in country2.towns"
-                                            >
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getDistricts2"
-                                            name="company_town"
-                                            id="company_town"
-                                            class="form-control"
-                                            v-model="data.company_town"
-                                            v-if="
-                                              (country2.towns === null ||
-                                                country2.towns === undefined ||
-                                                country2.towns === '' ||
-                                                country2.towns.length <= 0 ||
-                                                country2.towns.length > 0) &&
-                                              data.company_towns !== null &&
-                                              data.company_towns !== undefined &&
-                                              data.company_towns !== '' &&
-                                              data.company_towns.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_towns.length > 0 || country2.towns.length > 0"
-                                              selected="selected"
-                                            >
-                                              İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_towns.length <= 0 && country2.towns.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İl Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="town.districts"
-                                              v-bind:value="town.name"
-                                              v-bind:key="index"
-                                              v-for="(town, index) in data.company_towns"
-                                            >
-                                              {{ town.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İşyerinizin Bulunduğu Semt :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İşyerinizin Bulunduğu Semt" rules="required" v-slot="{ errors }">
-                                          <select
-                                            v-on:change="getNeighborhoods2"
-                                            name="company_district"
-                                            id="company_district"
-                                            class="form-control"
-                                            v-model="data.company_district"
-                                            v-if="
-                                              country2.districts !== null &&
-                                              country2.districts !== undefined &&
-                                              country2.districts !== '' &&
-                                              country2.districts.length > 0 &&
-                                              (data.company_districts === null ||
-                                                data.company_districts === undefined ||
-                                                data.company_districts === '' ||
-                                                data.company_districts.length <= 0)
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_districts.length > 0 || country2.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_districts.length <= 0 && country2.districts.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              v-bind:value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in country2.districts"
-                                            >
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            v-on:change="getNeighborhoods2"
-                                            name="company_district"
-                                            id="company_district"
-                                            class="form-control"
-                                            v-model="data.company_district"
-                                            v-if="
-                                              (country2.districts === null ||
-                                                country2.districts === undefined ||
-                                                country2.districts === '' ||
-                                                country2.districts.length <= 0 ||
-                                                country2.districts.length > 0) &&
-                                              data.company_districts !== null &&
-                                              data.company_districts !== undefined &&
-                                              data.company_districts !== '' &&
-                                              data.company_districts.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_districts.length > 0 || country2.districts.length > 0"
-                                              selected="selected"
-                                            >
-                                              Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_districts.length <= 0 && country2.districts.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce İlçe Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:data-id="district.neighborhoods"
-                                              v-bind:value="district.name"
-                                              v-bind:key="index"
-                                              v-for="(district, index) in data.company_districts"
-                                            >
-                                              {{ district.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <b>İşyerinizin Bulunduğu Mahalle :</b>
-                                      </td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İşyerinizin Bulunduğu Mahalle" rules="required" v-slot="{ errors }">
-                                          <select
-                                            name="company_neighborhood"
-                                            id="company_neighborhood"
-                                            class="form-control"
-                                            v-model="data.company_neighborhood"
-                                            v-if="
-                                              country2.neighborhoods !== null &&
-                                              country2.neighborhoods !== undefined &&
-                                              country2.neighborhoods !== '' &&
-                                              country2.neighborhoods.length > 0 &&
-                                              (data.company_neighborhoods === null ||
-                                                data.company_neighborhoods === undefined ||
-                                                data.company_neighborhoods === '' ||
-                                                data.company_neighborhoods.length <= 0)
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:value="neighborhood.name"
-                                              v-bind:key="index"
-                                              v-for="(neighborhood, index) in country2.neighborhoods"
-                                            >
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <select
-                                            name="company_neighborhood"
-                                            id="company_neighborhood"
-                                            class="form-control"
-                                            v-model="data.company_neighborhood"
-                                            v-if="
-                                              (country2.neighborhoods === null ||
-                                                country2.neighborhoods === undefined ||
-                                                country2.neighborhoods === '' ||
-                                                country2.neighborhoods.length <= 0 ||
-                                                country2.neighborhoods.length > 0) &&
-                                              data.company_neighborhoods !== null &&
-                                              data.company_neighborhoods !== undefined &&
-                                              data.company_neighborhoods !== '' &&
-                                              data.company_neighborhoods.length > 0
-                                            "
-                                          >
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_neighborhoods.length > 0 || country.neighborhoods.length > 0"
-                                              selected="selected"
-                                            >
-                                              Mahalle Seçiniz.
-                                            </option>
-                                            <option
-                                              :value="null"
-                                              v-if="data.company_neighborhoods.length <= 0 && country.neighborhoods.length <= 0"
-                                              selected="selected"
-                                            >
-                                              Önce Semt Seçiniz.
-                                            </option>
-                                            <option
-                                              v-bind:value="neighborhood.name"
-                                              v-bind:key="index"
-                                              v-for="(neighborhood, index) in data.company_neighborhoods"
-                                            >
-                                              {{ neighborhood.name }}
-                                            </option>
-                                          </select>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İşyerinizin Adresi :</b></td>
-                                      <td colspan="2">
-                                        <ValidationProvider name="İşyerinizin Adresi" rules="required" v-slot="{ errors }">
-                                          <textarea
-                                            name="company_address"
-                                            id="company_address"
-                                            class="form-control"
-                                            cols="30"
-                                            rows="5"
-                                            v-model="data.company_address"
-                                          ></textarea>
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
-                                        </ValidationProvider>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Profil Resminiz :</b></td>
-                                      <td colspan="2" class="align-middle">
-                                        <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
-                                            <img
-                                              v-bind:src="img_url + '/public/storage/' + data.profile_photo"
-                                              class="img-fluid rounded-profile"
-                                              alt="Profil Resminiz"
-                                            />
-                                          </div>
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
-                                            <input
-                                              type="file"
-                                              accept="image/*"
-                                              class="form-control"
-                                              placeholder="Profil Resminiz"
-                                              name="profile_photo"
-                                            />
-                                          </div>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>İşyerinizin Logosu :</b></td>
-                                      <td colspan="2" class="align-middle">
-                                        <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto">
-                                            <img
-                                              v-bind:src="img_url + '/public/storage/' + data.company_logo"
-                                              class="img-fluid align-middle py-auto my-auto"
-                                              width="225"
-                                              height="80"
-                                              alt="İşyerinizin Logosu"
-                                            />
-                                          </div>
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto">
-                                            <input
-                                              type="file"
-                                              accept="image/*"
-                                              class="form-control"
-                                              placeholder="İşyerinizin Logosu"
-                                              name="company_logo"
-                                            />
-                                          </div>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Klinik Fotoğrafları :</b></td>
-                                      <td colspan="2">
-                                        <input
-                                          type="file"
-                                          accept="image/*"
-                                          class="form-control"
-                                          placeholder="Klinik Fotoğrafları"
-                                          name="clinic_photos[]"
-                                          multiple
-                                        />
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                  <tfoot>
-                                    <tr>
-                                      <td colspan="3">
-                                        <div class="form-group">
-                                          <button class="btn btn-green-light login-btn float-right" type="submit">Bilgilerimi Güncelle</button>
                                         </div>
                                       </td>
                                     </tr>
@@ -1595,7 +623,6 @@ export default {
   },
   mounted() {
     this.getCities();
-    this.getCities2();
     let inputs = document.querySelectorAll(".v-file-input input");
     [...inputs].forEach((input) => {
       input.remove();
@@ -1621,15 +648,20 @@ export default {
         company_district: "",
         company_neighborhood: "",
       },
-      country: { cities: [], towns: [], districts: [], neighborhoods: [] },
-      country2: { cities: [], towns: [], districts: [], neighborhoods: [] },
+      country: {
+        cities: [],
+        towns: [],
+        districts: [],
+        neighborhoods: [],
+      },
+      country2: {
+        cities: [],
+        towns: [],
+        districts: [],
+        neighborhoods: [],
+      },
       months: ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"],
-      userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
-          ? JSON.parse(Base64.decode(Cookie.get("userData")))
-          : this.$store.getters.loggedInUser !== undefined && this.$store.getters.loggedInUser !== null && this.$store.getters.loggedInUser !== ""
-          ? this.$store.getters.loggedInUser
-          : null,
+      userData: Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== "" ? JSON.parse(Base64.decode(Cookie.get("userData"))) : this.$store.getters.loggedInUser !== undefined && this.$store.getters.loggedInUser !== null && this.$store.getters.loggedInUser !== "" ? this.$store.getters.loggedInUser : null,
     };
   },
   async asyncData({ app, store, route, params, error, $axios }) {
@@ -1642,7 +674,10 @@ export default {
         return data;
       }
     } catch (e) {
-      error({ message: "Kullanıcı Bilgisi Bulunamadı.", statusCode: 404 });
+      error({
+        message: "Kullanıcı Bilgisi Bulunamadı.",
+        statusCode: 404,
+      });
     }
   },
 
@@ -1661,84 +696,77 @@ export default {
     getCities() {
       this.$axios.get(process.env.apiBaseUrl + "informations/cities").then((response) => {
         this.country.cities = response.data.data.cities.length > 0 ? response.data.data.cities : [];
+        setTimeout(() => {
+          this.getTowns();
+        }, 100);
       });
     },
     getTowns: function (event) {
-      if (event.target.options.selectedIndex > -1) {
+      let townIds = null;
+      if (event !== undefined && event.target.options.selectedIndex > -1) {
         const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let townIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds).then((response) => {
-          this.country.towns = response.data.towns.length > 0 ? response.data.towns : [];
-          this.country.districts = [];
-          this.userData.districts = [];
-          this.country.neighborhoods = [];
-          this.userData.neighborhoods = [];
-          this.data.district = null;
-          this.data.neighborhood = null;
-        });
+        townIds = theTarget.id;
       }
-    },
-    getDistricts: function (event) {
-      if (event.target.options.selectedIndex > -1) {
-        const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let districtIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/districts?id=" + districtIds).then((response) => {
-          this.country.districts = response.data.districts.length > 0 ? response.data.districts : [];
-          this.country.neighborhoods = [];
-          this.userData.neighborhoods = [];
-          this.data.neighborhood = null;
-        });
+      if (townIds === null || townIds === undefined || townIds === "") {
+        for (let element in this.$refs.city.options) {
+          if (this.$refs.city.options[element].selected) {
+            townIds = this.$refs.city.options[element].dataset.id;
+          }
+        }
       }
-    },
-    getNeighborhoods: function (event) {
-      if (event.target.options.selectedIndex > -1) {
-        const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let neighborhoodIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/neighborhoods?id=" + neighborhoodIds).then((response) => {
-          this.country.neighborhoods = response.data.neighborhoods.length > 0 ? response.data.neighborhoods : [];
-        });
-      }
-    },
-    getCities2() {
-      this.$axios.get(process.env.apiBaseUrl + "informations/cities").then((response) => {
-        this.country2.cities = response.data.data.cities.length > 0 ? response.data.data.cities : [];
+      this.$axios.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds).then((response) => {
+        this.country.towns = response.data.towns.length > 0 ? response.data.towns : [];
+        this.country.districts = [];
+        this.userData.districts = [];
+        this.country.neighborhoods = [];
+        this.userData.neighborhoods = [];
+        if (event === undefined) {
+          setTimeout(() => {
+            this.getDistricts();
+          }, 100);
+        }
       });
     },
-    getTowns2: function (event) {
-      if (event.target.options.selectedIndex > -1) {
+    getDistricts: function (event) {
+      let districtIds = null;
+      if (event !== undefined && event.target.options.selectedIndex > -1) {
         const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let townIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds).then((response) => {
-          this.country2.towns = response.data.towns.length > 0 ? response.data.towns : [];
-          this.country2.districts = [];
-          this.userData.company_districts = [];
-          this.country2.neighborhoods = [];
-          this.userData.company_neighborhoods = [];
-          this.data.company_district = null;
-          this.data.company_neighborhood = null;
-        });
+        districtIds = theTarget.id;
       }
+      if (districtIds === null || districtIds === undefined || districtIds === "") {
+        for (let element in this.$refs.town.options) {
+          if (this.$refs.town.options[element].selected) {
+            districtIds = this.$refs.town.options[element].dataset.id;
+          }
+        }
+      }
+      this.$axios.get(process.env.apiBaseUrl + "informations/districts?id=" + districtIds).then((response) => {
+        this.country.districts = response.data.districts.length > 0 ? response.data.districts : [];
+        this.country.neighborhoods = [];
+        this.userData.neighborhoods = [];
+        if (event === undefined) {
+          setTimeout(() => {
+            this.getNeighborhoods();
+          }, 100);
+        }
+      });
     },
-    getDistricts2: function (event) {
-      if (event.target.options.selectedIndex > -1) {
+    getNeighborhoods: function (event) {
+      let neighborhoodIds = null;
+      if (event !== undefined && event.target.options.selectedIndex > -1) {
         const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let districtIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/districts?id=" + districtIds).then((response) => {
-          this.country2.districts = response.data.districts.length > 0 ? response.data.districts : [];
-          this.country2.neighborhoods = [];
-          this.userData.company_neighborhoods = [];
-          this.data.company_neighborhood = null;
-        });
+        neighborhoodIds = theTarget.id;
       }
-    },
-    getNeighborhoods2: function (event) {
-      if (event.target.options.selectedIndex > -1) {
-        const theTarget = event.target.options[event.target.options.selectedIndex].dataset;
-        let neighborhoodIds = theTarget.id;
-        this.$axios.get(process.env.apiBaseUrl + "informations/neighborhoods?id=" + neighborhoodIds).then((response) => {
-          this.country2.neighborhoods = response.data.neighborhoods.length > 0 ? response.data.neighborhoods : [];
-        });
+      if (neighborhoodIds === null || neighborhoodIds === undefined || neighborhoodIds === "") {
+        for (let element in this.$refs.district.options) {
+          if (this.$refs.district.options[element].selected) {
+            neighborhoodIds = this.$refs.district.options[element].dataset.id;
+          }
+        }
       }
+      this.$axios.get(process.env.apiBaseUrl + "informations/neighborhoods?id=" + neighborhoodIds).then((response) => {
+        this.country.neighborhoods = response.data.neighborhoods.length > 0 ? response.data.neighborhoods : [];
+      });
     },
     updateInformation() {
       let formData = new FormData(this.$refs.informationForm);
