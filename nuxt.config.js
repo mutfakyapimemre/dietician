@@ -71,6 +71,9 @@ export default {
   build: {
     extractCSS:true,
     transpile: ["vee-validate/dist/rules","vee-validate/dist/locale"],
+    splitChunks: {
+      layouts: true
+    }
   },
   hooks: {
     'vue-renderer:ssr:context'(context) {
@@ -78,4 +81,9 @@ export default {
       context.nuxt = {serverRendered: true, routePath};
     }
   },
+  router: {
+    scrollBehavior (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
+  }
 }

@@ -46,8 +46,8 @@
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
             <h3 class="text-center" v-if="search !== null && search !== '' && search !== undefined">"{{search}}" Aramasıyla İle İlgili Besinler</h3>
             <h3 class="text-center" v-if="search === null || search === '' || search === undefined">Tüm Besinler</h3>
-            <div class="row row-grid">
-              <div v-if="nutrients !== null && nutrients !== '' && nutrients !== undefined" v-for="nutrient in nutrients" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="row row-grid" v-if="nutrients !== null && nutrients !== '' && nutrients !== undefined">
+              <div v-bind:key="index" v-for="(nutrient,index) in nutrients" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="profile-widget">
                   <div class="doc-img">
                     <nuxt-link v-bind:to="/calorie/+nutrient.slug" tag="a">
@@ -198,7 +198,7 @@ export default {
   },
   mounted() {
     this.getNutrients()
-  }
+  },
 }
 </script>
 
