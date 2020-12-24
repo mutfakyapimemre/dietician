@@ -11,7 +11,9 @@
                   <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
                 </li>
                 <li class="breadcrumb-item">
-                  <nuxt-link to="/recipe-categories" tag="a">Yemek Tarifleri</nuxt-link>
+                  <nuxt-link to="/recipe-categories" tag="a"
+                    >Yemek Tarifleri</nuxt-link
+                  >
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   {{ categories.name }}
@@ -58,51 +60,112 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-              <h3 class="text-center" v-if="search !== null && search !== '' && search !== undefined">
-                "{{ search }}" Aramasıyla İle İlgili "{{ categories.name }}" Kategorisine Ait Yemek Tarifleri
+              <h3
+                class="text-center"
+                v-if="search !== null && search !== '' && search !== undefined"
+              >
+                "{{ search }}" Aramasıyla İle İlgili "{{ categories.name }}"
+                Kategorisine Ait Yemek Tarifleri
               </h3>
-              <h3 class="text-center" v-if="search === null || search === '' || search === undefined">
+              <h3
+                class="text-center"
+                v-if="search === null || search === '' || search === undefined"
+              >
                 "{{ categories.name }}" Kategorisine Ait Tüm Yemek Tarifleri
               </h3>
-              <div class="row row-grid" v-if="recipes !== null && recipes !== '' && recipes !== undefined">
-                <div v-bind:key="index" v-for="(recipe, index) in recipes" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <nuxt-link v-bind:to="/recipe/ + recipe.slug" tag="a">
-                        <img height="300" v-bind:alt="recipe.name" v-bind:src="img_url + 'public/storage/' + recipe.img_url" />
+              <div
+                class="row row-grid"
+                v-if="
+                  recipes !== null && recipes !== '' && recipes !== undefined
+                "
+              >
+                <v-card v-bind:key="index"
+                  v-for="(recipe, index) in recipes">
+                  <v-card-title class="headline mb-0 py-0">
+                    <v-list-item three-line class="px-0">
+                      <v-list-item-avatar
+                        tile
+                        size="65"
+                        class="rounded"
+                      >
+                      <img
+                          v-bind:alt="recipe.name"
+                          v-bind:src="
+                            img_url + 'public/storage/' + (recipe.dietician !== undefined && recipe.dietician !== null && recipe.dietician !== '' && recipe.dietician.profile_photo !== undefined && recipe.dietician.profile_photo !== null && recipe.dietician.profile_photo !== '' ? recipe.dietician.profile_photo : siteSettings.logo)
+                          "
+                        />
+                      </v-list-item-avatar>
+                      <v-list-item-content>
+                        
+                        <v-list-item-title class="headline">
+                        </v-list-item-title>
+                        <div class="overline font-weight-bold mb-0">{{recipe.dietician !== undefined && recipe.dietician !== null && recipe.dietician !== '' && recipe.dietician.name !== undefined && recipe.dietician.name !== null && recipe.dietician.name !== '' ? recipe.dietician.name : "Admin"}}</div>
+                        <v-list-item-subtitle
+                          >{{recipe.createdAt}}</v-list-item-subtitle
+                        >
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-card-title>
+                  <v-divider class="mt-0 mb-1 mx-3"></v-divider>
+                  <v-list-item class="align-items-top align-top d-flex align-start align-self-start">
+                    <nuxt-link v-bind:to="'/recipe/'+recipe.slug">
+                    <v-list-item-avatar
+                        tile
+                        size="165"
+                        class="rounded"
+                      >
+                      <img
+                          v-bind:alt="recipe.name"
+                          v-bind:src="
+                            img_url + 'public/storage/' + recipe.img_url
+                          "
+                        />
+                      </v-list-item-avatar>
                       </nuxt-link>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <nuxt-link v-bind:to="/recipe/ + recipe.slug" tag="a">{{ recipe.name }}</nuxt-link>
-                      </h3>
-                      <p class="speciality">{{ recipe.description }}</p>
+                      <v-list-item-content class="align-items-top align-top d-flex align-start align-self-start">
+                        <nuxt-link v-bind:to="'/recipe/'+recipe.slug" tag="a" class="btn-link font-weight-bold my-auto text-decoration-none h3">Diyetkolik Diyetisyenim</nuxt-link>
+                        <v-list-item-subtitle class="overline">YEMEK TARİFİ</v-list-item-subtitle>
+                      </v-list-item-content>
+                    </v-list-item>
 
-                      <div class="row row-sm">
-                        <div class="col-12">
-                          <nuxt-link tag="a" v-bind:to="/recipe/ + recipe.slug" class="btn btn-info-light rounded-0 view-btn"
-                            >Yemek Tarifi Detayı</nuxt-link
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+                  <v-card-subtitle
+                    >Listen to your favorite artists and albums whenever and
+                    wherever, online and offline.</v-card-subtitle
+                  >
+
+                  <v-card-actions>
+                    <v-btn text> Listen Now </v-btn>
+                  </v-card-actions>
+                </v-card>
+                
               </div>
-              <v-pagination v-model="pagination.current" :length="pagination.total" @input="onPageChange"></v-pagination>
+              <v-pagination
+                v-model="pagination.current"
+                :length="pagination.total"
+                @input="onPageChange"
+              ></v-pagination>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
               <div class="profile-sidebar">
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
-                      <img src="assets/img/patients/patient.jpg" alt="User Image" />
+                      <img
+                        src="assets/img/patients/patient.jpg"
+                        alt="User Image"
+                      />
                     </a>
                     <div class="profile-det-info">
                       <h3>Richard Wilson</h3>
                       <div class="patient-details">
-                        <h5><i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
-                        <h5 class="mb-0"><i class="fa fa-map-marker-alt"></i> Newyork, USA</h5>
+                        <h5>
+                          <i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38
+                          years
+                        </h5>
+                        <h5 class="mb-0">
+                          <i class="fa fa-map-marker-alt"></i> Newyork, USA
+                        </h5>
                       </div>
                     </div>
                   </div>
@@ -182,7 +245,12 @@ export default {
         this.$store
           .dispatch("getRecipeCategories", {
             recipeCategoriesURL:
-              "recipe-categories/" + this.$route.params.id + "?page=" + this.pagination.current + "&search=" + decodeURIComponent(this.search),
+              "recipe-categories/" +
+              this.$route.params.id +
+              "?page=" +
+              this.pagination.current +
+              "&search=" +
+              decodeURIComponent(this.search),
           })
           .then((response) => {
             this.recipes = this.$store.getters.recipeCategories.recipes.data;
@@ -192,16 +260,22 @@ export default {
           });
       } else {
         if (param) {
-          this.$store.dispatch("getRecipeCategories", { recipeCategoriesURL: param }).then((response) => {
-            this.recipes = this.$store.getters.recipeCategories.recipes.data;
-            this.categories = this.$store.getters.recipeCategories.categories;
-            this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
-            this.pagination.total = this.$store.getters.recipeCategories.recipes.last_page;
-          });
+          this.$store
+            .dispatch("getRecipeCategories", { recipeCategoriesURL: param })
+            .then((response) => {
+              this.recipes = this.$store.getters.recipeCategories.recipes.data;
+              this.categories = this.$store.getters.recipeCategories.categories;
+              this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
+              this.pagination.total = this.$store.getters.recipeCategories.recipes.last_page;
+            });
         } else {
           this.$store
             .dispatch("getRecipeCategories", {
-              recipeCategoriesURL: "recipe-categories/" + this.$route.params.id + "?page=" + this.pagination.current,
+              recipeCategoriesURL:
+                "recipe-categories/" +
+                this.$route.params.id +
+                "?page=" +
+                this.pagination.current,
             })
             .then((response) => {
               this.recipes = this.$store.getters.recipeCategories.recipes.data;
@@ -225,6 +299,7 @@ export default {
         current: 1,
         total: 1,
       },
+      siteSettings: this.$store.getters.siteSettings,
     };
   },
   mounted() {

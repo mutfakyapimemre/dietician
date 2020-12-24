@@ -81,9 +81,4 @@ export default {
       context.nuxt = {serverRendered: true, routePath};
     }
   },
-  router: {
-    scrollBehavior (to, from, savedPosition) {
-      return { x: 0, y: 0 }
-    }
-  }
 }

@@ -113,7 +113,7 @@
                         <ValidationProvider name="Adres" rules="required" v-slot="{ errors }">
                           <div class="form-group">
                             <label for="address">Adres</label>
-                            <input id="address" type="text" class="form-control" name="address" v-model="address" />
+                            <textarea id="address" class="form-control" name="address" v-model="data.address"></textarea>
                             <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                           </div>
                         </ValidationProvider>
@@ -198,7 +198,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary login-btn" type="submit">Gönder</button>
+                      <v-btn color="#1b5a90" dark type="submit">Gönder</v-btn>
                     </div>
                   </form>
                 </ValidationObserver>
