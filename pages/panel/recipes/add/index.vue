@@ -85,6 +85,13 @@
                                 <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
                               </div>
                             </ValidationProvider>
+                            <ValidationProvider name="Yemek Tarifi Kalorisi" rules="required" v-slot="{ errors }">
+                              <div class="form-group">
+                                <label for="calorie">Yemek Tarifi Kalorisi (Porsiyon - Gram)</label>
+                                <input id="calorie" type="text" class="form-control" name="calorie" v-model="inputData.calorie" />
+                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                              </div>
+                            </ValidationProvider>
                             <ValidationProvider name="Yemek Tarifi Açıklaması" rules="required" v-slot="{ errors }">
                               <div class="form-group">
                                 <label for="description">Yemek Tarifi Açıklaması</label>

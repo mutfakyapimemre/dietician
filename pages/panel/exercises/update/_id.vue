@@ -113,9 +113,6 @@
                             <div class="row">
                               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <dropzone
-                                  @vdropzone-file-added="onFileAdded"
-                                  @vdropzone-error="onError"
-                                  @vdropzone-success="onSuccess"
                                   @vdropzone-complete="onComplete"
                                   ref="myDropzone"
                                   id="dropzone"

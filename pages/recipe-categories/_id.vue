@@ -57,7 +57,7 @@
       </section>
       <!-- /Home Banner -->
       <div class="content">
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
               <h3
@@ -79,10 +79,11 @@
                   recipes !== null && recipes !== '' && recipes !== undefined
                 "
               >
-                <v-card v-bind:key="index"
-                  v-for="(recipe, index) in recipes">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" v-bind:key="index" v-for="(recipe, index) in recipes">
+                <v-card>
                   <v-card-title class="headline mb-0 py-0">
                     <v-list-item three-line class="px-0">
+                      <nuxt-link v-bind:to="'/profile/'+recipe.dietician.slug">
                       <v-list-item-avatar
                         tile
                         size="65"
@@ -95,21 +96,20 @@
                           "
                         />
                       </v-list-item-avatar>
+                      </nuxt-link>
                       <v-list-item-content>
-                        
                         <v-list-item-title class="headline">
                         </v-list-item-title>
                         <div class="overline font-weight-bold mb-0">{{recipe.dietician !== undefined && recipe.dietician !== null && recipe.dietician !== '' && recipe.dietician.name !== undefined && recipe.dietician.name !== null && recipe.dietician.name !== '' ? recipe.dietician.name : "Admin"}}</div>
-                        <v-list-item-subtitle
-                          >{{recipe.createdAt}}</v-list-item-subtitle
-                        >
+                        <v-list-item-subtitle>{{recipe.createdAt}}</v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
                   </v-card-title>
                   <v-divider class="mt-0 mb-1 mx-3"></v-divider>
                   <v-list-item class="align-items-top align-top d-flex align-start align-self-start">
-                    <nuxt-link v-bind:to="'/recipe/'+recipe.slug">
-                    <v-list-item-avatar
+                    <div class="justify-content-start">
+                      <nuxt-link v-bind:to="'/recipe/'+recipe.slug">
+                      <v-list-item-avatar
                         tile
                         size="165"
                         class="rounded"
@@ -122,22 +122,36 @@
                         />
                       </v-list-item-avatar>
                       </nuxt-link>
-                      <v-list-item-content class="align-items-top align-top d-flex align-start align-self-start">
-                        <nuxt-link v-bind:to="'/recipe/'+recipe.slug" tag="a" class="btn-link font-weight-bold my-auto text-decoration-none h3">Diyetkolik Diyetisyenim</nuxt-link>
-                        <v-list-item-subtitle class="overline">YEMEK TARİFİ</v-list-item-subtitle>
+                    </div>
+                    <div class="justify-content-end align-items-top align-top align-self-start w-100">
+                      <v-list-item-content class="align-items-top align-top d-block align-start align-self-start w-100 py-0">
+                        <nuxt-link v-bind:to="'/recipe/'+recipe.slug" tag="a" class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100">{{recipe.name}}</nuxt-link>
+                        <v-list-item-subtitle class="overline w-100">YEMEK TARİFİ</v-list-item-subtitle>
                       </v-list-item-content>
+                      <v-list-item-content class="align-items-top align-top d-flex align-start align-self-start flex-wrap">
+                        <div class="row d-flex flex-wrap">
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle">
+                            <div class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle">
+                              <div class="d-block">1 Porsiyon</div>
+                              {{recipe.calorie}} 
+                            </div>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle">
+                            <div class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle">
+                              {{recipe.portion}}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+
+                        
+                      </v-list-item-content>
+                    </div>
                     </v-list-item>
-
-
-                  <v-card-subtitle
-                    >Listen to your favorite artists and albums whenever and
-                    wherever, online and offline.</v-card-subtitle
-                  >
-
-                  <v-card-actions>
-                    <v-btn text> Listen Now </v-btn>
-                  </v-card-actions>
                 </v-card>
+              </div>
+                
                 
               </div>
               <v-pagination
