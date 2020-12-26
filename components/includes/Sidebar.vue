@@ -140,7 +140,6 @@ export default {
   },
   data() {
     return {
-      data: {},
       userData:
         Cookie.get("userData") !== null &&
         Cookie.get("userData") !== undefined &&
