@@ -37,8 +37,7 @@
       <section>
         <div class="row">
           <div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9">
-            <div
-              class="row"
+            <v-row
               v-if="
                 doctors !== null &&
                 doctors !== '' &&
@@ -47,10 +46,10 @@
               "
             >
               <!-- Doctor Widget -->
-              <div
+              <v-col
                 v-bind:key="index"
                 v-for="(doctor, index) in doctors"
-                class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+                cols="12" xs="12" sm="6" md="6" lg="4" xl="3"
               >
                 <div class="h-100 profile-widget mx-1">
                   <div class="doc-img">
@@ -112,27 +111,16 @@
                         ></i>
                       </li>
                     </ul>
-                    <div class="d-flex">
-                      <div class="flex-grow-1">
-                        <nuxt-link
-                          v-bind:to="'/profile/' + doctor.slug"
-                          class="btn btn-green-light rounded-0"
-                          >Profilini Görüntüle</nuxt-link
-                        >
-                      </div>
-                      <div class="flex-shrink-1">
-                        <nuxt-link
-                          v-bind:to="'/make-appointment/' + doctor.slug"
-                          class="btn btn-info-light rounded-0"
-                          >Randevu Al</nuxt-link
-                        >
-                      </div>
-                    </div>
+                    <nuxt-link
+                      v-bind:to="'/make-appointment/' + doctor.slug"
+                      class="btn btn-info-light rounded-0 w-100"
+                      >Randevu Al</nuxt-link
+                    >
                   </div>
                 </div>
-              </div>
+              </v-col>
               <!-- /Doctor Widget -->
-            </div>
+            </v-row>
             <v-pagination
               v-model="pagination.current"
               :length="pagination.total"

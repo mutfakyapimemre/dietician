@@ -59,7 +59,7 @@
       <div class="content">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
               <h3
                 class="text-center"
                 v-if="search !== null && search !== '' && search !== undefined"
@@ -74,85 +74,122 @@
                 "{{ categories.name }}" Kategorisine Ait Tüm Yemek Tarifleri
               </h3>
               <div
-                class="row row-grid"
+                class="row"
                 v-if="
                   recipes !== null && recipes !== '' && recipes !== undefined
                 "
               >
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" v-bind:key="index" v-for="(recipe, index) in recipes">
-                <v-card>
-                  <v-card-title class="headline mb-0 py-0">
-                    <v-list-item three-line class="px-0">
-                      <nuxt-link v-bind:to="'/profile/'+recipe.dietician.slug">
-                      <v-list-item-avatar
-                        tile
-                        size="65"
-                        class="rounded"
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                  v-bind:key="index"
+                  v-for="(recipe, index) in recipes"
+                >
+                  <v-card>
+                    <v-card-title class="headline mb-0 py-0">
+                      <v-list-item three-line class="px-0">
+                        <nuxt-link
+                          v-bind:to="'/profile/' + recipe.dietician.slug"
+                        >
+                          <v-list-item-avatar tile size="65" class="rounded">
+                            <img
+                              v-bind:alt="recipe.name"
+                              v-bind:src="
+                                img_url +
+                                'public/storage/' +
+                                (recipe.dietician !== undefined &&
+                                recipe.dietician !== null &&
+                                recipe.dietician !== '' &&
+                                recipe.dietician.profile_photo !== undefined &&
+                                recipe.dietician.profile_photo !== null &&
+                                recipe.dietician.profile_photo !== ''
+                                  ? recipe.dietician.profile_photo
+                                  : siteSettings.logo)
+                              "
+                            />
+                          </v-list-item-avatar>
+                        </nuxt-link>
+                        <v-list-item-content>
+                          <v-list-item-title class="headline">
+                          </v-list-item-title>
+                          <div class="overline font-weight-bold mb-0">
+                            {{
+                              recipe.dietician !== undefined &&
+                              recipe.dietician !== null &&
+                              recipe.dietician !== "" &&
+                              recipe.dietician.name !== undefined &&
+                              recipe.dietician.name !== null &&
+                              recipe.dietician.name !== ""
+                                ? recipe.dietician.name
+                                : "Admin"
+                            }}
+                          </div>
+                          <v-list-item-subtitle>{{
+                            recipe.createdAt
+                          }}</v-list-item-subtitle>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-card-title>
+                    <v-divider class="mt-0 mb-1 mx-3"></v-divider>
+                    <v-list-item
+                      class="align-items-top align-top d-flex align-start align-self-start"
+                    >
+                      <div class="justify-content-start">
+                        <nuxt-link v-bind:to="'/recipe/' + recipe.slug">
+                          <v-list-item-avatar tile size="165" class="rounded">
+                            <img
+                              v-bind:alt="recipe.name"
+                              v-bind:src="
+                                img_url + 'public/storage/' + recipe.img_url
+                              "
+                            />
+                          </v-list-item-avatar>
+                        </nuxt-link>
+                      </div>
+                      <div
+                        class="justify-content-end align-items-top align-top align-self-start w-100"
                       >
-                      <img
-                          v-bind:alt="recipe.name"
-                          v-bind:src="
-                            img_url + 'public/storage/' + (recipe.dietician !== undefined && recipe.dietician !== null && recipe.dietician !== '' && recipe.dietician.profile_photo !== undefined && recipe.dietician.profile_photo !== null && recipe.dietician.profile_photo !== '' ? recipe.dietician.profile_photo : siteSettings.logo)
-                          "
-                        />
-                      </v-list-item-avatar>
-                      </nuxt-link>
-                      <v-list-item-content>
-                        <v-list-item-title class="headline">
-                        </v-list-item-title>
-                        <div class="overline font-weight-bold mb-0">{{recipe.dietician !== undefined && recipe.dietician !== null && recipe.dietician !== '' && recipe.dietician.name !== undefined && recipe.dietician.name !== null && recipe.dietician.name !== '' ? recipe.dietician.name : "Admin"}}</div>
-                        <v-list-item-subtitle>{{recipe.createdAt}}</v-list-item-subtitle>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-card-title>
-                  <v-divider class="mt-0 mb-1 mx-3"></v-divider>
-                  <v-list-item class="align-items-top align-top d-flex align-start align-self-start">
-                    <div class="justify-content-start">
-                      <nuxt-link v-bind:to="'/recipe/'+recipe.slug">
-                      <v-list-item-avatar
-                        tile
-                        size="165"
-                        class="rounded"
-                      >
-                      <img
-                          v-bind:alt="recipe.name"
-                          v-bind:src="
-                            img_url + 'public/storage/' + recipe.img_url
-                          "
-                        />
-                      </v-list-item-avatar>
-                      </nuxt-link>
-                    </div>
-                    <div class="justify-content-end align-items-top align-top align-self-start w-100">
-                      <v-list-item-content class="align-items-top align-top d-block align-start align-self-start w-100 py-0">
-                        <nuxt-link v-bind:to="'/recipe/'+recipe.slug" tag="a" class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100">{{recipe.name}}</nuxt-link>
-                        <v-list-item-subtitle class="overline w-100">YEMEK TARİFİ</v-list-item-subtitle>
-                      </v-list-item-content>
-                      <v-list-item-content class="align-items-top align-top d-flex align-start align-self-start flex-wrap">
-                        <div class="row d-flex flex-wrap">
-                          <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle">
-                            <div class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle">
-                              <div class="d-block">1 Porsiyon</div>
-                              {{recipe.calorie}} 
+                        <v-list-item-content
+                          class="align-items-top align-top d-block align-start align-self-start w-100 py-0"
+                        >
+                          <nuxt-link
+                            v-bind:to="'/recipe/' + recipe.slug"
+                            tag="a"
+                            class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100"
+                            >{{ recipe.name }}</nuxt-link
+                          >
+                          <v-list-item-subtitle class="overline w-100"
+                            >YEMEK TARİFİ</v-list-item-subtitle
+                          >
+                        </v-list-item-content>
+                        <v-list-item-content
+                          class="align-items-top align-top d-flex align-start align-self-start flex-wrap"
+                        >
+                          <div class="row d-flex flex-wrap">
+                            <div
+                              class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle"
+                            >
+                              <div
+                                class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
+                              >
+                                <div class="d-block">1 Porsiyon</div>
+                                {{ recipe.calorie }}
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle"
+                            >
+                              <div
+                                class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
+                              >
+                                {{ recipe.portion }}
+                              </div>
                             </div>
                           </div>
-                          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle">
-                            <div class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle">
-                              {{recipe.portion}}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        
-
-                        
-                      </v-list-item-content>
-                    </div>
+                        </v-list-item-content>
+                      </div>
                     </v-list-item>
-                </v-card>
-              </div>
-                
-                
+                  </v-card>
+                </div>
               </div>
               <v-pagination
                 v-model="pagination.current"
@@ -160,7 +197,9 @@
                 @input="onPageChange"
               ></v-pagination>
             </div>
-            <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div
+              class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 theiaStickySidebar"
+            >
               <div class="profile-sidebar">
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
@@ -319,16 +358,6 @@ export default {
   mounted() {
     this.getRecipes();
   },
-  /*async asyncData({ params, error, $axios }) {
-    try {
-      const { data } = await $axios.get(
-        process.env.apiBaseUrl + "recipe-categories/" + params.id
-      );
-      return { data };
-    } catch (e) {
-      error({ message: "Yemek Tarifleri Bulunamadı.", statusCode: 404 });
-    }
-  },*/
 };
 </script>
 

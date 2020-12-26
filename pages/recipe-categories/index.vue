@@ -108,7 +108,9 @@
                         <div class="col-12">
                           <nuxt-link
                             tag="a"
-                            v-bind:to="/recipe-categories/ + recipeCategory.slug"
+                            v-bind:to="
+                              /recipe-categories/ + recipeCategory.slug
+                            "
                             class="btn btn-info-light rounded-0 view-btn"
                             >Yemek Tarifleri</nuxt-link
                           >
@@ -124,17 +126,25 @@
                 @input="onPageChange"
               ></v-pagination>
             </div>
-            <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div
+              class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+            >
               <div class="profile-sidebar">
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
-                      <img src="assets/img/patients/patient.jpg" alt="User Image" />
+                      <img
+                        src="assets/img/patients/patient.jpg"
+                        alt="User Image"
+                      />
                     </a>
                     <div class="profile-det-info">
                       <h3>Richard Wilson</h3>
                       <div class="patient-details">
-                        <h5><i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
+                        <h5>
+                          <i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38
+                          years
+                        </h5>
                         <h5 class="mb-0">
                           <i class="fa fa-map-marker-alt"></i> Newyork, USA
                         </h5>
@@ -235,7 +245,8 @@ export default {
         } else {
           this.$store
             .dispatch("getRecipeCategories", {
-              recipeCategoriesURL: "recipe-categories?page=" + this.pagination.current,
+              recipeCategoriesURL:
+                "recipe-categories?page=" + this.pagination.current,
             })
             .then((response) => {
               this.recipeCategories = this.$store.getters.recipeCategories.data;
@@ -264,5 +275,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

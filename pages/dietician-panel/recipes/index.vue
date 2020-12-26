@@ -11,7 +11,9 @@
                 <h3 class="page-title">Yemek Tarifleri</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <nuxt-link to="/dietician-panel" tag="a">Anasayfa</nuxt-link>
+                    <nuxt-link to="/dietician-panel" tag="a"
+                      >Anasayfa</nuxt-link
+                    >
                   </li>
                   <li class="breadcrumb-item active">Yemek Tarifleri</li>
                 </ul>
@@ -65,7 +67,11 @@
                       :hide-default-footer="true"
                     >
                       <template v-slot:[`item.img_url`]="{ item }">
-                        <img v-bind:src="item.img_url" width="150" height="150" />
+                        <img
+                          v-bind:src="item.img_url"
+                          width="150"
+                          height="150"
+                        />
                       </template>
                       <template v-slot:[`item.isActive`]="{ item }">
                         <v-layout justify-center>
@@ -82,7 +88,9 @@
                         <v-icon small class="mr-2" @click="editData(item.id)">
                           mdi-pencil
                         </v-icon>
-                        <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
+                        <v-icon small @click="deleteData(item.id)">
+                          mdi-delete
+                        </v-icon>
                       </template>
                     </v-data-table>
                   </v-card>
@@ -150,7 +158,12 @@ export default {
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
         { text: "Adı", align: "center", value: "name" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 0,
@@ -178,7 +191,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}dietician/recipes/${urlParam}?table=recipes&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id&where_value=${this.userData._id}`,
@@ -190,7 +207,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -231,7 +249,8 @@ export default {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers":
               "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-type": "application/json",
             Authorization: "Bearer " + this.userData.api_token,
@@ -269,7 +288,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,

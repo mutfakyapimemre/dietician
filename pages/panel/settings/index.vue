@@ -19,104 +19,84 @@
             </div>
           </div>
           <!-- /Page Header -->
+          <v-card tile>
+            <v-card-title class="d-flex justify-content-between">
+              <span class="justify-content-center flex-grow-1">
+                <v-text-field
+                  v-model="searchTitle"
+                  label="Arama Yapın..."
+                  class="my-auto py-auto"
+                ></v-text-field>
+              </span>
+              <span class="justify-content-end flex-shrink-1">
+                <v-btn
+                  @click="
+                    page = 1;
+                    retrieveData('get-by-search');
+                  "
+                  class="my-auto py-auto mx-3"
+                >
+                  Ara
+                </v-btn>
+                <nuxt-link
+                  to="/panel/settings/add"
+                  tag="a"
+                  class="float-right btn btn-primary text-white my-auto py-auto"
+                >
+                  <i class="fa fa-plus"></i> Ekle
+                </nuxt-link>
+              </span>
+            </v-card-title>
 
-          <div class="row">
-            <div class="col-12">
-              <!-- General -->
+            <v-data-table
+              :headers="headers"
+              :items="data"
+              disable-pagination
+              :hide-default-footer="true"
+            >
+              <template v-slot:[`item.logo`]="{ item }">
+                <img v-bind:src="item.logo" width="220" height="60" />
+              </template>
+              <template v-slot:[`item.isActive`]="{ item }">
+                <v-layout justify-center>
+                  <v-switch
+                    class="d-flex justify-content-center mx-auto px-auto text-center"
+                    v-model="item.isActive"
+                    color="success"
+                    :key="item.id"
+                    @click="isActiveSetter(item.id)"
+                  ></v-switch>
+                </v-layout>
+              </template>
+              <template v-slot:[`item.actions`]="{ item }">
+                <v-icon small class="mr-2" @click="editData(item.id)">
+                  mdi-pencil
+                </v-icon>
+                <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
+              </template>
+            </v-data-table>
+          </v-card>
+          <v-row>
+            <v-col cols="12" xs="12" sm="12" md="3" lg="3" xl="3">
+              <v-select
+                v-model="pageSize"
+                :items="pageSizes"
+                label="Sayfada Görüntüleme Sayısı"
+                @change="handlePageSizeChange"
+              ></v-select>
+            </v-col>
 
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Ayarlar</h4>
-                </div>
-                <div class="card-body">
-                  <v-card tile>
-                    <v-card-title class="d-flex justify-content-between">
-                      <span class="justify-content-center flex-grow-1">
-                        <v-text-field
-                          v-model="searchTitle"
-                          label="Arama Yapın..."
-                          class="my-auto py-auto"
-                        ></v-text-field>
-                      </span>
-                      <span class="justify-content-end flex-shrink-1">
-                        <v-btn
-                          @click="
-                            page = 1;
-                            retrieveData('get-by-search');
-                          "
-                          class="my-auto py-auto mx-3"
-                        >
-                          Ara
-                        </v-btn>
-                        <nuxt-link
-                          to="/panel/settings/add"
-                          tag="a"
-                          class="float-right btn btn-primary text-white my-auto py-auto"
-                        >
-                          <i class="fa fa-plus"></i> Ekle
-                        </nuxt-link>
-                      </span>
-                    </v-card-title>
-
-                    <v-data-table
-                      :headers="headers"
-                      :items="data"
-                      disable-pagination
-                      :hide-default-footer="true"
-                    >
-                      <template v-slot:[`item.logo`]="{ item }">
-                        <img v-bind:src="item.logo" width="220" height="60" />
-                      </template>
-                      <template v-slot:[`item.isActive`]="{ item }">
-                        <v-layout justify-center>
-                          <v-switch
-                            class="d-flex justify-content-center mx-auto px-auto text-center"
-                            v-model="item.isActive"
-                            color="success"
-                            :key="item.id"
-                            @click="isActiveSetter(item.id)"
-                          ></v-switch>
-                        </v-layout>
-                      </template>
-                      <template v-slot:[`item.actions`]="{ item }">
-                        <v-icon small class="mr-2" @click="editData(item.id)">
-                          mdi-pencil
-                        </v-icon>
-                        <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
-                      </template>
-                    </v-data-table>
-                  </v-card>
-                  <div class="row">
-                    <v-col cols="12" sm="12">
-                      <div class="row">
-                        <v-col cols="12" lg="3">
-                          <v-select
-                            v-model="pageSize"
-                            :items="pageSizes"
-                            label="Sayfada Görüntüleme Sayısı"
-                            @change="handlePageSizeChange"
-                          ></v-select>
-                        </v-col>
-
-                        <v-col cols="12" lg="9">
-                          <v-pagination
-                            v-model="page"
-                            :length="totalPages"
-                            total-visible="7"
-                            next-icon="mdi-menu-right"
-                            prev-icon="mdi-menu-left"
-                            @input="handlePageChange"
-                          ></v-pagination>
-                        </v-col>
-                      </div>
-                    </v-col>
-                  </div>
-                </div>
-              </div>
-
-              <!-- /General -->
-            </div>
-          </div>
+            <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
+              <v-pagination
+                v-model="page"
+                :length="totalPages"
+                total-visible="7"
+                next-icon="mdi-menu-right"
+                prev-icon="mdi-menu-left"
+                @input="handlePageChange"
+              ></v-pagination>
+            </v-col>
+          </v-row>
         </div>
       </div>
       <!-- /Page Wrapper -->
@@ -151,7 +131,12 @@ export default {
         { text: "Görsel", align: "center", value: "logo", sortable: false },
         { text: "Firma Adı", align: "center", value: "company_name" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 1,
@@ -179,7 +164,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=settings&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=company_name`,
@@ -191,7 +180,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -233,7 +223,8 @@ export default {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers":
               "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-type": "application/json",
             Authorization: "Bearer " + this.userData.api_token,
@@ -271,7 +262,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,

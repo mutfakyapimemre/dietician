@@ -30,10 +30,16 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form @submit.prevent="handleSubmit(saveDiseases)" ref="diseasesForm" enctype="multipart/form-data">
+                    <form
+                      @submit.prevent="handleSubmit(saveDiseases)"
+                      ref="diseasesForm"
+                      enctype="multipart/form-data"
+                    >
                       <v-stepper v-model="e1">
                         <v-stepper-header>
-                          <v-stepper-step :complete="e1 > 1" step="1"> Hastalık Bilgileri </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 1" step="1">
+                            Hastalık Bilgileri
+                          </v-stepper-step>
 
                           <v-divider></v-divider>
                           <!--
@@ -50,21 +56,50 @@
 
                         <v-stepper-items>
                           <v-stepper-content step="1">
-                            <ValidationProvider name="Hastalık Adı" rules="required" v-slot="{ errors }">
+                            <ValidationProvider
+                              name="Hastalık Adı"
+                              rules="required"
+                              v-slot="{ errors }"
+                            >
                               <div class="form-group">
                                 <label for="title">Hastalık Adı</label>
-                                <input id="title" type="text" class="form-control" name="name" v-model="inputData.name" />
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                <input
+                                  id="title"
+                                  type="text"
+                                  class="form-control"
+                                  name="name"
+                                  v-model="inputData.name"
+                                />
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </div>
                             </ValidationProvider>
-                            <ValidationProvider name="Hastalık Açıklaması" rules="required" v-slot="{ errors }">
+                            <ValidationProvider
+                              name="Hastalık Açıklaması"
+                              rules="required"
+                              v-slot="{ errors }"
+                            >
                               <div class="form-group">
-                                <label for="description">Hastalık Açıklaması</label>
-                                <textarea id="description" class="form-control" name="description" v-model="inputData.description"></textarea>
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                <label for="description"
+                                  >Hastalık Açıklaması</label
+                                >
+                                <textarea
+                                  id="description"
+                                  class="form-control"
+                                  name="description"
+                                  v-model="inputData.description"
+                                ></textarea>
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </div>
                             </ValidationProvider>
-                            <v-tabs v-model="tab" background-color="primary" dark>
+                            <v-tabs
+                              v-model="tab"
+                              background-color="primary"
+                              dark
+                            >
                               <v-tab v-for="item in items" :key="item.tab">
                                 {{ item.tab }}
                               </v-tab>
@@ -73,12 +108,30 @@
                             <v-tabs-items v-model="tab">
                               <v-tab-item eager>
                                 <v-card flat>
-                                  <v-card-text v-if="inputs !== null && inputs !== undefined && inputs !== ''">
-                                    <div class="row" v-bind:key="index" v-for="(input, index) in inputs">
-                                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                        <ValidationProvider v-bind:name="input[0].label" rules="required" v-slot="{ errors }">
+                                  <v-card-text
+                                    v-if="
+                                      inputs !== null &&
+                                      inputs !== undefined &&
+                                      inputs !== ''
+                                    "
+                                  >
+                                    <div
+                                      class="row"
+                                      v-bind:key="index"
+                                      v-for="(input, index) in inputs"
+                                    >
+                                      <div
+                                        class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
+                                      >
+                                        <ValidationProvider
+                                          v-bind:name="input[0].label"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <div class="form-group">
-                                            <label v-bind:for="input[0].id">{{ input[0].label }}</label>
+                                            <label v-bind:for="input[0].id">{{
+                                              input[0].label
+                                            }}</label>
                                             <input
                                               v-bind:id="input[0].id"
                                               type="text"
@@ -86,14 +139,25 @@
                                               name="diseaseName[]"
                                               v-model="input[0].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                                        <ValidationProvider v-bind:name="input[1].label" rules="required" v-slot="{ errors }">
+                                      <div
+                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+                                      >
+                                        <ValidationProvider
+                                          v-bind:name="input[1].label"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <div class="form-group">
-                                            <label v-bind:for="input[1].id">{{ input[1].label }}</label>
+                                            <label v-bind:for="input[1].id">{{
+                                              input[1].label
+                                            }}</label>
                                             <input
                                               v-bind:id="input[1].id"
                                               type="text"
@@ -101,14 +165,25 @@
                                               name="diseaseMin[]"
                                               v-model="input[1].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                                        <ValidationProvider v-bind:name="input[2].label" rules="required" v-slot="{ errors }">
+                                      <div
+                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+                                      >
+                                        <ValidationProvider
+                                          v-bind:name="input[2].label"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <div class="form-group">
-                                            <label v-bind:for="input[2].id">{{ input[2].label }}</label>
+                                            <label v-bind:for="input[2].id">{{
+                                              input[2].label
+                                            }}</label>
                                             <input
                                               v-bind:id="input[2].id"
                                               type="text"
@@ -116,14 +191,25 @@
                                               name="diseaseMax[]"
                                               v-model="input[2].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                                        <ValidationProvider v-bind:name="input[3].label" rules="required" v-slot="{ errors }">
+                                      <div
+                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+                                      >
+                                        <ValidationProvider
+                                          v-bind:name="input[3].label"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <div class="form-group">
-                                            <label v-bind:for="input[3].id">{{ input[3].label }}</label>
+                                            <label v-bind:for="input[3].id">{{
+                                              input[3].label
+                                            }}</label>
                                             <input
                                               v-bind:id="input[3].id"
                                               type="text"
@@ -131,11 +217,16 @@
                                               name="diseaseType[]"
                                               v-model="input[3].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
-                                      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom">
+                                      <div
+                                        class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
+                                      >
                                         <button
                                           @click.prevent="cloneProperty"
                                           class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
@@ -145,7 +236,9 @@
                                         </button>
                                         <button
                                           v-if="inputs.length > 1"
-                                          @click.prevent="removeProperty(input[0].id)"
+                                          @click.prevent="
+                                            removeProperty(input[0].id)
+                                          "
                                           role="button"
                                           class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
                                         >
@@ -158,7 +251,12 @@
                               </v-tab-item>
                             </v-tabs-items>
 
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Hastalığı Kayıt Et</button>
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              type="submit"
+                            >
+                              Hastalığı Kayıt Et
+                            </button>
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
@@ -217,7 +315,12 @@ export default {
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
         { text: "Kapak Fotoğrafı", align: "center", value: "isCover" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 0,
@@ -229,7 +332,9 @@ export default {
         headers: {
           Authorization:
             "Bearer " +
-            (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+            (Cookie.get("userData") !== null &&
+            Cookie.get("userData") !== undefined &&
+            Cookie.get("userData") !== ""
               ? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
               : null),
         },
@@ -240,7 +345,9 @@ export default {
         parallelUploads: 10,
       },
       userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
       tab: null,
@@ -269,7 +376,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=diseases_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=nutrients_id&where_value=${this.inputData.id}&joins=diseases_file`,
@@ -279,8 +390,10 @@ export default {
             mode: "no-cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -316,8 +429,10 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers":
+              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-type": "application/json",
             Authorization: "Bearer " + this.userData.api_token,
@@ -345,20 +460,27 @@ export default {
     },
     isActiveSetter(id) {
       this.$axios
-        .get(process.env.apiBaseUrl + "panel/datatables/is-active-setter?table=diseases_file&id=" + id, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-type": "application/json",
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .get(
+          process.env.apiBaseUrl +
+            "panel/datatables/is-active-setter?table=diseases_file&id=" +
+            id,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -380,20 +502,27 @@ export default {
     },
     isCoverSetter(id) {
       this.$axios
-        .get(process.env.apiBaseUrl + "panel/datatables/is-cover-setter?table=diseases_file&foreign_column=diseases_id&id=" + id, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-type": "application/json",
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .get(
+          process.env.apiBaseUrl +
+            "panel/datatables/is-cover-setter?table=diseases_file&foreign_column=diseases_id&id=" +
+            id,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -480,10 +609,13 @@ export default {
           mode: "no-cors",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers":
+              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            "Content-Type":
+              "multipart/form-data; boundary=" + formData._boundary,
             Authorization: "Bearer " + this.userData.api_token,
           },
           credentials: "same-origin",

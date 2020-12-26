@@ -10,7 +10,9 @@
                 <li class="breadcrumb-item">
                   <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Ölçütler</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Ölçütler
+                </li>
               </ol>
             </nav>
             <h2 class="breadcrumb-title">Ölçütler</h2>
@@ -53,7 +55,11 @@
           <div class="row">
             <div
               class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9"
-              v-if="criterias !== null && criterias !== '' && criterias !== undefined"
+              v-if="
+                criterias !== null &&
+                criterias !== '' &&
+                criterias !== undefined
+              "
             >
               <h3
                 class="text-center"
@@ -91,7 +97,9 @@
                     v-for="(value, index) in criteria.criteria_values"
                   >
                     <td class="w-50 text-break">{{ value.title }}</td>
-                    <td class="w-50 text-break">{{ value.value }} {{ value.type }}</td>
+                    <td class="w-50 text-break">
+                      {{ value.value }} {{ value.type }}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -101,17 +109,25 @@
                 @input="onPageChange"
               ></v-pagination>
             </div>
-            <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div
+              class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+            >
               <div class="profile-sidebar">
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
-                      <img src="assets/img/patients/patient.jpg" alt="User Image" />
+                      <img
+                        src="assets/img/patients/patient.jpg"
+                        alt="User Image"
+                      />
                     </a>
                     <div class="profile-det-info">
                       <h3>Richard Wilson</h3>
                       <div class="patient-details">
-                        <h5><i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
+                        <h5>
+                          <i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38
+                          years
+                        </h5>
                         <h5 class="mb-0">
                           <i class="fa fa-map-marker-alt"></i> Newyork, USA
                         </h5>
@@ -239,5 +255,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

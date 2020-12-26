@@ -66,14 +66,20 @@
               >
                 Tüm Yemek Tarifleri
               </h3>
-              <div
-                class="row row-grid"
-                v-if="recipes !== null && recipes !== '' && recipes !== undefined"
+              <v-row
+                v-if="
+                  recipes !== null && recipes !== '' && recipes !== undefined
+                "
               >
-                <div
+                <v-col
+                  cols="12"
+                  xs="12"
+                  sm="12"
+                  md="12"
+                  lg="12"
+                  xl="6"
                   v-bind:key="index"
                   v-for="(recipe, index) in recipes"
-                  class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
                 >
                   <div class="profile-widget">
                     <div class="doc-img">
@@ -81,7 +87,9 @@
                         <img
                           height="300"
                           v-bind:alt="recipe.name"
-                          v-bind:src="img_url + 'public/storage/' + recipe.img_url"
+                          v-bind:src="
+                            img_url + 'public/storage/' + recipe.img_url
+                          "
                         />
                       </nuxt-link>
                     </div>
@@ -105,25 +113,33 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </v-col>
+              </v-row>
               <v-pagination
                 v-model="pagination.current"
                 :length="pagination.total"
                 @input="onPageChange"
               ></v-pagination>
             </div>
-            <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div
+              class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+            >
               <div class="profile-sidebar">
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
-                      <img src="assets/img/patients/patient.jpg" alt="User Image" />
+                      <img
+                        src="assets/img/patients/patient.jpg"
+                        alt="User Image"
+                      />
                     </a>
                     <div class="profile-det-info">
                       <h3>Richard Wilson</h3>
                       <div class="patient-details">
-                        <h5><i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
+                        <h5>
+                          <i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38
+                          years
+                        </h5>
                         <h5 class="mb-0">
                           <i class="fa fa-map-marker-alt"></i> Newyork, USA
                         </h5>
@@ -214,11 +230,13 @@ export default {
           });
       } else {
         if (param) {
-          this.$store.dispatch("getRecipes", { recipesURL: param }).then((response) => {
-            this.recipes = this.$store.getters.recipes.data;
-            this.pagination.current = this.$store.getters.recipes.current_page;
-            this.pagination.total = this.$store.getters.recipes.last_page;
-          });
+          this.$store
+            .dispatch("getRecipes", { recipesURL: param })
+            .then((response) => {
+              this.recipes = this.$store.getters.recipes.data;
+              this.pagination.current = this.$store.getters.recipes.current_page;
+              this.pagination.total = this.$store.getters.recipes.last_page;
+            });
         } else {
           this.$store
             .dispatch("getRecipes", {
@@ -251,5 +269,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

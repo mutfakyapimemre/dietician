@@ -32,20 +32,33 @@
                   <div class="row align-items-center">
                     <div class="col-auto profile-image">
                       <a href="javascript:void(0)">
-                        <img v-bind:src="img_url + '/public/storage/' + data.img_url" class="img-fluid" v-bind:alt="data.name" />
+                        <img
+                          v-bind:src="
+                            img_url + '/public/storage/' + data.img_url
+                          "
+                          class="img-fluid"
+                          v-bind:alt="data.name"
+                        />
                       </a>
                     </div>
                     <div class="col ml-md-n2 profile-user-info">
                       <h4 class="user-name mb-0">{{ data.name }}</h4>
                       <h6 class="text-muted">{{ data.email }}</h6>
-                      <div class="user-Location"><i class="fa fa-map-marker"></i> {{ data.city }}, {{ data.town }}</div>
+                      <div class="user-Location">
+                        <i class="fa fa-map-marker"></i> {{ data.city }},
+                        {{ data.town }}
+                      </div>
                       <div class="user-Location">
                         <i class="fa fa-phone"></i>
-                        <a v-bind:href="'tel:' + data.phone">{{ data.phone }}</a>
+                        <a v-bind:href="'tel:' + data.phone">{{
+                          data.phone
+                        }}</a>
                       </div>
                       <div class="user-Location">
                         <i class="fa fa-envelope"></i>
-                        <a v-bind:href="'mailto:' + data.email">{{ data.email }}</a>
+                        <a v-bind:href="'mailto:' + data.email">{{
+                          data.email
+                        }}</a>
                       </div>
                       <div class="about-text">{{ data.about }}</div>
                     </div>
@@ -56,21 +69,37 @@
                   <!-- Appointment Tab -->
                   <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#danisman_kayit_bilgileri" data-toggle="tab">Danışman Bilgileri</a>
+                      <a
+                        class="nav-link active"
+                        href="#danisman_kayit_bilgileri"
+                        data-toggle="tab"
+                        >Danışman Bilgileri</a
+                      >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#danisman_kayit_bilgisi_duzenle" data-toggle="tab">Danışman Bilgisi Düzenle</a>
+                      <a
+                        class="nav-link"
+                        href="#danisman_kayit_bilgisi_duzenle"
+                        data-toggle="tab"
+                        >Danışman Bilgisi Düzenle</a
+                      >
                     </li>
                   </ul>
                   <!-- /Appointment Tab -->
 
                   <div class="tab-content">
                     <!-- Upcoming Appointment Tab -->
-                    <div class="tab-pane show active" id="danisman_kayit_bilgileri">
+                    <div
+                      class="tab-pane show active"
+                      id="danisman_kayit_bilgileri"
+                    >
                       <div class="card card-table mb-0">
                         <div class="card-body">
                           <div class="table-responsive bg-light mt-5">
-                            <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                            <table
+                              class="table table-striped table-hover table-center table-borderless mb-0"
+                              style="border-top: none"
+                            >
                               <tbody>
                                 <tr>
                                   <td><b>Ad Soyad :</b></td>
@@ -150,7 +179,9 @@
                                 </tr>
                                 <tr>
                                   <td><b>Deri Kıvrım Kalınlığı (cm) :</b></td>
-                                  <td colspan="2">{{ data.skinfoldThickness }}</td>
+                                  <td colspan="2">
+                                    {{ data.skinfoldThickness }}
+                                  </td>
                                 </tr>
                                 <tr>
                                   <td><b>Yağ :</b></td>
@@ -180,9 +211,16 @@
                       <div class="card card-table mb-0">
                         <div class="card-body">
                           <ValidationObserver v-slot="{ handleSubmit }">
-                            <form @submit.prevent="handleSubmit(updateInformation)" ref="informationForm" enctype="multipart/form-data">
+                            <form
+                              @submit.prevent="handleSubmit(updateInformation)"
+                              ref="informationForm"
+                              enctype="multipart/form-data"
+                            >
                               <div class="table-responsive mt-5">
-                                <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                                <table
+                                  class="table table-striped table-hover table-center table-borderless mb-0"
+                                  style="border-top: none"
+                                >
                                   <tbody>
                                     <tr>
                                       <td><b>Ad Soyad :</b></td>
@@ -191,12 +229,19 @@
                                     <tr>
                                       <td><b>Cinsiyet :</b></td>
                                       <td colspan="2">
-                                        <v-radio-group v-model="data.gender" row>
+                                        <v-radio-group
+                                          v-model="data.gender"
+                                          row
+                                        >
                                           <v-radio value="Erkek" disabled>
-                                            <template v-slot:label> Erkek </template>
+                                            <template v-slot:label>
+                                              Erkek
+                                            </template>
                                           </v-radio>
                                           <v-radio value="Kadın" disabled>
-                                            <template v-slot:label> Kadın </template>
+                                            <template v-slot:label>
+                                              Kadın
+                                            </template>
                                           </v-radio>
                                         </v-radio-group>
                                       </td>
@@ -215,7 +260,9 @@
                                     </tr>
                                     <tr>
                                       <td><b>İkamet Ettiği Mahalle :</b></td>
-                                      <td colspan="2">{{ data.neighborhood }}</td>
+                                      <td colspan="2">
+                                        {{ data.neighborhood }}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td><b>İkamet Ettiğiniz Adres :</b></td>
@@ -234,7 +281,11 @@
                                     <tr>
                                       <td><b>Doğum Tarihi :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Doğum Tarihi" rules="required" v-slot="{ errors }">
+                                        <ValidationProvider
+                                          name="Doğum Tarihi"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <input
                                             type="date"
                                             class="form-control"
@@ -242,113 +293,265 @@
                                             placeholder="Doğum Tarihi"
                                             v-model="data.birthDate"
                                           />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Boy (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Boy (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="size" id="size" class="form-control" v-model="data.size" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Boy (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="size"
+                                            id="size"
+                                            class="form-control"
+                                            v-model="data.size"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Ağırlık (kg) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Ağırlık (kg)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="weight" id="weight" class="form-control" v-model="data.weight" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Ağırlık (kg)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="weight"
+                                            id="weight"
+                                            class="form-control"
+                                            v-model="data.weight"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Bel (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Bel (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="waist" id="waist" class="form-control" v-model="data.waist" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Bel (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="waist"
+                                            id="waist"
+                                            class="form-control"
+                                            v-model="data.waist"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Kalça (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Kalça (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="hip" id="hip" class="form-control" v-model="data.hip" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Kalça (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="hip"
+                                            id="hip"
+                                            class="form-control"
+                                            v-model="data.hip"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Göğüs (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Göğüs (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="chest" id="chest" class="form-control" v-model="data.chest" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Göğüs (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="chest"
+                                            id="chest"
+                                            class="form-control"
+                                            v-model="data.chest"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Boyun (cm) : </b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Boyun (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="neck" id="neck" class="form-control" v-model="data.neck" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Boyun (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="neck"
+                                            id="neck"
+                                            class="form-control"
+                                            v-model="data.neck"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Üst Kol (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Üst Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperArm" id="upperArm" class="form-control" v-model="data.upperArm" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Üst Kol (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="upperArm"
+                                            id="upperArm"
+                                            class="form-control"
+                                            v-model="data.upperArm"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Alt Kol (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Alt Kol (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerArm" id="lowerArm" class="form-control" v-model="data.lowerArm" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Alt Kol (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="lowerArm"
+                                            id="lowerArm"
+                                            class="form-control"
+                                            v-model="data.lowerArm"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Kol Bileği (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Kol Bileği (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="wrist" id="wrist" class="form-control" v-model="data.wrist" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Kol Bileği (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="wrist"
+                                            id="wrist"
+                                            class="form-control"
+                                            v-model="data.wrist"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Üst Bacak (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Üst Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="upperLeg" id="upperLeg" class="form-control" v-model="data.upperLeg" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Üst Bacak (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="upperLeg"
+                                            id="upperLeg"
+                                            class="form-control"
+                                            v-model="data.upperLeg"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td><b>Alt Bacak (cm) :</b></td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Alt Bacak (cm)" rules="required" v-slot="{ errors }">
-                                          <input type="number" name="lowerLeg" id="lowerLeg" class="form-control" v-model="data.lowerLeg" />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                        <ValidationProvider
+                                          name="Alt Bacak (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
+                                          <input
+                                            type="number"
+                                            name="lowerLeg"
+                                            id="lowerLeg"
+                                            class="form-control"
+                                            v-model="data.lowerLeg"
+                                          />
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td><b>Deri Kıvrım Kalınlığı (cm) :</b></td>
+                                      <td>
+                                        <b>Deri Kıvrım Kalınlığı (cm) :</b>
+                                      </td>
                                       <td colspan="2">
-                                        <ValidationProvider name="Deri Kıvrım Kalınlığı (cm)" rules="required" v-slot="{ errors }">
+                                        <ValidationProvider
+                                          name="Deri Kıvrım Kalınlığı (cm)"
+                                          rules="required"
+                                          v-slot="{ errors }"
+                                        >
                                           <input
                                             type="number"
                                             name="skinfoldThickness"
@@ -356,7 +559,10 @@
                                             class="form-control"
                                             v-model="data.skinfoldThickness"
                                           />
-                                          <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                          <small
+                                            class="font-weight-bold text-danger"
+                                            >{{ errors[0] }}</small
+                                          >
                                         </ValidationProvider>
                                       </td>
                                     </tr>
@@ -380,7 +586,12 @@
                                     <tr>
                                       <td colspan="3">
                                         <div class="form-group">
-                                          <button class="btn btn-info-light login-btn float-right" type="submit">Danışan Bilgilerini Güncelle</button>
+                                          <button
+                                            class="btn btn-info-light login-btn float-right"
+                                            type="submit"
+                                          >
+                                            Danışan Bilgilerini Güncelle
+                                          </button>
                                         </div>
                                       </td>
                                     </tr>
@@ -424,10 +635,25 @@ export default {
     return {
       data: { cities: [], towns: [], districts: [], neighborhoods: [] },
       country: { cities: [], towns: [], districts: [], neighborhoods: [] },
-      months: ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"],
+      months: [
+        "OCAK",
+        "ŞUBAT",
+        "MART",
+        "NİSAN",
+        "MAYIS",
+        "HAZİRAN",
+        "TEMMUZ",
+        "AĞUSTOS",
+        "EYLÜL",
+        "EKİM",
+        "KASIM",
+        "ARALIK",
+      ],
       siteSettings: this.$store.getters.siteSettings,
       userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -442,7 +668,9 @@ export default {
   },
   async asyncData({ params, error, $axios }) {
     try {
-      const { data } = await $axios.get(process.env.apiBaseUrl + "dietician/users/update/" + params.id);
+      const { data } = await $axios.get(
+        process.env.apiBaseUrl + "dietician/users/update/" + params.id
+      );
 
       return data;
     } catch (e) {
@@ -453,19 +681,28 @@ export default {
     updateInformation() {
       let formData = new FormData(this.$refs.informationForm);
       this.$axios
-        .post(process.env.apiBaseUrl + "dietician/users/update/" + this.data._id.$oid, formData, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-        })
+        .post(
+          process.env.apiBaseUrl +
+            "dietician/users/update/" +
+            this.data._id.$oid,
+          formData,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-Type":
+                "multipart/form-data; boundary=" + formData._boundary,
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({

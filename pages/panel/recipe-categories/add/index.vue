@@ -13,7 +13,9 @@
                   <li class="breadcrumb-item">
                     <nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
                   </li>
-                  <li class="breadcrumb-item active">Yemek Tarifi Kategorileri</li>
+                  <li class="breadcrumb-item active">
+                    Yemek Tarifi Kategorileri
+                  </li>
                 </ul>
               </div>
             </div>
@@ -60,7 +62,9 @@
                               v-slot="{ errors }"
                             >
                               <div class="form-group">
-                                <label for="title">Yemek Tarifi Kategorisi</label>
+                                <label for="title"
+                                  >Yemek Tarifi Kategorisi</label
+                                >
                                 <input
                                   id="title"
                                   type="text"
@@ -84,7 +88,9 @@
 
                           <v-stepper-content step="2">
                             <div class="row">
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                              <div
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                              >
                                 <dropzone
                                   @vdropzone-complete="onComplete"
                                   ref="myDropzone"
@@ -116,14 +122,18 @@
                                     disable-pagination
                                     :hide-default-footer="true"
                                   >
-                                    <template v-slot:[`item.img_url`]="{ item }">
+                                    <template
+                                      v-slot:[`item.img_url`]="{ item }"
+                                    >
                                       <img
                                         v-bind:src="item.img_url"
                                         width="150"
                                         height="150"
                                       />
                                     </template>
-                                    <template v-slot:[`item.isCover`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isCover`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -134,7 +144,9 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.isActive`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isActive`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -145,8 +157,13 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.actions`]="{ item }">
-                                      <v-icon small @click="deleteData(item.id)">
+                                    <template
+                                      v-slot:[`item.actions`]="{ item }"
+                                    >
+                                      <v-icon
+                                        small
+                                        @click="deleteData(item.id)"
+                                      >
                                         mdi-delete
                                       </v-icon>
                                     </template>
@@ -236,7 +253,12 @@ export default {
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
         { text: "Kapak Fotoğrafı", align: "center", value: "isCover" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 0,
@@ -278,21 +300,27 @@ export default {
       let formData = new FormData(this.$refs.recipeCategoriesForm);
 
       this.$axios
-        .post(process.env.apiBaseUrl + "panel/recipe-categories/create", formData, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .post(
+          process.env.apiBaseUrl + "panel/recipe-categories/create",
+          formData,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-Type":
+                "multipart/form-data; boundary=" + formData._boundary,
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -340,7 +368,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=recipe_categories_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=recipe_category_id&where_value=${this.inputData.id}&joins=recipe_categories_file`,
@@ -352,7 +384,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -395,7 +428,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -436,7 +470,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -477,7 +512,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,

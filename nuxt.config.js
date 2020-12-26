@@ -73,6 +73,17 @@ export default {
     transpile: ["vee-validate/dist/rules","vee-validate/dist/locale"],
     splitChunks: {
       layouts: true
+    },
+    filenames: {
+      app: ({ isDev }) => isDev ? '[name].js' : '[contenthash].js',
+      chunk: ({ isDev }) => isDev ? '[name].js' : '[contenthash].js',
+      css: ({ isDev }) => isDev ? '[name].css' : '[contenthash].css',
+      img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+      font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
+      video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
+    },
+    extend (config, ctx) {
+      config.resolve.symlinks = false
     }
   },
   hooks: {

@@ -7,7 +7,12 @@
           <div class="banner-wrapper">
             <div class="banner-header text-center">
               <h1>Diyetisyen, Besin, Yemek Tarifi Ara</h1>
-              <p><small>En profesyonel diyetisyenleri keşfet, sağlıklı yemek tarifleri al & senin için en uygun olanı tercih et.</small></p>
+              <p>
+                <small
+                  >En profesyonel diyetisyenleri keşfet, sağlıklı yemek
+                  tarifleri al & senin için en uygun olanı tercih et.</small
+                >
+              </p>
             </div>
 
             <!-- Search -->
@@ -33,7 +38,12 @@
       <section class="section section-blogs py-0">
         <client-only>
           <carousel
-            v-if="data.sliders !== null && data.sliders !== '' && data.sliders !== undefined && data.sliders.length > 0"
+            v-if="
+              data.sliders !== null &&
+              data.sliders !== '' &&
+              data.sliders !== undefined &&
+              data.sliders.length > 0
+            "
             :navs="true"
             :dots="false"
             :autoplay="true"
@@ -42,14 +52,14 @@
           >
             <img
               class="img-fluid"
-              style="max-height: 500px; object-fit: cover"
+              style="max-height: 450px; object-fit: cover"
               v-bind:key="index"
               v-bind:src="base_img_url + '/public/storage/' + slide.img_url"
               v-bind:alt="slide.title"
               v-for="(slide, index) in data.sliders"
             />
           </carousel>
-        </client-only>   
+        </client-only>
       </section>
       <!-- News Headline -->
 
@@ -63,13 +73,23 @@
                 <p>Lorem Ipsum is simply dummy text</p>
               </div>
               <div class="about-content">
-                <nuxt-link to="/dieticians" tag="a" class="btn rounded-0 btn-info-light">Diyetisyenlerimiz</nuxt-link>
+                <nuxt-link
+                  to="/dieticians"
+                  tag="a"
+                  class="btn rounded-0 btn-info-light"
+                  >Diyetisyenlerimiz</nuxt-link
+                >
               </div>
             </div>
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
               <div
                 class="doctor-slider bg-white"
-                v-if="data.doctors !== null && data.doctors !== '' && data.doctors !== undefined && data.doctors.length > 0"
+                v-if="
+                  data.doctors !== null &&
+                  data.doctors !== '' &&
+                  data.doctors !== undefined &&
+                  data.doctors.length > 0
+                "
               >
                 <carousel
                   :navs="true"
@@ -86,57 +106,76 @@
                   }"
                 >
                   <!-- Doctor Widget -->
-                  <div v-bind:key="index" v-for="(doctor, index) in data.doctors" class="h-100 profile-widget mx-1">
+                  <div
+                    v-bind:key="index"
+                    v-for="(doctor, index) in data.doctors"
+                    class="h-100 profile-widget mx-1"
+                  >
                     <div class="doc-img">
                       <nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
-                        <img
-                          class="img-fluid"
-                          style="min-height: 273px"
-                          v-bind:alt="doctor.name"
-                          v-bind:src="
-                            base_img_url +
-                            '/public/storage/' +
-                            (doctor.profile_photo.img_url === null ||
-                            doctor.profile_photo.img_url === '' ||
-                            doctor.profile_photo.img_url === undefined
-                              ? null
-                              : doctor.profile_photo.img_url)
-                          "
-                        />
+                        <v-avatar size="273" tile>
+                          <img
+                            v-bind:alt="doctor.name"
+                            v-bind:src="
+                              base_img_url +
+                              '/public/storage/' +
+                              (doctor.profile_photo.img_url === null ||
+                              doctor.profile_photo.img_url === '' ||
+                              doctor.profile_photo.img_url === undefined
+                                ? null
+                                : doctor.profile_photo.img_url)
+                            "
+                          />
+                        </v-avatar>
                       </nuxt-link>
                     </div>
                     <div class="pro-content h-100">
                       <h3 class="title">
-                        <nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">{{ doctor.name }}</nuxt-link>
+                        <nuxt-link
+                          tag="a"
+                          v-bind:to="'/profile/' + doctor.slug"
+                          >{{ doctor.name }}</nuxt-link
+                        >
                         <i class="fa fa-check-circle verified"></i>
                       </h3>
-                      <p class="speciality">{{ doctor.hospitalName }} - {{ doctor.department }}</p>
-                      <!--<div class="rating">
-                      <i class="fa fa-star filled"></i>
-                      <i class="fa fa-star filled"></i>
-                      <i class="fa fa-star filled"></i>
-                      <i class="fa fa-star filled"></i>
-                      <i class="fa fa-star filled"></i>
-                      <span class="d-inline-block average-rating">(17)</span>
-                    </div>-->
+                      <p class="speciality">
+                        {{ doctor.hospitalName }} - {{ doctor.department }}
+                      </p>
                       <ul class="available-info">
-                        <li><i class="fa fa-map-marker-alt"></i> {{ doctor.company_city }}, {{ doctor.company_town }}</li>
-                        <li v-if="doctor.appointment_hour !== undefined && doctor.appointment_hour !== null && doctor.appointment_hour !== ''">
-                          <i class="fa fa-clock"></i> {{ doctor.appointment_hour }}
+                        <li>
+                          <i class="fa fa-map-marker-alt"></i>
+                          {{ doctor.company_city }}, {{ doctor.company_town }}
                         </li>
-                        <li v-if="doctor.price !== undefined && doctor.price !== null && doctor.price !== ''">
+                        <li
+                          v-if="
+                            doctor.appointment_hour !== undefined &&
+                            doctor.appointment_hour !== null &&
+                            doctor.appointment_hour !== ''
+                          "
+                        >
+                          <i class="fa fa-clock"></i>
+                          {{ doctor.appointment_hour }}
+                        </li>
+                        <li
+                          v-if="
+                            doctor.price !== undefined &&
+                            doctor.price !== null &&
+                            doctor.price !== ''
+                          "
+                        >
                           <i class="fa fa-money-bill-alt"></i> {{ doctor.price
-                          }}<i class="fa fa-info-circle" data-toggle="tooltip" title="Fiyatlar Değişkenlik Gösterebilir"></i>
+                          }}<i
+                            class="fa fa-info-circle"
+                            data-toggle="tooltip"
+                            title="Fiyatlar Değişkenlik Gösterebilir"
+                          ></i>
                         </li>
                       </ul>
-                      <div class="d-flex">
-                        <div class="flex-grow-1">
-                          <nuxt-link v-bind:to="'/profile/' + doctor.slug" class="btn btn-green-light rounded-0">Profilini Görüntüle</nuxt-link>
-                        </div>
-                        <div class="flex-shrink-1">
-                          <nuxt-link v-bind:to="'/make-appointment/' + doctor.slug" class="btn btn-info-light rounded-0">Randevu Al</nuxt-link>
-                        </div>
-                      </div>
+                      <nuxt-link
+                        v-bind:to="'/make-appointment/' + doctor.slug"
+                        class="btn btn-info-light rounded-0 w-100"
+                        >Randevu Al</nuxt-link
+                      >
                     </div>
                   </div>
                   <!-- /Doctor Widget -->
@@ -155,7 +194,8 @@
           <div class="section-header text-center">
             <h2>Blog</h2>
             <p class="sub-title">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
           <!-- /Section Header -->
@@ -166,7 +206,11 @@
               <div class="blog grid-blog">
                 <div class="blog-image">
                   <a href="blog-details.html">
-                    <img class="img-fluid" src="/img/blog/blog-01.jpg" alt="Post Image" />
+                    <img
+                      class="img-fluid"
+                      src="/img/blog/blog-01.jpg"
+                      alt="Post Image"
+                    />
                   </a>
                 </div>
                 <div class="blog-content">
@@ -174,7 +218,10 @@
                     <li>
                       <div class="post-author">
                         <a href="doctor-profile.html">
-                          <img src="/img/doctors/doctor-thumb-01.jpg" alt="Post Author" />
+                          <img
+                            src="/img/doctors/doctor-thumb-01.jpg"
+                            alt="Post Author"
+                          />
                           <span>Dr. Ruby Perrin</span>
                         </a>
                       </div>
@@ -182,16 +229,23 @@
                     <li><i class="fa fa-clock"></i> 4 Dec 2019</li>
                   </ul>
                   <h3 class="blog-title">
-                    <a href="blog-details.html"> Doccure – Making your clinic painless visit? </a>
+                    <a href="blog-details.html">
+                      Doccure – Making your clinic painless visit?
+                    </a>
                   </h3>
-                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur em adipiscing elit, sed do eiusmod tempor.</p>
+                  <p class="mb-0">
+                    Lorem ipsum dolor sit amet, consectetur em adipiscing elit,
+                    sed do eiusmod tempor.
+                  </p>
                 </div>
               </div>
               <!-- /Blog Post -->
             </div>
           </div>
           <div class="view-all text-center">
-            <nuxt-link to="/blogs" class="btn btn-info-light rounded-0" tag="a">Tümünü Görüntüle</nuxt-link>
+            <nuxt-link to="/blogs" class="btn btn-info-light rounded-0" tag="a"
+              >Tümünü Görüntüle</nuxt-link
+            >
           </div>
         </div>
       </section>
@@ -236,5 +290,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

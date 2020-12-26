@@ -103,7 +103,6 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
-  mounted() {},
   data() {
     return {
       counter: 0,
@@ -180,9 +179,11 @@ export default {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers":
               "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            "Content-Type":
+              "multipart/form-data; boundary=" + formData._boundary,
             Authorization: "Bearer " + this.userData.api_token,
           },
           credentials: "same-origin",

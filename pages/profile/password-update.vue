@@ -10,7 +10,9 @@
                 <li class="breadcrumb-item">
                   <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Profil</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Profil
+                </li>
               </ol>
             </nav>
             <h2 class="breadcrumb-title">Profil</h2>
@@ -23,9 +25,13 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+          <div
+            class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+          >
             <Sidebar v-if="userData.status !== 'dietician'"></Sidebar>
-            <DieticianSidebar v-else-if="userData.status === 'dietician'"></DieticianSidebar>
+            <DieticianSidebar
+              v-else-if="userData.status === 'dietician'"
+            ></DieticianSidebar>
           </div>
 
           <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
@@ -37,14 +43,25 @@
               </div>
               <div class="card-body">
                 <ValidationObserver v-slot="{ handleSubmit }">
-                  <form @submit.prevent="handleSubmit(updatePassword)" ref="passwordUpdateForm" enctype="multipart/form-data">
+                  <form
+                    @submit.prevent="handleSubmit(updatePassword)"
+                    ref="passwordUpdateForm"
+                    enctype="multipart/form-data"
+                  >
                     <div class="table-responsive">
-                      <table class="table table-striped table-hover table-center table-borderless mb-0" style="border-top: none">
+                      <table
+                        class="table table-striped table-hover table-center table-borderless mb-0"
+                        style="border-top: none"
+                      >
                         <tbody>
                           <tr>
                             <td><b>Mevcut Şifreniz :</b></td>
                             <td colspan="2">
-                              <ValidationProvider name="Mevcut Şifreniz" rules="required" v-slot="{ errors }">
+                              <ValidationProvider
+                                name="Mevcut Şifreniz"
+                                rules="required"
+                                v-slot="{ errors }"
+                              >
                                 <input
                                   type="password"
                                   name="current_password"
@@ -53,23 +70,42 @@
                                   required
                                   v-model="current_password"
                                 />
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </ValidationProvider>
                             </td>
                           </tr>
                           <tr>
                             <td><b>Yeni Şifreniz :</b></td>
                             <td colspan="2">
-                              <ValidationProvider name="Yeni Şifreniz" rules="required" v-slot="{ errors }">
-                                <input type="password" name="password" id="password" class="form-control" required v-model="password" />
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                              <ValidationProvider
+                                name="Yeni Şifreniz"
+                                rules="required"
+                                v-slot="{ errors }"
+                              >
+                                <input
+                                  type="password"
+                                  name="password"
+                                  id="password"
+                                  class="form-control"
+                                  required
+                                  v-model="password"
+                                />
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </ValidationProvider>
                             </td>
                           </tr>
                           <tr>
                             <td><b>Tekrar Yeni Şifreniz :</b></td>
                             <td colspan="2">
-                              <ValidationProvider name="Tekrar Yeni Şifreniz" rules="required" v-slot="{ errors }">
+                              <ValidationProvider
+                                name="Tekrar Yeni Şifreniz"
+                                rules="required"
+                                v-slot="{ errors }"
+                              >
                                 <input
                                   type="password"
                                   name="password_confirmation"
@@ -78,7 +114,9 @@
                                   required
                                   v-model="password_confirmation"
                                 />
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </ValidationProvider>
                             </td>
                           </tr>
@@ -87,7 +125,12 @@
                           <tr>
                             <td colspan="3">
                               <div class="form-group">
-                                <button class="btn btn-green-light float-right" type="submit">Şifremi Güncelle</button>
+                                <button
+                                  class="btn btn-green-light float-right"
+                                  type="submit"
+                                >
+                                  Şifremi Güncelle
+                                </button>
                               </div>
                             </td>
                           </tr>
@@ -121,7 +164,7 @@ export default {
     ValidationObserver,
     ValidationProvider,
     Sidebar,
-    DieticianSidebar
+    DieticianSidebar,
   },
   computed: {
     img_url() {
@@ -140,9 +183,13 @@ export default {
       password_confirmation: null,
       current_password: null,
       userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
-          : this.$store.getters.loggedInUser !== undefined && this.$store.getters.loggedInUser !== null && this.$store.getters.loggedInUser !== ""
+          : this.$store.getters.loggedInUser !== undefined &&
+            this.$store.getters.loggedInUser !== null &&
+            this.$store.getters.loggedInUser !== ""
           ? this.$store.getters.loggedInUser
           : null,
     };
@@ -164,19 +211,29 @@ export default {
       let formData = new FormData(this.$refs.passwordUpdateForm);
       formData.append("api_token", this.userData.api_token);
       this.$axios
-        .post(process.env.apiBaseUrl + (this.userData.status === "dietician" ? "dietician/profile/pass_update" : "users/pass_update"), formData, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-        })
+        .post(
+          process.env.apiBaseUrl +
+            (this.userData.status === "dietician"
+              ? "dietician/profile/pass_update"
+              : "users/pass_update"),
+          formData,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-Type":
+                "multipart/form-data; boundary=" + formData._boundary,
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -184,8 +241,14 @@ export default {
               message: response.data.msg,
               position: "topCenter",
             });
-            Cookie.set("userData", Base64.encode(JSON.stringify(response.data.data)));
-            localStorage.setItem("userData", Base64.encode(JSON.stringify(response.data.data)));
+            Cookie.set(
+              "userData",
+              Base64.encode(JSON.stringify(response.data.data))
+            );
+            localStorage.setItem(
+              "userData",
+              Base64.encode(JSON.stringify(response.data.data))
+            );
             setTimeout(() => {
               this.$router.go(decodeURIComponent("/profile"));
             }, 2000);
@@ -201,5 +264,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

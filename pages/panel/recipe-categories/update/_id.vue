@@ -13,7 +13,9 @@
                   <li class="breadcrumb-item">
                     <nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
                   </li>
-                  <li class="breadcrumb-item active">Yemek Tarifi Kategorisi Düzenle</li>
+                  <li class="breadcrumb-item active">
+                    Yemek Tarifi Kategorisi Düzenle
+                  </li>
                 </ul>
               </div>
             </div>
@@ -30,36 +32,66 @@
                 </div>
                 <div class="card-body">
                   <ValidationObserver v-slot="{ handleSubmit }">
-                    <form @submit.prevent="handleSubmit(editRecipeCategories)" ref="recipeCategoriesForm" enctype="multipart/form-data">
+                    <form
+                      @submit.prevent="handleSubmit(editRecipeCategories)"
+                      ref="recipeCategoriesForm"
+                      enctype="multipart/form-data"
+                    >
                       <v-stepper v-model="e1">
                         <v-stepper-header>
-                          <v-stepper-step :complete="e1 > 1" step="1"> Yemek Tarifi Kategorisi Bilgileri </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 1" step="1">
+                            Yemek Tarifi Kategorisi Bilgileri
+                          </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 2" step="2"> Yemek Tarifi Kategorisi Görselleri </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 2" step="2">
+                            Yemek Tarifi Kategorisi Görselleri
+                          </v-stepper-step>
                           <v-divider></v-divider>
 
-                          <v-stepper-step :complete="e1 > 3" step="3"> Kapak Fotoğrafı Seçimi </v-stepper-step>
+                          <v-stepper-step :complete="e1 > 3" step="3">
+                            Kapak Fotoğrafı Seçimi
+                          </v-stepper-step>
                         </v-stepper-header>
 
                         <v-stepper-items>
                           <v-stepper-content step="1">
-                            <ValidationProvider name="Yemek Tarifi Kategorisi" rules="required" v-slot="{ errors }">
+                            <ValidationProvider
+                              name="Yemek Tarifi Kategorisi"
+                              rules="required"
+                              v-slot="{ errors }"
+                            >
                               <div class="form-group">
-                                <label for="title">Yemek Tarifi Kategorisi</label>
-                                <input id="title" type="text" class="form-control" name="name" v-model="data.name" />
-                                <small class="font-weight-bold text-danger">{{ errors[0] }}</small>
+                                <label for="title"
+                                  >Yemek Tarifi Kategorisi</label
+                                >
+                                <input
+                                  id="title"
+                                  type="text"
+                                  class="form-control"
+                                  name="name"
+                                  v-model="data.name"
+                                />
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
                               </div>
                             </ValidationProvider>
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 2">
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              role="button"
+                              @click.prevent="e1 = 2"
+                            >
                               Yemek Tarifi Kategorisi Görseli Yükle
                             </button>
                           </v-stepper-content>
 
                           <v-stepper-content step="2">
                             <div class="row">
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                              <div
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                              >
                                 <dropzone
                                   @vdropzone-complete="onComplete"
                                   ref="myDropzone"
@@ -69,8 +101,18 @@
                                 ></dropzone>
                               </div>
                             </div>
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 1">Geri Dön</button>
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="selectCover">
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              role="button"
+                              @click.prevent="e1 = 1"
+                            >
+                              Geri Dön
+                            </button>
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              role="button"
+                              @click.prevent="selectCover"
+                            >
                               Kapak Fotoğrafı Seç
                             </button>
                           </v-stepper-content>
@@ -82,11 +124,24 @@
                               </div>
                               <div class="card-body">
                                 <v-card tile>
-                                  <v-data-table :headers="headers" :items="imageData" disable-pagination :hide-default-footer="true">
-                                    <template v-slot:[`item.img_url`]="{ item }">
-                                      <img v-bind:src="item.img_url" width="150" height="150" />
+                                  <v-data-table
+                                    :headers="headers"
+                                    :items="imageData"
+                                    disable-pagination
+                                    :hide-default-footer="true"
+                                  >
+                                    <template
+                                      v-slot:[`item.img_url`]="{ item }"
+                                    >
+                                      <img
+                                        v-bind:src="item.img_url"
+                                        width="150"
+                                        height="150"
+                                      />
                                     </template>
-                                    <template v-slot:[`item.isCover`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isCover`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -97,7 +152,9 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.isActive`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isActive`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -108,8 +165,15 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.actions`]="{ item }">
-                                      <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
+                                    <template
+                                      v-slot:[`item.actions`]="{ item }"
+                                    >
+                                      <v-icon
+                                        small
+                                        @click="deleteData(item.id)"
+                                      >
+                                        mdi-delete
+                                      </v-icon>
                                     </template>
                                   </v-data-table>
                                 </v-card>
@@ -140,8 +204,19 @@
                                 </div>
                               </div>
                             </div>
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" role="button" @click.prevent="e1 = 2">Geri Dön</button>
-                            <button class="btn btn-outline-primary rounded-0 btn-lg" type="submit">Yemek Tarifi Kategorisini Güncelle</button>
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              role="button"
+                              @click.prevent="e1 = 2"
+                            >
+                              Geri Dön
+                            </button>
+                            <button
+                              class="btn btn-outline-primary rounded-0 btn-lg"
+                              type="submit"
+                            >
+                              Yemek Tarifi Kategorisini Güncelle
+                            </button>
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
@@ -173,7 +248,6 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
-  mounted() {},
   data() {
     return {
       counter:
@@ -196,7 +270,12 @@ export default {
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
         { text: "Kapak Fotoğrafı", align: "center", value: "isCover" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 0,
@@ -204,11 +283,16 @@ export default {
       pageSizes: [25, 50, 100, 200, 500, 1000],
       loading: false,
       options: {
-        url: process.env.apiBaseUrl + "panel/recipe-categories/create-file/" + this.$route.params.id,
+        url:
+          process.env.apiBaseUrl +
+          "panel/recipe-categories/create-file/" +
+          this.$route.params.id,
         headers: {
           Authorization:
             "Bearer " +
-            (Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+            (Cookie.get("userData") !== null &&
+            Cookie.get("userData") !== undefined &&
+            Cookie.get("userData") !== ""
               ? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
               : null),
         },
@@ -219,7 +303,9 @@ export default {
         parallelUploads: 10,
       },
       userData:
-        Cookie.get("userData") !== null && Cookie.get("userData") !== undefined && Cookie.get("userData") !== ""
+        Cookie.get("userData") !== null &&
+        Cookie.get("userData") !== undefined &&
+        Cookie.get("userData") !== ""
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
           : null,
     };
@@ -234,11 +320,16 @@ export default {
   },
   async asyncData({ params, error, $axios }) {
     try {
-      const { data } = await $axios.get(process.env.apiBaseUrl + "panel/recipe-categories/update/" + params.id);
+      const { data } = await $axios.get(
+        process.env.apiBaseUrl + "panel/recipe-categories/update/" + params.id
+      );
 
       return data;
     } catch (e) {
-      error({ message: "Yemek Tarifi Kategorisi Bulunamadı.", statusCode: 404 });
+      error({
+        message: "Yemek Tarifi Kategorisi Bulunamadı.",
+        statusCode: 404,
+      });
     }
   },
   methods: {
@@ -258,7 +349,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=recipe_categories_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=recipe_category_id&where_value=${this.data._id.$oid}&joins=recipe_categories_file`,
@@ -268,8 +363,10 @@ export default {
             mode: "no-cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -298,20 +395,28 @@ export default {
     },
     deleteData(id) {
       this.$axios
-        .delete(process.env.apiBaseUrl + "panel/datatables/delete-file?id=" + id + "&table=recipe_categories_file", {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-type": "application/json",
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .delete(
+          process.env.apiBaseUrl +
+            "panel/datatables/delete-file?id=" +
+            id +
+            "&table=recipe_categories_file",
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -333,20 +438,27 @@ export default {
     },
     isActiveSetter(id) {
       this.$axios
-        .get(process.env.apiBaseUrl + "panel/datatables/is-active-setter?table=recipe_categories_file&id=" + id, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-type": "application/json",
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .get(
+          process.env.apiBaseUrl +
+            "panel/datatables/is-active-setter?table=recipe_categories_file&id=" +
+            id,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -368,20 +480,27 @@ export default {
     },
     isCoverSetter(id) {
       this.$axios
-        .get(process.env.apiBaseUrl + "panel/datatables/is-cover-setter?table=recipe_categories_file&foreign_column=recipe_category_id&id=" + id, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-type": "application/json",
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-          credentials: "same-origin",
-        })
+        .get(
+          process.env.apiBaseUrl +
+            "panel/datatables/is-cover-setter?table=recipe_categories_file&foreign_column=recipe_category_id&id=" +
+            id,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-type": "application/json",
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+            credentials: "same-origin",
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -430,19 +549,28 @@ export default {
     editRecipeCategories() {
       let formData = new FormData(this.$refs.recipeCategoriesForm);
       this.$axios
-        .post(process.env.apiBaseUrl + "panel/recipe-categories/update/" + this.data._id.$oid, formData, {
-          json: true,
-          withCredentials: false,
-          mode: "no-cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
-            Authorization: "Bearer " + this.userData.api_token,
-          },
-        })
+        .post(
+          process.env.apiBaseUrl +
+            "panel/recipe-categories/update/" +
+            this.data._id.$oid,
+          formData,
+          {
+            json: true,
+            withCredentials: false,
+            mode: "no-cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token, Authorization",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Credentials": true,
+              "Content-Type":
+                "multipart/form-data; boundary=" + formData._boundary,
+              Authorization: "Bearer " + this.userData.api_token,
+            },
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({

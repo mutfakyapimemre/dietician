@@ -11,7 +11,9 @@
                 <h3 class="page-title">Yemek Tarifleri</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <nuxt-link to="/dietician-panel" tag="a">Anasayfa</nuxt-link>
+                    <nuxt-link to="/dietician-panel" tag="a"
+                      >Anasayfa</nuxt-link
+                    >
                   </li>
                   <li class="breadcrumb-item active">Yemek Tarifleri</li>
                 </ul>
@@ -80,7 +82,9 @@
                               v-slot="{ errors }"
                             >
                               <div class="form-group">
-                                <label for="portion">Yemek Tarifi Porsiyon Sayısı</label>
+                                <label for="portion"
+                                  >Yemek Tarifi Porsiyon Sayısı</label
+                                >
                                 <input
                                   id="portion"
                                   type="text"
@@ -141,7 +145,9 @@
                               v-slot="{ errors }"
                             >
                               <div class="form-group">
-                                <label for="description">Yemek Tarifi Açıklaması</label>
+                                <label for="description"
+                                  >Yemek Tarifi Açıklaması</label
+                                >
                                 <textarea
                                   id="description"
                                   class="form-control"
@@ -153,7 +159,11 @@
                                 }}</small>
                               </div>
                             </ValidationProvider>
-                            <v-tabs v-model="tab" background-color="primary" dark>
+                            <v-tabs
+                              v-model="tab"
+                              background-color="primary"
+                              dark
+                            >
                               <v-tab v-for="item in items" :key="item.tab">
                                 {{ item.tab }}
                               </v-tab>
@@ -193,9 +203,10 @@
                                               name="vitaminName[]"
                                               v-model="input[0].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -218,9 +229,10 @@
                                               name="vitaminValue[]"
                                               v-model="input[1].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -243,9 +255,10 @@
                                               name="vitaminType[]"
                                               v-model="input[2].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -261,7 +274,9 @@
                                         </button>
                                         <button
                                           v-if="inputs.length > 1"
-                                          @click.prevent="removeProperty(input[0].id)"
+                                          @click.prevent="
+                                            removeProperty(input[0].id)
+                                          "
                                           role="button"
                                           class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
                                         >
@@ -311,19 +326,23 @@
                                               class="form-control"
                                             >
                                               <option value="" selected>
-                                                Malzeme Ölçüt Değeri Adı Seçiniz.
+                                                Malzeme Ölçüt Değeri Adı
+                                                Seçiniz.
                                               </option>
                                               <option
                                                 v-bind:key="index"
                                                 v-bind:value="criteria.name"
-                                                v-for="(criteria, index) in allCriterias"
+                                                v-for="(
+                                                  criteria, index
+                                                ) in allCriterias"
                                               >
                                                 {{ criteria.name }}
                                               </option>
                                             </select>
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -346,9 +365,10 @@
                                               name="criteriaValue[]"
                                               v-model="input2[1].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -371,9 +391,10 @@
                                               name="criteriaType[]"
                                               v-model="input2[2].value"
                                             />
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -401,14 +422,17 @@
                                               <option
                                                 v-bind:key="index"
                                                 v-bind:value="nutrient._id.$oid"
-                                                v-for="(nutrient, index) in allNutrients"
+                                                v-for="(
+                                                  nutrient, index
+                                                ) in allNutrients"
                                               >
                                                 {{ nutrient.name }}
                                               </option>
                                             </select>
-                                            <small class="font-weight-bold text-danger">{{
-                                              errors[0]
-                                            }}</small>
+                                            <small
+                                              class="font-weight-bold text-danger"
+                                              >{{ errors[0] }}</small
+                                            >
                                           </div>
                                         </ValidationProvider>
                                       </div>
@@ -424,7 +448,9 @@
                                         </button>
                                         <button
                                           v-if="inputs2.length > 1"
-                                          @click.prevent="removeProperty2(input2[0].id)"
+                                          @click.prevent="
+                                            removeProperty2(input2[0].id)
+                                          "
                                           role="button"
                                           class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
                                         >
@@ -447,7 +473,9 @@
 
                           <v-stepper-content step="2">
                             <div class="row">
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                              <div
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                              >
                                 <dropzone
                                   @vdropzone-complete="onComplete"
                                   ref="myDropzone"
@@ -479,14 +507,18 @@
                                     disable-pagination
                                     :hide-default-footer="true"
                                   >
-                                    <template v-slot:[`item.img_url`]="{ item }">
+                                    <template
+                                      v-slot:[`item.img_url`]="{ item }"
+                                    >
                                       <img
                                         v-bind:src="item.img_url"
                                         width="150"
                                         height="150"
                                       />
                                     </template>
-                                    <template v-slot:[`item.isCover`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isCover`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -497,7 +529,9 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.isActive`]="{ item }">
+                                    <template
+                                      v-slot:[`item.isActive`]="{ item }"
+                                    >
                                       <v-layout justify-center>
                                         <v-switch
                                           class="d-flex justify-content-center mx-auto px-auto text-center"
@@ -508,8 +542,13 @@
                                         ></v-switch>
                                       </v-layout>
                                     </template>
-                                    <template v-slot:[`item.actions`]="{ item }">
-                                      <v-icon small @click="deleteData(item.id)">
+                                    <template
+                                      v-slot:[`item.actions`]="{ item }"
+                                    >
+                                      <v-icon
+                                        small
+                                        @click="deleteData(item.id)"
+                                      >
                                         mdi-delete
                                       </v-icon>
                                     </template>
@@ -606,7 +645,11 @@ export default {
         [
           { id: "criteria0", label: "Malzeme Ölçüt Değeri Adı", value: "" },
           { id: "criteriaValue0", label: "Malzeme Ölçüt Değeri", value: "" },
-          { id: "criteriaType0", label: "Malzeme Ölçüt Değeri Türü", value: "" },
+          {
+            id: "criteriaType0",
+            label: "Malzeme Ölçüt Değeri Türü",
+            value: "",
+          },
           { id: "criteriaNutrient0", label: "Malzeme Besini", value: "" },
         ],
       ],
@@ -625,7 +668,12 @@ export default {
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
         { text: "Kapak Fotoğrafı", align: "center", value: "isCover" },
         { text: "Durum", align: "center", value: "isActive" },
-        { text: "İşlemler", align: "center", value: "actions", sortable: false },
+        {
+          text: "İşlemler",
+          align: "center",
+          value: "actions",
+          sortable: false,
+        },
       ],
       page: 1,
       totalPages: 0,
@@ -675,7 +723,8 @@ export default {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers":
               "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
             "Content-type": "application/json",
             Authorization: "Bearer " + this.userData.api_token,
@@ -704,7 +753,11 @@ export default {
       if (url !== undefined && url !== "" && url !== null) {
         urlParam = url;
       }
-      const params = this.getRequestParams(this.searchTitle, this.page, this.pageSize);
+      const params = this.getRequestParams(
+        this.searchTitle,
+        this.page,
+        this.pageSize
+      );
       this.$axios
         .get(
           `${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=recipes_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=recipes_id&where_value=${this.inputData.id}&joins=recipes_file`,
@@ -716,7 +769,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -759,7 +813,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -800,7 +855,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -841,7 +897,8 @@ export default {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers":
                 "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               "Access-Control-Allow-Credentials": true,
               "Content-type": "application/json",
               Authorization: "Bearer " + this.userData.api_token,
@@ -964,9 +1021,11 @@ export default {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers":
               "Origin, Content-Type, X-Auth-Token, Authorization",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Credentials": true,
-            "Content-Type": "multipart/form-data; boundary=" + formData._boundary,
+            "Content-Type":
+              "multipart/form-data; boundary=" + formData._boundary,
             Authorization: "Bearer " + this.userData.api_token,
           },
           credentials: "same-origin",
