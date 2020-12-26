@@ -14,7 +14,6 @@
                 >
               </p>
             </div>
-
             <!-- Search -->
             <div class="search-box justify-content-center">
               <form onsubmit="return false" class="justify-content-center">
@@ -39,10 +38,10 @@
         <client-only>
           <carousel
             v-if="
-              data.sliders !== null &&
-              data.sliders !== '' &&
-              data.sliders !== undefined &&
-              data.sliders.length > 0
+              sliders !== null &&
+              sliders !== '' &&
+              sliders !== undefined &&
+              sliders.length > 0
             "
             :navs="true"
             :dots="false"
@@ -56,7 +55,7 @@
               v-bind:key="index"
               v-bind:src="base_img_url + '/public/storage/' + slide.img_url"
               v-bind:alt="slide.title"
-              v-for="(slide, index) in data.sliders"
+              v-for="(slide, index) in sliders"
             />
           </carousel>
         </client-only>
@@ -85,12 +84,13 @@
               <div
                 class="doctor-slider bg-white"
                 v-if="
-                  data.doctors !== null &&
-                  data.doctors !== '' &&
-                  data.doctors !== undefined &&
-                  data.doctors.length > 0
+                  doctors !== null &&
+                  doctors !== '' &&
+                  doctors !== undefined &&
+                  doctors.length > 0
                 "
               >
+              <client-only>
                 <carousel
                   :navs="true"
                   :dots="false"
@@ -108,7 +108,7 @@
                   <!-- Doctor Widget -->
                   <div
                     v-bind:key="index"
-                    v-for="(doctor, index) in data.doctors"
+                    v-for="(doctor, index) in doctors"
                     class="h-100 profile-widget mx-1"
                   >
                     <div class="doc-img">
@@ -180,6 +180,7 @@
                   </div>
                   <!-- /Doctor Widget -->
                 </carousel>
+              </client-only>
               </div>
             </div>
           </div>
@@ -251,7 +252,6 @@
       </section>
       <!-- /Blog Section -->
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 
@@ -272,7 +272,7 @@ export default {
     try {
       let { data } = await $axios.get(process.env.apiBaseUrl + "home");
 
-      return data;
+      return data.data;
     } catch (e) {
       error({ message: "Site Ayarı Bulunamadı.", statusCode: 404 });
     }
