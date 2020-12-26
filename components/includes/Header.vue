@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <header class="header">
+    <div class="header">
       <nav class="navbar navbar-expand-lg header-nav fixed-top">
         <div class="navbar-header">
           <a id="mobile_btn" href="javascript:void(0);">
@@ -110,7 +110,7 @@
           </li>
         </ul>
       </nav>
-    </header>
+    </div>
   </client-only>
 </template>
 

@@ -3,7 +3,7 @@
     <div class="main-wrapper">
       <Header></Header>
       <Sidebar></Sidebar>
-      <nuxt></nuxt>
+      <Nuxt></Nuxt>
       <div class="sidebar-overlay"></div>
     </div>
   </div>

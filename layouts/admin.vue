@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="main-wrapper">
-      <Header></Header>
-      <Sidebar></Sidebar>
-      <nuxt></nuxt>
+      <AdminHeader></AdminHeader>
+      <AdminSidebar></AdminSidebar>
+      <Nuxt></Nuxt>
       <div class="sidebar-overlay"></div>
     </div>
   </div>
@@ -11,8 +11,8 @@
 
 <script>
 import { ValidationObserver, ValidationProvider } from "vee-validate";
-import Header from "@/components/admin_includes/Admin_Header";
-import Sidebar from "@/components/admin_includes/Admin_Sidebar";
+import AdminHeader from "@/components/admin_includes/Admin_Header";
+import AdminSidebar from "@/components/admin_includes/Admin_Sidebar";
 export default {
   head() {
     return {
@@ -162,8 +162,8 @@ export default {
     };
   },
   components: {
-    Header,
-    Sidebar,
+    AdminHeader,
+    AdminSidebar,
     ValidationObserver,
     ValidationProvider,
   },

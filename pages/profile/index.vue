@@ -1842,7 +1842,9 @@ export default {
   },
   mounted() {
     this.getCities();
-    this.getCities2();
+    if(this.userData.status === 'dietician'){
+      this.getCities2();
+    }
     let inputs = document.querySelectorAll(".v-file-input input");
     [...inputs].forEach((input) => {
       input.remove();

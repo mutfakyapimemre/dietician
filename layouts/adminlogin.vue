@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-wrapper login-body">
-      <nuxt></nuxt>
+      <Nuxt></Nuxt>
       <div class="sidebar-overlay"></div>
     </div>
   </div>
