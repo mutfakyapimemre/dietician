@@ -44,7 +44,7 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: ["~/plugins/vee-validate","~/plugins/vuetify","~/plugins/axios",{src: '~/plugins/owl', ssr: false}],
+  plugins: [{src:"~/plugins/vee-validate",ssr:false,mode:'client'},{src:"~/plugins/vuetify",ssr:false,mode:'client'},{src:"~/plugins/axios",ssr:false,mode:'client'},{src: '~/plugins/owl', ssr: false,mode:'client'}],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components

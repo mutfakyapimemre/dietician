@@ -1,8 +1,6 @@
 <template>
   <client-only>
-    <!-- Header -->
     <div class="header">
-      <!-- Logo -->
       <div class="header-left">
         <nuxt-link to="/" tag="a">
           <img src="/img/logo.png" class="logo" alt="Diyetisyen Klinik" />
@@ -16,23 +14,18 @@
           />
         </nuxt-link>
       </div>
-      <!-- /Logo -->
 
       <a href="javascript:void(0);" id="toggle_btn">
         <i class="fa fa-bars"></i>
       </a>
 
-      <!-- Mobile Menu Toggle -->
       <a class="mobile_btn" href="javascript:void(0)" id="mobile_btn">
         <i class="fa fa-bars"></i>
       </a>
-      <!-- /Mobile Menu Toggle -->
 
-      <!-- Header Right Menu -->
       <ul class="nav user-menu">
-        <!-- Notifications -->
         <li class="nav-item dropdown noti-dropdown">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-toggle="dropdown">
             <i class="fa fa-bell"></i> <span class="badge badge-pill">3</span>
           </a>
           <div class="dropdown-menu notifications">
@@ -45,7 +38,7 @@
             <div class="noti-content">
               <ul class="notification-list">
                 <li class="notification-message">
-                  <a href="#">
+                  <a href="javascript:void(0);">
                     <div class="media">
                       <span class="avatar avatar-sm">
                         <img
@@ -75,9 +68,7 @@
             </div>
           </div>
         </li>
-        <!-- /Notifications -->
 
-        <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
           <a
             href="javascript:void(0)"
@@ -126,11 +117,8 @@
             >
           </div>
         </li>
-        <!-- /User Menu -->
       </ul>
-      <!-- /Header Right Menu -->
     </div>
-    <!-- /Header -->
   </client-only>
 </template>
 

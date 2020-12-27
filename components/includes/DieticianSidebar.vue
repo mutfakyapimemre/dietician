@@ -1,6 +1,5 @@
 <template>
   <client-only>
-    <!-- Profile Sidebar -->
     <div class="profile-sidebar">
       <div
         class="widget-profile pro-widget-content text-center justify-content-center"
@@ -130,7 +129,6 @@
         </nav>
       </div>
     </div>
-    <!-- /Profile Sidebar -->
   </client-only>
 </template>
 

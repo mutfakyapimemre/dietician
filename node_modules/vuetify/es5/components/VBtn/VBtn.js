@@ -63,6 +63,7 @@ var _default2 = baseMixins.extend().extend({
     icon: Boolean,
     loading: Boolean,
     outlined: Boolean,
+    plain: Boolean,
     retainFocusOnClick: Boolean,
     rounded: Boolean,
     tag: {
@@ -90,16 +91,19 @@ var _default2 = baseMixins.extend().extend({
         'v-btn--absolute': this.absolute,
         'v-btn--block': this.block,
         'v-btn--bottom': this.bottom,
-        'v-btn--contained': this.contained,
+        'v-btn--contained': this.isElevated,
         'v-btn--depressed': this.depressed || this.outlined,
         'v-btn--disabled': this.disabled,
+        'v-btn--is-elevated': this.isElevated,
         'v-btn--fab': this.fab,
         'v-btn--fixed': this.fixed,
-        'v-btn--flat': this.isFlat,
+        'v-btn--flat': !this.isElevated,
+        'v-btn--has-bg': this.hasBg,
         'v-btn--icon': this.icon,
         'v-btn--left': this.left,
         'v-btn--loading': this.loading,
         'v-btn--outlined': this.outlined,
+        'v-btn--plain': this.plain,
         'v-btn--right': this.right,
         'v-btn--round': this.isRound,
         'v-btn--rounded': this.rounded,
@@ -109,11 +113,6 @@ var _default2 = baseMixins.extend().extend({
         'v-btn--top': this.top
       }, this.themeClasses, {}, this.groupClasses, {}, this.elevationClasses, {}, this.sizeableClasses);
     },
-    contained: function contained() {
-      return Boolean(!this.isFlat && !this.depressed && // Contained class only adds elevation
-      // is not needed if user provides value
-      !this.elevation);
-    },
     computedRipple: function computedRipple() {
       var _this$ripple;
 
@@ -122,8 +121,11 @@ var _default2 = baseMixins.extend().extend({
       } : true;
       if (this.disabled) return false;else return (_this$ripple = this.ripple) != null ? _this$ripple : defaultRipple;
     },
-    isFlat: function isFlat() {
-      return Boolean(this.icon || this.text || this.outlined);
+    hasBg: function hasBg() {
+      return this.isElevated || this.depressed;
+    },
+    isElevated: function isElevated() {
+      return Boolean(!this.icon && !this.text && !this.outlined && !this.depressed && !this.disabled && !this.plain) || Number(this.elevation) > 0;
     },
     isRound: function isRound() {
       return Boolean(this.icon || this.fab);
@@ -172,11 +174,12 @@ var _default2 = baseMixins.extend().extend({
   },
   render: function render(h) {
     var children = [this.genContent(), this.loading && this.genLoader()];
-    var setColor = !this.isFlat ? this.setBackgroundColor : this.setTextColor;
 
     var _this$generateRouteLi = this.generateRouteLink(),
         tag = _this$generateRouteLi.tag,
         data = _this$generateRouteLi.data;
+
+    var setColor = this.isElevated || this.depressed ? this.setBackgroundColor : this.setTextColor;
 
     if (tag === 'button') {
       data.attrs.type = this.type;

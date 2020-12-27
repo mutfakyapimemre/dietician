@@ -21,7 +21,10 @@ export default CalendarBase.extend({
   directives: {
     ripple
   },
-  props: props.events,
+  props: { ...props.events,
+    ...props.calendar,
+    ...props.category
+  },
   computed: {
     noEvents() {
       return this.events.length === 0;
@@ -33,10 +36,6 @@ export default CalendarBase.extend({
 
     parsedEventOverlapThreshold() {
       return parseInt(this.eventOverlapThreshold);
-    },
-
-    eventColorFunction() {
-      return typeof this.eventColor === 'function' ? this.eventColor : () => this.eventColor;
     },
 
     eventTimedFunction() {
@@ -64,11 +63,15 @@ export default CalendarBase.extend({
     },
 
     categoryMode() {
-      return false;
+      return this.type === 'category';
     }
 
   },
   methods: {
+    eventColorFunction(e) {
+      return typeof this.eventColor === 'function' ? this.eventColor(e) : e.color || this.eventColor;
+    },
+
     parseEvent(input, index = 0) {
       return parseEvent(input, index, this.eventStart, this.eventEnd, this.eventTimedFunction(input), this.categoryMode ? this.eventCategoryFunction(input) : false);
     },
@@ -354,7 +357,7 @@ export default CalendarBase.extend({
     },
 
     isEventForCategory(event, category) {
-      return !this.categoryMode || category === event.category || typeof event.category !== 'string' && category === null;
+      return !this.categoryMode || typeof category === 'object' && category.calendarName && category.categoryName === event.category || typeof event.category !== 'string' && category === null;
     },
 
     getEventsForDay(day) {

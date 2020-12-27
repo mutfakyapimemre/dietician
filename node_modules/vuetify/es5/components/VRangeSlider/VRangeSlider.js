@@ -129,7 +129,7 @@ var _default2 = _VSlider.default.extend({
         styles: [0, this.inputWidth[0], 0, -padding]
       }, {
         class: this.isDisabled ? 'v-slider__track-background' : 'v-slider__track-fill',
-        color: this.isDisabled ? this.computedTrackColor : this.computedColor,
+        color: this.isDisabled ? this.computedTrackColor : this.computedTrackFillColor,
         styles: [this.inputWidth[0], Math.abs(this.inputWidth[1] - this.inputWidth[0]), padding, padding * -2]
       }, {
         class: 'v-slider__track-background',

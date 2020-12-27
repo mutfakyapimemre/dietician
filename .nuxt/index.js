@@ -18,9 +18,9 @@ import nuxt_plugin_plugin_2fb6bf44 from 'nuxt_plugin_plugin_2fb6bf44' // Source:
 import nuxt_plugin_libmoduleplugin66164b6a_41bbf145 from 'nuxt_plugin_libmoduleplugin66164b6a_41bbf145' // Source: .\\lib.module.plugin.66164b6a.js (mode: 'client')
 import nuxt_plugin_nuxtizitoastplugin43e29816_2f4df6d3 from 'nuxt_plugin_nuxtizitoastplugin43e29816_2f4df6d3' // Source: .\\nuxt-izitoast.plugin.43e29816.js (mode: 'all')
 import nuxt_plugin_axios_a0ef125a from 'nuxt_plugin_axios_a0ef125a' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_veevalidate_6e5ad03a from 'nuxt_plugin_veevalidate_6e5ad03a' // Source: ..\\plugins\\vee-validate (mode: 'all')
-import nuxt_plugin_vuetify_165b1c58 from 'nuxt_plugin_vuetify_165b1c58' // Source: ..\\plugins\\vuetify (mode: 'all')
-import nuxt_plugin_axios_3566aa80 from 'nuxt_plugin_axios_3566aa80' // Source: ..\\plugins\\axios (mode: 'all')
+import nuxt_plugin_veevalidate_6e5ad03a from 'nuxt_plugin_veevalidate_6e5ad03a' // Source: ..\\plugins\\vee-validate (mode: 'client')
+import nuxt_plugin_vuetify_165b1c58 from 'nuxt_plugin_vuetify_165b1c58' // Source: ..\\plugins\\vuetify (mode: 'client')
+import nuxt_plugin_axios_3566aa80 from 'nuxt_plugin_axios_3566aa80' // Source: ..\\plugins\\axios (mode: 'client')
 import nuxt_plugin_owl_5e46584e from 'nuxt_plugin_owl_5e46584e' // Source: ..\\plugins\\owl (mode: 'client')
 
 // Component: <ClientOnly>
@@ -81,7 +81,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"dietician","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"},{"hid":"description","name":"description","content":""}],"htmlAttrs":{"lang":"tr"},"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"title":"dietician","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"},{"hid":"description","name":"description","content":"## Build Setup"}],"htmlAttrs":{"lang":"tr"},"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -230,15 +230,15 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_axios_a0ef125a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_veevalidate_6e5ad03a === 'function') {
+  if (process.client && typeof nuxt_plugin_veevalidate_6e5ad03a === 'function') {
     await nuxt_plugin_veevalidate_6e5ad03a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_vuetify_165b1c58 === 'function') {
+  if (process.client && typeof nuxt_plugin_vuetify_165b1c58 === 'function') {
     await nuxt_plugin_vuetify_165b1c58(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_3566aa80 === 'function') {
+  if (process.client && typeof nuxt_plugin_axios_3566aa80 === 'function') {
     await nuxt_plugin_axios_3566aa80(app.context, inject)
   }
 
