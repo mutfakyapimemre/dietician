@@ -74,6 +74,23 @@
                 >
               </ul>
             </li>
+            <li class="submenu">
+              <a href="javascript:void(0)">
+                <i class="fa fa-clipboard-list"></i> <span>E-Diyet</span>
+                <span class="menu-arrow"></span>
+              </a>
+              <ul style="display: none">
+                <nuxt-link
+                  to="/panel/e-diet"
+                  tag="li"
+                  active-class="active"
+                  ><a>E-Diyet</a></nuxt-link
+                >
+                <nuxt-link to="/panel/e-diet-foods" tag="li" active-class="active"
+                  ><a>E-Diyet Besinleri</a></nuxt-link
+                >
+              </ul>
+            </li>
             <nuxt-link to="/panel/diseases" tag="li" active-class="active"
               ><a
                 ><i class="fa fa-lungs-virus"></i> <span>Hastalıklar</span></a

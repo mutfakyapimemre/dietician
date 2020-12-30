@@ -23,6 +23,8 @@ const _67b43e00 = () => interopDefault(import('..\\pages\\panel\\blog-categories
 const _09fc365a = () => interopDefault(import('..\\pages\\panel\\criterias\\index.vue' /* webpackChunkName: "pages/panel/criterias/index" */))
 const _468fbd16 = () => interopDefault(import('..\\pages\\panel\\diseases\\index.vue' /* webpackChunkName: "pages/panel/diseases/index" */))
 const _632029d3 = () => interopDefault(import('..\\pages\\panel\\doctors\\index.vue' /* webpackChunkName: "pages/panel/doctors/index" */))
+const _5d3a8ad1 = () => interopDefault(import('..\\pages\\panel\\e-diet\\index.vue' /* webpackChunkName: "pages/panel/e-diet/index" */))
+const _7a8f80c9 = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\index.vue' /* webpackChunkName: "pages/panel/e-diet-foods/index" */))
 const _c02d1f94 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\index.vue' /* webpackChunkName: "pages/panel/exercise-categories/index" */))
 const _ecf7cc68 = () => interopDefault(import('..\\pages\\panel\\exercises\\index.vue' /* webpackChunkName: "pages/panel/exercises/index" */))
 const _3c17b95b = () => interopDefault(import('..\\pages\\panel\\nutrients\\index.vue' /* webpackChunkName: "pages/panel/nutrients/index" */))
@@ -39,6 +41,8 @@ const _11637ed3 = () => interopDefault(import('..\\pages\\panel\\blog-categories
 const _529fe6e0 = () => interopDefault(import('..\\pages\\panel\\criterias\\add\\index.vue' /* webpackChunkName: "pages/panel/criterias/add/index" */))
 const _404dc07d = () => interopDefault(import('..\\pages\\panel\\diseases\\add\\index.vue' /* webpackChunkName: "pages/panel/diseases/add/index" */))
 const _0ba4c1e0 = () => interopDefault(import('..\\pages\\panel\\doctors\\add\\index.vue' /* webpackChunkName: "pages/panel/doctors/add/index" */))
+const _b3b956ac = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\add\\index.vue' /* webpackChunkName: "pages/panel/e-diet-foods/add/index" */))
+const _571560bc = () => interopDefault(import('..\\pages\\panel\\e-diet\\add\\index.vue' /* webpackChunkName: "pages/panel/e-diet/add/index" */))
 const _feb1fd46 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\add\\index.vue' /* webpackChunkName: "pages/panel/exercise-categories/add/index" */))
 const _2b7634f2 = () => interopDefault(import('..\\pages\\panel\\exercises\\add\\index.vue' /* webpackChunkName: "pages/panel/exercises/add/index" */))
 const _2221a758 = () => interopDefault(import('..\\pages\\panel\\nutrients\\add\\index.vue' /* webpackChunkName: "pages/panel/nutrients/add/index" */))
@@ -53,6 +57,8 @@ const _015a4b3f = () => interopDefault(import('..\\pages\\panel\\blog-categories
 const _30aa365c = () => interopDefault(import('..\\pages\\panel\\criterias\\update\\_id.vue' /* webpackChunkName: "pages/panel/criterias/update/_id" */))
 const _a08f8256 = () => interopDefault(import('..\\pages\\panel\\diseases\\update\\_id.vue' /* webpackChunkName: "pages/panel/diseases/update/_id" */))
 const _4f4169d2 = () => interopDefault(import('..\\pages\\panel\\doctors\\update\\_id.vue' /* webpackChunkName: "pages/panel/doctors/update/_id" */))
+const _04953048 = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\update\\_id.vue' /* webpackChunkName: "pages/panel/e-diet-foods/update/_id" */))
+const _befad760 = () => interopDefault(import('..\\pages\\panel\\e-diet\\update\\_id.vue' /* webpackChunkName: "pages/panel/e-diet/update/_id" */))
 const _7a8719f5 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\update\\_id.vue' /* webpackChunkName: "pages/panel/exercise-categories/update/_id" */))
 const _44a5bb0b = () => interopDefault(import('..\\pages\\panel\\exercises\\update\\_id.vue' /* webpackChunkName: "pages/panel/exercises/update/_id" */))
 const _0861335a = () => interopDefault(import('..\\pages\\panel\\nutrients\\update\\_id.vue' /* webpackChunkName: "pages/panel/nutrients/update/_id" */))
@@ -160,6 +166,14 @@ export const routerOptions = {
     component: _632029d3,
     name: "panel-doctors"
   }, {
+    path: "/panel/e-diet",
+    component: _5d3a8ad1,
+    name: "panel-e-diet"
+  }, {
+    path: "/panel/e-diet-foods",
+    component: _7a8f80c9,
+    name: "panel-e-diet-foods"
+  }, {
     path: "/panel/exercise-categories",
     component: _c02d1f94,
     name: "panel-exercise-categories"
@@ -224,6 +238,14 @@ export const routerOptions = {
     component: _0ba4c1e0,
     name: "panel-doctors-add"
   }, {
+    path: "/panel/e-diet-foods/add",
+    component: _b3b956ac,
+    name: "panel-e-diet-foods-add"
+  }, {
+    path: "/panel/e-diet/add",
+    component: _571560bc,
+    name: "panel-e-diet-add"
+  }, {
     path: "/panel/exercise-categories/add",
     component: _feb1fd46,
     name: "panel-exercise-categories-add"
@@ -279,6 +301,14 @@ export const routerOptions = {
     path: "/panel/doctors/update/:id?",
     component: _4f4169d2,
     name: "panel-doctors-update-id"
+  }, {
+    path: "/panel/e-diet-foods/update/:id",
+    component: _04953048,
+    name: "panel-e-diet-foods-update-id"
+  }, {
+    path: "/panel/e-diet/update/:id",
+    component: _befad760,
+    name: "panel-e-diet-update-id"
   }, {
     path: "/panel/exercise-categories/update/:id",
     component: _7a8719f5,

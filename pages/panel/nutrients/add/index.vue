@@ -564,7 +564,7 @@ export default {
       ],
       inputs2: [
         [
-          { id: "criteria0", label: "Ölçüt Değeri Adı", value: "" },
+          { id: "criteria0", label: "Ölçüt Değeri Adı", value: null },
           {
             id: "criteriaValue0",
             label: "Ölçüt Değeri",
@@ -969,10 +969,6 @@ export default {
             this.inputData.id = response.data.data.$oid;
             this.options.params.title = response.data.name;
             this.e1 = 2;
-
-            setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/nutrients"));
-            }, 2000);
           } else {
             this.$izitoast.error({
               title: response.data.title,
