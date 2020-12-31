@@ -95,16 +95,37 @@
                               </div>
                             </ValidationProvider>
                             <ValidationProvider
+                              name="Miktar"
+                              rules="required"
+                              v-slot="{ errors }"
+                            >
+                              <div class="form-group">
+                                <label for="quantity">Miktar</label>
+                                <input
+                                  id="quantity"
+                                  type="text"
+                                  class="form-control"
+                                  name="quantity"
+                                  v-model="data.quantity"
+                                />
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
+                              </div>
+                            </ValidationProvider>
+                            <ValidationProvider
                               name="Öğün"
                               rules="required"
                               v-slot="{ errors }"
                             >
                               <div class="form-group">
                                 <v-select
-                                  name="meals"
-                                  v-model="data.meals"
-                                  :items="meals"
+                                  name="selectedMeals[]"
+                                  v-model="data.selectedMeals"
+                                  :items="data.meals"
                                   label="Öğün Seçin"
+                                  item-text="name"
+                                  item-value="_id.$oid"
                                   multiple
                                 >
                                   <template v-slot:prepend-item>
@@ -113,7 +134,7 @@
                                       @click="toggle"
                                     >
                                       <v-list-item-action>
-                                        <v-icon :color="data.meals.length > 0 ? 'indigo darken-4' : ''">
+                                        <v-icon :color="(data.meals !== undefined && data.meals !== null && data.meals !== '' && data.meals.length > 0) ? 'indigo darken-4' : ''">
                                           {{ icon }}
                                         </v-icon>
                                       </v-list-item-action>
@@ -125,6 +146,13 @@
                                     </v-list-item>
                                     <v-divider class="mt-2"></v-divider>
                                   </template>
+                                  <template v-slot:item="data">
+                                      <template>
+                                        <v-list-item-content>
+                                          <v-list-item-title v-html="data.item.name"></v-list-item-title>
+                                        </v-list-item-content>
+                                      </template>
+                                    </template>
                                 </v-select>
                                 <small class="font-weight-bold text-danger">{{
                                   errors[0]
@@ -158,7 +186,7 @@
                             >
                               <div class="form-group">
                                 <v-autocomplete
-                                    name="selectedDiseases"
+                                    name="selectedDiseases[]"
                                     v-model="data.selectedDiseases"
                                     :items="data.diseases"
                                     chips
@@ -178,7 +206,26 @@
                                         {{ data.item.name }}
                                       </v-chip>
                                     </template>
+                                    <template v-slot:prepend-item>
+                                    <v-list-item
+                                      ripple
+                                      @click="toggle3"
+                                    >
+                                      <v-list-item-action>
+                                        <v-icon :color="(data.selectedDiseases !== undefined && data.selectedDiseases !== null && data.selectedDiseases !== '' && data.selectedDiseases.length > 0) ? 'indigo darken-4' : ''">
+                                          {{ icon3 }}
+                                        </v-icon>
+                                      </v-list-item-action>
+                                      <v-list-item-content>
+                                        <v-list-item-title>
+                                          Tümünü Seç
+                                        </v-list-item-title>
+                                      </v-list-item-content>
+                                    </v-list-item>
+                                    <v-divider class="mt-2"></v-divider>
+                                  </template>
                                     <template v-slot:item="data">
+                                      
                                       <template v-if="(typeof data.item !== 'object')">
                                         <v-list-item-content v-text="data.item"></v-list-item-content>
                                       </template>
@@ -756,10 +803,10 @@ export default {
       return process.env.apiPublicUrl;
     },
     likesAllFruit () {
-        return this.data.meals.length === this.meals.length
+        return (this.data.selectedMeals !== undefined && this.data.selectedMeals !== null && this.data.selectedMeals !=='' && this.data.meals !== undefined && this.data.meals !== null && this.data.meals !=='' && this.data.selectedMeals.length === this.data.meals.length)
       },
     likesSomeFruit () {
-      return this.data.meals.length > 0 && !this.likesAllFruit
+      return (this.data.selectedMeals !== undefined && this.data.selectedMeals!==null && this.data.selectedMeals!== '' && this.data.selectedMeals.length > 0 && !this.likesAllFruit)
     },
     icon () {
       if (this.likesAllFruit) return 'mdi-close-box'
@@ -777,6 +824,17 @@ export default {
         if (this.likesSomeFruit2) return 'mdi-minus-box'
         return 'mdi-checkbox-blank-outline'
       },
+    likesAllFruit3 () {
+      return (this.data.selectedDiseases !== undefined && this.data.selectedDiseases !== null && this.data.selectedDiseases !=='' && this.data.diseases !== undefined && this.data.diseases !== null && this.data.diseases !=='' && this.data.selectedDiseases.length === this.data.diseases.length)
+    },
+    likesSomeFruit3 () {
+      return (this.data.selectedDiseases !== undefined && this.data.selectedDiseases !== null && this.data.selectedDiseases !=='' && this.data.selectedDiseases.length > 0 && !this.likesAllFruit3)
+    },
+    icon3 () {
+        if (this.likesAllFruit3) return 'mdi-close-box'
+        if (this.likesSomeFruit3) return 'mdi-minus-box'
+        return 'mdi-checkbox-blank-outline'
+      },
   },
   validate({ params }) {
     return params.id !== null ? params.id : null;
@@ -786,9 +844,8 @@ export default {
       const { data } = await $axios.get(
         process.env.apiBaseUrl + "panel/e-diet-foods/update/" + params.id
       );
-      console.log(data.data);
-      data.data.meals = data.data.meals.split(",");
-      data.data.selectedDiseases = data.data.selectedDiseases.split(",");
+      data.data.selectedMeals = (data.data.selectedMeals !== undefined && data.data.selectedMeals !== null && data.data.selectedMeals !== '' ? data.data.selectedMeals : []);
+      data.data.selectedDiseases = (data.data.selectedDiseases !== undefined && data.data.selectedDiseases !== null && data.data.selectedDiseases !== '' ? data.data.selectedDiseases : []);
       if (
         data.data.values.length === 0 ||
         data.data.values.length === null ||
@@ -835,9 +892,13 @@ export default {
     toggle () {
       this.$nextTick(() => {
         if (this.likesAllFruit) {
-          this.data.meals = []
+          this.data.selectedMeals = []
         } else {
-          this.data.meals = this.meals.slice()
+          //this.data.meals = this.meals.slice()
+          this.data.selectedMeals = []
+          this.data.meals.forEach((el,index)=>{
+            this.data.selectedMeals.push(el._id.$oid)
+          })
         }
       })
     },
@@ -847,6 +908,19 @@ export default {
           this.data.ageGroups = []
         } else {
           this.data.ageGroups = this.ageGroups.slice()
+        }
+      })
+    },
+    toggle3 () {
+      this.$nextTick(() => {
+        if (this.likesAllFruit3) {
+          this.data.selectedDiseases = []
+        } else {
+          this.data.selectedDiseases = []
+          this.data.diseases.forEach((el,index)=>{
+            this.data.selectedDiseases.push(el._id.$oid)
+          })
+          //this.data.selectedDiseases = this.data.diseases.slice()
         }
       })
     },
@@ -875,9 +949,10 @@ export default {
         this.page,
         this.pageSize
       );
+      let oid = (this.data._id !== undefined && this.data._id !== null && this.data._id !== '' && this.data._id.$oid !== undefined && this.data._id.$oid !== null && this.data._id.$oid !== '' ? this.data._id.$oid : null);
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=edietfoods_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=edietfoods_id&where_value=${this.data._id.$oid}&joins=edietfoods_file`,
+          `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=edietfoods_file&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=edietfoods_id&where_value=${oid}&joins=edietfoods_file`,
           {
             json: true,
             withCredentials: false,
@@ -1091,6 +1166,21 @@ export default {
     },
     editEdietFoods() {
       let formData = new FormData(this.$refs.eDietFoodsForm);
+      let meals = this.data.selectedMeals;
+      formData.delete("selectedMeals[]");
+      formData.delete("selectedMeals");
+      let diseases = this.data.selectedDiseases;
+      formData.delete("selectedDiseases[]");
+      formData.delete("selectedDiseases");
+      for (let i = 0; i < diseases.length; i++) {
+          formData.append('selectedDiseases['+i+']', diseases[i]);
+      }
+      for (let i = 0; i < meals.length; i++) {
+          formData.append('selectedMeals['+i+']', meals[i]);
+      }
+      //console.log(formData.getAll('selectedDiseases[]'));
+      //console.log(formData.getAll('selectedMeals[]'));
+      //return false
       this.$axios
         .post(
           process.env.apiBaseUrl +

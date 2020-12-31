@@ -95,16 +95,37 @@
                               </div>
                             </ValidationProvider>
                             <ValidationProvider
+                              name="Miktar"
+                              rules="required"
+                              v-slot="{ errors }"
+                            >
+                              <div class="form-group">
+                                <label for="quantity">Miktar</label>
+                                <input
+                                  id="quantity"
+                                  type="text"
+                                  class="form-control"
+                                  name="quantity"
+                                  v-model="inputData.quantity"
+                                />
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
+                              </div>
+                            </ValidationProvider>
+                            <ValidationProvider
                               name="Öğün"
                               rules="required"
                               v-slot="{ errors }"
                             >
                               <div class="form-group">
                                 <v-select
-                                  name="meals"
+                                  name="meals[]"
                                   v-model="selectedMeals"
                                   :items="meals"
                                   label="Öğün Seçin"
+                                  item-text="name"
+                                  item-value="_id.$oid"
                                   multiple
                                 >
                                   <template v-slot:prepend-item>
@@ -113,7 +134,7 @@
                                       @click="toggle"
                                     >
                                       <v-list-item-action>
-                                        <v-icon :color="selectedMeals.length > 0 ? 'indigo darken-4' : ''">
+                                        <v-icon :color="(selectedMeals !== undefined && selectedMeals !== null && selectedMeals !== '' && selectedMeals.length > 0)  ? 'indigo darken-4' : ''">
                                           {{ icon }}
                                         </v-icon>
                                       </v-list-item-action>
@@ -125,6 +146,13 @@
                                     </v-list-item>
                                     <v-divider class="mt-2"></v-divider>
                                   </template>
+                                  <template v-slot:item="data">
+                                      <template>
+                                        <v-list-item-content>
+                                          <v-list-item-title v-html="data.item.name"></v-list-item-title>
+                                        </v-list-item-content>
+                                      </template>
+                                    </template>
                                 </v-select>
                                 <small class="font-weight-bold text-danger">{{
                                   errors[0]
@@ -158,7 +186,7 @@
                             >
                               <div class="form-group">
                                 <v-autocomplete
-                                    name="selectedDiseases"
+                                    name="selectedDiseases[]"
                                     v-model="selectedDiseases"
                                     :items="diseases"
                                     chips
@@ -167,6 +195,24 @@
                                     item-value="_id.$oid"
                                     multiple
                                   >
+                                  <template v-slot:prepend-item>
+                                    <v-list-item
+                                      ripple
+                                      @click="toggle3"
+                                    >
+                                      <v-list-item-action>
+                                        <v-icon :color="(selectedDiseases !== undefined && selectedDiseases !== null && selectedDiseases !== '' && selectedDiseases.length > 0) ? 'indigo darken-4' : ''">
+                                          {{ icon3 }}
+                                        </v-icon>
+                                      </v-list-item-action>
+                                      <v-list-item-content>
+                                        <v-list-item-title>
+                                          Tümünü Seç
+                                        </v-list-item-title>
+                                      </v-list-item-content>
+                                    </v-list-item>
+                                    <v-divider class="mt-2"></v-divider>
+                                  </template>
                                     <template v-slot:selection="data">
                                       <v-chip
                                         v-bind="data.attrs"
@@ -742,10 +788,10 @@ export default {
       return process.env.apiPublicUrl;
     },
     likesAllFruit () {
-        return this.selectedMeals.length === this.meals.length
+        return (this.selectedMeals !== undefined && this.selectedMeals !== null && this.selectedMeals !== '' && this.meals !== null && this.meals !== undefined && this.meals !== '' && this.selectedMeals.length === this.meals.length)
       },
     likesSomeFruit () {
-      return this.selectedMeals.length > 0 && !this.likesAllFruit
+      return (this.selectedMeals !== undefined && this.selectedMeals !== null && this.selectedMeals !=='' && this.selectedMeals.length > 0 && !this.likesAllFruit)
     },
     icon () {
       if (this.likesAllFruit) return 'mdi-close-box'
@@ -761,6 +807,17 @@ export default {
     icon2 () {
         if (this.likesAllFruit2) return 'mdi-close-box'
         if (this.likesSomeFruit2) return 'mdi-minus-box'
+        return 'mdi-checkbox-blank-outline'
+      },
+    likesAllFruit3 () {
+      return (this.selectedDiseases !== undefined && this.selectedDiseases !== null && this.selectedDiseases !=='' && this.diseases !== undefined && this.diseases !== null && this.diseases !=='' && this.selectedDiseases.length === this.diseases.length)
+    },
+    likesSomeFruit3 () {
+      return (this.selectedDiseases !== undefined && this.selectedDiseases !== null && this.selectedDiseases !=='' && this.selectedDiseases.length > 0 && !this.likesAllFruit3)
+    },
+    icon3 () {
+        if (this.likesAllFruit3) return 'mdi-close-box'
+        if (this.likesSomeFruit3) return 'mdi-minus-box'
         return 'mdi-checkbox-blank-outline'
       },
   },
@@ -780,6 +837,19 @@ export default {
           this.selectedAgeGroups = []
         } else {
           this.selectedAgeGroups = this.ageGroups.slice()
+        }
+      })
+    },
+    toggle3 () {
+      this.$nextTick(() => {
+        if (this.likesAllFruit3) {
+          this.selectedDiseases = []
+        } else {
+          this.selectedDiseases = []
+          this.diseases.forEach((el,index)=>{
+            this.selectedDiseases.push(el._id.$oid)
+          })
+          //this.data.selectedDiseases = this.data.diseases.slice()
         }
       })
     },
@@ -808,6 +878,7 @@ export default {
         .then((response) => {
           this.allCriterias = response.data.data.criteria;
           this.diseases = response.data.data.diseases;
+          this.meals = response.data.data.meals;
         })
         .catch((err) => console.log(err));
     },
@@ -1080,7 +1151,18 @@ export default {
     },
     saveEdietFoods() {
       let formData = new FormData(this.$refs.eDietFoodsForm);
-
+      let meals = this.selectedMeals;
+      formData.delete("selectedMeals[]");
+      formData.delete("selectedMeals");
+      let diseases = this.selectedDiseases;
+      formData.delete("selectedDiseases[]");
+      formData.delete("selectedDiseases");
+      for (let i = 0; i < diseases.length; i++) {
+          formData.append('selectedDiseases['+i+']', diseases[i]);
+      }
+      for (let i = 0; i < meals.length; i++) {
+          formData.append('selectedMeals['+i+']', meals[i]);
+      }
       this.$axios
         .post(process.env.apiBaseUrl + "panel/e-diet-foods/create", formData, {
           json: true,
