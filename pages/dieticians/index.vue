@@ -1,5 +1,26 @@
 <template>
-  <v-app class="h-auto">
+  <v-app>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+              <ol class="breadcrumb pl-0">
+                <li class="breadcrumb-item">
+                  <nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Diyetisyenler
+                </li>
+              </ol>
+            </nav>
+            <h2 class="breadcrumb-title">Diyetisyenler</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Breadcrumb -->
     <div class="main-wrapper">
       <!-- Home Banner -->
       <section class="section section-search pt-5 bg-white">

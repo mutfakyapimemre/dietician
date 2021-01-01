@@ -1,5 +1,5 @@
 <template>
-  <v-app class="h-auto">
+  <v-app>
     <div class="main-wrapper">
       <!-- Home Banner -->
       <section class="section section-search pt-5 bg-white">

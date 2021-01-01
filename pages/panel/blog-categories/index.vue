@@ -168,7 +168,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/criteria/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone`,
+          `${process.env.apiBaseUrl}panel/criteria/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
           {
             json: true,
             withCredentials: false,

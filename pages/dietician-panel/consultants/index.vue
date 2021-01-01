@@ -48,7 +48,7 @@
                         <nuxt-link
                           to="/dietician-panel/consultants/add"
                           tag="a"
-                          class="btn btn-info-light"
+                          class="float-right btn btn-info-light ml-3 my-auto py-auto"
                           ><i class="fa fa-plus"></i> Ekle</nuxt-link
                         >
                       </span>

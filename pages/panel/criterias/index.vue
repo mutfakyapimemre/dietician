@@ -26,22 +26,15 @@
                   v-model="searchTitle"
                   label="Arama Yapın..."
                   class="my-auto py-auto"
+                  v-on:keyup.prevent="page = 1;
+                    retrieveData('get-by-search');"
                 ></v-text-field>
               </span>
               <span class="justify-content-end flex-shrink-1">
-                <v-btn
-                  @click="
-                    page = 1;
-                    retrieveData('get-by-search');
-                  "
-                  class="my-auto py-auto mx-3"
-                >
-                  Ara
-                </v-btn>
                 <nuxt-link
                   to="/panel/criterias/add"
                   tag="a"
-                  class="float-right btn btn-primary text-white my-auto py-auto"
+                  class="float-right btn btn-primary text-white ml-3 my-auto py-auto"
                 >
                   <i class="fa fa-plus"></i> Ekle
                 </nuxt-link>
@@ -168,7 +161,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/criteria/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone`,
+          `${process.env.apiBaseUrl}panel/criteria/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
           {
             json: true,
             withCredentials: false,
