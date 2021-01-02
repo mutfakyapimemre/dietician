@@ -7,12 +7,12 @@
         <div class="page-header">
           <div class="row">
             <div class="col-sm-12">
-              <h3 class="page-title">Diyetisyen Düzenle</h3>
+              <h3 class="page-title">Diyetisyenler</h3>
               <ul class="breadcrumb">
                 <li class="breadcrumb-item">
                   <nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
                 </li>
-                <li class="breadcrumb-item active">Diyetisyen Düzenle</li>
+                <li class="breadcrumb-item active">Diyetisyenler</li>
               </ul>
             </div>
           </div>
@@ -25,13 +25,13 @@
 
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Diyetisyen Düzenle</h4>
+                <h4 class="card-title">Diyetisyen Ekle</h4>
               </div>
               <div class="card-body">
                 <ValidationObserver v-slot="{ handleSubmit }">
                   <form
-                    @submit.prevent="handleSubmit(editDoctors)"
-                    ref="doctorsForm"
+                    @submit.prevent="handleSubmit(saveDieticians)"
+                    ref="dieticiansForm"
                     enctype="multipart/form-data"
                   >
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
@@ -138,36 +138,65 @@
                             }}</small>
                           </div>
                         </ValidationProvider>
-                        <div class="row">
-                          <div
-                            class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"
-                          >
-                            <img
-                              v-bind:src="
-                                decodeURIComponent(siteSettings.baseURL) +
-                                '/public/storage/' +
-                                data.img_url
-                              "
-                              v-bind:alt="data.name"
-                              width="300"
-                              height="300"
+                        <ValidationProvider
+                          name="Şifreniz"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
+                          <div class="form-group">
+                            <label for="password">Şifreniz</label>
+                            <input
+                              id="password"
+                              type="text"
+                              class="form-control"
+                              name="password"
+                              v-model="data.password"
                             />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
-                          <div
-                            class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9"
-                          >
-                            <div class="form-group">
-                              <label>Kullanıcı Görseli</label>
-                              <input
-                                type="file"
-                                id="img_url"
-                                ref="img_url"
-                                name="img_url"
-                                class="form-control"
-                              />
-                            </div>
+                        </ValidationProvider>
+                        <ValidationProvider
+                          name="Tekrar Şifreniz"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
+                          <div class="form-group">
+                            <label for="password_confirmation"
+                              >Tekrar Şifreniz</label
+                            >
+                            <input
+                              id="password_confirmation"
+                              type="text"
+                              class="form-control"
+                              name="password_confirmation"
+                              v-model="data.password_confirmation"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
                           </div>
-                        </div>
+                        </ValidationProvider>
+                        <ValidationProvider
+                          name="Kullanıcı Görseli"
+                          rules="required"
+                          v-slot="{ errors }"
+                        >
+                          <div class="form-group">
+                            <label>Kullanıcı Görseli</label>
+                            <input
+                              type="file"
+                              id="img_url"
+                              ref="img_url"
+                              name="img_url"
+                              class="form-control"
+                            />
+                            <small class="font-weight-bold text-danger">{{
+                              errors[0]
+                            }}</small>
+                          </div>
+                        </ValidationProvider>
                       </div>
                       <div class="tab-pane" id="sosyal-medya">
                         <ValidationProvider
@@ -395,7 +424,6 @@ import Cookie from "js-cookie";
 import { Base64 } from "js-base64";
 
 import { ValidationObserver, ValidationProvider } from "vee-validate";
-
 export default {
   middleware: ["session-control", "admin"],
   layout: "admin",
@@ -409,6 +437,8 @@ export default {
         name: null,
         phone: null,
         email: null,
+        password: null,
+        password_confirmation: null,
         facebook: null,
         twitter: null,
         instagram: null,
@@ -422,7 +452,6 @@ export default {
         work_phone: null,
         work_phone_2: null,
       },
-      siteSettings: this.$store.getters.siteSettings,
       userData:
         Cookie.get("userData") !== null &&
         Cookie.get("userData") !== undefined &&
@@ -431,44 +460,28 @@ export default {
           : null,
     };
   },
-  validate({ params }) {
-    return params.id !== null ? params.id : null;
-  },
-  async asyncData({ params, error, $axios }) {
-    try {
-      const { data } = await $axios.get(
-        process.env.apiBaseUrl + "panel/doctors/update/" + params.id
-      );
-
-      return data;
-    } catch (e) {
-      error({ message: "Kullanıcı Bilgisi Bulunamadı.", statusCode: 404 });
-    }
-  },
   methods: {
-    editDoctors() {
-      let formData = new FormData(this.$refs.doctorsForm);
+    saveDieticians() {
+      let formData = new FormData(this.$refs.dieticiansForm);
+
       this.$axios
-        .post(
-          process.env.apiBaseUrl + "panel/doctors/update/" + this.data._id,
-          formData,
-          {
-            json: true,
-            withCredentials: false,
-            mode: "no-cors",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers":
-                "Origin, Content-Type, X-Auth-Token, Authorization",
-              "Access-Control-Allow-Methods":
-                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-              "Content-Type":
-                "multipart/form-data; boundary=" + formData._boundary,
-              Authorization: "Bearer " + this.userData.api_token,
-            },
-          }
-        )
+        .post(process.env.apiBaseUrl + "panel/doctors/create", formData, {
+          json: true,
+          withCredentials: false,
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, Content-Type, X-Auth-Token, Authorization",
+            "Access-Control-Allow-Methods":
+              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type":
+              "multipart/form-data; boundary=" + formData._boundary,
+            Authorization: "Bearer " + this.userData.api_token,
+          },
+          credentials: "same-origin",
+        })
         .then((response) => {
           if (response.data.success) {
             this.$izitoast.success({
@@ -477,7 +490,7 @@ export default {
               position: "topCenter",
             });
             setTimeout(() => {
-              this.$router.go(decodeURIComponent("/panel/doctors"));
+              this.$router.go(decodeURIComponent("/panel/dieticians"));
             }, 2000);
           } else {
             this.$izitoast.error({

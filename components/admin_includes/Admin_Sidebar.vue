@@ -25,7 +25,7 @@
                 ><i class="fa fa-users"></i> <span>Kullanıcılar</span></a
               ></nuxt-link
             >
-            <nuxt-link to="/panel/doctors" tag="li" active-class="active"
+            <nuxt-link to="/panel/dieticians" tag="li" active-class="active"
               ><a
                 ><i class="fa fa-user-md"></i> <span>Diyetisyenler</span></a
               ></nuxt-link

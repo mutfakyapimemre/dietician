@@ -26,22 +26,15 @@
                   v-model="searchTitle"
                   label="Arama Yapın..."
                   class="my-auto py-auto"
+                  v-on:keyup.prevent="page = 1;
+                    retrieveData('get-by-search');"
                 ></v-text-field>
               </span>
               <span class="justify-content-end flex-shrink-1">
-                <v-btn
-                  @click="
-                    page = 1;
-                    retrieveData('get-by-search');
-                  "
-                  class="my-auto py-auto mx-3"
-                >
-                  Ara
-                </v-btn>
                 <nuxt-link
-                  to="/panel/doctors/add"
+                  to="/panel/dieticians/add"
                   tag="a"
-                  class="float-right btn btn-primary text-white my-auto py-auto"
+                  class="float-right btn btn-info-light ml-3 my-auto py-auto"
                 >
                   <i class="fa fa-plus"></i> Ekle
                 </nuxt-link>
@@ -217,7 +210,7 @@ export default {
       this.retrieveData();
     },
     editData(id) {
-      this.$router.push("/panel/doctors/update/" + id);
+      this.$router.push("/panel/dieticians/update/" + id);
     },
     deleteData(id) {
       this.$axios

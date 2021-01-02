@@ -126,18 +126,18 @@
     "_name": "_09fc365a"
   },
   {
+    "name": "panel-dieticians",
+    "path": "/panel/dieticians",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\dieticians\\\\index.vue",
+    "chunkName": "pages/panel/dieticians/index",
+    "_name": "_cb53273c"
+  },
+  {
     "name": "panel-diseases",
     "path": "/panel/diseases",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\diseases\\\\index.vue",
     "chunkName": "pages/panel/diseases/index",
     "_name": "_468fbd16"
-  },
-  {
-    "name": "panel-doctors",
-    "path": "/panel/doctors",
-    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\doctors\\\\index.vue",
-    "chunkName": "pages/panel/doctors/index",
-    "_name": "_632029d3"
   },
   {
     "name": "panel-e-diet",
@@ -259,18 +259,18 @@
     "_name": "_529fe6e0"
   },
   {
+    "name": "panel-dieticians-add",
+    "path": "/panel/dieticians/add",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\dieticians\\\\add\\\\index.vue",
+    "chunkName": "pages/panel/dieticians/add/index",
+    "_name": "_7a0cc0b1"
+  },
+  {
     "name": "panel-diseases-add",
     "path": "/panel/diseases/add",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\diseases\\\\add\\\\index.vue",
     "chunkName": "pages/panel/diseases/add/index",
     "_name": "_404dc07d"
-  },
-  {
-    "name": "panel-doctors-add",
-    "path": "/panel/doctors/add",
-    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\doctors\\\\add\\\\index.vue",
-    "chunkName": "pages/panel/doctors/add/index",
-    "_name": "_0ba4c1e0"
   },
   {
     "name": "panel-e-diet-foods-add",
@@ -378,18 +378,18 @@
     "_name": "_30aa365c"
   },
   {
+    "name": "panel-dieticians-update-id",
+    "path": "/panel/dieticians/update/:id?",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\dieticians\\\\update\\\\_id.vue",
+    "chunkName": "pages/panel/dieticians/update/_id",
+    "_name": "_a44d75be"
+  },
+  {
     "name": "panel-diseases-update-id",
     "path": "/panel/diseases/update/:id?",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\diseases\\\\update\\\\_id.vue",
     "chunkName": "pages/panel/diseases/update/_id",
     "_name": "_a08f8256"
-  },
-  {
-    "name": "panel-doctors-update-id",
-    "path": "/panel/doctors/update/:id?",
-    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\panel\\\\doctors\\\\update\\\\_id.vue",
-    "chunkName": "pages/panel/doctors/update/_id",
-    "_name": "_4f4169d2"
   },
   {
     "name": "panel-e-diet-foods-update-id",

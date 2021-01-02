@@ -22,8 +22,8 @@ const _1ec0b6c9 = () => interopDefault(import('..\\pages\\dietician-panel\\ediet
 const _72f0be7d = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\index.vue' /* webpackChunkName: "pages/dietician-panel/recipes/index" */))
 const _67b43e00 = () => interopDefault(import('..\\pages\\panel\\blog-categories\\index.vue' /* webpackChunkName: "pages/panel/blog-categories/index" */))
 const _09fc365a = () => interopDefault(import('..\\pages\\panel\\criterias\\index.vue' /* webpackChunkName: "pages/panel/criterias/index" */))
+const _cb53273c = () => interopDefault(import('..\\pages\\panel\\dieticians\\index.vue' /* webpackChunkName: "pages/panel/dieticians/index" */))
 const _468fbd16 = () => interopDefault(import('..\\pages\\panel\\diseases\\index.vue' /* webpackChunkName: "pages/panel/diseases/index" */))
-const _632029d3 = () => interopDefault(import('..\\pages\\panel\\doctors\\index.vue' /* webpackChunkName: "pages/panel/doctors/index" */))
 const _5d3a8ad1 = () => interopDefault(import('..\\pages\\panel\\e-diet\\index.vue' /* webpackChunkName: "pages/panel/e-diet/index" */))
 const _7a8f80c9 = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\index.vue' /* webpackChunkName: "pages/panel/e-diet-foods/index" */))
 const _c02d1f94 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\index.vue' /* webpackChunkName: "pages/panel/exercise-categories/index" */))
@@ -41,8 +41,8 @@ const _1e43deaa = () => interopDefault(import('..\\pages\\dietician-panel\\ediet
 const _0d288776 = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\add\\index.vue' /* webpackChunkName: "pages/dietician-panel/recipes/add/index" */))
 const _11637ed3 = () => interopDefault(import('..\\pages\\panel\\blog-categories\\add\\index.vue' /* webpackChunkName: "pages/panel/blog-categories/add/index" */))
 const _529fe6e0 = () => interopDefault(import('..\\pages\\panel\\criterias\\add\\index.vue' /* webpackChunkName: "pages/panel/criterias/add/index" */))
+const _7a0cc0b1 = () => interopDefault(import('..\\pages\\panel\\dieticians\\add\\index.vue' /* webpackChunkName: "pages/panel/dieticians/add/index" */))
 const _404dc07d = () => interopDefault(import('..\\pages\\panel\\diseases\\add\\index.vue' /* webpackChunkName: "pages/panel/diseases/add/index" */))
-const _0ba4c1e0 = () => interopDefault(import('..\\pages\\panel\\doctors\\add\\index.vue' /* webpackChunkName: "pages/panel/doctors/add/index" */))
 const _b3b956ac = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\add\\index.vue' /* webpackChunkName: "pages/panel/e-diet-foods/add/index" */))
 const _571560bc = () => interopDefault(import('..\\pages\\panel\\e-diet\\add\\index.vue' /* webpackChunkName: "pages/panel/e-diet/add/index" */))
 const _feb1fd46 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\add\\index.vue' /* webpackChunkName: "pages/panel/exercise-categories/add/index" */))
@@ -58,8 +58,8 @@ const _def43370 = () => interopDefault(import('..\\pages\\dietician-panel\\ediet
 const _7e3656fc = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\update\\_id.vue' /* webpackChunkName: "pages/dietician-panel/recipes/update/_id" */))
 const _015a4b3f = () => interopDefault(import('..\\pages\\panel\\blog-categories\\update\\_id.vue' /* webpackChunkName: "pages/panel/blog-categories/update/_id" */))
 const _30aa365c = () => interopDefault(import('..\\pages\\panel\\criterias\\update\\_id.vue' /* webpackChunkName: "pages/panel/criterias/update/_id" */))
+const _a44d75be = () => interopDefault(import('..\\pages\\panel\\dieticians\\update\\_id.vue' /* webpackChunkName: "pages/panel/dieticians/update/_id" */))
 const _a08f8256 = () => interopDefault(import('..\\pages\\panel\\diseases\\update\\_id.vue' /* webpackChunkName: "pages/panel/diseases/update/_id" */))
-const _4f4169d2 = () => interopDefault(import('..\\pages\\panel\\doctors\\update\\_id.vue' /* webpackChunkName: "pages/panel/doctors/update/_id" */))
 const _04953048 = () => interopDefault(import('..\\pages\\panel\\e-diet-foods\\update\\_id.vue' /* webpackChunkName: "pages/panel/e-diet-foods/update/_id" */))
 const _befad760 = () => interopDefault(import('..\\pages\\panel\\e-diet\\update\\_id.vue' /* webpackChunkName: "pages/panel/e-diet/update/_id" */))
 const _7a8719f5 = () => interopDefault(import('..\\pages\\panel\\exercise-categories\\update\\_id.vue' /* webpackChunkName: "pages/panel/exercise-categories/update/_id" */))
@@ -165,13 +165,13 @@ export const routerOptions = {
     component: _09fc365a,
     name: "panel-criterias"
   }, {
+    path: "/panel/dieticians",
+    component: _cb53273c,
+    name: "panel-dieticians"
+  }, {
     path: "/panel/diseases",
     component: _468fbd16,
     name: "panel-diseases"
-  }, {
-    path: "/panel/doctors",
-    component: _632029d3,
-    name: "panel-doctors"
   }, {
     path: "/panel/e-diet",
     component: _5d3a8ad1,
@@ -241,13 +241,13 @@ export const routerOptions = {
     component: _529fe6e0,
     name: "panel-criterias-add"
   }, {
+    path: "/panel/dieticians/add",
+    component: _7a0cc0b1,
+    name: "panel-dieticians-add"
+  }, {
     path: "/panel/diseases/add",
     component: _404dc07d,
     name: "panel-diseases-add"
-  }, {
-    path: "/panel/doctors/add",
-    component: _0ba4c1e0,
-    name: "panel-doctors-add"
   }, {
     path: "/panel/e-diet-foods/add",
     component: _b3b956ac,
@@ -309,13 +309,13 @@ export const routerOptions = {
     component: _30aa365c,
     name: "panel-criterias-update-id"
   }, {
+    path: "/panel/dieticians/update/:id?",
+    component: _a44d75be,
+    name: "panel-dieticians-update-id"
+  }, {
     path: "/panel/diseases/update/:id?",
     component: _a08f8256,
     name: "panel-diseases-update-id"
-  }, {
-    path: "/panel/doctors/update/:id?",
-    component: _4f4169d2,
-    name: "panel-doctors-update-id"
   }, {
     path: "/panel/e-diet-foods/update/:id",
     component: _04953048,

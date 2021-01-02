@@ -27,18 +27,9 @@
                   v-model="searchTitle"
                   label="Arama Yapın..."
                   class="my-auto py-auto"
+                  v-on:keyup.prevent="page = 1;
+                    retrieveData('get-by-search');"
                 ></v-text-field>
-              </span>
-              <span class="justify-content-end flex-shrink-1">
-                <v-btn
-                  @click="
-                    page = 1;
-                    retrieveData('get-by-search');
-                  "
-                  class="my-auto py-auto mx-3"
-                >
-                  Ara
-                </v-btn>
               </span>
             </v-card-title>
 
