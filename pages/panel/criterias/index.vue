@@ -161,7 +161,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/criteria/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
+          `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=criteria&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
           {
             json: true,
             withCredentials: false,
@@ -204,7 +204,7 @@ export default {
     },
     deleteData(id) {
       this.$axios
-        .delete(process.env.apiBaseUrl + "panel/criteria/delete/" + id, {
+        .delete(process.env.apiBaseUrl + "panel/datatables/delete?table=criteria&id="+id, {
           json: true,
           withCredentials: false,
           mode: "no-cors",

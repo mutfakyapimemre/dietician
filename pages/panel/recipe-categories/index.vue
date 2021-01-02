@@ -178,7 +178,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/recipe-categories/${urlParam}?table=recipe_categories&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone`,
+          `${process.env.apiBaseUrl}panel/recipe-categories/${urlParam}?table=recipe_categories&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
           {
             json: true,
             withCredentials: false,

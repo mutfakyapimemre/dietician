@@ -191,7 +191,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}dietician/recipes/${urlParam}?table=recipes&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id&where_value=${this.userData._id}`,
+          `${process.env.apiBaseUrl}dietician/recipes/${urlParam}?table=recipes&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name&where_column=dietician_id&where_value=${this.userData._id}`,
           {
             json: true,
             withCredentials: false,

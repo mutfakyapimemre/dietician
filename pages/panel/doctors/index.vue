@@ -301,7 +301,7 @@ export default {
         name: data.name,
         email: data.email,
         phone: data.phone,
-        img_url: this.img_url + "public/storage/" + data.img_url,
+        img_url: this.img_url + "public/storage/" + data.profile_photo,
         isActive: data.isActive,
       };
     },
