@@ -174,7 +174,7 @@ export default (ctx, inject) => {
   // Proxy SSR request headers headers
   if (process.server && ctx.req && ctx.req.headers) {
     const reqHeaders = { ...ctx.req.headers }
-    for (const h of ["accept","host","cf-ray","cf-connecting-ip","content-length","content-md5","content-type"]) {
+    for (const h of ["accept","host","x-forwarded-host","cf-ray","cf-connecting-ip","content-length","content-md5","content-type"]) {
       delete reqHeaders[h]
     }
     axiosOptions.headers.common = { ...reqHeaders, ...axiosOptions.headers.common }
