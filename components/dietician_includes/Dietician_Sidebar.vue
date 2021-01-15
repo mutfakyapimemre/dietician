@@ -80,6 +80,6 @@
 
 <script>
 export default {
-  layout: "dietician",
+  layout: "dietician"
 };
 </script>

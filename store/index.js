@@ -92,7 +92,7 @@ export const actions = {
       if (userData) {
         userData = JSON.parse(Base64.decode(userData.split("=")[1]));
       }
-      expiresIn = expiresIn = new Date().getTime() * 7200
+      expiresIn = expiresIn = new Date().getTime() + 24 * 60 * 60
     } else {
       if ((Cookie.get("userData") === null || Cookie.get("userData") === '' || Cookie.get("userData") === undefined) && (localStorage.getItem("userData") !== null && localStorage.getItem("userData") !== undefined && localStorage.getItem("userData") !== "")) {
         Cookie.remove("userData")
