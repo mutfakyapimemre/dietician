@@ -1,16 +1,4 @@
 {
-  "Admin_Header": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Header.vue"
-  },
-  "LazyAdmin_Header": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Header.vue"
-  },
-  "Admin_Sidebar": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Sidebar.vue"
-  },
-  "LazyAdmin_Sidebar": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Sidebar.vue"
-  },
   "DieticianSidebar": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/includes/DieticianSidebar.vue"
   },
@@ -34,6 +22,18 @@
   },
   "LazySidebar": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/includes/Sidebar.vue"
+  },
+  "Admin_Header": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Header.vue"
+  },
+  "LazyAdmin_Header": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Header.vue"
+  },
+  "Admin_Sidebar": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Sidebar.vue"
+  },
+  "LazyAdmin_Sidebar": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/Admin_Sidebar.vue"
   },
   "Dietician_Header": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/Dietician_Header.vue"
