@@ -692,7 +692,7 @@ export default {
               : null),
         },
         params: {
-          title: null,
+          title: data.name,
         },
         uploadMultiple: true,
         parallelUploads: 10,
