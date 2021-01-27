@@ -205,6 +205,25 @@
                             </td>
                           </tr>
                           <tr>
+                            <td><b>Özel Durum :</b></td>
+                            <td colspan="2">
+                              <ValidationProvider
+                                name="Özel Durum"
+                                rules="required"
+                                v-slot="{ errors }"
+                              >
+                              <select name="special_case" id="special_durum" class="form-control">
+                                <option value="YOK">YOK</option>
+                                <option value="HAMİLE">HAMİLE</option>
+                                <option value="EMZİKLİ">EMZİKLİ</option>
+                              </select>
+                                <small class="font-weight-bold text-danger">{{
+                                  errors[0]
+                                }}</small>
+                              </ValidationProvider>
+                            </td>
+                          </tr>
+                          <tr>
                             <td>
                               <b>İkamet Ettiğiniz İl :</b>
                             </td>
@@ -1006,7 +1025,7 @@ export default {
     },
     saveInformation() {
       let formData = new FormData(this.$refs.informationForm);
-      formData.append("dietician_id",this.userData._id);
+      formData.append("dietician_id", this.userData._id);
       this.$axios
         .post(process.env.apiBaseUrl + "users/register/", formData, {
           json: true,
