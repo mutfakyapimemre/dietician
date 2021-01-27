@@ -25,8 +25,14 @@
               <!-- General -->
 
               <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Danışman Ekle</h4>
+                <div class="card-header d-flex">
+                  <h4 class="card-title justify-content-start my-auto py-auto">Danışman Ekle</h4>
+                  <nuxt-link
+                    to="/dietician-panel/consultants/new-consultant"
+                    tag="a"
+                    class="justify-content-end ml-auto btn btn-info-light my-auto py-auto"
+                    ><i class="fa fa-plus"></i> Yeni Danışman Kaydet</nuxt-link
+                  >
                 </div>
                 <div class="card-body">
                   <v-alert

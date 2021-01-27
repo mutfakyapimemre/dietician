@@ -183,7 +183,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id,status&where_value=${this.userData._id},!='dietician'`,
+          `${process.env.apiBaseUrl}dietician/datatables/${urlParam}?table=users&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone&where_column=dietician_id&where_value=${this.userData._id}`,
           {
             json: true,
             withCredentials: false,
