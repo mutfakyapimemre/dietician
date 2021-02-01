@@ -203,7 +203,6 @@ export default {
       this.retrieveData();
     },
     editData(id) {
-      //this.$router.push({name: "/panel/settings/update/", params: {id: id}});
       this.$router.push("/panel/settings/update/" + id);
     },
     deleteData(id) {

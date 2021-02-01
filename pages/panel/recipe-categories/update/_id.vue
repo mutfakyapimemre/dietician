@@ -297,7 +297,7 @@ export default {
               : null),
         },
         params: {
-          title: data.name,
+          title: (this.data !== null && this.data !== undefined && this.data !== '' ? this.data.name : null),
         },
         uploadMultiple: true,
         parallelUploads: 10,

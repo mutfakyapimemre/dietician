@@ -625,7 +625,7 @@ export default {
               : null),
         },
         params: {
-          title: data.name,
+          title: (this.data !== null && this.data !== undefined && this.data !== '' ? this.data.data.name : null),
         },
         uploadMultiple: true,
         parallelUploads: 10,
@@ -689,7 +689,6 @@ export default {
           id: 0,
         });
       }
-
       return data;
     } catch (e) {
       error({ message: "Besin Bilgisi Bulunamadı.", statusCode: 404 });
