@@ -11,8 +11,8 @@
 
 <script>
 import { ValidationObserver, ValidationProvider } from "vee-validate";
-import Header from "@/components/dietician_includes/Dietician_Header";
-import Sidebar from "@/components/dietician_includes/Dietician_Sidebar";
+import Header from "@/components/dietician_includes/DieticianHeader";
+import Sidebar from "@/components/dietician_includes/DieticianSidebar";
 
 export default {
   head() {

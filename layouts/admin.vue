@@ -11,8 +11,8 @@
 
 <script>
 import { ValidationObserver, ValidationProvider } from "vee-validate";
-import AdminHeader from "@/components/admin_includes/Admin_Header";
-import AdminSidebar from "@/components/admin_includes/Admin_Sidebar";
+import AdminHeader from "@/components/admin_includes/AdminHeader";
+import AdminSidebar from "@/components/admin_includes/AdminSidebar";
 export default {
   head() {
     return {
