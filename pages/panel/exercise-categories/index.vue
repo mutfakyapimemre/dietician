@@ -125,6 +125,7 @@ export default {
     return {
       data: [],
       searchTitle: null,
+      empty_url: null,
       headers: [
         { text: "#", align: "center", value: "rank" },
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
@@ -189,6 +190,7 @@ export default {
           }
         )
         .then((response) => {
+          this.empty_url = response.data.empty_url
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
@@ -294,7 +296,7 @@ export default {
         rank: data.rank,
         id: data._id,
         name: data.name,
-        img_url: this.img_url + "public/storage/" + data.img_url,
+        img_url: this.img_url + "public/storage/" + (data.exercise_categories !== null && data.exercise_categories !== undefined && data.exercise_categories !== '' && data.exercise_categories.img_url !== '' && data.exercise_categories.img_url !== undefined && data.exercise_categories.img_url !== null ? data.exercise_categories.img_url : this.empty_url),
         isActive: data.isActive,
       };
     },

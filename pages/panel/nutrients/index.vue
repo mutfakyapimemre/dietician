@@ -26,8 +26,10 @@
                   v-model="searchTitle"
                   label="Arama Yapın..."
                   class="my-auto py-auto"
-                  v-on:keyup.prevent="page = 1;
-                    retrieveData('get-by-search');"
+                  v-on:keyup.prevent="
+                    page = 1;
+                    retrieveData('get-by-search');
+                  "
                 ></v-text-field>
               </span>
               <span class="justify-content-end flex-shrink-1">
@@ -48,11 +50,7 @@
               :hide-default-footer="true"
             >
               <template v-slot:[`item.img_url`]="{ item }">
-                <img
-                  v-bind:src="item.img_url"
-                  width="150"
-                  height="150"
-                />
+                <img v-bind:src="item.img_url" width="150" height="150" />
               </template>
               <template v-slot:[`item.isActive`]="{ item }">
                 <v-layout justify-center>
@@ -69,9 +67,7 @@
                 <v-icon small class="mr-2" @click="editData(item.id)">
                   mdi-pencil
                 </v-icon>
-                <v-icon small @click="deleteData(item.id)">
-                  mdi-delete
-                </v-icon>
+                <v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
               </template>
             </v-data-table>
           </v-card>
@@ -124,6 +120,7 @@ export default {
     return {
       data: [],
       searchTitle: null,
+      empty_url: null,
       headers: [
         { text: "#", align: "center", value: "rank" },
         { text: "Görsel", align: "center", value: "img_url", sortable: false },
@@ -188,6 +185,7 @@ export default {
           }
         )
         .then((response) => {
+          this.empty_url = response.data.empty_url
           this.data = response.data.data.data.map(this.getDisplayData);
 
           this.totalPages = response.data.data.last_page;
@@ -290,7 +288,17 @@ export default {
         rank: data.rank,
         id: data._id,
         name: data.name,
-        img_url: this.img_url + "public/storage/" + data.img_url,
+        img_url:
+          this.img_url +
+          "public/storage/" +
+          (data.nutrients !== null &&
+          data.nutrients !== undefined &&
+          data.nutrients !== "" &&
+          data.nutrients.img_url !== null &&
+          data.nutrients.img_url !== undefined &&
+          data.nutrients.img_url !== ""
+            ? data.nutrients.img_url
+            : this.empty_url),
         isActive: data.isActive,
       };
     },
