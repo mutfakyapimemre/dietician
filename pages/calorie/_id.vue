@@ -246,29 +246,98 @@
                   <div class="profile-info-widget">
                     <div class="profile-det-info">
                       <h3 class="text-left">BESİN DEĞERLERİ</h3>
-                      <hr>
+                      <hr />
                     </div>
                   </div>
                 </div>
                 <div class="dashboard-widget">
                   <div class="table-responsive">
-                    <table class="table table-striped table-hover table-borderless">
+                    <table
+                      class="table table-striped table-hover table-borderless"
+                    >
                       <thead>
                         <tr>
-                          <td></td>
-                          <td>100 gr</td>
-                          <td class="selectedVal"></td>
+                          <td class="text-center"></td>
+                          <td class="text-center">100 Gram</td>
+                          <td class="text-center">
+                            {{ unit }} {{ criteriaName }}
+                          </td>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr  v-for="(value,index) in HundredData" v-bind:key="index">
-                          <td>{{ value.title }} ({{ value.type }})</td>
-                          <td>{{ value.value }}</td>
-                          <td></td>
+                        <tr
+                          v-for="(value, index) in HundredData"
+                          v-bind:key="index"
+                          v-if="showName.includes(value.title)"
+                        >
+                          <td class="text-left">
+                            {{ value.title }} ({{ value.type }})
+                          </td>
+                          <td class="text-center">{{ value.value }}</td>
+                          <td class="text-center">
+                            {{ fordata[index].value }}
+                          </td>
                         </tr>
                       </tbody>
                       <tfoot>
-
+                        <tr>
+                          <td colspan="3">
+                            <v-autocomplete
+                              v-model="showName"
+                              :items="fordata"
+                              chips
+                              label="Göstermek İstediğiniz Bileşenleri Seçin"
+                              item-text="title"
+                              item-value="title"
+                              multiple
+                            >
+                              <template v-slot:prepend-item>
+                                <v-list-item ripple @click="toggle">
+                                  <v-list-item-action>
+                                    <v-icon
+                                      :color="
+                                        showName !== undefined &&
+                                        showName !== null &&
+                                        showName !== '' &&
+                                        showName.length > 0
+                                          ? 'indigo darken-4'
+                                          : ''
+                                      "
+                                    >
+                                      {{ icon }}
+                                    </v-icon>
+                                  </v-list-item-action>
+                                  <v-list-item-content>
+                                    <v-list-item-title>
+                                      Tümünü Seç
+                                    </v-list-item-title>
+                                  </v-list-item-content>
+                                </v-list-item>
+                                <v-divider class="mt-2"></v-divider>
+                              </template>
+                              <template v-slot:selection="data">
+                                <v-chip
+                                  v-bind="data.attrs"
+                                  :input-value="data.selected"
+                                  close
+                                  @click="data.select"
+                                  @click:close="remove(data.item)"
+                                >
+                                  {{ data.item.title }}
+                                </v-chip>
+                              </template>
+                              <template v-slot:item="data">
+                                <template>
+                                  <v-list-item-content>
+                                    <v-list-item-title
+                                      v-html="data.item.title"
+                                    ></v-list-item-title>
+                                  </v-list-item-content>
+                                </template>
+                              </template>
+                            </v-autocomplete>
+                          </td>
+                        </tr>
                       </tfoot>
                     </table>
                   </div>
@@ -292,14 +361,67 @@ export default {
   },
   name: "index",
   mounted() {
-    this.HundredData = this.values
+    this.HundredData = this.values;
+    this.criteriaLimit(this.data);
   },
   computed: {
     img_url() {
       return process.env.apiPublicUrl;
     },
+    likesAllFruit () {
+        return (this.showName !== undefined && this.showName !== null && this.showName !== '' && this.fordata !== null && this.fordata !== undefined && this.fordata !== '' && this.showName.length === this.fordata.length)
+      },
+    likesSomeFruit () {
+      return (this.showName !== undefined && this.showName !== null && this.showName !=='' && this.showName.length > 0 && !this.likesAllFruit)
+    },
+    icon () {
+      if (this.likesAllFruit) return 'mdi-close-box'
+      if (this.likesSomeFruit) return 'mdi-minus-box'
+      return 'mdi-checkbox-blank-outline'
+    },
   },
   methods: {
+    toggle () {
+      this.$nextTick(() => {
+        if (this.likesAllFruit3) {
+          this.showName = []
+        } else {
+          this.showName = []
+          this.fordata.forEach((el,index)=>{
+            this.showName.push(el.value)
+          })
+        }
+      })
+    },
+    addComponent: function () {},
+    criteriaLimit: function (data) {
+      this.showName = [];
+      this.showValue = [];
+      this.showType = [];
+      this.hideName = [];
+      this.hideValue = [];
+      this.hideType = [];
+      if (data.vitaminName.length > 0) {
+        let durum = 0;
+        for (let i = 0; i <= data.vitaminName.length - 1; i++) {
+          durum = 0;
+          for (let j = 0; j <= this.excel.length; j++) {
+            if (data.vitaminName[i] === this.excel[j]) {
+              durum = 1;
+            }
+          }
+          if (durum === 1) {
+            this.showName.push(data.vitaminName[i]);
+            this.showValue.push(data.vitaminValue[i]);
+            this.showType.push(data.vitaminType[i]);
+          } else {
+            this.hideName.push(data.vitaminName[i]);
+            this.hideValue.push(data.vitaminValue[i]);
+            this.hideType.push(data.vitaminType[i]);
+          }
+        }
+      }
+    },
     setCriteriaValue: function (event) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -308,6 +430,8 @@ export default {
           event.target.options[event.target.options.selectedIndex].dataset;
         this.type = theTarget.type;
         this.criteriaValue = theTarget.value;
+        this.criteriaName =
+          event.target.options[event.target.selectedIndex].value;
       }
       this.changeValue(event);
     },
@@ -316,15 +440,14 @@ export default {
       event.stopImmediatePropagation();
       if (this.values.length > 0) {
         for (let i = 0; i < this.values.length; i++) {
-          this.fordata[i].value = (
-            (parseFloat(this.values[i].value) / 100) *
-            (parseFloat(this.unit) * parseFloat(this.criteriaValue))
-          ).toFixed(2);
+          this.fordata[i].value =
+            (this.values[i].value / 100) *
+            ((this.unit <= 1 ? (this.unit = 1) : this.unit) *
+              this.criteriaValue);
           if (
             this.fordata[i].value === undefined ||
             this.fordata[i].value === "" ||
             this.fordata[i].value === null ||
-            this.fordata[i].value <= 1 ||
             isNaN(this.fordata[i].value)
           ) {
             this.fordata[i].value = this.values[i].value;
@@ -339,9 +462,29 @@ export default {
       fordata: [],
       HundredData: [],
       criteriaValue: 1,
+      criteriaName: "Gram",
       value: null,
-      unit: 1,
+      unit: 100,
       type: null,
+      excel: [
+        "ENERJİ",
+        "KARBONHİDRAT",
+        "PROTEİN",
+        "YAĞ",
+        "LİF",
+        "KOLESTROL",
+        "POTASYUM",
+        "SODYUM",
+        "DEMİR",
+        "KALSİYUM",
+      ],
+      showName: [],
+      showValue: [],
+      showType: [],
+      hideName: [],
+      hideValue: [],
+      hideType: [],
+      component: null,
     };
   },
   validate({ params }) {
