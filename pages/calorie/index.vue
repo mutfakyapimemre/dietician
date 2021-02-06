@@ -87,7 +87,7 @@
                           height="300"
                           v-bind:alt="nutrient.name"
                           v-bind:src="
-                            img_url + 'public/storage/' + (nutrient.nutrients !== null && nutrient.nutrients !== '' && nutrient.nutrients !== undefined && nutrient.nutrients.img_url !== null && nutrient.nutrients.img_url !== '' && nutrient.nutrients.img_url !== undefined ? nutrient.nutrients.img_url : this.empty_url)
+                            img_url + 'public/storage/' + (nutrient.nutrients !== undefined && nutrient.nutrients !== null && nutrient.nutrients !== ''  && nutrient.nutrients.img_url !== null && nutrient.nutrients.img_url !== '' && nutrient.nutrients.img_url !== undefined ? nutrient.nutrients.img_url : empty_url)
                           "
                         />
                       </nuxt-link>
@@ -229,7 +229,7 @@ export default {
               decodeURIComponent(this.search),
           })
           .then((response) => {
-            this.empty_url = this.$store.getters.nutrients.empty_url;
+            this.empty_url = this.$store.getters.empty_url;
             this.nutrients = this.$store.getters.nutrients.data;
             this.pagination.current = this.$store.getters.nutrients.current_page;
             this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -239,7 +239,7 @@ export default {
           this.$store
             .dispatch("getNutrients", { nutrientsURL: param })
             .then((response) => {
-              this.empty_url = this.$store.getters.nutrients.empty_url;
+              this.empty_url = this.$store.getters.empty_url;
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -250,7 +250,7 @@ export default {
               nutrientsURL: "nutrients?page=" + this.pagination.current,
             })
             .then((response) => {
-              this.empty_url = this.$store.getters.nutrients.empty_url;
+              this.empty_url = this.$store.getters.empty_url;
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
