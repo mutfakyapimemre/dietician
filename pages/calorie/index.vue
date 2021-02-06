@@ -54,18 +54,19 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-              <h3
+              <h1
                 class="text-center"
                 v-if="search !== null && search !== '' && search !== undefined"
               >
                 "{{ search }}" Aramasıyla İle İlgili Besinler
-              </h3>
-              <h3
+              </h1>
+              <h1
                 class="text-center"
                 v-if="search === null || search === '' || search === undefined"
               >
                 Tüm Besinler
-              </h3>
+              </h1>
+              <hr />
               <div
                 class="row row-grid"
                 v-if="
@@ -86,7 +87,7 @@
                           height="300"
                           v-bind:alt="nutrient.name"
                           v-bind:src="
-                            img_url + 'public/storage/' + nutrient.img_url
+                            img_url + 'public/storage/' + (nutrient.nutrients !== null && nutrient.nutrients !== '' && nutrient.nutrients !== undefined && nutrient.nutrients.img_url !== null && nutrient.nutrients.img_url !== '' && nutrient.nutrients.img_url !== undefined ? nutrient.nutrients.img_url : this.empty_url)
                           "
                         />
                       </nuxt-link>
@@ -115,11 +116,15 @@
                   </div>
                 </div>
               </div>
-              <v-pagination
-                v-model="pagination.current"
-                :length="pagination.total"
-                @input="onPageChange"
-              ></v-pagination>
+              <div class="container">
+                <v-pagination
+                  class="my-3"
+                  v-model="pagination.current"
+                  :length="pagination.total"
+                  @input="onPageChange"
+                  total-visible="11"
+                ></v-pagination>
+              </div>
             </div>
             <div
               class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
@@ -224,6 +229,7 @@ export default {
               decodeURIComponent(this.search),
           })
           .then((response) => {
+            this.empty_url = this.$store.getters.nutrients.empty_url;
             this.nutrients = this.$store.getters.nutrients.data;
             this.pagination.current = this.$store.getters.nutrients.current_page;
             this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -233,6 +239,7 @@ export default {
           this.$store
             .dispatch("getNutrients", { nutrientsURL: param })
             .then((response) => {
+              this.empty_url = this.$store.getters.nutrients.empty_url;
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -243,6 +250,7 @@ export default {
               nutrientsURL: "nutrients?page=" + this.pagination.current,
             })
             .then((response) => {
+              this.empty_url = this.$store.getters.nutrients.empty_url;
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -258,6 +266,7 @@ export default {
     return {
       nutrients: [],
       search: null,
+      empty_url: null,
       pagination: {
         current: 1,
         total: 1,

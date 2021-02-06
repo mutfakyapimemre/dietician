@@ -92,6 +92,7 @@
                                   criterias !== ''
                                 "
                               >
+                              <option v-if="criterias.length <= 0" :value="null">Ölçüt Seçiniz.</option>
                                 <option
                                   v-bind:value="criteria.title"
                                   v-bind:key="index"
@@ -401,7 +402,7 @@ export default {
       this.hideName = [];
       this.hideValue = [];
       this.hideType = [];
-      if (data.vitaminName.length > 0) {
+      if (data.vitaminName !== undefined && data.vitaminName !== null && data.vitaminName !== '' && data.vitaminName.length > 0) {
         let durum = 0;
         for (let i = 0; i <= data.vitaminName.length - 1; i++) {
           durum = 0;
