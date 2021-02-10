@@ -13,6 +13,7 @@ export const state = () => ({
   userData: {},
   siteSettings: {},
   nutrients: [],
+  empty_url: null,
   recipeCategories: [],
   criterias: [],
   doctors:[],
@@ -46,7 +47,10 @@ export const mutations = {
     state.siteSettings = siteSettings
   },
   setNutrients(state, nutrients) {
-    state.nutrients = nutrients
+    state.nutrients = nutrients;
+  },
+  setEmptyURL(state,empty_url){
+    state.empty_url = empty_url;
   },
   setRecipeCategories(state, recipeCategories) {
     state.recipeCategories = recipeCategories
@@ -229,7 +233,9 @@ export const actions = {
     }
     return this.$axios.get(process.env.apiBaseUrl + nutrientsURL).then(response => {
       if (response.data !== null && response.data !== undefined && response.data !== "") {
+        console.log(response.data)
         vuexContext.commit("setNutrients", response.data.data)
+        vuexContext.commit("setEmptyURL",response.data.empty_url)
       }
     })
   },
@@ -326,6 +332,12 @@ export const getters = {
    */
   nutrients(state) {
     return state.nutrients
+  },
+  /**
+   * Get Empty Url Function
+   */
+  empty_url(state){
+    return state.empty_url
   },
   /**
    * Get Recipe Categories Function

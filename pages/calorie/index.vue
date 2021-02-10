@@ -87,7 +87,11 @@
                           height="300"
                           v-bind:alt="nutrient.name"
                           v-bind:src="
+<<<<<<< HEAD
                             img_url + 'public/storage/' + (nutrient.nutrients !== null && nutrient.nutrients !== '' && nutrient.nutrients !== undefined && nutrient.nutrients.img_url !== null && nutrient.nutrients.img_url !== '' && nutrient.nutrients.img_url !== undefined ? nutrient.nutrients.img_url : this.empty_url)
+=======
+                            img_url + 'public/storage/' + (nutrient.nutrients !== undefined && nutrient.nutrients !== null && nutrient.nutrients !== ''  && nutrient.nutrients.img_url !== null && nutrient.nutrients.img_url !== '' && nutrient.nutrients.img_url !== undefined ? nutrient.nutrients.img_url : empty_url)
+>>>>>>> 3aa54a33ab620d8078870eaf9ad0e2c6e676aa17
                           "
                         />
                       </nuxt-link>
@@ -229,7 +233,11 @@ export default {
               decodeURIComponent(this.search),
           })
           .then((response) => {
+<<<<<<< HEAD
             this.empty_url = this.$store.getters.nutrients.empty_url;
+=======
+            this.empty_url = this.$store.getters.empty_url;
+>>>>>>> 3aa54a33ab620d8078870eaf9ad0e2c6e676aa17
             this.nutrients = this.$store.getters.nutrients.data;
             this.pagination.current = this.$store.getters.nutrients.current_page;
             this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -239,7 +247,11 @@ export default {
           this.$store
             .dispatch("getNutrients", { nutrientsURL: param })
             .then((response) => {
+<<<<<<< HEAD
               this.empty_url = this.$store.getters.nutrients.empty_url;
+=======
+              this.empty_url = this.$store.getters.empty_url;
+>>>>>>> 3aa54a33ab620d8078870eaf9ad0e2c6e676aa17
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
@@ -250,7 +262,11 @@ export default {
               nutrientsURL: "nutrients?page=" + this.pagination.current,
             })
             .then((response) => {
+<<<<<<< HEAD
               this.empty_url = this.$store.getters.nutrients.empty_url;
+=======
+              this.empty_url = this.$store.getters.empty_url;
+>>>>>>> 3aa54a33ab620d8078870eaf9ad0e2c6e676aa17
               this.nutrients = this.$store.getters.nutrients.data;
               this.pagination.current = this.$store.getters.nutrients.current_page;
               this.pagination.total = this.$store.getters.nutrients.last_page;
