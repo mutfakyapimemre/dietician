@@ -1,7 +1,6 @@
 <template>
   <v-app class="h-auto">
     <div class="main-wrapper">
-      <!-- Home Banner -->
       <section class="section section-search pt-5 bg-white">
         <div class="container-fluid">
           <div class="banner-wrapper">
@@ -15,7 +14,6 @@
               </p>
             </div>
 
-            <!-- Search -->
             <div class="search-box justify-content-center">
               <form onsubmit="return false" class="justify-content-center">
                 <div class="form-group search-info w-100">
@@ -29,20 +27,16 @@
                 </div>
               </form>
             </div>
-            <!-- /Search -->
           </div>
         </div>
       </section>
-      <!-- /Home Banner -->
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 
 <script>
 import Cookie from "js-cookie";
 import { Base64 } from "js-base64";
-// optional style for arrows & dots
 export default {
   computed: {
     base_img_url() {

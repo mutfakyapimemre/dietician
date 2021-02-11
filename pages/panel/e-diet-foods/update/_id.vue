@@ -1,10 +1,8 @@
 <template>
   <v-app>
-    <!-- Main Wrapper -->
     <div class="main-wrapper">
       <div class="page-wrapper">
         <div class="content container-fluid">
-          <!-- Page Header -->
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
@@ -18,11 +16,9 @@
               </div>
             </div>
           </div>
-          <!-- /Page Header -->
 
           <div class="row">
             <div class="col-12">
-              <!-- General -->
 
               <div class="card">
                 <div class="card-header">
@@ -690,14 +686,11 @@
                 </div>
               </div>
 
-              <!-- /General -->
             </div>
           </div>
         </div>
       </div>
-      <!-- /Page Wrapper -->
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 <script>
@@ -894,7 +887,6 @@ export default {
         if (this.likesAllFruit) {
           this.data.selectedMeals = []
         } else {
-          //this.data.meals = this.meals.slice()
           this.data.selectedMeals = []
           this.data.meals.forEach((el,index)=>{
             this.data.selectedMeals.push(el._id.$oid)
@@ -920,7 +912,6 @@ export default {
           this.data.diseases.forEach((el,index)=>{
             this.data.selectedDiseases.push(el._id.$oid)
           })
-          //this.data.selectedDiseases = this.data.diseases.slice()
         }
       })
     },

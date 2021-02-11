@@ -1,13 +1,10 @@
 <template>
   <client-only>
-    <!-- Footer -->
     <footer class="footer">
-      <!-- Footer Top -->
       <div class="footer-top">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-              <!-- Footer Widget -->
               <div class="footer-widget footer-about">
                 <div class="footer-logo">
                   <img src="/img/footer-logo.png" alt="logo" />
@@ -49,11 +46,9 @@
                   </div>
                 </div>
               </div>
-              <!-- /Footer Widget -->
             </div>
 
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-              <!-- Footer Widget -->
               <div class="footer-widget footer-menu">
                 <h2 class="footer-title">For Patients</h2>
                 <ul>
@@ -74,11 +69,9 @@
                   </li>
                 </ul>
               </div>
-              <!-- /Footer Widget -->
             </div>
 
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-              <!-- Footer Widget -->
               <div class="footer-widget footer-menu">
                 <h2 class="footer-title">For Doctors</h2>
                 <ul>
@@ -99,11 +92,9 @@
                   </li>
                 </ul>
               </div>
-              <!-- /Footer Widget -->
             </div>
 
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-              <!-- Footer Widget -->
               <div class="footer-widget footer-contact">
                 <h2 class="footer-title">Contact Us</h2>
                 <div class="footer-contact-info">
@@ -126,17 +117,13 @@
                   </p>
                 </div>
               </div>
-              <!-- /Footer Widget -->
             </div>
           </div>
         </div>
       </div>
-      <!-- /Footer Top -->
 
-      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="container-fluid">
-          <!-- Copyright -->
           <div class="copyright">
             <div class="row">
               <div
@@ -169,7 +156,6 @@
               <div
                 class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-auto my-auto"
               >
-                <!-- Copyright Menu -->
                 <div class="copyright-menu py-auto my-auto">
                   <ul class="policy-menu">
                     <li>
@@ -180,15 +166,11 @@
                     </li>
                   </ul>
                 </div>
-                <!-- /Copyright Menu -->
               </div>
             </div>
           </div>
-          <!-- /Copyright -->
         </div>
       </div>
-      <!-- /Footer Bottom -->
     </footer>
-    <!-- /Footer -->
   </client-only>
 </template>

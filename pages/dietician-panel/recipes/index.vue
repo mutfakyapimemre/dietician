@@ -1,10 +1,8 @@
 <template>
   <v-app>
-    <!-- Main Wrapper -->
     <div class="main-wrapper">
       <div class="page-wrapper">
         <div class="content container-fluid">
-          <!-- Page Header -->
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
@@ -20,11 +18,9 @@
               </div>
             </div>
           </div>
-          <!-- /Page Header -->
 
           <div class="row">
             <div class="col-12">
-              <!-- General -->
 
               <div class="card">
                 <div class="card-header">
@@ -115,14 +111,11 @@
                 </div>
               </div>
 
-              <!-- /General -->
             </div>
           </div>
         </div>
       </div>
-      <!-- /Page Wrapper -->
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 <script>

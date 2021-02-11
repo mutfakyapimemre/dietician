@@ -1,6 +1,5 @@
 <template>
   <client-only>
-    <!-- Profile Sidebar -->
     <div class="profile-sidebar">
       <div class="widget-profile pro-widget-content">
         <div class="profile-info-widget">
@@ -123,7 +122,6 @@
         </nav>
       </div>
     </div>
-    <!-- /Profile Sidebar -->
   </client-only>
 </template>
 

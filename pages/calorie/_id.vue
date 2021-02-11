@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -23,13 +22,11 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
     <div class="main-wrapper">
       <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
-              <!-- Doctor Widget -->
               <div class="card">
                 <div class="card-body">
                   <div class="doctor-widget">
@@ -124,12 +121,9 @@
                   </div>
                 </div>
               </div>
-              <!-- /Doctor Widget -->
 
-              <!-- Doctor Details Tab -->
               <div class="card">
                 <div class="card-body pt-0">
-                  <!-- Tab Menu -->
                   <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                       <li class="nav-item">
@@ -150,11 +144,8 @@
                       </li>
                     </ul>
                   </nav>
-                  <!-- /Tab Menu -->
 
-                  <!-- Tab Content -->
                   <div class="tab-content pt-0">
-                    <!-- Business Hours Content -->
                     <div
                       role="tabpanel"
                       id="nutrients_value"
@@ -164,7 +155,6 @@
                         <div
                           class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3"
                         >
-                          <!-- Business Hours Widget -->
                           <div class="widget business-widget">
                             <div class="widget-content">
                               <div
@@ -207,37 +197,30 @@
                               </div>
                             </div>
                           </div>
-                          <!-- /Business Hours Widget -->
                         </div>
                       </div>
                     </div>
-                    <!-- /Business Hours Content -->
 
-                    <!-- Overview Content -->
                     <div role="tabpanel" id="description" class="tab-pane fade">
                       <div class="row">
                         <div
                           class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9"
                         >
-                          <!-- About Details -->
                           <div class="widget about-widget">
                             <h4 class="widget-title">Besin Hakkında</h4>
                             <p>
                               {{ data.description }}
                             </p>
                           </div>
-                          <!-- /About Details -->
                         </div>
                         <div
                           class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
                         ></div>
                       </div>
                     </div>
-                    <!-- /Overview Content -->
                   </div>
                 </div>
               </div>
-              <!-- /Doctor Details Tab -->
             </div>
             <div
               class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"

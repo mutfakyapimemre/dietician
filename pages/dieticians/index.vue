@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -20,9 +19,7 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
     <div class="main-wrapper">
-      <!-- Home Banner -->
       <section class="section section-search pt-5 bg-white">
         <div class="container-fluid">
           <div class="banner-wrapper">
@@ -36,7 +33,6 @@
               </p>
             </div>
 
-            <!-- Search -->
             <div class="search-box justify-content-center">
               <form onsubmit="return false" class="justify-content-center">
                 <div class="form-group search-info w-100">
@@ -50,11 +46,9 @@
                 </div>
               </form>
             </div>
-            <!-- /Search -->
           </div>
         </div>
       </section>
-      <!-- /Home Banner -->
       <section>
         <div class="row">
           <div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9">
@@ -66,7 +60,6 @@
                 doctors.length > 0
               "
             >
-              <!-- Doctor Widget -->
               <v-col
                 v-bind:key="index"
                 v-for="(doctor, index) in doctors"
@@ -95,14 +88,6 @@
                     <p class="speciality">
                       {{ doctor.hospitalName }} - {{ doctor.department }}
                     </p>
-                    <!--<div class="rating">
-                        <i class="fa fa-star filled"></i>
-                        <i class="fa fa-star filled"></i>
-                        <i class="fa fa-star filled"></i>
-                        <i class="fa fa-star filled"></i>
-                        <i class="fa fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                    </div>-->
                     <ul class="available-info">
                       <li>
                         <i class="fa fa-map-marker-alt"></i> {{ doctor.company_city }},
@@ -140,7 +125,6 @@
                   </div>
                 </div>
               </v-col>
-              <!-- /Doctor Widget -->
             </v-row>
             <v-pagination
               v-model="pagination.current"
@@ -152,14 +136,12 @@
         </div>
       </section>
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 
 <script>
 import Cookie from "js-cookie";
 import { Base64 } from "js-base64";
-// optional style for arrows & dots
 export default {
   computed: {
     base_img_url() {

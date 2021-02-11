@@ -11,7 +11,6 @@
               <h1>Klinik Diyetisyen</h1>
               <p class="account-subtitle">Yönetim Paneline Giriş Yap</p>
 
-              <!-- Form -->
               <ValidationObserver v-slot="{ handleSubmit }">
                 <form
                   @submit.prevent="handleSubmit(onSubmit)"
@@ -61,7 +60,6 @@
                   </button>
                 </form>
               </ValidationObserver>
-              <!-- /Form -->
             </div>
           </div>
         </div>

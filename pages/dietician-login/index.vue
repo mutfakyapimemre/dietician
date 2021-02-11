@@ -1,6 +1,5 @@
 <template>
   <v-app class="h-auto">
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -20,15 +19,12 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
-    <!-- Page Content -->
     <div class="content account-page" style="padding: 50px 0">
       <div class="container-fluid">
         <div class="row">
           <div
             class="col-12 col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2"
           >
-            <!-- Login Tab Content -->
             <div class="account-content">
               <div class="row align-items-center justify-content-center">
                 <div
@@ -724,12 +720,10 @@
                 </div>
               </div>
             </div>
-            <!-- /Login Tab Content -->
           </div>
         </div>
       </div>
     </div>
-    <!-- /Page Content -->
   </v-app>
 </template>
 <script>

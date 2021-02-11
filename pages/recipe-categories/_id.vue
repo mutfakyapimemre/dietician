@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -25,10 +24,7 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
-    <!-- /Breadcrumb -->
     <div class="main-wrapper">
-      <!-- Home Banner -->
       <section class="section section-search py-5">
         <div class="container-fluid">
           <div class="banner-wrapper">
@@ -37,7 +33,6 @@
               <p><small>En Sağlıklı Besinleri Keşfet</small></p>
             </div>
 
-            <!-- Search -->
             <div class="search-box">
               <form onsubmit="return false">
                 <div class="form-group search-info w-100">
@@ -51,11 +46,9 @@
                 </div>
               </form>
             </div>
-            <!-- /Search -->
           </div>
         </div>
       </section>
-      <!-- /Home Banner -->
       <div class="content">
         <div class="container">
           <div class="row">

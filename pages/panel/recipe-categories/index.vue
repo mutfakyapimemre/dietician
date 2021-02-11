@@ -1,10 +1,8 @@
 <template>
   <v-app>
-    <!-- Main Wrapper -->
     <div class="main-wrapper">
       <div class="page-wrapper">
         <div class="content container-fluid">
-          <!-- Page Header -->
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
@@ -20,7 +18,6 @@
               </div>
             </div>
           </div>
-          <!-- /Page Header -->
           <v-card tile>
             <v-card-title class="d-flex justify-content-between">
               <span class="justify-content-center flex-grow-1">
@@ -100,9 +97,7 @@
           </v-row>
         </div>
       </div>
-      <!-- /Page Wrapper -->
     </div>
-    <!-- /Main Wrapper -->
   </v-app>
 </template>
 <script>

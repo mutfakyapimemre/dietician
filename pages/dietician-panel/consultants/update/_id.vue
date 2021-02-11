@@ -1,9 +1,7 @@
 <template>
-  <!-- Main Wrapper -->
   <div class="main-wrapper">
     <div class="page-wrapper">
       <div class="content container-fluid">
-        <!-- Page Header -->
         <div class="page-header">
           <div class="row">
             <div class="col-sm-12">
@@ -17,11 +15,9 @@
             </div>
           </div>
         </div>
-        <!-- /Page Header -->
 
         <div class="row">
           <div class="col-12">
-            <!-- General -->
 
             <div class="card">
               <div class="card-header">
@@ -66,7 +62,6 @@
                 </div>
 
                 <div class="appointment-tab">
-                  <!-- Appointment Tab -->
                   <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                     <li class="nav-item">
                       <a
@@ -85,10 +80,8 @@
                       >
                     </li>
                   </ul>
-                  <!-- /Appointment Tab -->
 
                   <div class="tab-content">
-                    <!-- Upcoming Appointment Tab -->
                     <div
                       class="tab-pane show active"
                       id="danisman_kayit_bilgileri"
@@ -204,9 +197,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- /Upcoming Appointment Tab -->
 
-                    <!-- Today Appointment Tab -->
                     <div class="tab-pane" id="danisman_kayit_bilgisi_duzenle">
                       <div class="card card-table mb-0">
                         <div class="card-body">
@@ -603,20 +594,16 @@
                         </div>
                       </div>
                     </div>
-                    <!-- /Today Appointment Tab -->
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- /General -->
           </div>
         </div>
       </div>
     </div>
-    <!-- /Page Wrapper -->
   </div>
-  <!-- /Main Wrapper -->
 </template>
 <script>
 import Cookie from "js-cookie";

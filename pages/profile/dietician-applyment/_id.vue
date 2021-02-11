@@ -1,6 +1,5 @@
 <template>
   <v-app class="h-auto" v-if="userData.status !== 'dietician'">
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -20,8 +19,6 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
-    <!-- Page Content -->
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -78,7 +75,6 @@
         </div>
       </div>
     </div>
-    <!-- /Page Content -->
   </v-app>
 </template>
 

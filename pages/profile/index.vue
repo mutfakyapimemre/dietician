@@ -1,6 +1,5 @@
 <template>
   <v-app class="h-auto" v-if="userData.status !== 'dietician'">
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -20,8 +19,6 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
-    <!-- Page Content -->
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -40,7 +37,6 @@
               </div>
               <div class="card-body">
                 <div class="appointment-tab">
-                  <!-- Appointment Tab -->
                   <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                     <li class="nav-item">
                       <a
@@ -59,10 +55,8 @@
                       >
                     </li>
                   </ul>
-                  <!-- /Appointment Tab -->
 
                   <div class="tab-content">
-                    <!-- Upcoming Appointment Tab -->
                     <div class="tab-pane show active" id="kayit_bilgilerim">
                       <div class="table-responsive bg-light">
                         <table
@@ -273,9 +267,7 @@
                         </table>
                       </div>
                     </div>
-                    <!-- /Upcoming Appointment Tab -->
 
-                    <!-- Today Appointment Tab -->
                     <div class="tab-pane" id="kayit_bilgisi_duzenle">
                       <ValidationObserver v-slot="{ handleSubmit }">
                         <form
@@ -998,10 +990,8 @@
         </div>
       </div>
     </div>
-    <!-- /Page Content -->
   </v-app>
   <v-app class="h-auto" v-else-if="userData.status === 'dietician'">
-    <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -1021,8 +1011,6 @@
         </div>
       </div>
     </div>
-    <!-- /Breadcrumb -->
-    <!-- Page Content -->
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -1041,7 +1029,6 @@
               </div>
               <div class="card-body">
                 <div class="appointment-tab">
-                  <!-- Appointment Tab -->
                   <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                     <li class="nav-item">
                       <a
@@ -1060,10 +1047,8 @@
                       >
                     </li>
                   </ul>
-                  <!-- /Appointment Tab -->
 
                   <div class="tab-content">
-                    <!-- Upcoming Appointment Tab -->
                     <div
                       class="tab-pane show active"
                       id="diyetisyen_kayit_bilgilerim"
@@ -1138,8 +1123,6 @@
                         </table>
                       </div>
                     </div>
-                    <!-- /Upcoming Appointment Tab -->
-                    <!-- Today Appointment Tab -->
                     <div class="tab-pane" id="diyetisyen_kayit_bilgisi_duzenle">
                       <ValidationObserver v-slot="{ handleSubmit }">
                         <form
@@ -1805,7 +1788,6 @@
                         </form>
                       </ValidationObserver>
                     </div>
-                    <!-- /Today Appointment Tab -->
                   </div>
                 </div>
               </div>
@@ -1814,7 +1796,6 @@
         </div>
       </div>
     </div>
-    <!-- /Page Content -->
   </v-app>
 </template>
 

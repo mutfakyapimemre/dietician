@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <div class="main-wrapper">
-      <!-- Home Banner -->
       <section class="section section-search pt-5 bg-white">
         <div class="container-fluid">
           <div class="banner-wrapper">
@@ -14,7 +13,6 @@
                 >
               </p>
             </div>
-            <!-- Search -->
             <div class="search-box justify-content-center">
               <form onsubmit="return false" class="justify-content-center">
                 <div class="form-group search-info w-100">
@@ -27,13 +25,10 @@
                 </div>
               </form>
             </div>
-            <!-- /Search -->
           </div>
         </div>
       </section>
-      <!-- /Home Banner -->
 
-      <!-- News Headline -->
       <section class="section section-blogs">
         <client-only>
           <carousel
@@ -54,9 +49,7 @@
           </carousel>
         </client-only>
       </section>
-      <!-- News Headline -->
 
-      <!-- Popular Section -->
       <section class="section section-doctor slider bg-white" v-if="!isEmpty(doctors)">
         <div class="container-fluid">
           <div class="row">
@@ -94,7 +87,6 @@
                       1400: { items: 4, nav: true },
                     }"
                   >
-                    <!-- Doctor Widget -->
                     <div
                       v-bind:key="index"
                       v-for="(doctor, index) in doctors"
@@ -159,7 +151,6 @@
                         >
                       </div>
                     </div>
-                    <!-- /Doctor Widget -->
                   </carousel>
                 </client-only>
               </div>
@@ -167,12 +158,9 @@
           </div>
         </div>
       </section>
-      <!-- /Popular Section -->
 
-      <!-- Blog Section -->
       <section class="section section-blogs">
         <div class="container-fluid">
-          <!-- Section Header -->
           <div class="section-header text-center">
             <h2>Blog</h2>
             <p class="sub-title">
@@ -180,11 +168,9 @@
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-          <!-- /Section Header -->
 
           <div class="row blog-grid-row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-              <!-- Blog Post -->
               <div class="blog grid-blog">
                 <div class="blog-image">
                   <a href="blog-details.html">
@@ -221,7 +207,6 @@
                   </p>
                 </div>
               </div>
-              <!-- /Blog Post -->
             </div>
           </div>
           <div class="view-all text-center">
@@ -231,7 +216,6 @@
           </div>
         </div>
       </section>
-      <!-- /Blog Section -->
     </div>
   </v-app>
 </template>
@@ -239,7 +223,6 @@
 <script>
 import Cookie from "js-cookie";
 import { Base64 } from "js-base64";
-// optional style for arrows & dots
 export default {
   computed: {
     base_img_url() {
