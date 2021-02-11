@@ -170,7 +170,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=sliders&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
+          `${process.env.apiBaseUrl}panel/sliders/${urlParam}?table=sliders&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
           {
             json: true,
             withCredentials: false,

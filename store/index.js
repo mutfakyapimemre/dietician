@@ -233,7 +233,6 @@ export const actions = {
     }
     return this.$axios.get(process.env.apiBaseUrl + nutrientsURL).then(response => {
       if (response.data !== null && response.data !== undefined && response.data !== "") {
-        console.log(response.data)
         vuexContext.commit("setNutrients", response.data.data)
         vuexContext.commit("setEmptyURL",response.data.empty_url)
       }

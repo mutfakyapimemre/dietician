@@ -795,7 +795,6 @@ export default {
       const { data } = await $axios.get(
         process.env.apiBaseUrl + "panel/recipes/update/" + params.id
       );
-      console.log(data);
       if (
         data.data.values.length === 0 ||
         data.data.values.length === null ||

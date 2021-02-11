@@ -1178,9 +1178,6 @@ export default {
       for (let i = 0; i < meals.length; i++) {
           formData.append('selectedMeals['+i+']', meals[i]);
       }
-      //console.log(formData.getAll('selectedDiseases[]'));
-      //console.log(formData.getAll('selectedMeals[]'));
-      //return false
       this.$axios
         .post(
           process.env.apiBaseUrl +

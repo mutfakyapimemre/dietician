@@ -787,7 +787,6 @@ export default {
           credentials: "same-origin",
         })
         .then((response) => {
-          console.log(response.data.data);
           this.allCriterias = response.data.data.criterias;
           this.allNutrients = response.data.data.nutrients;
           this.allCategories = response.data.data.categories;
