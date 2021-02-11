@@ -4,7 +4,7 @@
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
+          <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
             <nav aria-label="breadcrumb" class="page-breadcrumb">
               <ol class="breadcrumb pl-0">
                 <li class="breadcrumb-item">
@@ -19,7 +19,7 @@
               </ol>
             </nav>
             <h2 class="breadcrumb-title">{{ data.name }}</h2>
-          </div>
+          </v-col>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+            <v-col cols="12" xs="12" sm="12" md="7" lg="8" xl="9">
               <!-- Doctor Widget -->
               <div class="card">
                 <div class="card-body">
@@ -37,9 +37,7 @@
                       <div
                         class="doctor-img"
                         v-if="
-                          data !== null &&
-                          data !== '' &&
-                          data !== undefined &&
+                          !isEmpty(data) &&
                           image.isCover === 1
                         "
                       >
@@ -89,16 +87,7 @@
                                 v-on:change="setCriteriaValue"
                                 id="criteriaValue"
                                 class="form-control rounded-0"
-                                v-if="
-                                  data !== null &&
-                                  data !== undefined &&
-                                  data !== '' &&
-                                  values !== null &&
-                                  values !== undefined &&
-                                  values !== '' &&
-                                  criterias !== null &&
-                                  criterias !== undefined &&
-                                  criterias !== ''
+                                v-if="!isEmpty(data) && !isEmpty(values) && !isEmpty(criterias)
                                 "
                               >
                                 <option v-bind:value="0" selected>
@@ -122,17 +111,7 @@
                                 v-on:change="setCriteriaValue"
                                 id="criteriaValue"
                                 class="form-control rounded-0"
-                                v-if="
-                                  data === null ||
-                                  data === undefined ||
-                                  data === '' ||
-                                  values === null ||
-                                  values === undefined ||
-                                  values === '' ||
-                                  criterias === null ||
-                                  criterias === undefined ||
-                                  criterias === ''
-                                "
+                                v-if="isEmpty(data) || isEmpty(values) || isEmpty(criterias)"
                               >
                                 <option v-bind:value="0" selected>
                                   Ölçüt Seçiniz
@@ -191,14 +170,7 @@
                             <div class="widget-content">
                               <div
                                 class="listing-hours"
-                                v-if="
-                                  data !== null &&
-                                  data !== undefined &&
-                                  data !== '' &&
-                                  values !== null &&
-                                  values !== undefined &&
-                                  values !== ''
-                                "
+                                v-if="!isEmpty(data) && !isEmpty(values)"
                               >
                                 <div class="listing-day current">
                                   <div class="day">Besin Değeri Adı</div>
@@ -263,78 +235,10 @@
                 </div>
               </div>
               <!-- /Doctor Details Tab -->
-            </div>
-            <div
-              class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
-            >
-              <div class="profile-sidebar">
-                <div class="widget-profile pro-widget-content">
-                  <div class="profile-info-widget">
-                    <a href="#" class="booking-doc-img">
-                      <img
-                        src="assets/img/patients/patient.jpg"
-                        alt="User Image"
-                      />
-                    </a>
-                    <div class="profile-det-info">
-                      <h3>Richard Wilson</h3>
-                      <div class="patient-details">
-                        <h5>
-                          <i class="fa fa-birthday-cake"></i> 24 Jul 1983, 38
-                          years
-                        </h5>
-                        <h5 class="mb-0">
-                          <i class="fa fa-map-marker-alt"></i> Newyork, USA
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="dashboard-widget">
-                  <nav class="dashboard-menu">
-                    <ul>
-                      <li>
-                        <a href="patient-dashboard.html">
-                          <i class="fa fa-columns"></i>
-                          <span>Dashboard</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="favourites.html">
-                          <i class="fa fa-bookmark"></i>
-                          <span>Favourites</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="chat.html">
-                          <i class="fa fa-comments"></i>
-                          <span>Message</span>
-                          <small class="unread-msg">23</small>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="profile-settings.html">
-                          <i class="fa fa-user-cog"></i>
-                          <span>Profile Settings</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="change-password.html">
-                          <i class="fa fa-lock"></i>
-                          <span>Change Password</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="index.html">
-                          <i class="fa fa-sign-out-alt"></i>
-                          <span>Logout</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
+            </v-col>
+            <v-col cols="12" xs="12" sm="12" md="5" lg="4" xl="3" class="theiaStickySidebar">
+              
+            </v-col>
           </div>
         </div>
       </div>
@@ -357,6 +261,15 @@ export default {
     },
   },
   methods: {
+    isEmpty(obj) {
+      if (typeof obj == "number") return false;
+      else if (typeof obj == "string") return obj.length == 0;
+      else if (Array.isArray(obj)) return obj.length == 0;
+      else if (typeof obj == "object")
+        return obj == null || Object.keys(obj).length == 0;
+      else if (typeof obj == "boolean") return false;
+      else return !obj;
+    },
     setCriteriaValue: function (event) {
       event.preventDefault();
       event.stopImmediatePropagation();

@@ -4,7 +4,7 @@
     <div class="breadcrumb-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
+          <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
             <nav aria-label="breadcrumb" class="page-breadcrumb">
               <ol class="breadcrumb pl-0">
                 <li class="breadcrumb-item">
@@ -16,14 +16,14 @@
               </ol>
             </nav>
             <h2 class="breadcrumb-title">Yemek Tarifi Türleri</h2>
-          </div>
+          </v-col>
         </div>
       </div>
     </div>
     <!-- /Breadcrumb -->
     <div class="main-wrapper">
       <!-- Home Banner -->
-      <section class="section section-search py-5">
+      <section class="section section-search">
         <div class="container-fluid">
           <div class="banner-wrapper">
             <div class="banner-header text-center">
@@ -53,7 +53,7 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+            <v-col cols="12" xs="12" sm="12" md="7" lg="8" xl="9">
               <h3
                 class="text-center"
                 v-if="search !== null && search !== '' && search !== undefined"
@@ -125,7 +125,7 @@
                 :length="pagination.total"
                 @input="onPageChange"
               ></v-pagination>
-            </div>
+            </v-col>
             <div
               class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
             >

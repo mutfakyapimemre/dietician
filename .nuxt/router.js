@@ -4,7 +4,6 @@ import { normalizeURL, decode } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _01e68cbe = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages/about" */))
 const _801c42ca = () => interopDefault(import('..\\pages\\auth\\index.vue' /* webpackChunkName: "pages/auth/index" */))
 const _12665cc4 = () => interopDefault(import('..\\pages\\calorie\\index.vue' /* webpackChunkName: "pages/calorie/index" */))
 const _be664a86 = () => interopDefault(import('..\\pages\\criterias\\index.vue' /* webpackChunkName: "pages/criterias/index" */))
@@ -15,7 +14,6 @@ const _458208a8 = () => interopDefault(import('..\\pages\\login\\index.vue' /* w
 const _456acf2d = () => interopDefault(import('..\\pages\\panel\\index.vue' /* webpackChunkName: "pages/panel/index" */))
 const _805b1eb0 = () => interopDefault(import('..\\pages\\profile\\index.vue' /* webpackChunkName: "pages/profile/index" */))
 const _3c330696 = () => interopDefault(import('..\\pages\\recipe-categories\\index.vue' /* webpackChunkName: "pages/recipe-categories/index" */))
-const _8377afa8 = () => interopDefault(import('..\\pages\\recipes\\index.vue' /* webpackChunkName: "pages/recipes/index" */))
 const _84253b72 = () => interopDefault(import('..\\pages\\search.vue' /* webpackChunkName: "pages/search" */))
 const _837e302c = () => interopDefault(import('..\\pages\\dietician-panel\\consultants\\index.vue' /* webpackChunkName: "pages/dietician-panel/consultants/index" */))
 const _1ec0b6c9 = () => interopDefault(import('..\\pages\\dietician-panel\\ediet\\index.vue' /* webpackChunkName: "pages/dietician-panel/ediet/index" */))
@@ -94,10 +92,6 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/about",
-    component: _01e68cbe,
-    name: "about"
-  }, {
     path: "/auth",
     component: _801c42ca,
     name: "auth"
@@ -137,10 +131,6 @@ export const routerOptions = {
     path: "/recipe-categories",
     component: _3c330696,
     name: "recipe-categories"
-  }, {
-    path: "/recipes",
-    component: _8377afa8,
-    name: "recipes"
   }, {
     path: "/search",
     component: _84253b72,
@@ -374,7 +364,7 @@ export const routerOptions = {
     component: _66449304,
     name: "recipe-categories-id"
   }, {
-    path: "/recipes/:id",
+    path: "/recipes/:id?",
     component: _2a5374d8,
     name: "recipes-id"
   }, {

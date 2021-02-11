@@ -1,12 +1,5 @@
 [
   {
-    "name": "about",
-    "path": "/about",
-    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\about.vue",
-    "chunkName": "pages/about",
-    "_name": "_01e68cbe"
-  },
-  {
     "name": "auth",
     "path": "/auth",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\auth\\\\index.vue",
@@ -75,13 +68,6 @@
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\recipe-categories\\\\index.vue",
     "chunkName": "pages/recipe-categories/index",
     "_name": "_3c330696"
-  },
-  {
-    "name": "recipes",
-    "path": "/recipes",
-    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\recipes\\\\index.vue",
-    "chunkName": "pages/recipes/index",
-    "_name": "_8377afa8"
   },
   {
     "name": "search",
@@ -491,7 +477,7 @@
   },
   {
     "name": "recipes-id",
-    "path": "/recipes/:id",
+    "path": "/recipes/:id?",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\recipes\\\\_id.vue",
     "chunkName": "pages/recipes/_id",
     "_name": "_2a5374d8"

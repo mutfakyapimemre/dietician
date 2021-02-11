@@ -34,15 +34,10 @@
       <!-- /Home Banner -->
 
       <!-- News Headline -->
-      <section class="section section-blogs py-0">
+      <section class="section section-blogs">
         <client-only>
           <carousel
-            v-if="
-              sliders !== null &&
-              sliders !== '' &&
-              sliders !== undefined &&
-              sliders.length > 0
-            "
+            v-if="!isEmpty(sliders)"
             :navs="true"
             :dots="false"
             :autoplay="true"
@@ -51,7 +46,6 @@
           >
             <img
               class="img-fluid"
-              style="max-height: 450px; object-fit: cover"
               v-bind:key="index"
               v-bind:src="base_img_url + '/public/storage/' + slide.img_url"
               v-bind:alt="slide.title"
@@ -63,7 +57,7 @@
       <!-- News Headline -->
 
       <!-- Popular Section -->
-      <section class="section section-doctor slider py-0 bg-white">
+      <section class="section section-doctor slider bg-white" v-if="!isEmpty(doctors)">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -83,104 +77,91 @@
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
               <div
                 class="doctor-slider bg-white"
-                v-if="
-                  doctors !== null &&
-                  doctors !== '' &&
-                  doctors !== undefined &&
-                  doctors.length > 0
-                "
+                v-if="!isEmpty(doctors)"
               >
-              <client-only>
-                <carousel
-                  :navs="true"
-                  :dots="false"
-                  :autoplay="true"
-                  :items="4"
-                  :loop="true"
-                  :responsive="{
-                    0: { items: 1, nav: true },
-                    578: { items: 1, nav: true },
-                    768: { items: 2, nav: true },
-                    991: { items: 3, nav: true },
-                    1400: { items: 4, nav: true },
-                  }"
-                >
-                  <!-- Doctor Widget -->
-                  <div
-                    v-bind:key="index"
-                    v-for="(doctor, index) in doctors"
-                    class="h-100 profile-widget mx-1"
+                <client-only>
+                  <carousel
+                    :navs="true"
+                    :dots="false"
+                    :autoplay="true"
+                    :items="4"
+                    :loop="true"
+                    :responsive="{
+                      0: { items: 1, nav: true },
+                      578: { items: 1, nav: true },
+                      768: { items: 2, nav: true },
+                      991: { items: 3, nav: true },
+                      1400: { items: 4, nav: true },
+                    }"
                   >
-                    <div class="doc-img">
-                      <nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
-                        <v-avatar size="273" tile>
-                          <img
-                            v-bind:alt="doctor.name"
-                            v-bind:src="
-                              base_img_url +
-                              '/public/storage/' +
-                              (doctor.profile_photo.img_url === null ||
-                              doctor.profile_photo.img_url === '' ||
-                              doctor.profile_photo.img_url === undefined
-                                ? null
-                                : doctor.profile_photo.img_url)
-                            "
-                          />
-                        </v-avatar>
-                      </nuxt-link>
-                    </div>
-                    <div class="pro-content h-100">
-                      <h3 class="title">
+                    <!-- Doctor Widget -->
+                    <div
+                      v-bind:key="index"
+                      v-for="(doctor, index) in doctors"
+                      class="h-100 profile-widget mx-1"
+                    >
+                      <div class="doc-img">
                         <nuxt-link
                           tag="a"
                           v-bind:to="'/profile/' + doctor.slug"
-                          >{{ doctor.name }}</nuxt-link
                         >
-                        <i class="fa fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        {{ doctor.hospitalName }} - {{ doctor.department }}
-                      </p>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fa fa-map-marker-alt"></i>
-                          {{ doctor.company_city }}, {{ doctor.company_town }}
-                        </li>
-                        <li
-                          v-if="
-                            doctor.appointment_hour !== undefined &&
-                            doctor.appointment_hour !== null &&
-                            doctor.appointment_hour !== ''
-                          "
+                          <v-avatar size="273" tile>
+                            <img
+                              v-bind:alt="doctor.name"
+                              v-bind:src="
+                                base_img_url +
+                                '/public/storage/' +
+                                (!isEmpty(doctor.profile_photo.img_url) ? doctor.profile_photo.img_url : null)
+                              "
+                            />
+                          </v-avatar>
+                        </nuxt-link>
+                      </div>
+                      <div class="pro-content h-100">
+                        <h3 class="title">
+                          <nuxt-link
+                            tag="a"
+                            v-bind:to="'/profile/' + doctor.slug"
+                            >{{ doctor.name }}</nuxt-link
+                          >
+                          <i class="fa fa-check-circle verified"></i>
+                        </h3>
+                        <p class="speciality">
+                          {{ doctor.hospitalName }} - {{ doctor.department }}
+                        </p>
+                        <ul class="available-info">
+                          <li>
+                            <i class="fa fa-map-marker-alt"></i>
+                            {{ doctor.company_city }}, {{ doctor.company_town }}
+                          </li>
+                          <li
+                            v-if="!isEmpty(doctor.appointment_hour)"
+                          >
+                            <i class="fa fa-clock"></i>
+                            {{ doctor.appointment_hour }}
+                          </li>
+                          <li
+                            v-if="!isEmpty(doctor.price)"
+                          >
+                            <i class="fa fa-money-bill-alt"></i>
+                            {{ doctor.price
+                            }}<i
+                              class="fa fa-info-circle"
+                              data-toggle="tooltip"
+                              title="Fiyatlar Değişkenlik Gösterebilir"
+                            ></i>
+                          </li>
+                        </ul>
+                        <nuxt-link
+                          v-bind:to="'/make-appointment/' + doctor.slug"
+                          class="btn btn-info-light rounded-0 w-100"
+                          >Randevu Al</nuxt-link
                         >
-                          <i class="fa fa-clock"></i>
-                          {{ doctor.appointment_hour }}
-                        </li>
-                        <li
-                          v-if="
-                            doctor.price !== undefined &&
-                            doctor.price !== null &&
-                            doctor.price !== ''
-                          "
-                        >
-                          <i class="fa fa-money-bill-alt"></i> {{ doctor.price
-                          }}<i
-                            class="fa fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Fiyatlar Değişkenlik Gösterebilir"
-                          ></i>
-                        </li>
-                      </ul>
-                      <nuxt-link
-                        v-bind:to="'/make-appointment/' + doctor.slug"
-                        class="btn btn-info-light rounded-0 w-100"
-                        >Randevu Al</nuxt-link
-                      >
+                      </div>
                     </div>
-                  </div>
-                  <!-- /Doctor Widget -->
-                </carousel>
-              </client-only>
+                    <!-- /Doctor Widget -->
+                  </carousel>
+                </client-only>
               </div>
             </div>
           </div>
@@ -278,6 +259,15 @@ export default {
     }
   },
   methods: {
+    isEmpty(obj) {
+      if (typeof obj == "number") return false;
+      else if (typeof obj == "string") return obj.length == 0;
+      else if (Array.isArray(obj)) return obj.length == 0;
+      else if (typeof obj == "object")
+        return obj == null || Object.keys(obj).length == 0;
+      else if (typeof obj == "boolean") return false;
+      else return !obj;
+    },
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

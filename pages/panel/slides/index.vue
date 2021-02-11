@@ -170,7 +170,7 @@ export default {
       );
       this.$axios
         .get(
-          `${process.env.apiBaseUrl}panel/sliders/${urlParam}?table=sliders&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name`,
+          `${process.env.apiBaseUrl}panel/sliders/${urlParam}?table=sliders&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=title`,
           {
             json: true,
             withCredentials: false,
@@ -289,7 +289,7 @@ export default {
     getDisplayData(data) {
       return {
         rank: data.rank,
-        id: data._id.$oid,
+        id: data._id,
         title: data.title,
         img_url: this.img_url + "public/storage/" + data.img_url,
         isActive: data.isActive,
