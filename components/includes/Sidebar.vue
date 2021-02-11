@@ -8,9 +8,7 @@
               v-bind:src="
                 img_url +
                 '/public/storage/' +
-                (userData.img_url !== undefined &&
-                userData.img_url !== null &&
-                userData.img_url !== ''
+                (!isEmpty(userData.img_url)
                   ? userData.img_url
                   : null)
               "
@@ -138,19 +136,23 @@ export default {
   },
   data() {
     return {
-      userData:
-        Cookie.get("userData") !== null &&
-        Cookie.get("userData") !== undefined &&
-        Cookie.get("userData") !== ""
+      userData: !isEmpty(Cookie.get("userData"))
           ? JSON.parse(Base64.decode(Cookie.get("userData")))
-          : this.$store.getters.loggedInUser !== undefined &&
-            this.$store.getters.loggedInUser !== null &&
-            this.$store.getters.loggedInUser !== ""
+          : (!isEmpty(this.$store.getters.loggedInUser)
           ? this.$store.getters.loggedInUser
-          : null,
+          : null),
     };
   },
   methods: {
+    isEmpty(obj) {
+      if (typeof obj == "number") return false;
+      else if (typeof obj == "string") return obj.length == 0;
+      else if (Array.isArray(obj)) return obj.length == 0;
+      else if (typeof obj == "object")
+        return obj == null || Object.keys(obj).length == 0;
+      else if (typeof obj == "boolean") return false;
+      else return !obj;
+    },
     logout() {
       this.$store.dispatch("logout");
       this.$izitoast.success({

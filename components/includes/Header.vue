@@ -48,13 +48,7 @@
         </div>
         <ul
           class="nav main-nav header-navbar-rht"
-          v-if="
-            isAuthenticated &&
-            userData !== null &&
-            userData !== undefined &&
-            userData !== ''
-          "
-        >
+          v-if="!isEmpty(userData) && isAuthenticated">
           <li class="has-submenu nav-item my-auto py-auto">
             <a href="javascript:void(0)" class="my-auto py-auto">
               <img
@@ -84,13 +78,7 @@
                 <nuxt-link
                   to="/dietician-panel"
                   tag="a"
-                  v-if="
-                    isAuthenticated &&
-                    userData !== null &&
-                    userData !== undefined &&
-                    userData !== '' &&
-                    userData.status === 'dietician'
-                  "
+                  v-if="!isEmpty(userData) && isAuthenticated && userData.status === 'dietician'"
                   >Diyetisyen Paneli</nuxt-link
                 >
               </li>
@@ -102,7 +90,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav header-navbar-rht" v-if="!isAuthenticated">
+        <ul class="nav header-navbar-rht" v-else>
           <li>
             <nuxt-link to="/login" class="nav-link header-login" tag="a"
               >Giriş Yap / Kayıt Ol</nuxt-link
@@ -125,6 +113,15 @@ export default {
     },
   },
   methods: {
+    isEmpty(obj) {
+      if (typeof obj == "number") return false;
+      else if (typeof obj == "string") return obj.length == 0;
+      else if (Array.isArray(obj)) return obj.length == 0;
+      else if (typeof obj == "object")
+        return obj == null || Object.keys(obj).length == 0;
+      else if (typeof obj == "boolean") return false;
+      else return !obj;
+    },
     logout() {
       this.$store.dispatch("logout");
       this.$izitoast.success({
