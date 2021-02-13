@@ -1,6 +1,5 @@
 <template>
   <div class="header">
-    <client-only>
       <div class="header-left">
         <nuxt-link to="/panel" tag="a">
           <img src="/img/logo.png" class="logo" alt="Diyetisyen Klinik" />
@@ -118,7 +117,6 @@
           </div>
         </li>
       </ul>
-    </client-only>
   </div>
 </template>
 
