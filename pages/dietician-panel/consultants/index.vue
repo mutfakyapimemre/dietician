@@ -52,10 +52,46 @@
 								<img v-bind:src="item.img_url" width="150" height="150" />
 							</template>
 							<template v-slot:[`item.actions`]="{ item }">
-								<v-icon small class="mr-2" @click="editData(item.id)">
-									mdi-pencil
-								</v-icon>
-								<v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
+								<v-tooltip bottom>
+									<template v-slot:activator="{ on, attrs }">
+										<v-icon
+											small
+											class="mr-2"
+											@click="createEdiet(item.id)"
+											v-bind="attrs"
+											v-on="on"
+											>fas fa-file-signature</v-icon
+										>
+									</template>
+									<span>Yeni E-Diyet Oluştur</span>
+								</v-tooltip>
+								<v-tooltip bottom>
+									<template v-slot:activator="{ on, attrs }">
+										<v-icon
+											small
+											class="mr-2"
+											@click="editData(item.id)"
+											v-bind="attrs"
+											v-on="on"
+										>
+											mdi-pencil
+										</v-icon>
+									</template>
+									<span>Danışmanı Düzenle</span>
+								</v-tooltip>
+								<v-tooltip bottom>
+									<template v-slot:activator="{ on, attrs }">
+										<v-icon
+											small
+											@click="deleteData(item.id)"
+											v-bind="attrs"
+											v-on="on"
+										>
+											mdi-delete
+										</v-icon>
+									</template>
+									<span>Danışmanı Sil</span>
+								</v-tooltip>
 							</template>
 						</v-data-table>
 					</v-card>
@@ -196,6 +232,9 @@
 			},
 			refreshList() {
 				this.retrieveData();
+			},
+			createEdiet(id) {
+				this.$router.push("/dietician-panel/consultants/ediet/add/" + id);
 			},
 			editData(id) {
 				this.$router.push("/dietician-panel/consultants/update/" + id);
