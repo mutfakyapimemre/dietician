@@ -1,4 +1,16 @@
 {
+  "DieticianHeader": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianHeader.vue"
+  },
+  "LazyDieticianHeader": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianHeader.vue"
+  },
+  "DieticianSidebar": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianSidebar.vue"
+  },
+  "LazyDieticianSidebar": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianSidebar.vue"
+  },
   "AdminHeader": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/AdminHeader.vue"
   },
@@ -11,17 +23,11 @@
   "LazyAdminSidebar": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/admin_includes/AdminSidebar.vue"
   },
-  "DieticianHeader": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianHeader.vue"
+  "DieticianSidebarProfile": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/includes/DieticianSidebarProfile.vue"
   },
-  "LazyDieticianHeader": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianHeader.vue"
-  },
-  "DieticianSidebar": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianSidebar.vue"
-  },
-  "LazyDieticianSidebar": {
-    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/dietician_includes/DieticianSidebar.vue"
+  "LazyDieticianSidebarProfile": {
+    "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/includes/DieticianSidebarProfile.vue"
   },
   "Footer": {
     "description": "Auto imported from C:/Users/adorr/Desktop/dietician/components/includes/Footer.vue"

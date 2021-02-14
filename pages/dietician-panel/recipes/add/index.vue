@@ -159,120 +159,124 @@
 															background-color="primary"
 															dark
 														>
-															<v-tab v-for="item in items" :key="item.tab">
-																{{ item.tab }}
-															</v-tab>
+															<client-only>
+																<v-tab v-for="item in items" :key="item.tab">
+																	{{ item.tab }}
+																</v-tab>
+															</client-only>
 														</v-tabs>
 
 														<v-tabs-items v-model="tab">
 															<v-tab-item eager>
 																<v-card flat>
 																	<v-card-text v-if="!isEmpty(inputs)">
-																		<div
-																			class="row"
-																			v-bind:key="index"
-																			v-for="(input, index) in inputs"
-																		>
+																		<client-only>
 																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
+																				class="row"
+																				v-bind:key="index"
+																				v-for="(input, index) in inputs"
 																			>
-																				<ValidationProvider
-																					v-bind:name="input[0].label"
-																					rules="required"
-																					v-slot="{ errors }"
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
 																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[0].id">{{
-																							input[0].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[0].id"
-																							type="text"
-																							class="form-control"
-																							name="vitaminName[]"
-																							v-model="input[0].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
+																					<ValidationProvider
+																						v-bind:name="input[0].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[0].id">{{
+																								input[0].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[0].id"
+																								type="text"
+																								class="form-control"
+																								name="vitaminName[]"
+																								v-model="input[0].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input[1].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[1].id">{{
+																								input[1].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[1].id"
+																								type="text"
+																								class="form-control"
+																								name="vitaminValue[]"
+																								v-model="input[1].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input[2].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[2].id">{{
+																								input[2].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[2].id"
+																								type="text"
+																								class="form-control"
+																								name="vitaminType[]"
+																								v-model="input[2].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
+																				>
+																					<button
+																						@click.prevent="cloneProperty"
+																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																						role="button"
+																					>
+																						<i class="fa fa-plus"></i>
+																					</button>
+																					<button
+																						v-if="inputs.length > 1"
+																						@click.prevent="
+																							removeProperty(input[0].id)
+																						"
+																						role="button"
+																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																					>
+																						<i class="fa fa-times"></i>
+																					</button>
+																				</div>
 																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input[1].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[1].id">{{
-																							input[1].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[1].id"
-																							type="text"
-																							class="form-control"
-																							name="vitaminValue[]"
-																							v-model="input[1].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input[2].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[2].id">{{
-																							input[2].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[2].id"
-																							type="text"
-																							class="form-control"
-																							name="vitaminType[]"
-																							v-model="input[2].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																			>
-																				<button
-																					@click.prevent="cloneProperty"
-																					class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																					role="button"
-																				>
-																					<i class="fa fa-plus"></i>
-																				</button>
-																				<button
-																					v-if="inputs.length > 1"
-																					@click.prevent="
-																						removeProperty(input[0].id)
-																					"
-																					role="button"
-																					class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
-																				>
-																					<i class="fa fa-times"></i>
-																				</button>
-																			</div>
-																		</div>
+																		</client-only>
 																	</v-card-text>
 																</v-card>
 															</v-tab-item>
@@ -281,166 +285,176 @@
 																	<v-card-text
 																		v-if="
 																			!isEmpty(inputs2) &&
-																			!isEmpty(allCriterias) &&
-																			!isEmpty(allNutrients)
+																				!isEmpty(allCriterias) &&
+																				!isEmpty(allNutrients)
 																		"
 																	>
-																		<div
-																			class="row"
-																			v-bind:key="index"
-																			v-for="(input2, index) in inputs2"
-																		>
+																		<client-only>
 																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
+																				class="row"
+																				v-bind:key="index"
+																				v-for="(input2, index) in inputs2"
 																			>
-																				<ValidationProvider
-																					v-bind:name="input2[0].label"
-																					rules="required"
-																					v-slot="{ errors }"
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
 																				>
-																					<div class="form-group">
-																						<label v-bind:for="input2[0].id">{{
-																							input2[0].label
-																						}}</label>
-																						<select
-																							name="criteriaName[]"
-																							v-bind:id="input2[0].id"
-																							v-model="input2[0].value"
-																							class="form-control"
-																						>
-																							<option value="" selected>
-																								Malzeme Ölçüt Değeri Adı
-																								Seçiniz.
-																							</option>
-																							<option
-																								v-bind:key="index"
-																								v-bind:value="criteria.name"
-																								v-for="(
-																									criteria, index
-																								) in allCriterias"
+																					<ValidationProvider
+																						v-bind:name="input2[0].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label
+																								v-bind:for="input2[0].id"
+																								>{{ input2[0].label }}</label
 																							>
-																								{{ criteria.name }}
-																							</option>
-																						</select>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input2[1].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input2[1].id">{{
-																							input2[1].label
-																						}}</label>
-																						<input
-																							v-bind:id="input2[1].id"
-																							type="text"
-																							class="form-control"
-																							name="criteriaValue[]"
-																							v-model="input2[1].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input2[2].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input2[2].id">{{
-																							input2[2].label
-																						}}</label>
-																						<input
-																							v-bind:id="input2[2].id"
-																							type="text"
-																							class="form-control"
-																							name="criteriaType[]"
-																							v-model="input2[2].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input2[3].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input2[3].id">{{
-																							input2[3].label
-																						}}</label>
-																						<select
-																							name="criteriaNutrient[]"
-																							v-bind:id="input2[3].id"
-																							v-model="input2[3].value"
-																							class="form-control"
-																						>
-																							<option value="" selected>
-																								Malzeme Besini Seçiniz.
-																							</option>
-																							<option
-																								v-bind:key="index"
-																								v-bind:value="nutrient._id.$oid"
-																								v-for="(
-																									nutrient, index
-																								) in allNutrients"
+																							<select
+																								name="criteriaName[]"
+																								v-bind:id="input2[0].id"
+																								v-model="input2[0].value"
+																								class="form-control"
 																							>
-																								{{ nutrient.name }}
-																							</option>
-																						</select>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																			>
-																				<button
-																					@click.prevent="cloneProperty2"
-																					class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																					role="button"
+																								<option value="" selected>
+																									Malzeme Ölçüt Değeri Adı
+																									Seçiniz.
+																								</option>
+																								<client-only>
+																									<option
+																										v-bind:key="index"
+																										v-bind:value="criteria.name"
+																										v-for="(criteria,
+																										index) in allCriterias"
+																									>
+																										{{ criteria.name }}
+																									</option>
+																								</client-only>
+																							</select>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
 																				>
-																					<i class="fa fa-plus"></i>
-																				</button>
-																				<button
-																					v-if="inputs2.length > 1"
-																					@click.prevent="
-																						removeProperty2(input2[0].id)
-																					"
-																					role="button"
-																					class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																					<ValidationProvider
+																						v-bind:name="input2[1].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label
+																								v-bind:for="input2[1].id"
+																								>{{ input2[1].label }}</label
+																							>
+																							<input
+																								v-bind:id="input2[1].id"
+																								type="text"
+																								class="form-control"
+																								name="criteriaValue[]"
+																								v-model="input2[1].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
 																				>
-																					<i class="fa fa-times"></i>
-																				</button>
+																					<ValidationProvider
+																						v-bind:name="input2[2].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label
+																								v-bind:for="input2[2].id"
+																								>{{ input2[2].label }}</label
+																							>
+																							<input
+																								v-bind:id="input2[2].id"
+																								type="text"
+																								class="form-control"
+																								name="criteriaType[]"
+																								v-model="input2[2].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input2[3].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label
+																								v-bind:for="input2[3].id"
+																								>{{ input2[3].label }}</label
+																							>
+																							<select
+																								name="criteriaNutrient[]"
+																								v-bind:id="input2[3].id"
+																								v-model="input2[3].value"
+																								class="form-control"
+																							>
+																								<option value="" selected>
+																									Malzeme Besini Seçiniz.
+																								</option>
+																								<client-only>
+																									<option
+																										v-bind:key="index"
+																										v-bind:value="
+																											nutrient._id.$oid
+																										"
+																										v-for="(nutrient,
+																										index) in allNutrients"
+																									>
+																										{{ nutrient.name }}
+																									</option>
+																								</client-only>
+																							</select>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
+																				>
+																					<button
+																						@click.prevent="cloneProperty2"
+																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																						role="button"
+																					>
+																						<i class="fa fa-plus"></i>
+																					</button>
+																					<button
+																						v-if="inputs2.length > 1"
+																						@click.prevent="
+																							removeProperty2(input2[0].id)
+																						"
+																						role="button"
+																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																					>
+																						<i class="fa fa-times"></i>
+																					</button>
+																				</div>
 																			</div>
-																		</div>
+																		</client-only>
 																	</v-card-text>
 																</v-card>
 															</v-tab-item>
@@ -596,7 +610,7 @@
 		layout: "dietician",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		mounted() {
 			this.retrieveData();
@@ -611,14 +625,14 @@
 						{
 							id: "vitaminValue0",
 							label: "Besin Değeri",
-							value: "",
+							value: ""
 						},
 						{
 							id: "vitaminType0",
 							label: "Besin Değeri Türü",
-							value: "",
-						},
-					],
+							value: ""
+						}
+					]
 				],
 				inputs2: [
 					[
@@ -627,16 +641,16 @@
 						{
 							id: "criteriaType0",
 							label: "Malzeme Ölçüt Değeri Türü",
-							value: "",
+							value: ""
 						},
-						{ id: "criteriaNutrient0", label: "Malzeme Besini", value: "" },
-					],
+						{ id: "criteriaNutrient0", label: "Malzeme Besini", value: "" }
+					]
 				],
 				e1: 1,
 				inputData: {
 					name: null,
 					description: null,
-					id: null,
+					id: null
 				},
 				data: [],
 				searchTitle: null,
@@ -651,8 +665,8 @@
 						text: "İşlemler",
 						align: "center",
 						value: "actions",
-						sortable: false,
-					},
+						sortable: false
+					}
 				],
 				page: 1,
 				totalPages: 0,
@@ -666,25 +680,25 @@
 							"Bearer " +
 							(!this.isEmpty(Cookie.get("userData"))
 								? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
-								: null),
+								: null)
 					},
 					params: {
-						title: null,
+						title: null
 					},
 					uploadMultiple: true,
-					parallelUploads: 10,
+					parallelUploads: 10
 				},
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
 					: null,
 				tab: null,
-				items: [{ tab: "Besin Değerleri" }, { tab: "Yemek Tarifi Malzemeleri" }],
+				items: [{ tab: "Besin Değerleri" }, { tab: "Yemek Tarifi Malzemeleri" }]
 			};
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -710,15 +724,15 @@
 								"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 							"Access-Control-Allow-Credentials": true,
 							"Content-type": "application/json",
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						this.allCriterias = response.data.data.criterias;
 						this.allNutrients = response.data.data.nutrients;
 					})
-					.catch((err) => console.log(err));
+					.catch(err => console.log(err));
 			},
 			selectCover() {
 				this.e1 = 3;
@@ -756,17 +770,17 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						this.data = response.data.data.data.map(this.getDisplayData);
 
 						this.totalPages = response.data.data.last_page;
 					})
-					.catch((err) => console.log(err))
+					.catch(err => console.log(err))
 					.finally(() => (this.loading = false));
 			},
 			handlePageChange(value) {
@@ -800,18 +814,18 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -819,7 +833,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -842,18 +856,18 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -861,7 +875,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -884,18 +898,18 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -903,7 +917,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -914,7 +928,7 @@
 					id: data._id.$oid,
 					img_url: this.img_url + "public/storage/" + data.img_url,
 					isCover: data.isCover,
-					isActive: data.isActive,
+					isActive: data.isActive
 				};
 			},
 
@@ -923,18 +937,18 @@
 					{
 						id: `vitamin${++this.counter}`,
 						label: "Besin Değeri Adı",
-						value: "",
+						value: ""
 					},
 					{
 						id: `vitaminValue${++this.counter}`,
 						label: "Besin Değeri",
-						value: "",
+						value: ""
 					},
 					{
 						id: `vitaminType${++this.counter}`,
 						label: "Besin Değeri Türü",
-						value: "",
-					},
+						value: ""
+					}
 				]);
 			},
 			removeProperty(id) {
@@ -949,23 +963,23 @@
 					{
 						id: `recipe${++this.counter}`,
 						label: "Malzeme Ölçüt Değeri Adı",
-						value: "",
+						value: ""
 					},
 					{
 						id: `recipeValue${++this.counter}`,
 						label: "Malzeme Ölçüt Değeri",
-						value: "",
+						value: ""
 					},
 					{
 						id: `recipeType${++this.counter}`,
 						label: "Malzeme Ölçüt Değeri Türü",
-						value: "",
+						value: ""
 					},
 					{
 						id: `recipeNutrient${++this.counter}`,
 						label: "Malzeme Besini",
-						value: "",
-					},
+						value: ""
+					}
 				]);
 			},
 			removeProperty2(id) {
@@ -981,14 +995,14 @@
 						title: JSON.parse(e.xhr.response).title,
 						message: JSON.parse(e.xhr.response).msg,
 						position: "topCenter",
-						displayMode: "once",
+						displayMode: "once"
 					});
 				} else {
 					this.$izitoast.error({
 						title: JSON.parse(e.xhr.response).title,
 						message: JSON.parse(e.xhr.response).msg,
 						position: "topCenter",
-						displayMode: "once",
+						displayMode: "once"
 					});
 				}
 			},
@@ -1008,16 +1022,16 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.$refs.myDropzone.options.url =
 								process.env.apiBaseUrl +
@@ -1038,11 +1052,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

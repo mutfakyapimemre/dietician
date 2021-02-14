@@ -3,10 +3,13 @@ import Vue from 'vue'
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
 import NuxtError from './components/nuxt-error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
+import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '..\\node_modules\\izitoast\\dist\\css\\iziToast.css'
 
 import '..\\node_modules\\vue2-dropzone\\dist\\vue2Dropzone.min.css'
+
+import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
 const _77068119 = () => import('..\\layouts\\admin.vue'  /* webpackChunkName: "layouts/admin" */).then(m => sanitizeComponent(m.default || m))
 const _4eb135f0 = () => import('..\\layouts\\adminlogin.vue'  /* webpackChunkName: "layouts/adminlogin" */).then(m => sanitizeComponent(m.default || m))
@@ -49,7 +52,7 @@ export default {
       }
     }, [
       loadingEl,
-
+      h(NuxtBuildIndicator),
       transitionEl
     ])
   },
@@ -100,10 +103,6 @@ export default {
 
     isFetching () {
       return this.nbFetching > 0
-    },
-
-    isPreview () {
-      return Boolean(this.$options.previewData)
     },
   },
 
@@ -191,6 +190,10 @@ export default {
     },
 
     setLayout (layout) {
+      if(layout && typeof layout !== 'string') {
+        throw new Error('[nuxt] Avoid using non-string value as layout property.')
+      }
+
       if (!layout || !resolvedLayouts['_' + layout]) {
         layout = 'default'
       }

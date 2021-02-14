@@ -247,15 +247,17 @@
 																	>
 																		İl Seçiniz.
 																	</option>
-																	<option
-																		v-bind:data-id="city.towns"
-																		:value="city.name"
-																		v-bind:key="index"
-																		v-for="(city, index) in country.cities"
-																		:selected="data.city === city.name"
-																	>
-																		{{ city.name }}
-																	</option>
+																	<client-only>
+																		<option
+																			v-bind:data-id="city.towns"
+																			:value="city.name"
+																			v-bind:key="index"
+																			v-for="(city, index) in country.cities"
+																			:selected="data.city === city.name"
+																		>
+																			{{ city.name }}
+																		</option>
+																	</client-only>
 																</select>
 																<small class="font-weight-bold text-danger">{{
 																	errors[0]
@@ -295,15 +297,17 @@
 																	>
 																		Önce İl Seçiniz.
 																	</option>
-																	<option
-																		v-bind:data-id="town.districts"
-																		:value="town.name"
-																		v-bind:key="index"
-																		v-for="(town, index) in country.towns"
-																		:selected="town.name === data.town"
-																	>
-																		{{ town.name }}
-																	</option>
+																	<client-only>
+																		<option
+																			v-bind:data-id="town.districts"
+																			:value="town.name"
+																			v-bind:key="index"
+																			v-for="(town, index) in country.towns"
+																			:selected="town.name === data.town"
+																		>
+																			{{ town.name }}
+																		</option>
+																	</client-only>
 																</select>
 																<small class="font-weight-bold text-danger">{{
 																	errors[0]
@@ -343,17 +347,20 @@
 																	>
 																		Önce İlçe Seçiniz.
 																	</option>
-																	<option
-																		v-bind:data-id="district.neighborhoods"
-																		:value="district.name"
-																		v-bind:key="index"
-																		v-for="(
-																			district, index
-																		) in country.districts"
-																		:selected="district.name === data.district"
-																	>
-																		{{ district.name }}
-																	</option>
+																	<client-only>
+																		<option
+																			v-bind:data-id="district.neighborhoods"
+																			:value="district.name"
+																			v-bind:key="index"
+																			v-for="(district,
+																			index) in country.districts"
+																			:selected="
+																				district.name === data.district
+																			"
+																		>
+																			{{ district.name }}
+																		</option>
+																	</client-only>
 																</select>
 																<small class="font-weight-bold text-danger">{{
 																	errors[0]
@@ -394,18 +401,19 @@
 																	>
 																		Önce Semt Seçiniz.
 																	</option>
-																	<option
-																		:value="neighborhood.name"
-																		v-bind:key="index"
-																		v-for="(
-																			neighborhood, index
-																		) in country.neighborhoods"
-																		:selected="
-																			neighborhood.name === data.neighborhood
-																		"
-																	>
-																		{{ neighborhood.name }}
-																	</option>
+																	<client-only>
+																		<option
+																			:value="neighborhood.name"
+																			v-bind:key="index"
+																			v-for="(neighborhood,
+																			index) in country.neighborhoods"
+																			:selected="
+																				neighborhood.name === data.neighborhood
+																			"
+																		>
+																			{{ neighborhood.name }}
+																		</option>
+																	</client-only>
 																</select>
 																<small class="font-weight-bold text-danger">{{
 																	errors[0]
@@ -824,7 +832,7 @@
 		layout: "dietician",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		data() {
 			return {
@@ -859,7 +867,7 @@
 					phone: null,
 					email: null,
 					password: null,
-					password_confirmation: null,
+					password_confirmation: null
 				},
 				country: { cities: [], towns: [], districts: [], neighborhoods: [] },
 				months: [
@@ -874,18 +882,18 @@
 					"EYLÜL",
 					"EKİM",
 					"KASIM",
-					"ARALIK",
+					"ARALIK"
 				],
 				siteSettings: this.$store.getters.siteSettings,
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		mounted() {
 			this.getCities();
@@ -903,7 +911,7 @@
 			getCities() {
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/cities")
-					.then((response) => {
+					.then(response => {
 						this.country.cities =
 							response.data.data.cities.length > 0
 								? response.data.data.cities
@@ -913,7 +921,7 @@
 						}, 100);
 					});
 			},
-			getTowns: function (event) {
+			getTowns: function(event) {
 				let townIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -933,7 +941,7 @@
 				}
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds)
-					.then((response) => {
+					.then(response => {
 						this.country.towns =
 							response.data.towns.length > 0 ? response.data.towns : [];
 						this.country.districts = [];
@@ -945,7 +953,7 @@
 						}
 					});
 			},
-			getDistricts: function (event) {
+			getDistricts: function(event) {
 				let districtIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -967,7 +975,7 @@
 					.get(
 						process.env.apiBaseUrl + "informations/districts?id=" + districtIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country.districts =
 							response.data.districts.length > 0 ? response.data.districts : [];
 						this.country.neighborhoods = [];
@@ -978,7 +986,7 @@
 						}
 					});
 			},
-			getNeighborhoods: function (event) {
+			getNeighborhoods: function(event) {
 				let neighborhoodIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -1002,7 +1010,7 @@
 							"informations/neighborhoods?id=" +
 							neighborhoodIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country.neighborhoods =
 							response.data.neighborhoods.length > 0
 								? response.data.neighborhoods
@@ -1026,15 +1034,15 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
-						},
+							Authorization: "Bearer " + this.userData.api_token
+						}
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							setTimeout(() => {
 								this.$router.go(
@@ -1045,11 +1053,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

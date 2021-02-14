@@ -60,36 +60,43 @@
 							>
 								Tüm Ölçütler
 							</h3>
-							<table
-								class="table table-bordered table-striped mb-2 w-100"
-								v-bind:key="index"
-								v-for="(criteria, index) in criterias"
-							>
-								<thead>
-									<tr>
-										<th colspan="2" class="text-center">
-											<nuxt-link v-bind:to="'calorie/' + criteria.slug" tag="a">
-												{{ criteria.name }}
-											</nuxt-link>
-										</th>
-									</tr>
-									<tr>
-										<th class="w-50 text-break" scope="col">Ölçüt</th>
-										<th class="w-50 text-break" scope="col">Ölçüt Değeri</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr
-										v-bind:key="index"
-										v-for="(value, index) in criteria.criteria_values"
-									>
-										<td class="w-50 text-break">{{ value.title }}</td>
-										<td class="w-50 text-break">
-											{{ value.value }} {{ value.type }}
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<client-only>
+								<table
+									class="table table-bordered table-striped mb-2 w-100"
+									v-bind:key="index"
+									v-for="(criteria, index) in criterias"
+								>
+									<thead>
+										<tr>
+											<th colspan="2" class="text-center">
+												<nuxt-link
+													v-bind:to="'calorie/' + criteria.slug"
+													tag="a"
+												>
+													{{ criteria.name }}
+												</nuxt-link>
+											</th>
+										</tr>
+										<tr>
+											<th class="w-50 text-break" scope="col">Ölçüt</th>
+											<th class="w-50 text-break" scope="col">Ölçüt Değeri</th>
+										</tr>
+									</thead>
+									<tbody>
+										<client-only>
+											<tr
+												v-bind:key="index"
+												v-for="(value, index) in criteria.criteria_values"
+											>
+												<td class="w-50 text-break">{{ value.title }}</td>
+												<td class="w-50 text-break">
+													{{ value.value }} {{ value.type }}
+												</td>
+											</tr>
+										</client-only>
+									</tbody>
+								</table>
+							</client-only>
 							<v-pagination
 								v-model="pagination.current"
 								:length="pagination.total"
@@ -179,13 +186,13 @@
 	export default {
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		name: "index",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -205,9 +212,9 @@
 								"criteria?page=" +
 								this.pagination.current +
 								"&search=" +
-								decodeURIComponent(this.search),
+								decodeURIComponent(this.search)
 						})
-						.then((response) => {
+						.then(response => {
 							this.criterias = this.$store.getters.criterias.data;
 							this.pagination.current = this.$store.getters.criterias.current_page;
 							this.pagination.total = this.$store.getters.criterias.last_page;
@@ -216,15 +223,15 @@
 					if (param) {
 						this.$store
 							.dispatch("getCriterias", { criteriasURL: param })
-							.then((response) => {
+							.then(response => {
 								this.criterias = this.$store.getters.criterias;
 							});
 					} else {
 						this.$store
 							.dispatch("getCriterias", {
-								criteriasURL: "criteria?page=" + this.pagination.current,
+								criteriasURL: "criteria?page=" + this.pagination.current
 							})
-							.then((response) => {
+							.then(response => {
 								this.criterias = this.$store.getters.criterias.data;
 								this.pagination.current = this.$store.getters.criterias.current_page;
 								this.pagination.total = this.$store.getters.criterias.last_page;
@@ -234,7 +241,7 @@
 			},
 			onPageChange() {
 				this.getCriterias();
-			},
+			}
 		},
 		data() {
 			return {
@@ -242,12 +249,12 @@
 				search: null,
 				pagination: {
 					current: 1,
-					total: 1,
-				},
+					total: 1
+				}
 			};
 		},
 		mounted() {
 			this.getCriterias();
-		},
+		}
 	};
 </script>

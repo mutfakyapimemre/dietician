@@ -53,69 +53,71 @@
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9">
 						<v-row v-if="!isEmpty(doctors)">
-							<v-col
-								v-bind:key="index"
-								v-for="(doctor, index) in doctors"
-								cols="12"
-								sm="6"
-								md="6"
-								lg="4"
-								xl="3"
-							>
-								<div class="h-100 profile-widget mx-1">
-									<div class="doc-img">
-										<nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
-											<img
-												class="img-fluid"
-												style="min-height: 273px"
-												v-bind:alt="doctor.name"
-												v-bind:src="
-													base_img_url +
-													'/public/storage/' +
-													doctor.profile_photo.img_url
-												"
-											/>
-										</nuxt-link>
-									</div>
-									<div class="pro-content h-100">
-										<h3 class="title">
+							<client-only>
+								<v-col
+									v-bind:key="index"
+									v-for="(doctor, index) in doctors"
+									cols="12"
+									sm="6"
+									md="6"
+									lg="4"
+									xl="3"
+								>
+									<div class="h-100 profile-widget mx-1">
+										<div class="doc-img">
+											<nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
+												<img
+													class="img-fluid"
+													style="min-height: 273px"
+													v-bind:alt="doctor.name"
+													v-bind:src="
+														base_img_url +
+															'/public/storage/' +
+															doctor.profile_photo.img_url
+													"
+												/>
+											</nuxt-link>
+										</div>
+										<div class="pro-content h-100">
+											<h3 class="title">
+												<nuxt-link
+													tag="a"
+													v-bind:to="'/profile/' + doctor.slug"
+													>{{ doctor.name }}</nuxt-link
+												>
+												<i class="fa fa-check-circle verified"></i>
+											</h3>
+											<p class="speciality">
+												{{ doctor.hospitalName }} - {{ doctor.department }}
+											</p>
+											<ul class="available-info">
+												<li>
+													<i class="fa fa-map-marker-alt"></i>
+													{{ doctor.company_city }},
+													{{ doctor.company_town }}
+												</li>
+												<li v-if="!isEmpty(doctor.appointment_hour)">
+													<i class="fa fa-clock"></i>
+													{{ doctor.appointment_hour }}
+												</li>
+												<li v-if="!isEmpty(doctor.price)">
+													<i class="fa fa-money-bill-alt"></i> {{ doctor.price
+													}}<i
+														class="fa fa-info-circle"
+														data-toggle="tooltip"
+														title="Fiyatlar Değişkenlik Gösterebilir"
+													></i>
+												</li>
+											</ul>
 											<nuxt-link
-												tag="a"
-												v-bind:to="'/profile/' + doctor.slug"
-												>{{ doctor.name }}</nuxt-link
+												v-bind:to="'/make-appointment/' + doctor.slug"
+												class="btn btn-info-light rounded-0 w-100"
+												>Randevu Al</nuxt-link
 											>
-											<i class="fa fa-check-circle verified"></i>
-										</h3>
-										<p class="speciality">
-											{{ doctor.hospitalName }} - {{ doctor.department }}
-										</p>
-										<ul class="available-info">
-											<li>
-												<i class="fa fa-map-marker-alt"></i>
-												{{ doctor.company_city }},
-												{{ doctor.company_town }}
-											</li>
-											<li v-if="!isEmpty(doctor.appointment_hour)">
-												<i class="fa fa-clock"></i>
-												{{ doctor.appointment_hour }}
-											</li>
-											<li v-if="!isEmpty(doctor.price)">
-												<i class="fa fa-money-bill-alt"></i> {{ doctor.price
-												}}<i
-													class="fa fa-info-circle"
-													data-toggle="tooltip"
-													title="Fiyatlar Değişkenlik Gösterebilir"
-												></i>
-											</li>
-										</ul>
-										<nuxt-link
-											v-bind:to="'/make-appointment/' + doctor.slug"
-											class="btn btn-info-light rounded-0 w-100"
-											>Randevu Al</nuxt-link
-										>
+										</div>
 									</div>
-								</div>
-							</v-col>
+								</v-col>
+							</client-only>
 						</v-row>
 						<v-pagination
 							v-model="pagination.current"
@@ -137,7 +139,7 @@
 		computed: {
 			base_img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		data() {
 			return {
@@ -145,8 +147,8 @@
 				search: null,
 				pagination: {
 					current: 1,
-					total: 1,
-				},
+					total: 1
+				}
 			};
 		},
 		mounted() {
@@ -170,9 +172,9 @@
 								"doctors?page=" +
 								this.pagination.current +
 								"&search=" +
-								decodeURIComponent(this.search),
+								decodeURIComponent(this.search)
 						})
-						.then((response) => {
+						.then(response => {
 							this.doctors = this.$store.getters.doctors.data;
 							this.pagination.current = this.$store.getters.doctors.current_page;
 							this.pagination.total = this.$store.getters.doctors.last_page;
@@ -181,7 +183,7 @@
 					if (param) {
 						this.$store
 							.dispatch("getDoctors", { doctorsURL: param })
-							.then((response) => {
+							.then(response => {
 								this.doctors = this.$store.getters.doctors.data;
 								this.pagination.current = this.$store.getters.doctors.current_page;
 								this.pagination.total = this.$store.getters.doctors.last_page;
@@ -189,9 +191,9 @@
 					} else {
 						this.$store
 							.dispatch("getDoctors", {
-								doctorsURL: "doctors?page=" + this.pagination.current,
+								doctorsURL: "doctors?page=" + this.pagination.current
 							})
-							.then((response) => {
+							.then(response => {
 								this.doctors = this.$store.getters.doctors.data;
 								this.pagination.current = this.$store.getters.doctors.current_page;
 								this.pagination.total = this.$store.getters.doctors.last_page;
@@ -201,7 +203,7 @@
 			},
 			onPageChange() {
 				this.getDoctors();
-			},
-		},
+			}
+		}
 	};
 </script>

@@ -157,7 +157,7 @@
 	import $ from "jquery";
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Sidebar from "~/components/includes/Sidebar";
-	import DieticianSidebar from "~/components/includes/DieticianSidebar";
+	import DieticianSidebar from "~/components/includes/DieticianSidebarProfile";
 
 	export default {
 		middleware: ["session-control", "guest"],
@@ -166,16 +166,16 @@
 			ValidationObserver,
 			ValidationProvider,
 			Sidebar,
-			DieticianSidebar,
+			DieticianSidebar
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		mounted() {
 			let inputs = document.querySelectorAll(".v-file-input input");
-			[...inputs].forEach((input) => {
+			[...inputs].forEach(input => {
 				input.remove();
 			});
 		},
@@ -185,7 +185,7 @@
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
 					: !this.isEmpty(this.$store.getters.loggedInUser)
 					? this.$store.getters.loggedInUser
-					: null,
+					: null
 			};
 		},
 
@@ -204,7 +204,7 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
@@ -233,16 +233,16 @@
 								"Access-Control-Allow-Credentials": true,
 								"Content-Type":
 									"multipart/form-data; boundary=" + formData._boundary,
-								Authorization: "Bearer " + this.userData.api_token,
-							},
+								Authorization: "Bearer " + this.userData.api_token
+							}
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							Cookie.set(
 								"userData",
@@ -259,11 +259,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

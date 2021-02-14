@@ -58,51 +58,59 @@
 								Tüm Yemek Tarifi Türleri
 							</h3>
 							<div class="row row-grid" v-if="!isEmpty(recipeCategories)">
-								<div
-									v-bind:key="index"
-									v-for="(recipeCategory, index) in recipeCategories"
-									class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
-								>
-									<div class="profile-widget">
-										<div class="doc-img">
-											<nuxt-link
-												v-bind:to="/recipe-categories/ + recipeCategory.slug"
-												tag="a"
-											>
-												<img
-													height="300"
-													v-bind:alt="recipeCategory.name"
-													v-bind:src="
-														img_url + 'public/storage/' + recipeCategory.img_url
-													"
-												/>
-											</nuxt-link>
-										</div>
-										<div class="pro-content">
-											<h3 class="title">
+								<client-only>
+									<div
+										v-bind:key="index"
+										v-for="(recipeCategory, index) in recipeCategories"
+										class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
+									>
+										<div class="profile-widget">
+											<div class="doc-img">
 												<nuxt-link
 													v-bind:to="/recipe-categories/ + recipeCategory.slug"
 													tag="a"
-													>{{ recipeCategory.name }}</nuxt-link
 												>
-											</h3>
-											<p class="speciality">{{ recipeCategory.description }}</p>
-
-											<div class="row row-sm">
-												<div class="col-12">
+													<img
+														height="300"
+														v-bind:alt="recipeCategory.name"
+														v-bind:src="
+															img_url +
+																'public/storage/' +
+																recipeCategory.img_url
+														"
+													/>
+												</nuxt-link>
+											</div>
+											<div class="pro-content">
+												<h3 class="title">
 													<nuxt-link
-														tag="a"
 														v-bind:to="
 															/recipe-categories/ + recipeCategory.slug
 														"
-														class="btn btn-info-light rounded-0 view-btn"
-														>Yemek Tarifleri</nuxt-link
+														tag="a"
+														>{{ recipeCategory.name }}</nuxt-link
 													>
+												</h3>
+												<p class="speciality">
+													{{ recipeCategory.description }}
+												</p>
+
+												<div class="row row-sm">
+													<div class="col-12">
+														<nuxt-link
+															tag="a"
+															v-bind:to="
+																/recipe-categories/ + recipeCategory.slug
+															"
+															class="btn btn-info-light rounded-0 view-btn"
+															>Yemek Tarifleri</nuxt-link
+														>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</client-only>
 							</div>
 							<v-pagination
 								v-model="pagination.current"
@@ -193,13 +201,13 @@
 	export default {
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		name: "index",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -219,9 +227,9 @@
 								"recipe-categories?page=" +
 								this.pagination.current +
 								"&search=" +
-								decodeURIComponent(this.search),
+								decodeURIComponent(this.search)
 						})
-						.then((response) => {
+						.then(response => {
 							this.recipeCategories = this.$store.getters.recipeCategories.data;
 							this.pagination.current = this.$store.getters.recipeCategories.current_page;
 							this.pagination.total = this.$store.getters.recipeCategories.last_page;
@@ -230,7 +238,7 @@
 					if (param) {
 						this.$store
 							.dispatch("getRecipeCategories", { recipeCategoriesURL: param })
-							.then((response) => {
+							.then(response => {
 								this.recipeCategories = this.$store.getters.recipeCategories.data;
 								this.pagination.current = this.$store.getters.recipeCategories.current_page;
 								this.pagination.total = this.$store.getters.recipeCategories.last_page;
@@ -239,9 +247,9 @@
 						this.$store
 							.dispatch("getRecipeCategories", {
 								recipeCategoriesURL:
-									"recipe-categories?page=" + this.pagination.current,
+									"recipe-categories?page=" + this.pagination.current
 							})
-							.then((response) => {
+							.then(response => {
 								this.recipeCategories = this.$store.getters.recipeCategories.data;
 								this.pagination.current = this.$store.getters.recipeCategories.current_page;
 								this.pagination.total = this.$store.getters.recipeCategories.last_page;
@@ -251,7 +259,7 @@
 			},
 			onPageChange() {
 				this.getRecipeCategories();
-			},
+			}
 		},
 		data() {
 			return {
@@ -259,12 +267,12 @@
 				search: null,
 				pagination: {
 					current: 1,
-					total: 1,
-				},
+					total: 1
+				}
 			};
 		},
 		mounted() {
 			this.getRecipeCategories();
-		},
+		}
 	};
 </script>

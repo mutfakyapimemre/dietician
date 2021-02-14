@@ -362,19 +362,20 @@
 																				>
 																					İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="city.towns"
-																					:value="city.name"
-																					v-bind:key="index"
-																					v-for="(
-																						city, index
-																					) in country.cities"
-																					:selected="
-																						userData.city === city.name
-																					"
-																				>
-																					{{ city.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="city.towns"
+																						:value="city.name"
+																						v-bind:key="index"
+																						v-for="(city,
+																						index) in country.cities"
+																						:selected="
+																							userData.city === city.name
+																						"
+																					>
+																						{{ city.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -414,17 +415,20 @@
 																				>
 																					Önce İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="town.districts"
-																					:value="town.name"
-																					v-bind:key="index"
-																					v-for="(town, index) in country.towns"
-																					:selected="
-																						town.name === userData.town
-																					"
-																				>
-																					{{ town.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="town.districts"
+																						:value="town.name"
+																						v-bind:key="index"
+																						v-for="(town,
+																						index) in country.towns"
+																						:selected="
+																							town.name === userData.town
+																						"
+																					>
+																						{{ town.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -466,21 +470,23 @@
 																				>
 																					Önce İlçe Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="
-																						district.neighborhoods
-																					"
-																					:value="district.name"
-																					v-bind:key="index"
-																					v-for="(
-																						district, index
-																					) in country.districts"
-																					:selected="
-																						district.name === userData.district
-																					"
-																				>
-																					{{ district.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="
+																							district.neighborhoods
+																						"
+																						:value="district.name"
+																						v-bind:key="index"
+																						v-for="(district,
+																						index) in country.districts"
+																						:selected="
+																							district.name ===
+																								userData.district
+																						"
+																					>
+																						{{ district.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -523,19 +529,20 @@
 																				>
 																					Önce Semt Seçiniz.
 																				</option>
-																				<option
-																					:value="neighborhood.name"
-																					v-bind:key="index"
-																					v-for="(
-																						neighborhood, index
-																					) in country.neighborhoods"
-																					:selected="
-																						neighborhood.name ===
-																						userData.neighborhood
-																					"
-																				>
-																					{{ neighborhood.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						:value="neighborhood.name"
+																						v-bind:key="index"
+																						v-for="(neighborhood,
+																						index) in country.neighborhoods"
+																						:selected="
+																							neighborhood.name ===
+																								userData.neighborhood
+																						"
+																					>
+																						{{ neighborhood.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -932,8 +939,8 @@
 																				<img
 																					v-bind:src="
 																						img_url +
-																						'/public/storage/' +
-																						userData.img_url
+																							'/public/storage/' +
+																							userData.img_url
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
@@ -1204,19 +1211,20 @@
 																				>
 																					İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="city.towns"
-																					:value="city.name"
-																					v-bind:key="index"
-																					v-for="(
-																						city, index
-																					) in country.cities"
-																					:selected="
-																						userData.city === city.name
-																					"
-																				>
-																					{{ city.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="city.towns"
+																						:value="city.name"
+																						v-bind:key="index"
+																						v-for="(city,
+																						index) in country.cities"
+																						:selected="
+																							userData.city === city.name
+																						"
+																					>
+																						{{ city.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1256,17 +1264,20 @@
 																				>
 																					Önce İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="town.districts"
-																					:value="town.name"
-																					v-bind:key="index"
-																					v-for="(town, index) in country.towns"
-																					:selected="
-																						town.name === userData.town
-																					"
-																				>
-																					{{ town.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="town.districts"
+																						:value="town.name"
+																						v-bind:key="index"
+																						v-for="(town,
+																						index) in country.towns"
+																						:selected="
+																							town.name === userData.town
+																						"
+																					>
+																						{{ town.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1308,21 +1319,23 @@
 																				>
 																					Önce İlçe Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="
-																						district.neighborhoods
-																					"
-																					:value="district.name"
-																					v-bind:key="index"
-																					v-for="(
-																						district, index
-																					) in country.districts"
-																					:selected="
-																						district.name === userData.district
-																					"
-																				>
-																					{{ district.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="
+																							district.neighborhoods
+																						"
+																						:value="district.name"
+																						v-bind:key="index"
+																						v-for="(district,
+																						index) in country.districts"
+																						:selected="
+																							district.name ===
+																								userData.district
+																						"
+																					>
+																						{{ district.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1365,19 +1378,20 @@
 																				>
 																					Önce Semt Seçiniz.
 																				</option>
-																				<option
-																					:value="neighborhood.name"
-																					v-bind:key="index"
-																					v-for="(
-																						neighborhood, index
-																					) in country.neighborhoods"
-																					:selected="
-																						neighborhood.name ===
-																						userData.neighborhood
-																					"
-																				>
-																					{{ neighborhood.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						:value="neighborhood.name"
+																						v-bind:key="index"
+																						v-for="(neighborhood,
+																						index) in country.neighborhoods"
+																						:selected="
+																							neighborhood.name ===
+																								userData.neighborhood
+																						"
+																					>
+																						{{ neighborhood.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1457,19 +1471,21 @@
 																				>
 																					İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="city.towns"
-																					:value="city.name"
-																					v-bind:key="index"
-																					v-for="(
-																						city, index
-																					) in country2.cities"
-																					:selected="
-																						userData.company_city === city.name
-																					"
-																				>
-																					{{ city.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="city.towns"
+																						:value="city.name"
+																						v-bind:key="index"
+																						v-for="(city,
+																						index) in country2.cities"
+																						:selected="
+																							userData.company_city ===
+																								city.name
+																						"
+																					>
+																						{{ city.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1509,19 +1525,21 @@
 																				>
 																					Önce İl Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="town.districts"
-																					:value="town.name"
-																					v-bind:key="index"
-																					v-for="(
-																						town, index
-																					) in country2.towns"
-																					:selected="
-																						town.name === userData.company_town
-																					"
-																				>
-																					{{ town.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="town.districts"
+																						:value="town.name"
+																						v-bind:key="index"
+																						v-for="(town,
+																						index) in country2.towns"
+																						:selected="
+																							town.name ===
+																								userData.company_town
+																						"
+																					>
+																						{{ town.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1563,22 +1581,23 @@
 																				>
 																					Önce İlçe Seçiniz.
 																				</option>
-																				<option
-																					v-bind:data-id="
-																						district.neighborhoods
-																					"
-																					:value="district.name"
-																					v-bind:key="index"
-																					v-for="(
-																						district, index
-																					) in country2.districts"
-																					:selected="
-																						district.name ===
-																						userData.company_district
-																					"
-																				>
-																					{{ district.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						v-bind:data-id="
+																							district.neighborhoods
+																						"
+																						:value="district.name"
+																						v-bind:key="index"
+																						v-for="(district,
+																						index) in country2.districts"
+																						:selected="
+																							district.name ===
+																								userData.company_district
+																						"
+																					>
+																						{{ district.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1621,19 +1640,20 @@
 																				>
 																					Önce Semt Seçiniz.
 																				</option>
-																				<option
-																					:value="neighborhood.name"
-																					v-bind:key="index"
-																					v-for="(
-																						neighborhood, index
-																					) in country2.neighborhoods"
-																					:selected="
-																						neighborhood.name ===
-																						userData.company_neighborhood
-																					"
-																				>
-																					{{ neighborhood.name }}
-																				</option>
+																				<client-only>
+																					<option
+																						:value="neighborhood.name"
+																						v-bind:key="index"
+																						v-for="(neighborhood,
+																						index) in country2.neighborhoods"
+																						:selected="
+																							neighborhood.name ===
+																								userData.company_neighborhood
+																						"
+																					>
+																						{{ neighborhood.name }}
+																					</option>
+																				</client-only>
 																			</select>
 																			<small
 																				class="font-weight-bold text-danger"
@@ -1675,8 +1695,8 @@
 																				<img
 																					v-bind:src="
 																						img_url +
-																						'/public/storage/' +
-																						userData.profile_photo
+																							'/public/storage/' +
+																							userData.profile_photo
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
@@ -1706,8 +1726,8 @@
 																				<img
 																					v-bind:src="
 																						img_url +
-																						'/public/storage/' +
-																						userData.company_logo
+																							'/public/storage/' +
+																							userData.company_logo
 																					"
 																					class="img-fluid align-middle py-auto my-auto"
 																					width="225"
@@ -1779,7 +1799,7 @@
 	import $ from "jquery";
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Sidebar from "~/components/includes/Sidebar";
-	import DieticianSidebarProfile from "~/components/includes/DieticianSidebar";
+	import DieticianSidebarProfile from "~/components/includes/DieticianSidebarProfile";
 
 	export default {
 		middleware: ["session-control", "guest"],
@@ -1788,12 +1808,12 @@
 			ValidationObserver,
 			ValidationProvider,
 			Sidebar,
-			DieticianSidebarProfile,
+			DieticianSidebarProfile
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		mounted() {
 			this.getCities();
@@ -1801,7 +1821,7 @@
 				this.getCities2();
 			}
 			let inputs = document.querySelectorAll(".v-file-input input");
-			[...inputs].forEach((input) => {
+			[...inputs].forEach(input => {
 				input.remove();
 			});
 		},
@@ -1823,19 +1843,19 @@
 					company_city: "",
 					company_town: "",
 					company_district: "",
-					company_neighborhood: "",
+					company_neighborhood: ""
 				},
 				country: {
 					cities: [],
 					towns: [],
 					districts: [],
-					neighborhoods: [],
+					neighborhoods: []
 				},
 				country2: {
 					cities: [],
 					towns: [],
 					districts: [],
-					neighborhoods: [],
+					neighborhoods: []
 				},
 				months: [
 					"OCAK",
@@ -1849,13 +1869,13 @@
 					"EYLÜL",
 					"EKİM",
 					"KASIM",
-					"ARALIK",
+					"ARALIK"
 				],
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
 					: !this.isEmpty(this.$store.getters.loggedInUser)
 					? this.$store.getters.loggedInUser
-					: null,
+					: null
 			};
 		},
 
@@ -1874,7 +1894,7 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
@@ -1883,7 +1903,7 @@
 			getCities() {
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/cities")
-					.then((response) => {
+					.then(response => {
 						this.country.cities =
 							response.data.data.cities.length > 0
 								? response.data.data.cities
@@ -1893,7 +1913,7 @@
 						}, 100);
 					});
 			},
-			getTowns: function (event) {
+			getTowns: function(event) {
 				let townIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -1909,7 +1929,7 @@
 				}
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds)
-					.then((response) => {
+					.then(response => {
 						this.country.towns =
 							response.data.towns.length > 0 ? response.data.towns : [];
 						this.country.districts = [];
@@ -1923,7 +1943,7 @@
 						}
 					});
 			},
-			getDistricts: function (event) {
+			getDistricts: function(event) {
 				let districtIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -1941,7 +1961,7 @@
 					.get(
 						process.env.apiBaseUrl + "informations/districts?id=" + districtIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country.districts =
 							response.data.districts.length > 0 ? response.data.districts : [];
 						this.country.neighborhoods = [];
@@ -1953,7 +1973,7 @@
 						}
 					});
 			},
-			getNeighborhoods: function (event) {
+			getNeighborhoods: function(event) {
 				let neighborhoodIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -1973,7 +1993,7 @@
 							"informations/neighborhoods?id=" +
 							neighborhoodIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country.neighborhoods =
 							response.data.neighborhoods.length > 0
 								? response.data.neighborhoods
@@ -1983,7 +2003,7 @@
 			getCities2() {
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/cities")
-					.then((response) => {
+					.then(response => {
 						this.country2.cities =
 							response.data.data.cities.length > 0
 								? response.data.data.cities
@@ -1993,7 +2013,7 @@
 						}, 100);
 					});
 			},
-			getTowns2: function (event) {
+			getTowns2: function(event) {
 				let townIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -2009,7 +2029,7 @@
 				}
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds)
-					.then((response) => {
+					.then(response => {
 						this.country2.towns =
 							response.data.towns.length > 0 ? response.data.towns : [];
 						this.country2.districts = [];
@@ -2023,7 +2043,7 @@
 						}
 					});
 			},
-			getDistricts2: function (event) {
+			getDistricts2: function(event) {
 				let districtIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -2041,7 +2061,7 @@
 					.get(
 						process.env.apiBaseUrl + "informations/districts?id=" + districtIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country2.districts =
 							response.data.districts.length > 0 ? response.data.districts : [];
 						this.country2.neighborhoods = [];
@@ -2053,7 +2073,7 @@
 						}
 					});
 			},
-			getNeighborhoods2: function (event) {
+			getNeighborhoods2: function(event) {
 				let neighborhoodIds = null;
 				if (event !== undefined && event.target.options.selectedIndex > -1) {
 					const theTarget =
@@ -2074,7 +2094,7 @@
 							"informations/neighborhoods?id=" +
 							neighborhoodIds
 					)
-					.then((response) => {
+					.then(response => {
 						this.country2.neighborhoods =
 							response.data.neighborhoods.length > 0
 								? response.data.neighborhoods
@@ -2104,16 +2124,16 @@
 								"Access-Control-Allow-Credentials": true,
 								"Content-Type":
 									"multipart/form-data; boundary=" + formData._boundary,
-								Authorization: "Bearer " + this.userData.api_token,
-							},
+								Authorization: "Bearer " + this.userData.api_token
+							}
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							Cookie.set(
 								"userData",
@@ -2130,11 +2150,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

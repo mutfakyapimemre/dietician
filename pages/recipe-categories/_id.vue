@@ -64,107 +64,109 @@
 								"{{ categories.name }}" Kategorisine Ait Tüm Yemek Tarifleri
 							</h3>
 							<div class="row" v-if="!isEmpty(recipes)">
-								<div
-									class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-									v-bind:key="index"
-									v-for="(recipe, index) in recipes"
-								>
-									<v-card>
-										<v-card-title class="headline mb-0 py-0">
-											<v-list-item three-line class="px-0">
-												<nuxt-link
-													v-bind:to="'/profile/' + recipe.dietician.slug"
-												>
-													<v-list-item-avatar tile size="65" class="rounded">
-														<img
-															v-bind:alt="recipe.name"
-															v-bind:src="
-																img_url +
-																'public/storage/' +
-																(!isEmpty(recipe.dietician)
-																	? recipe.dietician.profile_photo
-																	: siteSettings.logo)
-															"
-														/>
-													</v-list-item-avatar>
-												</nuxt-link>
-												<v-list-item-content>
-													<v-list-item-title class="headline">
-													</v-list-item-title>
-													<div class="overline font-weight-bold mb-0">
-														{{
-															!isEmpty(recipe.dietician)
-																? recipe.dietician.name
-																: "Admin"
-														}}
-													</div>
-													<v-list-item-subtitle>{{
-														recipe.createdAt
-													}}</v-list-item-subtitle>
-												</v-list-item-content>
-											</v-list-item>
-										</v-card-title>
-										<v-divider class="mt-0 mb-1 mx-3"></v-divider>
-										<v-list-item
-											class="align-items-top align-top d-flex align-start align-self-start"
-										>
-											<div class="justify-content-start">
-												<nuxt-link v-bind:to="'/recipe/' + recipe.slug">
-													<v-list-item-avatar tile size="165" class="rounded">
-														<img
-															v-bind:alt="recipe.name"
-															v-bind:src="
-																img_url + 'public/storage/' + recipe.img_url
-															"
-														/>
-													</v-list-item-avatar>
-												</nuxt-link>
-											</div>
-											<div
-												class="justify-content-end align-items-top align-top align-self-start w-100"
-											>
-												<v-list-item-content
-													class="align-items-top align-top d-block align-start align-self-start w-100 py-0"
-												>
+								<client-only>
+									<div
+										class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+										v-bind:key="index"
+										v-for="(recipe, index) in recipes"
+									>
+										<v-card>
+											<v-card-title class="headline mb-0 py-0">
+												<v-list-item three-line class="px-0">
 													<nuxt-link
-														v-bind:to="'/recipe/' + recipe.slug"
-														tag="a"
-														class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100"
-														>{{ recipe.name }}</nuxt-link
+														v-bind:to="'/profile/' + recipe.dietician.slug"
 													>
-													<v-list-item-subtitle class="overline w-100"
-														>YEMEK TARİFİ</v-list-item-subtitle
-													>
-												</v-list-item-content>
-												<v-list-item-content
-													class="align-items-top align-top d-flex align-start align-self-start flex-wrap"
+														<v-list-item-avatar tile size="65" class="rounded">
+															<img
+																v-bind:alt="recipe.name"
+																v-bind:src="
+																	img_url +
+																		'public/storage/' +
+																		(!isEmpty(recipe.dietician)
+																			? recipe.dietician.profile_photo
+																			: siteSettings.logo)
+																"
+															/>
+														</v-list-item-avatar>
+													</nuxt-link>
+													<v-list-item-content>
+														<v-list-item-title class="headline">
+														</v-list-item-title>
+														<div class="overline font-weight-bold mb-0">
+															{{
+																!isEmpty(recipe.dietician)
+																	? recipe.dietician.name
+																	: "Admin"
+															}}
+														</div>
+														<v-list-item-subtitle>{{
+															recipe.createdAt
+														}}</v-list-item-subtitle>
+													</v-list-item-content>
+												</v-list-item>
+											</v-card-title>
+											<v-divider class="mt-0 mb-1 mx-3"></v-divider>
+											<v-list-item
+												class="align-items-top align-top d-flex align-start align-self-start"
+											>
+												<div class="justify-content-start">
+													<nuxt-link v-bind:to="'/recipe/' + recipe.slug">
+														<v-list-item-avatar tile size="165" class="rounded">
+															<img
+																v-bind:alt="recipe.name"
+																v-bind:src="
+																	img_url + 'public/storage/' + recipe.img_url
+																"
+															/>
+														</v-list-item-avatar>
+													</nuxt-link>
+												</div>
+												<div
+													class="justify-content-end align-items-top align-top align-self-start w-100"
 												>
-													<div class="row d-flex flex-wrap">
-														<div
-															class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle"
+													<v-list-item-content
+														class="align-items-top align-top d-block align-start align-self-start w-100 py-0"
+													>
+														<nuxt-link
+															v-bind:to="'/recipe/' + recipe.slug"
+															tag="a"
+															class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100"
+															>{{ recipe.name }}</nuxt-link
 														>
+														<v-list-item-subtitle class="overline w-100"
+															>YEMEK TARİFİ</v-list-item-subtitle
+														>
+													</v-list-item-content>
+													<v-list-item-content
+														class="align-items-top align-top d-flex align-start align-self-start flex-wrap"
+													>
+														<div class="row d-flex flex-wrap">
 															<div
-																class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
+																class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle"
 															>
-																<div class="d-block">1 Porsiyon</div>
-																{{ recipe.calorie }}
+																<div
+																	class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
+																>
+																	<div class="d-block">1 Porsiyon</div>
+																	{{ recipe.calorie }}
+																</div>
+															</div>
+															<div
+																class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle"
+															>
+																<div
+																	class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
+																>
+																	{{ recipe.portion }}
+																</div>
 															</div>
 														</div>
-														<div
-															class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle"
-														>
-															<div
-																class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
-															>
-																{{ recipe.portion }}
-															</div>
-														</div>
-													</div>
-												</v-list-item-content>
-											</div>
-										</v-list-item>
-									</v-card>
-								</div>
+													</v-list-item-content>
+												</div>
+											</v-list-item>
+										</v-card>
+									</div>
+								</client-only>
 							</div>
 							<v-pagination
 								v-model="pagination.current"
@@ -256,13 +258,13 @@
 	export default {
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		name: "index",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		validate({ params }) {
 			return params.id !== null ? params.id : null;
@@ -287,9 +289,9 @@
 								"?page=" +
 								this.pagination.current +
 								"&search=" +
-								decodeURIComponent(this.search),
+								decodeURIComponent(this.search)
 						})
-						.then((response) => {
+						.then(response => {
 							this.recipes = this.$store.getters.recipeCategories.recipes.data;
 							this.categories = this.$store.getters.recipeCategories.categories;
 							this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
@@ -299,7 +301,7 @@
 					if (param) {
 						this.$store
 							.dispatch("getRecipeCategories", { recipeCategoriesURL: param })
-							.then((response) => {
+							.then(response => {
 								this.recipes = this.$store.getters.recipeCategories.recipes.data;
 								this.categories = this.$store.getters.recipeCategories.categories;
 								this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
@@ -312,9 +314,9 @@
 									"recipe-categories/" +
 									this.$route.params.id +
 									"?page=" +
-									this.pagination.current,
+									this.pagination.current
 							})
-							.then((response) => {
+							.then(response => {
 								this.recipes = this.$store.getters.recipeCategories.recipes.data;
 								this.categories = this.$store.getters.recipeCategories.categories;
 								this.pagination.current = this.$store.getters.recipeCategories.recipes.current_page;
@@ -325,7 +327,7 @@
 			},
 			onPageChange() {
 				this.getRecipes();
-			},
+			}
 		},
 		data() {
 			return {
@@ -334,13 +336,13 @@
 				search: null,
 				pagination: {
 					current: 1,
-					total: 1,
+					total: 1
 				},
-				siteSettings: this.$store.getters.siteSettings,
+				siteSettings: this.$store.getters.siteSettings
 			};
 		},
 		mounted() {
 			this.getRecipes();
-		},
+		}
 	};
 </script>

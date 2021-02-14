@@ -85,146 +85,150 @@
 															background-color="primary"
 															dark
 														>
-															<v-tab v-for="item in items" :key="item.tab">
-																{{ item.tab }}
-															</v-tab>
+															<client-only>
+																<v-tab v-for="item in items" :key="item.tab">
+																	{{ item.tab }}
+																</v-tab>
+															</client-only>
 														</v-tabs>
 
 														<v-tabs-items v-model="tab">
 															<v-tab-item eager>
 																<v-card flat>
 																	<v-card-text v-if="!isEmpty(inputs)">
-																		<div
-																			class="row"
-																			v-bind:key="index"
-																			v-for="(input, index) in inputs"
-																		>
+																		<client-only>
 																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
+																				class="row"
+																				v-bind:key="index"
+																				v-for="(input, index) in inputs"
 																			>
-																				<ValidationProvider
-																					v-bind:name="input[0].label"
-																					rules="required"
-																					v-slot="{ errors }"
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
 																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[0].id">{{
-																							input[0].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[0].id"
-																							type="text"
-																							class="form-control"
-																							name="diseaseName[]"
-																							v-model="input[0].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
+																					<ValidationProvider
+																						v-bind:name="input[0].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[0].id">{{
+																								input[0].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[0].id"
+																								type="text"
+																								class="form-control"
+																								name="diseaseName[]"
+																								v-model="input[0].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input[1].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[1].id">{{
+																								input[1].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[1].id"
+																								type="text"
+																								class="form-control"
+																								name="diseaseMin[]"
+																								v-model="input[1].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input[2].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[2].id">{{
+																								input[2].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[2].id"
+																								type="text"
+																								class="form-control"
+																								name="diseaseMax[]"
+																								v-model="input[2].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+																				>
+																					<ValidationProvider
+																						v-bind:name="input[3].label"
+																						rules="required"
+																						v-slot="{ errors }"
+																					>
+																						<div class="form-group">
+																							<label v-bind:for="input[3].id">{{
+																								input[3].label
+																							}}</label>
+																							<input
+																								v-bind:id="input[3].id"
+																								type="text"
+																								class="form-control"
+																								name="diseaseType[]"
+																								v-model="input[3].value"
+																							/>
+																							<small
+																								class="font-weight-bold text-danger"
+																								>{{ errors[0] }}</small
+																							>
+																						</div>
+																					</ValidationProvider>
+																				</div>
+																				<div
+																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
+																				>
+																					<button
+																						@click.prevent="cloneProperty"
+																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																						role="button"
+																					>
+																						<i class="fa fa-plus"></i>
+																					</button>
+																					<button
+																						v-if="inputs.length > 1"
+																						@click.prevent="
+																							removeProperty(input[0].id)
+																						"
+																						role="button"
+																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																					>
+																						<i class="fa fa-times"></i>
+																					</button>
+																				</div>
 																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input[1].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[1].id">{{
-																							input[1].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[1].id"
-																							type="text"
-																							class="form-control"
-																							name="diseaseMin[]"
-																							v-model="input[1].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input[2].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[2].id">{{
-																							input[2].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[2].id"
-																							type="text"
-																							class="form-control"
-																							name="diseaseMax[]"
-																							v-model="input[2].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																			>
-																				<ValidationProvider
-																					v-bind:name="input[3].label"
-																					rules="required"
-																					v-slot="{ errors }"
-																				>
-																					<div class="form-group">
-																						<label v-bind:for="input[3].id">{{
-																							input[3].label
-																						}}</label>
-																						<input
-																							v-bind:id="input[3].id"
-																							type="text"
-																							class="form-control"
-																							name="diseaseType[]"
-																							v-model="input[3].value"
-																						/>
-																						<small
-																							class="font-weight-bold text-danger"
-																							>{{ errors[0] }}</small
-																						>
-																					</div>
-																				</ValidationProvider>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																			>
-																				<button
-																					@click.prevent="cloneProperty"
-																					class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																					role="button"
-																				>
-																					<i class="fa fa-plus"></i>
-																				</button>
-																				<button
-																					v-if="inputs.length > 1"
-																					@click.prevent="
-																						removeProperty(input[0].id)
-																					"
-																					role="button"
-																					class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
-																				>
-																					<i class="fa fa-times"></i>
-																				</button>
-																			</div>
-																		</div>
+																		</client-only>
 																	</v-card-text>
 																</v-card>
 															</v-tab-item>
@@ -261,7 +265,7 @@
 		layout: "admin",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		mounted() {
 			this.retrieveData();
@@ -274,14 +278,14 @@
 						{ id: "disease0", label: "Hastalık Değeri Adı", value: "" },
 						{ id: "diseaseMin0", label: "Hastalık Değeri", value: "" },
 						{ id: "diseaseMax0", label: "Hastalık Değeri 2", value: "" },
-						{ id: "diseaseType0", label: "Hastalık Değeri Türü", value: "" },
-					],
+						{ id: "diseaseType0", label: "Hastalık Değeri Türü", value: "" }
+					]
 				],
 				e1: 1,
 				inputData: {
 					name: null,
 					description: null,
-					id: null,
+					id: null
 				},
 				data: [],
 				searchTitle: null,
@@ -294,8 +298,8 @@
 						text: "İşlemler",
 						align: "center",
 						value: "actions",
-						sortable: false,
-					},
+						sortable: false
+					}
 				],
 				page: 1,
 				totalPages: 0,
@@ -309,25 +313,25 @@
 							"Bearer " +
 							(!this.isEmpty(Cookie.get("userData"))
 								? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
-								: null),
+								: null)
 					},
 					params: {
-						title: !this.isEmpty(this.data) ? this.data.name : null,
+						title: !this.isEmpty(this.data) ? this.data.name : null
 					},
 					uploadMultiple: true,
-					parallelUploads: 10,
+					parallelUploads: 10
 				},
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
 					: null,
 				tab: null,
-				items: [{ tab: "Hastalık Değerleri" }],
+				items: [{ tab: "Hastalık Değerleri" }]
 			};
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -375,17 +379,17 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						this.data = response.data.data.data.map(this.getDisplayData);
 
 						this.totalPages = response.data.data.last_page;
 					})
-					.catch((err) => console.log(err))
+					.catch(err => console.log(err))
 					.finally(() => (this.loading = false));
 			},
 			handlePageChange(value) {
@@ -414,17 +418,17 @@
 								"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 							"Access-Control-Allow-Credentials": true,
 							"Content-type": "application/json",
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -432,7 +436,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -455,18 +459,18 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -474,7 +478,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -497,18 +501,18 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 							this.refreshList();
 						} else {
@@ -516,7 +520,7 @@
 								title: response.data.title,
 								message: response.data.msg,
 								position: "topCenter",
-								displayMode: "once",
+								displayMode: "once"
 							});
 						}
 					});
@@ -526,7 +530,7 @@
 					rank: data.rank,
 					id: data._id.$oid,
 					isCover: data.isCover,
-					isActive: data.isActive,
+					isActive: data.isActive
 				};
 			},
 
@@ -535,23 +539,23 @@
 					{
 						id: `disease${++this.counter}`,
 						label: "Hastalık Değeri Adı",
-						value: "",
+						value: ""
 					},
 					{
 						id: `diseaseValue${++this.counter}`,
 						label: "Hastalık Değeri",
-						value: "",
+						value: ""
 					},
 					{
 						id: `diseaseValuee${++this.counter}`,
 						label: "Hastalık Değeri 2",
-						value: "",
+						value: ""
 					},
 					{
 						id: `diseaseType${++this.counter}`,
 						label: "Hastalık Değeri Türü",
-						value: "",
-					},
+						value: ""
+					}
 				]);
 			},
 			removeProperty(id) {
@@ -567,14 +571,14 @@
 						title: JSON.parse(e.xhr.response).title,
 						message: JSON.parse(e.xhr.response).msg,
 						position: "topCenter",
-						displayMode: "once",
+						displayMode: "once"
 					});
 				} else {
 					this.$izitoast.error({
 						title: JSON.parse(e.xhr.response).title,
 						message: JSON.parse(e.xhr.response).msg,
 						position: "topCenter",
-						displayMode: "once",
+						displayMode: "once"
 					});
 				}
 			},
@@ -595,16 +599,16 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.inputData.id = response.data.data.$oid;
 							setTimeout(() => {
@@ -614,11 +618,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

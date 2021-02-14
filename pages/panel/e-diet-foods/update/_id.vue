@@ -244,9 +244,11 @@
                               background-color="primary"
                               dark
                             >
+                            <client-only>
                               <v-tab v-for="item in items" :key="item.tab">
                                 {{ item.tab }}
                               </v-tab>
+                              </client-only>
                             </v-tabs>
                             <v-tabs-items v-model="tab">
                               <v-tab-item eager>
@@ -259,6 +261,7 @@
                                       data.values.length > 0
                                     "
                                   >
+                                  <client-only>
                                     <div
                                       class="row"
                                       v-bind:key="index"
@@ -367,6 +370,7 @@
                                         </button>
                                       </div>
                                     </div>
+                                    </client-only>
                                   </v-card-text>
                                 </v-card>
                               </v-tab-item>
@@ -380,6 +384,7 @@
                                       data.criteria_values.length > 0
                                     "
                                   >
+                                  <client-only>
                                     <div
                                       class="row"
                                       v-bind:key="index"
@@ -414,6 +419,7 @@
                                               <option value="" selected>
                                                 Ölçüt Seçiniz
                                               </option>
+                                              <client-only>
                                               <option
                                                 v-bind:value="criteria.name"
                                                 :selected="
@@ -426,6 +432,7 @@
                                               >
                                                 {{ criteria.name }}
                                               </option>
+                                              </client-only>
                                             </select>
                                             <select
                                               name="criteriaName[]"
@@ -534,6 +541,7 @@
                                         </button>
                                       </div>
                                     </div>
+                                    </client-only>
                                   </v-card-text>
                                 </v-card>
                               </v-tab-item>

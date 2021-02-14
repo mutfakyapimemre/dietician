@@ -386,14 +386,17 @@
 																			<option value="" selected="selected">
 																				İl Seçiniz.
 																			</option>
-																			<option
-																				v-bind:data-id="city.towns"
-																				v-bind:value="city.name"
-																				v-bind:key="index"
-																				v-for="(city, index) in country.cities"
-																			>
-																				{{ city.name }}
-																			</option>
+																			<client-only>
+																				<option
+																					v-bind:data-id="city.towns"
+																					v-bind:value="city.name"
+																					v-bind:key="index"
+																					v-for="(city,
+																					index) in country.cities"
+																				>
+																					{{ city.name }}
+																				</option>
+																			</client-only>
 																		</select>
 																		<select
 																			v-on:change="getTowns"
@@ -442,14 +445,16 @@
 																			>
 																				Önce İl Seçiniz.
 																			</option>
-																			<option
-																				v-bind:data-id="town.districts"
-																				v-bind:value="town.name"
-																				v-bind:key="index"
-																				v-for="(town, index) in country.towns"
-																			>
-																				{{ town.name }}
-																			</option>
+																			<client-only>
+																				<option
+																					v-bind:data-id="town.districts"
+																					v-bind:value="town.name"
+																					v-bind:key="index"
+																					v-for="(town, index) in country.towns"
+																				>
+																					{{ town.name }}
+																				</option>
+																			</client-only>
 																		</select>
 																		<select
 																			v-on:change="getDistricts"
@@ -509,16 +514,19 @@
 																			>
 																				Önce İlçe Seçiniz.
 																			</option>
-																			<option
-																				v-bind:data-id="district.neighborhoods"
-																				v-bind:value="district.name"
-																				v-bind:key="index"
-																				v-for="(
-																					district, index
-																				) in country.districts"
-																			>
-																				{{ district.name }}
-																			</option>
+																			<client-only>
+																				<option
+																					v-bind:data-id="
+																						district.neighborhoods
+																					"
+																					v-bind:value="district.name"
+																					v-bind:key="index"
+																					v-for="(district,
+																					index) in country.districts"
+																				>
+																					{{ district.name }}
+																				</option>
+																			</client-only>
 																		</select>
 																		<select
 																			v-on:change="getNeighborhoods"
@@ -577,15 +585,16 @@
 																			>
 																				Önce Semt Seçiniz.
 																			</option>
-																			<option
-																				v-bind:value="neighborhood.name"
-																				v-bind:key="index"
-																				v-for="(
-																					neighborhood, index
-																				) in country.neighborhoods"
-																			>
-																				{{ neighborhood.name }}
-																			</option>
+																			<client-only>
+																				<option
+																					v-bind:value="neighborhood.name"
+																					v-bind:key="index"
+																					v-for="(neighborhood,
+																					index) in country.neighborhoods"
+																				>
+																					{{ neighborhood.name }}
+																				</option>
+																			</client-only>
 																		</select>
 																		<select
 																			name="company_neighborhood"
@@ -689,7 +698,7 @@
 <script>
 	import {
 		ValidationObserver,
-		ValidationProvider,
+		ValidationProvider
 	} from "vee-validate/dist/vee-validate.full.esm";
 	import { mapGetters } from "vuex";
 
@@ -697,12 +706,12 @@
 		middleware: ["session-control", "auth"],
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		mounted() {
 			this.getCities();
 			let inputs = document.querySelectorAll(".v-file-input input");
-			[...inputs].forEach((input) => {
+			[...inputs].forEach(input => {
 				input.remove();
 			});
 		},
@@ -729,11 +738,11 @@
 				company_town: null,
 				company_neighborhood: null,
 				company_district: null,
-				company_address: null,
+				company_address: null
 			};
 		},
 		computed: {
-			...mapGetters(["isAuthenticated", "loggedInUser"]),
+			...mapGetters(["isAuthenticated", "loggedInUser"])
 		},
 		methods: {
 			isEmpty(obj) {
@@ -748,21 +757,21 @@
 			getCities() {
 				this.$axios
 					.get(process.env.apiBaseUrl + "informations/cities")
-					.then((response) => {
+					.then(response => {
 						this.country.cities =
 							response.data.data.cities.length > 0
 								? response.data.data.cities
 								: [];
 					});
 			},
-			getTowns: function (event) {
+			getTowns: function(event) {
 				if (event.target.options.selectedIndex > -1) {
 					const theTarget =
 						event.target.options[event.target.options.selectedIndex].dataset;
 					let townIds = theTarget.id;
 					this.$axios
 						.get(process.env.apiBaseUrl + "informations/towns?id=" + townIds)
-						.then((response) => {
+						.then(response => {
 							this.country.towns =
 								response.data.towns.length > 0 ? response.data.towns : [];
 							this.country.districts = [];
@@ -772,7 +781,7 @@
 						});
 				}
 			},
-			getDistricts: function (event) {
+			getDistricts: function(event) {
 				if (event.target.options.selectedIndex > -1) {
 					const theTarget =
 						event.target.options[event.target.options.selectedIndex].dataset;
@@ -781,7 +790,7 @@
 						.get(
 							process.env.apiBaseUrl + "informations/districts?id=" + districtIds
 						)
-						.then((response) => {
+						.then(response => {
 							this.country.districts =
 								response.data.districts.length > 0 ? response.data.districts : [];
 							this.country.neighborhoods = [];
@@ -789,7 +798,7 @@
 						});
 				}
 			},
-			getNeighborhoods: function (event) {
+			getNeighborhoods: function(event) {
 				if (event.target.options.selectedIndex > -1) {
 					const theTarget =
 						event.target.options[event.target.options.selectedIndex].dataset;
@@ -800,7 +809,7 @@
 								"informations/neighborhoods?id=" +
 								neighborhoodIds
 						)
-						.then((response) => {
+						.then(response => {
 							this.country.neighborhoods =
 								response.data.neighborhoods.length > 0
 									? response.data.neighborhoods
@@ -816,12 +825,12 @@
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
 				formData.append("isAdmin", this.isAdmin);
-				this.$store.dispatch("LoginUser", formData).then((response) => {
+				this.$store.dispatch("LoginUser", formData).then(response => {
 					if (response.success) {
 						this.$izitoast.success({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 						setTimeout(() => {
 							this.$router.go(decodeURIComponent("/profile"));
@@ -830,7 +839,7 @@
 						this.$izitoast.error({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 					}
 				});
@@ -843,12 +852,12 @@
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
 				formData.append("status", "dietician");
-				this.$store.dispatch("RegisterUser", formData).then((response) => {
+				this.$store.dispatch("RegisterUser", formData).then(response => {
 					if (response.success) {
 						this.$izitoast.success({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 						setTimeout(() => {
 							this.$router.go(decodeURIComponent("/dietician-login"));
@@ -857,11 +866,11 @@
 						this.$izitoast.error({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 					}
 				});
-			},
-		},
+			}
+		}
 	};
 </script>

@@ -35,15 +35,17 @@
 												class="doctor-img"
 												v-if="!isEmpty(data) && image.isCover === 1"
 											>
-												<img
-													v-bind:key="index"
-													v-for="(image, index) in images"
-													v-bind:src="
-														img_url + 'public/storage/' + image.img_url
-													"
-													class="img-fluid"
-													v-bind:alt="data.name"
-												/>
+												<client-only>
+													<img
+														v-bind:key="index"
+														v-for="(image, index) in images"
+														v-bind:src="
+															img_url + 'public/storage/' + image.img_url
+														"
+														class="img-fluid"
+														v-bind:alt="data.name"
+													/>
+												</client-only>
 											</div>
 											<div class="doc-info-cont">
 												<h4 class="doc-name">{{ data.name }}</h4>
@@ -83,26 +85,28 @@
 																class="form-control rounded-0"
 																v-if="
 																	!isEmpty(data) &&
-																	!isEmpty(values) &&
-																	!isEmpty(criterias)
+																		!isEmpty(values) &&
+																		!isEmpty(criterias)
 																"
 															>
 																<option v-bind:value="0" selected>
 																	Ölçüt Seçiniz
 																</option>
-																<option
-																	v-bind:key="index"
-																	v-bind:value="
-																		criteria.title +
-																		criteria.value +
-																		criteria.type
-																	"
-																	v-bind:data-type="criteria.type"
-																	v-bind:data-value="criteria.value"
-																	v-for="(criteria, index) in criterias"
-																>
-																	{{ criteria.title }}
-																</option>
+																<client-only>
+																	<option
+																		v-bind:key="index"
+																		v-bind:value="
+																			criteria.title +
+																				criteria.value +
+																				criteria.type
+																		"
+																		v-bind:data-type="criteria.type"
+																		v-bind:data-value="criteria.value"
+																		v-for="(criteria, index) in criterias"
+																	>
+																		{{ criteria.title }}
+																	</option>
+																</client-only>
 															</select>
 															<select
 																v-on:change="setCriteriaValue"
@@ -110,8 +114,8 @@
 																class="form-control rounded-0"
 																v-if="
 																	isEmpty(data) ||
-																	isEmpty(values) ||
-																	isEmpty(criterias)
+																		isEmpty(values) ||
+																		isEmpty(criterias)
 																"
 															>
 																<option v-bind:value="0" selected>
@@ -172,29 +176,33 @@
 																		<span class="time">Besin Değeri</span>
 																	</div>
 																</div>
-																<div
-																	v-bind:key="index"
-																	v-for="(value, index) in fordata"
-																	v-bind:class="
-																		' px-2 listing-day ' +
-																		(index % 2 === 0
-																			? 'bg-secondary text-white py-2'
-																			: '')
-																	"
-																>
-																	<div class="day">
-																		{{ value.title }} ({{ value.type }})
+																<client-only>
+																	<div
+																		v-bind:key="index"
+																		v-for="(value, index) in fordata"
+																		v-bind:class="
+																			' px-2 listing-day ' +
+																				(index % 2 === 0
+																					? 'bg-secondary text-white py-2'
+																					: '')
+																		"
+																	>
+																		<div class="day">
+																			{{ value.title }} ({{ value.type }})
+																		</div>
+																		<div class="time-items">
+																			<span
+																				v-bind:class="
+																					'time' +
+																						(index % 2 === 0
+																							? ' text-white '
+																							: '')
+																				"
+																				>{{ value.value }}</span
+																			>
+																		</div>
 																	</div>
-																	<div class="time-items">
-																		<span
-																			v-bind:class="
-																				'time' +
-																				(index % 2 === 0 ? ' text-white ' : '')
-																			"
-																			>{{ value.value }}</span
-																		>
-																	</div>
-																</div>
+																</client-only>
 															</div>
 														</div>
 													</div>
@@ -245,13 +253,13 @@
 	export default {
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		name: "index",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -263,7 +271,7 @@
 				else if (typeof obj == "boolean") return false;
 				else return !obj;
 			},
-			setCriteriaValue: function (event) {
+			setCriteriaValue: function(event) {
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				if (event.target.options.selectedIndex > -1) {
@@ -275,7 +283,7 @@
 
 				this.changeValue(event);
 			},
-			changeValue: function (event) {
+			changeValue: function(event) {
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				if (this.values.length > 0) {
@@ -295,7 +303,7 @@
 						}
 					}
 				}
-			},
+			}
 		},
 		data() {
 			return {
@@ -304,7 +312,7 @@
 				criteriaValue: 0,
 				value: null,
 				unit: 100,
-				type: null,
+				type: null
 			};
 		},
 		validate({ params }) {
@@ -320,6 +328,6 @@
 			} catch (e) {
 				error({ message: "Besin Bilgisi Bulunamadı.", statusCode: 404 });
 			}
-		},
+		}
 	};
 </script>

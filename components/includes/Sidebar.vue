@@ -6,8 +6,8 @@
 					<img
 						v-bind:src="
 							img_url +
-							'/public/storage/' +
-							(!isEmpty(userData.img_url) ? userData.img_url : null)
+								'/public/storage/' +
+								(!isEmpty(userData.img_url) ? userData.img_url : null)
 						"
 						class="img-fluid"
 						v-bind:alt="userData.name"
@@ -120,15 +120,15 @@
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		data() {
 			return {
-				userData: !isEmpty(Cookie.get("userData"))
+				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !isEmpty(this.$store.getters.loggedInUser)
+					: !this.isEmpty(this.$store.getters.loggedInUser)
 					? this.$store.getters.loggedInUser
-					: null,
+					: null
 			};
 		},
 		methods: {
@@ -146,12 +146,12 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
 				}, 2000);
-			},
-		},
+			}
+		}
 	};
 </script>

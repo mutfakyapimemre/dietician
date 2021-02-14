@@ -59,51 +59,56 @@
 							</h1>
 							<hr />
 							<div class="row row-grid" v-if="!isEmpty(nutrients)">
-								<div
-									v-bind:key="index"
-									v-for="(nutrient, index) in nutrients"
-									class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
-								>
-									<div class="profile-widget">
-										<div class="doc-img">
-											<nuxt-link v-bind:to="/calorie/ + nutrient.slug" tag="a">
-												<img
-													height="300"
-													v-bind:alt="nutrient.name"
-													v-bind:src="
-														img_url +
-														'public/storage/' +
-														(!isEmpty(nutrient.nutrients) &&
-														!isEmpty(nutrient.nutrients.img_url)
-															? nutrient.nutrients.img_url
-															: empty_url)
-													"
-												/>
-											</nuxt-link>
-										</div>
-										<div class="pro-content">
-											<h3 class="title">
+								<client-only>
+									<div
+										v-bind:key="index"
+										v-for="(nutrient, index) in nutrients"
+										class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
+									>
+										<div class="profile-widget">
+											<div class="doc-img">
 												<nuxt-link
 													v-bind:to="/calorie/ + nutrient.slug"
 													tag="a"
-													>{{ nutrient.name }}</nuxt-link
 												>
-											</h3>
-											<p class="speciality">{{ nutrient.description }}</p>
-
-											<div class="row row-sm">
-												<div class="col-12">
+													<img
+														height="300"
+														v-bind:alt="nutrient.name"
+														v-bind:src="
+															img_url +
+																'public/storage/' +
+																(!isEmpty(nutrient.nutrients) &&
+																!isEmpty(nutrient.nutrients.img_url)
+																	? nutrient.nutrients.img_url
+																	: empty_url)
+														"
+													/>
+												</nuxt-link>
+											</div>
+											<div class="pro-content">
+												<h3 class="title">
 													<nuxt-link
-														tag="a"
 														v-bind:to="/calorie/ + nutrient.slug"
-														class="btn btn-info-light rounded-0 view-btn"
-														>Besin Detayı</nuxt-link
+														tag="a"
+														>{{ nutrient.name }}</nuxt-link
 													>
+												</h3>
+												<p class="speciality">{{ nutrient.description }}</p>
+
+												<div class="row row-sm">
+													<div class="col-12">
+														<nuxt-link
+															tag="a"
+															v-bind:to="/calorie/ + nutrient.slug"
+															class="btn btn-info-light rounded-0 view-btn"
+															>Besin Detayı</nuxt-link
+														>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</client-only>
 							</div>
 							<div class="container">
 								<v-pagination
@@ -198,13 +203,13 @@
 	export default {
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		name: "index",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -224,9 +229,9 @@
 								"nutrients?page=" +
 								this.pagination.current +
 								"&search=" +
-								decodeURIComponent(this.search),
+								decodeURIComponent(this.search)
 						})
-						.then((response) => {
+						.then(response => {
 							this.empty_url = this.$store.getters.empty_url;
 							this.nutrients = this.$store.getters.nutrients.data;
 							this.pagination.current = this.$store.getters.nutrients.current_page;
@@ -236,7 +241,7 @@
 					if (param) {
 						this.$store
 							.dispatch("getNutrients", { nutrientsURL: param })
-							.then((response) => {
+							.then(response => {
 								this.empty_url = this.$store.getters.empty_url;
 								this.nutrients = this.$store.getters.nutrients.data;
 								this.pagination.current = this.$store.getters.nutrients.current_page;
@@ -245,9 +250,9 @@
 					} else {
 						this.$store
 							.dispatch("getNutrients", {
-								nutrientsURL: "nutrients?page=" + this.pagination.current,
+								nutrientsURL: "nutrients?page=" + this.pagination.current
 							})
-							.then((response) => {
+							.then(response => {
 								this.empty_url = this.$store.getters.empty_url;
 								this.nutrients = this.$store.getters.nutrients.data;
 								this.pagination.current = this.$store.getters.nutrients.current_page;
@@ -258,7 +263,7 @@
 			},
 			onPageChange() {
 				this.getNutrients();
-			},
+			}
 		},
 		data() {
 			return {
@@ -267,12 +272,12 @@
 				empty_url: null,
 				pagination: {
 					current: 1,
-					total: 1,
-				},
+					total: 1
+				}
 			};
 		},
 		mounted() {
 			this.getNutrients();
-		},
+		}
 	};
 </script>
