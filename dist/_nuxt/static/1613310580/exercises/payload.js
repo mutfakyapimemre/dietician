@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/exercises", (function(a){return {data:a,fetch:a,mutations:a}}(void 0)));

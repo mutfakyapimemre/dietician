@@ -98,25 +98,25 @@ export const actions = {
       }
       expiresIn = expiresIn = new Date().getTime() + 24 * 60 * 60
     } else {
-      if ((Cookie.get("userData") === null || Cookie.get("userData") === '' || Cookie.get("userData") === undefined) && (localStorage.getItem("userData") !== null && localStorage.getItem("userData") !== undefined && localStorage.getItem("userData") !== "")) {
+      if ((Cookie.get("userData") === null || Cookie.get("userData") === '' || Cookie.get("userData") === undefined)) {
         Cookie.remove("userData")
         Cookie.remove("isAdmin")
         Cookie.remove("expiresIn")
 
-        localStorage.removeItem("userData")
-        localStorage.removeItem("isAdmin")
-        localStorage.removeItem("expiresIn")
+        //localStorage.removeItem("userData")
+        //localStorage.removeItem("isAdmin")
+        //localStorage.removeItem("expiresIn")
 
         state.userData = {}
         state.isAdmin = null
       }
       // Client Üzerinde Calisiyoruz....
-      expiresIn = localStorage.getItem("expiresIn")
-      if (localStorage.getItem("userData") !== undefined && localStorage.getItem("userData") !== null && localStorage.getItem("userData") !== "") {
-        userData = JSON.parse(Base64.decode(localStorage.getItem("userData")))
-      } else {
+      //expiresIn = localStorage.getItem("expiresIn")
+      //if (localStorage.getItem("userData") !== undefined && localStorage.getItem("userData") !== null && localStorage.getItem("userData") !== "") {
+      //  userData = JSON.parse(Base64.decode(localStorage.getItem("userData")))
+      //} else {
         userData = {}
-      }
+     // }
     }
 
     if (new Date().getTime() > +expiresIn) {
