@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Sosyal Medya Ayarlarım

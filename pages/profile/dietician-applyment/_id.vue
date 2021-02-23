@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Diyetisyen Onayı
@@ -90,16 +90,16 @@
 		components: {
 			ValidationObserver,
 			ValidationProvider,
-			Sidebar,
+			Sidebar
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		mounted() {
 			let inputs = document.querySelectorAll(".v-file-input input");
-			[...inputs].forEach((input) => {
+			[...inputs].forEach(input => {
 				input.remove();
 			});
 		},
@@ -110,7 +110,7 @@
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
 					: !this.isEmpty(this.$store.getters.loggedInUser)
 					? this.$store.getters.loggedInUser
-					: null,
+					: null
 			};
 		},
 		async asyncData({ app, store, route, params, error, $axios }) {
@@ -148,7 +148,7 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
@@ -172,15 +172,15 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
-						},
+							Authorization: "Bearer " + this.userData.api_token
+						}
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							Cookie.set(
 								"userData",
@@ -197,11 +197,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

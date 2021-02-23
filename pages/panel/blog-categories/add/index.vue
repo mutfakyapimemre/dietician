@@ -9,7 +9,7 @@
 								<h3 class="page-title">Makale Kategorileri</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">
-										<nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
+										<nuxt-link to="/panel">Anasayfa</nuxt-link>
 									</li>
 									<li class="breadcrumb-item active">Makale Kategorileri</li>
 								</ul>
@@ -92,7 +92,7 @@
 		layout: "admin",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		data() {
 			return {
@@ -103,30 +103,30 @@
 						{
 							id: "criteriaValue0",
 							label: "Ölçüt Değeri",
-							value: "",
+							value: ""
 						},
 						{
 							id: "criteriaType0",
 							label: "Ölçüt Değeri Türü",
-							value: "",
-						},
-					],
+							value: ""
+						}
+					]
 				],
 				e1: 1,
 				inputData: {
 					name: null,
 					description: null,
-					id: null,
+					id: null
 				},
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -143,18 +143,18 @@
 					{
 						id: `criteria${++this.counter}`,
 						label: "Ölçüt Değeri Adı",
-						value: "",
+						value: ""
 					},
 					{
 						id: `criteriaValue${++this.counter}`,
 						label: "Ölçüt Değeri",
-						value: "",
+						value: ""
 					},
 					{
 						id: `criteriaType${++this.counter}`,
 						label: "Ölçüt Değeri Türü",
-						value: "",
-					},
+						value: ""
+					}
 				]);
 			},
 			removeProperty(id) {
@@ -181,16 +181,16 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.$refs.myDropzone.options.url =
 								process.env.apiBaseUrl +
@@ -211,11 +211,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

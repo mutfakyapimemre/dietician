@@ -9,7 +9,7 @@
 								<h3 class="page-title">Danışmanlarım</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">
-										<nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
+										<nuxt-link to="/panel">Anasayfa</nuxt-link>
 									</li>
 									<li class="breadcrumb-item active">Danışmanlarım</li>
 								</ul>
@@ -26,7 +26,6 @@
 									</h4>
 									<nuxt-link
 										to="/dietician-panel/consultants/new-consultant"
-										tag="a"
 										class="justify-content-end ml-auto btn btn-info-light my-auto py-auto"
 										><i class="fa fa-plus"></i> Yeni Danışman Kaydet</nuxt-link
 									>
@@ -142,26 +141,26 @@
 		layout: "dietician",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		data() {
 			return {
 				data: null,
 				rules: [
-					(value) => !!value || "Zorunludur.",
-					(value) =>
-						(value && value.length >= 3) || "Alanı Minimum 11 Karakter Olmalıdır",
+					value => !!value || "Zorunludur.",
+					value =>
+						(value && value.length >= 3) || "Alanı Minimum 11 Karakter Olmalıdır"
 				],
 				consultant: { tc: null, phone: null },
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -190,16 +189,16 @@
 							"Access-Control-Allow-Credentials": true,
 							"Content-Type":
 								"multipart/form-data; boundary=" + formData._boundary,
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.data = response.data.data;
 							setTimeout(() => {
@@ -211,11 +210,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

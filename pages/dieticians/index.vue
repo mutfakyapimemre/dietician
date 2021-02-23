@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Diyetisyenler
@@ -65,7 +65,7 @@
 								>
 									<div class="h-100 profile-widget mx-1">
 										<div class="doc-img">
-											<nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
+											<nuxt-link v-bind:to="'/profile/' + doctor.slug">
 												<img
 													class="img-fluid"
 													style="min-height: 273px"
@@ -80,11 +80,9 @@
 										</div>
 										<div class="pro-content h-100">
 											<h3 class="title">
-												<nuxt-link
-													tag="a"
-													v-bind:to="'/profile/' + doctor.slug"
-													>{{ doctor.name }}</nuxt-link
-												>
+												<nuxt-link v-bind:to="'/profile/' + doctor.slug">{{
+													doctor.name
+												}}</nuxt-link>
 												<i class="fa fa-check-circle verified"></i>
 											</h3>
 											<p class="speciality">

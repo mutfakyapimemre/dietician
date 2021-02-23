@@ -9,12 +9,10 @@
 								<h3 class="page-title">Yeni E-Diyet Oluştur</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">
-										<nuxt-link to="/dietician-panel" tag="a"
-											>Anasayfa</nuxt-link
-										>
+										<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
 									</li>
 									<li class="breadcrumb-item">
-										<nuxt-link to="/dietician-panel/consultants/" tag="a"
+										<nuxt-link to="/dietician-panel/consultants/"
 											>Danışmanlarım</nuxt-link
 										>
 									</li>
@@ -225,7 +223,7 @@
 		layout: "dietician",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		computed: {
 			img_url() {
@@ -255,7 +253,7 @@
 				if (this.likesAllFruit3) return "mdi-close-box";
 				if (this.likesSomeFruit3) return "mdi-minus-box";
 				return "mdi-checkbox-blank-outline";
-			},
+			}
 		},
 		data() {
 			return {
@@ -271,7 +269,7 @@
 				selectedMeals: [],
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		mounted() {
@@ -301,16 +299,16 @@
 								"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 							"Access-Control-Allow-Credentials": true,
 							"Content-type": "application/json",
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						this.allCriterias = response.data.data.criteria;
 						this.diseases = response.data.data.diseases;
 						this.meals = response.data.data.meals;
 					})
-					.catch((err) => console.log(err));
+					.catch(err => console.log(err));
 			},
 			toggle3() {
 				this.$nextTick(() => {
@@ -327,7 +325,7 @@
 			remove(item) {
 				const index = this.selectedDiseases.indexOf(item._id.$oid);
 				if (index >= 0) this.selectedDiseases.splice(index, 1);
-			},
-		},
+			}
+		}
 	};
 </script>

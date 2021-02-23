@@ -8,7 +8,7 @@
 							<h3 class="page-title">Danışman Düzenle</h3>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/dietician-panel" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active">Danışman Düzenle</li>
 							</ul>
@@ -605,7 +605,7 @@
 		layout: "dietician",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		data() {
 			return {
@@ -623,12 +623,12 @@
 					"EYLÜL",
 					"EKİM",
 					"KASIM",
-					"ARALIK",
+					"ARALIK"
 				],
 				siteSettings: this.$store.getters.siteSettings,
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		validate({ params }) {
@@ -637,7 +637,7 @@
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		async asyncData({ params, error, $axios }) {
 			try {
@@ -681,16 +681,16 @@
 								"Access-Control-Allow-Credentials": true,
 								"Content-Type":
 									"multipart/form-data; boundary=" + formData._boundary,
-								Authorization: "Bearer " + this.userData.api_token,
-							},
+								Authorization: "Bearer " + this.userData.api_token
+							}
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							setTimeout(() => {
 								this.$router.go(decodeURIComponent("/profile"));
@@ -699,11 +699,11 @@
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
-			},
-		},
+			}
+		}
 	};
 </script>

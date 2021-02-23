@@ -2,7 +2,7 @@
 	<div class="profile-sidebar">
 		<div class="widget-profile pro-widget-content">
 			<div class="profile-info-widget">
-				<nuxt-link to="/profile" tag="a" class="booking-doc-img">
+				<nuxt-link to="/profile" class="booking-doc-img">
 					<img
 						v-bind:src="
 							img_url +
@@ -28,72 +28,56 @@
 		<div class="dashboard-widget">
 			<nav class="dashboard-menu">
 				<ul>
-					<nuxt-link to="/profile" tag="li" exact-active-class="active">
+					<nuxt-link to="/profile" exact-active-class="active">
 						<a>
 							<i class="fa fa-user-cog"></i>
 							<span>Kayıt Bilgileri</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/diet-list" tag="li" active-class="active">
+					<nuxt-link to="/profile/diet-list" active-class="active">
 						<a>
 							<i class="fa fa-calendar-check"></i>
 							<span>Diyet Listesi</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/my-dietician" tag="li" active-class="active">
+					<nuxt-link to="/profile/my-dietician" active-class="active">
 						<a>
 							<i class="fa fa-user-md"></i>
 							<span>Diyetisyenim</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link
-						to="/profile/liked-foods-list"
-						tag="li"
-						active-class="active"
-					>
+					<nuxt-link to="/profile/liked-foods-list" active-class="active">
 						<a>
 							<i class="fa fa-drumstick-bite"></i>
 							<span>Sevdiğim Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link
-						to="/profile/unliked-foods-list"
-						tag="li"
-						active-class="active"
-					>
+					<nuxt-link to="/profile/unliked-foods-list" active-class="active">
 						<a>
 							<i class="fa fa-stroopwafel"></i>
 							<span>Sevmediğim Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link
-						to="/profile/allergen-foods-list"
-						tag="li"
-						active-class="active"
-					>
+					<nuxt-link to="/profile/allergen-foods-list" active-class="active">
 						<a>
 							<i class="fa fa-cloud-meatball"></i>
 							<span>Alerjen Olduğum Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/messages" tag="li" active-class="active">
+					<nuxt-link to="/profile/messages" active-class="active">
 						<a>
 							<i class="fa fa-comments"></i>
 							<span>Mesajlar</span>
 							<small class="unread-msg">23</small>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/social-media" tag="li" active-class="active">
+					<nuxt-link to="/profile/social-media" active-class="active">
 						<a>
 							<i class="fa fa-share-alt"></i>
 							<span>Sosyal Medya</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link
-						to="/profile/password-update"
-						tag="li"
-						active-class="active"
-					>
+					<nuxt-link to="/profile/password-update" active-class="active">
 						<a>
 							<i class="fa fa-lock"></i>
 							<span>Şifre Güncelle</span>

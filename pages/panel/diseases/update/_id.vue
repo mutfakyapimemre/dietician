@@ -9,7 +9,7 @@
 								<h3 class="page-title">Hastalık Düzenle</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">
-										<nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
+										<nuxt-link to="/panel">Anasayfa</nuxt-link>
 									</li>
 									<li class="breadcrumb-item active">Hastalık Düzenle</li>
 								</ul>

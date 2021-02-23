@@ -64,10 +64,7 @@
 								<p>Lorem Ipsum is simply dummy text</p>
 							</div>
 							<div class="about-content">
-								<nuxt-link
-									to="/dieticians"
-									tag="a"
-									class="btn rounded-0 btn-info-light"
+								<nuxt-link to="/dieticians" class="btn rounded-0 btn-info-light"
 									>Diyetisyenlerimiz</nuxt-link
 								>
 							</div>
@@ -81,7 +78,7 @@
 										class="h-100 profile-widget mx-1"
 									>
 										<div class="doc-img">
-											<nuxt-link tag="a" v-bind:to="'/profile/' + doctor.slug">
+											<nuxt-link v-bind:to="'/profile/' + doctor.slug">
 												<v-avatar size="273" tile>
 													<img
 														v-bind:alt="doctor.name"
@@ -98,11 +95,9 @@
 										</div>
 										<div class="pro-content h-100">
 											<h3 class="title">
-												<nuxt-link
-													tag="a"
-													v-bind:to="'/profile/' + doctor.slug"
-													>{{ doctor.name }}</nuxt-link
-												>
+												<nuxt-link v-bind:to="'/profile/' + doctor.slug">{{
+													doctor.name
+												}}</nuxt-link>
 												<i class="fa fa-check-circle verified"></i>
 											</h3>
 											<p class="speciality">
@@ -193,7 +188,7 @@
 						</div>
 					</div>
 					<div class="view-all text-center">
-						<nuxt-link to="/blogs" class="btn btn-info-light rounded-0" tag="a"
+						<nuxt-link to="/blogs" class="btn btn-info-light rounded-0"
 							>Tümünü Görüntüle</nuxt-link
 						>
 					</div>

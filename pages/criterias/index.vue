@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Ölçütler
@@ -69,10 +69,7 @@
 									<thead>
 										<tr>
 											<th colspan="2" class="text-center">
-												<nuxt-link
-													v-bind:to="'calorie/' + criteria.slug"
-													tag="a"
-												>
+												<nuxt-link v-bind:to="'calorie/' + criteria.slug">
 													{{ criteria.name }}
 												</nuxt-link>
 											</th>

@@ -6,21 +6,15 @@
 					<li class="menu-title">
 						<span>Modüller</span>
 					</li>
-					<nuxt-link to="/dietician-panel" tag="li" exact-active-class="active"
-						><a><i class="fa fa-home"></i> <span>Anasayfa</span></a></nuxt-link
+					<nuxt-link to="/dietician-panel" exact-active-class="active"
+						><i class="fa fa-home"></i> <span>Anasayfa</span></nuxt-link
 					>
-					<nuxt-link
-						to="/dietician-panel/consultants"
-						tag="li"
-						active-class="active"
+					<nuxt-link to="/dietician-panel/consultants" active-class="active"
 						><a
 							><i class="fa fa-users"></i> <span>Danışmanlarım</span></a
 						></nuxt-link
 					>
-					<nuxt-link
-						to="/dietician-panel/recipes"
-						tag="li"
-						active-class="active"
+					<nuxt-link to="/dietician-panel/recipes" active-class="active"
 						><a
 							><i class="fa fa-utensils"></i> <span>Yemek Tarifleri</span></a
 						></nuxt-link
@@ -33,15 +27,11 @@
 						<ul style="display: none">
 							<nuxt-link
 								to="/dietician-panel/blog-categories"
-								tag="li"
 								active-class="active"
-								><a>Kategoriler</a></nuxt-link
+								>Kategoriler</nuxt-link
 							>
-							<nuxt-link
-								to="/dietician-panel/blogs"
-								tag="li"
-								active-class="active"
-								><a>Makaleler</a></nuxt-link
+							<nuxt-link to="/dietician-panel/blogs" active-class="active"
+								>Makaleler</nuxt-link
 							>
 						</ul>
 					</li>
@@ -53,6 +43,6 @@
 
 <script>
 	export default {
-		layout: "dietician",
+		layout: "dietician"
 	};
 </script>

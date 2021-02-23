@@ -9,7 +9,7 @@
 								<h3 class="page-title">Diyetisyenler</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">
-										<nuxt-link to="/panel" tag="a">Anasayfa</nuxt-link>
+										<nuxt-link to="/panel">Anasayfa</nuxt-link>
 									</li>
 									<li class="breadcrumb-item active">Diyetisyenler</li>
 								</ul>
@@ -32,7 +32,6 @@
 							<span class="justify-content-end flex-shrink-1">
 								<nuxt-link
 									to="/panel/dieticians/add"
-									tag="a"
 									class="float-right btn btn-info-light ml-3 my-auto py-auto"
 								>
 									<i class="fa fa-plus"></i> Ekle
@@ -104,12 +103,12 @@
 		layout: "admin",
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		data() {
 			return {
@@ -126,8 +125,8 @@
 						text: "İşlemler",
 						align: "center",
 						value: "actions",
-						sortable: false,
-					},
+						sortable: false
+					}
 				],
 				page: 1,
 				totalPages: 0,
@@ -136,7 +135,7 @@
 				loading: false,
 				userData: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: null,
+					: null
 			};
 		},
 		methods: {
@@ -181,17 +180,17 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						this.data = response.data.data.data.map(this.getDisplayData);
 
 						this.totalPages = response.data.data.last_page;
 					})
-					.catch((err) => console.log(err))
+					.catch(err => console.log(err))
 					.finally(() => (this.loading = false));
 			},
 			handlePageChange(value) {
@@ -223,23 +222,23 @@
 								"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 							"Access-Control-Allow-Credentials": true,
 							"Content-type": "application/json",
-							Authorization: "Bearer " + this.userData.api_token,
+							Authorization: "Bearer " + this.userData.api_token
 						},
-						credentials: "same-origin",
+						credentials: "same-origin"
 					})
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.refreshList();
 						} else {
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
@@ -262,24 +261,24 @@
 									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
 								"Access-Control-Allow-Credentials": true,
 								"Content-type": "application/json",
-								Authorization: "Bearer " + this.userData.api_token,
+								Authorization: "Bearer " + this.userData.api_token
 							},
-							credentials: "same-origin",
+							credentials: "same-origin"
 						}
 					)
-					.then((response) => {
+					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 							this.refreshList();
 						} else {
 							this.$izitoast.error({
 								title: response.data.title,
 								message: response.data.msg,
-								position: "topCenter",
+								position: "topCenter"
 							});
 						}
 					});
@@ -292,12 +291,12 @@
 					email: data.email,
 					phone: data.phone,
 					img_url: this.img_url + "public/storage/" + data.profile_photo,
-					isActive: data.isActive,
+					isActive: data.isActive
 				};
-			},
+			}
 		},
 		mounted() {
 			this.retrieveData();
-		},
+		}
 	};
 </script>

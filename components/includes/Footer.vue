@@ -130,8 +130,8 @@
 							<div class="copyright-text py-auto my-auto">
 								<p class="mb-0 py-auto my-auto">
 									&copy; 2020
-									<nuxt-link to="/" tag="a">Diyetisyen Klinik</nuxt-link>. Tüm
-									Hakları Saklıdır.
+									<nuxt-link to="/">Diyetisyen Klinik</nuxt-link>. Tüm Hakları
+									Saklıdır.
 								</p>
 							</div>
 						</div>

@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/" >Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Kullanıcı Girişi
@@ -69,7 +69,7 @@
 													<small class="font-weight-normal"
 														>Kullanıcı Girişi</small
 													>
-													<nuxt-link to="/dietician-login" tag="a"
+													<nuxt-link to="/dietician-login" 
 														>Diyetisyen Misiniz? Hemen Giriş Yapın</nuxt-link
 													>
 												</h3>
@@ -119,7 +119,7 @@
 													<div class="text-right">
 														<nuxt-link
 															to="/forgot-password"
-															tag="a"
+															
 															class="forgot-link"
 															>Şifremi Unuttum.</nuxt-link
 														>
@@ -145,7 +145,7 @@
 													<small class="font-weight-normal"
 														>Kullanıcı Kaydı</small
 													>
-													<nuxt-link to="/dietician-login" tag="a"
+													<nuxt-link to="/dietician-login" 
 														>Diyetisyen Misiniz? Hemen Kayıt Olun</nuxt-link
 													>
 												</h3>
@@ -266,16 +266,13 @@
 	</v-app>
 </template>
 <script>
-	import {
-		ValidationObserver,
-		ValidationProvider,
-	} from "vee-validate/dist/vee-validate.full.esm";
+	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import { mapGetters } from "vuex";
 	export default {
 		middleware: ["session-control", "auth"],
 		components: {
 			ValidationObserver,
-			ValidationProvider,
+			ValidationProvider
 		},
 		data() {
 			return {
@@ -285,11 +282,11 @@
 				password: null,
 				password_confirmation: null,
 				name: null,
-				phone: null,
+				phone: null
 			};
 		},
 		computed: {
-			...mapGetters(["isAuthenticated", "loggedInUser"]),
+			...mapGetters(["isAuthenticated", "loggedInUser"])
 		},
 		methods: {
 			isEmpty(obj) {
@@ -308,14 +305,14 @@
 				let formData = new FormData(this.$refs.userLogin);
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
-				this.$store.dispatch("LoginUser", formData).then((response) => {
+				this.$store.dispatch("LoginUser", formData).then(response => {
 					if (response.success) {
 						this.$izitoast.success({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
-						setTimeout((event) => {
+						setTimeout(event => {
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);
 							} else {
@@ -326,7 +323,7 @@
 						this.$izitoast.error({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 					}
 				});
@@ -338,22 +335,22 @@
 				let formData = new FormData(this.$refs.userRegister);
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
-				this.$store.dispatch("RegisterUser", formData).then((response) => {
+				this.$store.dispatch("RegisterUser", formData).then(response => {
 					if (response.success) {
 						this.$izitoast.success({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 					} else {
 						this.$izitoast.error({
 							title: response.title,
 							message: response.msg,
-							position: "topCenter",
+							position: "topCenter"
 						});
 					}
 				});
-			},
-		},
+			}
+		}
 	};
 </script>

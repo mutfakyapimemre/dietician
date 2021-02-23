@@ -8,7 +8,7 @@
 							<h3 class="page-title">Yeni Danışman Kaydet</h3>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/dietician-panel" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active">Yeni Danışman Kaydet</li>
 							</ul>

@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/" >Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Diyetisyen Girişi
@@ -69,7 +69,7 @@
 													<small class="font-weight-normal"
 														>Diyetisyen Girişi</small
 													>
-													<nuxt-link to="/login" tag="a"
+													<nuxt-link to="/login" 
 														>Kullanıcı Mısınız? Hemen Giriş Yapın</nuxt-link
 													>
 												</h3>
@@ -119,7 +119,7 @@
 													<div class="text-right">
 														<nuxt-link
 															to="/forgot-password"
-															tag="a"
+															
 															class="forgot-link"
 															>Şifremi Unuttum.</nuxt-link
 														>
@@ -145,7 +145,7 @@
 													<small class="font-weight-normal"
 														>Diyetisyen Kaydı</small
 													>
-													<nuxt-link to="/login" tag="a"
+													<nuxt-link to="/login" 
 														>Kullanıcı Mısınız? Hemen Kayıt Olun</nuxt-link
 													>
 												</h3>
@@ -696,10 +696,7 @@
 	</v-app>
 </template>
 <script>
-	import {
-		ValidationObserver,
-		ValidationProvider
-	} from "vee-validate/dist/vee-validate.full.esm";
+	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import { mapGetters } from "vuex";
 
 	export default {

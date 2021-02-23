@@ -7,12 +7,10 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item">
-									<nuxt-link to="/recipe-categories" tag="a"
-										>Yemek Tarifleri</nuxt-link
-									>
+									<nuxt-link to="/recipe-categories">Yemek Tarifleri</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									{{ categories.name }}
@@ -129,7 +127,6 @@
 													>
 														<nuxt-link
 															v-bind:to="'/recipe/' + recipe.slug"
-															tag="a"
 															class="btn-link font-weight-bold my-auto text-decoration-none h3 w-100"
 															>{{ recipe.name }}</nuxt-link
 														>

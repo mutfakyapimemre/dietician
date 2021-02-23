@@ -9,13 +9,13 @@
 						<span></span>
 					</span>
 				</a>
-				<nuxt-link to="/" tag="a" class="navbar-brand logo"
+				<nuxt-link to="/" class="navbar-brand logo"
 					><img src="/img/logo.png" class="img-fluid" alt="Logo" />
 				</nuxt-link>
 			</div>
 			<div class="main-menu-wrapper">
 				<div class="menu-header">
-					<nuxt-link to="/" tag="a" class="menu-logo"
+					<nuxt-link to="/" class="menu-logo"
 						><img src="/img/logo.png" class="img-fluid" alt="Logo" />
 					</nuxt-link>
 					<a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -24,24 +24,22 @@
 				</div>
 				<ul class="main-nav">
 					<li>
-						<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+						<nuxt-link to="/">Anasayfa</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/dieticians" tag="a">Diyetisyenler</nuxt-link>
+						<nuxt-link to="/dieticians">Diyetisyenler</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/calorie" tag="a">Kaç Kalori?</nuxt-link>
+						<nuxt-link to="/calorie">Kaç Kalori?</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/recipe-categories" tag="a"
-							>Yemek Tarifleri</nuxt-link
-						>
+						<nuxt-link to="/recipe-categories">Yemek Tarifleri</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/criterias" tag="a">Ölçütler</nuxt-link>
+						<nuxt-link to="/criterias">Ölçütler</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/exercises" tag="a">Egzersiz</nuxt-link>
+						<nuxt-link to="/exercises">Egzersiz</nuxt-link>
 					</li>
 				</ul>
 			</div>
@@ -58,34 +56,30 @@
 						<img
 							v-bind:src="
 								img_url +
-								'/public/storage/' +
-								(userData.status === 'dietician'
-									? userData.profile_photo
-									: userData.img_url)
+									'/public/storage/' +
+									(userData.status === 'dietician'
+										? userData.profile_photo
+										: userData.img_url)
 							"
 							width="55"
 							height="55"
 							class="rounded-circle my-auto py-auto"
-							v-bind:alt="userData.name" />
+							v-bind:alt="userData.name"/>
 						<span class="my-auto py-auto">{{ userData.name }}</span>
 						<i class="fa fa-chevron-down"></i
 					></a>
 					<ul class="submenu">
 						<li>
-							<nuxt-link to="/profile" tag="a" class="nav-link"
-								>Profil</nuxt-link
-							>
+							<nuxt-link to="/profile" class="nav-link">Profil</nuxt-link>
 						</li>
 						<li
 							v-if="
 								!isEmpty(userData) &&
-								isAuthenticated &&
-								userData.status === 'dietician'
+									isAuthenticated &&
+									userData.status === 'dietician'
 							"
 						>
-							<nuxt-link to="/dietician-panel" tag="a"
-								>Diyetisyen Paneli</nuxt-link
-							>
+							<nuxt-link to="/dietician-panel">Diyetisyen Paneli</nuxt-link>
 						</li>
 						<li>
 							<a href="javascript:void(0)" @click.prevent="logout">Çıkış Yap</a>
@@ -95,7 +89,7 @@
 			</ul>
 			<ul class="nav header-navbar-rht" v-else>
 				<li>
-					<nuxt-link to="/login" class="nav-link header-login" tag="a"
+					<nuxt-link to="/login" class="nav-link header-login"
 						>Giriş Yap / Kayıt Ol</nuxt-link
 					>
 				</li>
@@ -112,7 +106,7 @@
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -129,12 +123,12 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
 				}, 2000);
-			},
+			}
 		},
 		data() {
 			return {
@@ -144,8 +138,8 @@
 				isAuthenticated: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
 					: null,
-				siteSettings: this.$store.getters.siteSettings,
+				siteSettings: this.$store.getters.siteSettings
 			};
-		},
+		}
 	};
 </script>

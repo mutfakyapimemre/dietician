@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/" custom>Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Kaç Kalori?
@@ -69,7 +69,7 @@
 											<div class="doc-img">
 												<nuxt-link
 													v-bind:to="/calorie/ + nutrient.slug"
-													tag="a"
+													
 												>
 													<img
 														height="300"
@@ -89,7 +89,7 @@
 												<h3 class="title">
 													<nuxt-link
 														v-bind:to="/calorie/ + nutrient.slug"
-														tag="a"
+														
 														>{{ nutrient.name }}</nuxt-link
 													>
 												</h3>
@@ -98,7 +98,7 @@
 												<div class="row row-sm">
 													<div class="col-12">
 														<nuxt-link
-															tag="a"
+															
 															v-bind:to="/calorie/ + nutrient.slug"
 															class="btn btn-info-light rounded-0 view-btn"
 															>Besin Detayı</nuxt-link

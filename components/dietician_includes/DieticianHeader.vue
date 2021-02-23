@@ -1,10 +1,10 @@
 <template>
 	<div class="header">
 		<div class="header-left">
-			<nuxt-link to="/" tag="a">
+			<nuxt-link to="/">
 				<img src="/img/logo.png" class="logo" alt="Diyetisyen Klinik" />
 			</nuxt-link>
-			<nuxt-link to="/" tag="a" class="logo logo-small">
+			<nuxt-link to="/" class="logo logo-small">
 				<img
 					src="/img/favicon.png"
 					alt="Diyetisyen Klinik"
@@ -125,7 +125,7 @@
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
+			}
 		},
 		methods: {
 			isEmpty(obj) {
@@ -142,12 +142,12 @@
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
-					position: "topCenter",
+					position: "topCenter"
 				});
 				setTimeout(() => {
 					this.$router.go(decodeURIComponent("/"));
 				}, 2000);
-			},
+			}
 		},
 		data() {
 			return {
@@ -159,8 +159,8 @@
 				isAuthenticated: !this.isEmpty(Cookie.get("userData"))
 					? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
 					: null,
-				siteSettings: this.$store.getters.siteSettings,
+				siteSettings: this.$store.getters.siteSettings
 			};
-		},
+		}
 	};
 </script>

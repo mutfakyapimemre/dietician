@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" tag="a">Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Yemek Tarifi Türleri
@@ -68,7 +68,6 @@
 											<div class="doc-img">
 												<nuxt-link
 													v-bind:to="/recipe-categories/ + recipeCategory.slug"
-													tag="a"
 												>
 													<img
 														height="300"
@@ -87,7 +86,6 @@
 														v-bind:to="
 															/recipe-categories/ + recipeCategory.slug
 														"
-														tag="a"
 														>{{ recipeCategory.name }}</nuxt-link
 													>
 												</h3>
@@ -98,7 +96,6 @@
 												<div class="row row-sm">
 													<div class="col-12">
 														<nuxt-link
-															tag="a"
 															v-bind:to="
 																/recipe-categories/ + recipeCategory.slug
 															"
