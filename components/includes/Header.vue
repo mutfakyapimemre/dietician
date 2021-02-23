@@ -43,57 +43,61 @@
 					</li>
 				</ul>
 			</div>
-			<ul
-				class="nav main-nav header-navbar-rht"
-				v-if="!isEmpty(userData) && isAuthenticated"
-			>
-				<li class="has-submenu nav-item my-auto py-auto">
-					<a
-						href="javascript:void(0)"
-						class="my-auto py-auto"
-						v-if="userData !== null"
-					>
-						<img
-							v-bind:src="
-								img_url +
-									'/public/storage/' +
-									(userData.status === 'dietician'
-										? userData.profile_photo
-										: userData.img_url)
-							"
-							width="55"
-							height="55"
-							class="rounded-circle my-auto py-auto"
-							v-bind:alt="userData.name"/>
-						<span class="my-auto py-auto">{{ userData.name }}</span>
-						<i class="fa fa-chevron-down"></i
-					></a>
-					<ul class="submenu">
-						<li>
-							<nuxt-link to="/profile" class="nav-link">Profil</nuxt-link>
-						</li>
-						<li
-							v-if="
-								!isEmpty(userData) &&
-									isAuthenticated &&
-									userData.status === 'dietician'
-							"
+			<client-only>
+				<ul
+					class="nav main-nav header-navbar-rht"
+					v-if="!isEmpty(userData) && isAuthenticated"
+				>
+					<li class="has-submenu nav-item my-auto py-auto">
+						<a
+							href="javascript:void(0)"
+							class="my-auto py-auto"
+							v-if="!isEmpty(userData)"
 						>
-							<nuxt-link to="/dietician-panel">Diyetisyen Paneli</nuxt-link>
-						</li>
-						<li>
-							<a href="javascript:void(0)" @click.prevent="logout">Çıkış Yap</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<ul class="nav header-navbar-rht" v-else>
-				<li>
-					<nuxt-link to="/login" class="nav-link header-login"
-						>Giriş Yap / Kayıt Ol</nuxt-link
-					>
-				</li>
-			</ul>
+							<img
+								v-bind:src="
+									img_url +
+										'/public/storage/' +
+										(userData.status === 'dietician'
+											? userData.profile_photo
+											: userData.img_url)
+								"
+								width="55"
+								height="55"
+								class="rounded-circle my-auto py-auto"
+								v-bind:alt="userData.name"/>
+							<span class="my-auto py-auto">{{ userData.name }}</span>
+							<i class="fa fa-chevron-down"></i
+						></a>
+						<ul class="submenu">
+							<li>
+								<nuxt-link to="/profile" class="nav-link">Profil</nuxt-link>
+							</li>
+							<li
+								v-if="
+									!isEmpty(userData) &&
+										isAuthenticated &&
+										userData.status === 'dietician'
+								"
+							>
+								<nuxt-link to="/dietician-panel">Diyetisyen Paneli</nuxt-link>
+							</li>
+							<li>
+								<a href="javascript:void(0)" @click.prevent="logout"
+									>Çıkış Yap</a
+								>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav header-navbar-rht" v-else>
+					<li>
+						<nuxt-link to="/login" class="nav-link header-login"
+							>Giriş Yap / Kayıt Ol</nuxt-link
+						>
+					</li>
+				</ul>
+			</client-only>
 		</nav>
 	</div>
 </template>

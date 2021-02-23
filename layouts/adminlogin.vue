@@ -5,7 +5,6 @@
 </template>
 
 <script>
-	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	export default {
 		head() {
 			return {
@@ -184,10 +183,6 @@
 					{ src: "/js/admin_script.js", ssr: false }
 				]
 			};
-		},
-		components: {
-			ValidationObserver,
-			ValidationProvider
 		}
 	};
 </script>

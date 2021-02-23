@@ -8,7 +8,6 @@
 </template>
 
 <script>
-	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Header from "@/components/dietician_includes/DieticianHeader";
 	import Sidebar from "@/components/dietician_includes/DieticianSidebar";
 
@@ -192,9 +191,7 @@
 		},
 		components: {
 			Header,
-			Sidebar,
-			ValidationObserver,
-			ValidationProvider
+			Sidebar
 		}
 	};
 </script>

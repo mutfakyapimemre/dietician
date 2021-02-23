@@ -94,7 +94,7 @@
 								v-bind:alt="userData.name"
 							/>
 						</div>
-						<div class="user-text" v-if="userData !== null">
+						<div class="user-text" v-if="!isEmpty(userData)">
 							<h6>
 								<span>{{ userData.name }}</span>
 							</h6>
@@ -102,7 +102,7 @@
 						</div>
 					</div>
 					<nuxt-link
-						v-show="userData !== null && userData._id !== null"
+						v-if="!isEmpty(userData) && !isEmpty(userData._id)"
 						class="dropdown-item"
 						to="/profile"
 						>Profilim</nuxt-link

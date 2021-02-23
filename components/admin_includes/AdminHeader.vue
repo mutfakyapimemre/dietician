@@ -95,13 +95,13 @@
 						</div>
 						<div class="user-text">
 							<h6>
-								<span v-show="userData !== null">{{ userData.name }}</span>
+								<span v-if="!isEmpty(userData)">{{ userData.name }}</span>
 							</h6>
 							<p class="text-muted mb-0">Administrator</p>
 						</div>
 					</div>
 					<nuxt-link
-						v-show="userData !== null && userData._id !== null"
+						v-if="!isEmpty(userData) && !isEmpty(userData._id)"
 						class="dropdown-item"
 						to="/profile"
 						>Profilim</nuxt-link

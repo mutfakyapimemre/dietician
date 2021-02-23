@@ -26,14 +26,14 @@
 						</h5>
 
 						<h5 class="mb-2 font-weight-bold">Klinik'ten Görüntüler</h5>
-						<ul
-							class="clinic-gallery text-center justify-content-center px-0"
-							v-if="
-								!isEmpty(userData.clinic_photos) &&
-									userData.clinic_photos.length > 0
-							"
-						>
-							<client-only>
+						<client-only>
+							<ul
+								class="clinic-gallery text-center justify-content-center px-0"
+								v-if="
+									!isEmpty(userData.clinic_photos) &&
+										userData.clinic_photos.length > 0
+								"
+							>
 								<li
 									v-bind:key="index"
 									v-for="(item, index) in userData.clinic_photos"
@@ -50,8 +50,8 @@
 										/>
 									</a>
 								</li>
-							</client-only>
-						</ul>
+							</ul>
+						</client-only>
 					</div>
 				</div>
 			</div>
