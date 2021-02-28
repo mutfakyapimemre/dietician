@@ -8,8 +8,8 @@
 </template>
 
 <script>
-	import Header from "@/components/dietician_includes/DieticianHeader";
-	import Sidebar from "@/components/dietician_includes/DieticianSidebar";
+	import Header from "~/components/dietician_includes/DieticianHeader";
+	import Sidebar from "~/components/dietician_includes/DieticianSidebar";
 
 	export default {
 		head() {

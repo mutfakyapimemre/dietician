@@ -131,8 +131,6 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
 	export default {
 		computed: {
 			base_img_url() {

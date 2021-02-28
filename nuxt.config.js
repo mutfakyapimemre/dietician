@@ -77,6 +77,7 @@ export default {
   buildModules: [
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
   /*
    ** Nuxt.js modules
@@ -95,28 +96,123 @@ export default {
     splitChunks: {
       layouts: true
     },
-    filenames: {
-      app: ( {
-        isDev
-      } ) => isDev ? '[name].js' : '[contenthash].js',
-      chunk: ( {
-        isDev
-      } ) => isDev ? '[name].js' : '[contenthash].js',
-      css: ( {
-        isDev
-      } ) => isDev ? '[name].css' : '[contenthash].css',
-      img: ( {
-        isDev
-      } ) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
-      font: ( {
-        isDev
-      } ) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
-      video: ( {
-        isDev
-      } ) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
-    },
     extend( config, ctx ) {
       config.resolve.symlinks = false
+    }
+  },
+  auth: {
+    strategies: {
+      user: {
+        scheme: 'refresh',
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        refreshToken: {
+          property: 'token',
+          data: 'token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        endpoints: {
+          login: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/login',
+            method: 'post'
+          },
+          refresh: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/login',
+            method: 'post'
+          },
+          logout: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/logout',
+            method: 'post'
+          },
+          user: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
+            method: 'get',
+            propertyName: false,
+            property: false,
+            autoFetch: true
+          }
+        },
+        autoLogout: true
+      },
+      dietician: {
+        scheme: 'refresh',
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        refreshToken: {
+          property: 'token',
+          data: 'token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        endpoints: {
+          login: {
+            url: 'https://api.klinikdiyetisyen.com/api/dietician/login',
+            method: 'post'
+          },
+          refresh: {
+            url: 'https://api.klinikdiyetisyen.com/api/dietician/login',
+            method: 'post'
+          },
+          logout: {
+            url: 'https://api.klinikdiyetisyen.com/api/dietician/logout',
+            method: 'post'
+          },
+          user: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
+            method: 'get',
+            property: false,
+            propertName: false,
+            autoFetch: true
+          }
+        },
+        autoLogout: true
+      },
+      admin: {
+        scheme: 'refresh',
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        refreshToken: {
+          property: 'token',
+          data: 'token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        endpoints: {
+          login: {
+            url: 'https://api.klinikdiyetisyen.com/api/panel/login',
+            method: 'post'
+          },
+          refresh: {
+            url: 'https://api.klinikdiyetisyen.com/api/panel/login',
+            method: 'post'
+          },
+          logout: {
+            url: 'https://api.klinikdiyetisyen.com/api/panel/logout',
+            method: 'post'
+          },
+          user: {
+            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
+            method: 'get',
+            property: false,
+            propertName: false,
+            autoFetch: true
+          }
+        },
+        autoLogout: true
+      }
     }
   },
   hooks: {

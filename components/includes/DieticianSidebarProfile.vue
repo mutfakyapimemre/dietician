@@ -59,44 +59,52 @@
 		<div class="dashboard-widget">
 			<nav class="dashboard-menu">
 				<ul>
-					<nuxt-link to="/profile" exact-active-class="active">
+					<nuxt-link to="/profile" tag="li" exact-active-class="active">
 						<a>
 							<i class="fa fa-user-cog"></i>
 							<span>Kayıt Bilgileri</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/patient-list" active-class="active">
+					<nuxt-link to="/profile/patient-list" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-calendar-check"></i>
 							<span>Hasta Listesi</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/news-list" active-class="active">
+					<nuxt-link to="/profile/news-list" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-newspaper"></i>
 							<span>Haberler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/food-recipes-list" active-class="active">
+					<nuxt-link
+						to="/profile/food-recipes-list"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-utensils"></i>
 							<span>Yemek Tarifleri</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/messages" active-class="active">
+					<nuxt-link to="/profile/messages" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-comments"></i>
 							<span>Mesajlar</span>
 							<small class="unread-msg">23</small>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/social-media" active-class="active">
+					<nuxt-link to="/profile/social-media" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-share-alt"></i>
 							<span>Sosyal Medya</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/password-update" active-class="active">
+					<nuxt-link
+						to="/profile/password-update"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-lock"></i>
 							<span>Şifre Güncelle</span>
@@ -115,10 +123,8 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
 	export default {
-		middleware: ["session-control", "guest"],
+		middleware: ["guest2"],
 		layout: "default",
 		computed: {
 			img_url() {
@@ -128,10 +134,8 @@
 		data() {
 			return {
 				data: {},
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !this.isEmpty(this.$store.getters.loggedInUser)
-					? this.$store.getters.loggedInUser
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},
@@ -146,7 +150,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",

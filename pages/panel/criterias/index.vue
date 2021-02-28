@@ -52,12 +52,12 @@
 										v-model="item.isActive"
 										color="success"
 										:key="item.id"
-										@click="isActiveSetter(item.id)"
+										@click="isActiveSetter(item.id.$oid)"
 									></v-switch>
 								</v-layout>
 							</template>
 							<template v-slot:[`item.actions`]="{ item }">
-								<v-icon small class="mr-2" @click="editData(item.id)">
+								<v-icon small class="mr-2" @click="editData(item.id.$oid)">
 									mdi-pencil
 								</v-icon>
 								<v-icon small @click="deleteData(item.id)"> mdi-delete </v-icon>
@@ -91,12 +91,9 @@
 	</v-app>
 </template>
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	export default {
-		middleware: ["session-control", "admin"],
+		middleware: ["admin"],
 		layout: "admin",
 		components: {
 			ValidationObserver,
@@ -127,8 +124,8 @@
 				pageSize: 25,
 				pageSizes: [25, 50, 100, 200, 500, 1000],
 				loading: false,
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},

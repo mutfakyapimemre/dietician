@@ -8,8 +8,8 @@
 </template>
 
 <script>
-	import AdminHeader from "@/components/admin_includes/AdminHeader";
-	import AdminSidebar from "@/components/admin_includes/AdminSidebar";
+	import AdminHeader from "~/components/admin_includes/AdminHeader";
+	import AdminSidebar from "~/components/admin_includes/AdminSidebar";
 	export default {
 		head() {
 			return {

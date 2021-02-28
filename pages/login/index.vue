@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" >Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Kullanıcı Girişi
@@ -69,7 +69,7 @@
 													<small class="font-weight-normal"
 														>Kullanıcı Girişi</small
 													>
-													<nuxt-link to="/dietician-login" 
+													<nuxt-link to="/dietician-login"
 														>Diyetisyen Misiniz? Hemen Giriş Yapın</nuxt-link
 													>
 												</h3>
@@ -117,10 +117,7 @@
 														</ValidationProvider>
 													</div>
 													<div class="text-right">
-														<nuxt-link
-															to="/forgot-password"
-															
-															class="forgot-link"
+														<nuxt-link to="/forgot-password" class="forgot-link"
 															>Şifremi Unuttum.</nuxt-link
 														>
 													</div>
@@ -145,7 +142,7 @@
 													<small class="font-weight-normal"
 														>Kullanıcı Kaydı</small
 													>
-													<nuxt-link to="/dietician-login" 
+													<nuxt-link to="/dietician-login"
 														>Diyetisyen Misiniz? Hemen Kayıt Olun</nuxt-link
 													>
 												</h3>
@@ -267,9 +264,8 @@
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
-	import { mapGetters } from "vuex";
 	export default {
-		middleware: ["session-control", "auth"],
+		middleware: ["auth2"],
 		components: {
 			ValidationObserver,
 			ValidationProvider
@@ -285,9 +281,6 @@
 				phone: null
 			};
 		},
-		computed: {
-			...mapGetters(["isAuthenticated", "loggedInUser"])
-		},
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;
@@ -301,17 +294,26 @@
 			/**
 			 * User Login Method
 			 */
-			onLogin() {
+			async onLogin() {
 				let formData = new FormData(this.$refs.userLogin);
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
-				this.$store.dispatch("LoginUser", formData).then(response => {
-					if (response.success) {
+				try {
+					let response = await this.$auth.loginWith("user", {
+						data: formData
+					});
+					if (response.data.success) {
 						this.$izitoast.success({
-							title: response.title,
-							message: response.msg,
+							title: response.data.title,
+							message: response.data.msg,
 							position: "topCenter"
 						});
+						this.$auth.setUser(response.data.user);
+
+						this.$auth.$storage.setUniversal("user", response.data.user);
+						this.$auth.strategy.token.set(
+							this.$auth.$storage.getUniversal("user").api_token
+						);
 						setTimeout(event => {
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);
@@ -321,12 +323,38 @@
 						}, 2000);
 					} else {
 						this.$izitoast.error({
-							title: response.title,
-							message: response.msg,
+							title: response.data.title,
+							message: response.data.msg,
 							position: "topCenter"
 						});
 					}
-				});
+				} catch (err) {
+					console.log(err);
+				}
+				/*
+																					this.$store.dispatch("LoginUser", formData).then(response => {
+																						if (response.success) {
+																							this.$izitoast.success({
+																								title: response.title,
+																								message: response.msg,
+																								position: "topCenter"
+																							});
+																							setTimeout(event => {
+																								if (!this.isEmpty(this.$route.query.url)) {
+																									window.location.href = decodeURIComponent(this.$route.query.url);
+																								} else {
+																									this.$router.go(decodeURIComponent("/profile"));
+																								}
+																							}, 2000);
+																						} else {
+																							this.$izitoast.error({
+																								title: response.title,
+																								message: response.msg,
+																								position: "topCenter"
+																							});
+																						}
+																					});
+																				*/
 			},
 			/**
 			 * User Register Method

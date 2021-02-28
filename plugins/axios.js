@@ -1,5 +1,8 @@
-export default function ({ $axios, redirect }) {
-  $axios.create({
+export default function ( {
+  $axios,
+  redirect
+} ) {
+  $axios.create( {
     baseURL: process.env.apiBaseUrl,
     json: true,
     withCredentials: false,
@@ -9,18 +12,18 @@ export default function ({ $axios, redirect }) {
       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
       'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
       'Access-Control-Allow-Credentials': true,
-      "Content-type": "application/json",
+      "Content-type": "application/json"
     },
     credentials: 'same-origin',
-  });
-  $axios.onRequest(config => {
-    console.log('Making request to ' + config.url)
-  })
+  } );
+  $axios.onRequest( config => {
+    console.log( 'Making request to ' + config.url )
+  } )
 
-  $axios.onError(error => {
-    const code = parseInt(error.response && error.response.status)
-    if (code === 400) {
-      redirect('/400')
+  $axios.onError( error => {
+    const code = parseInt( error.response && error.response.status )
+    if ( code === 400 ) {
+      redirect( '/400' )
     }
-  })
+  } )
 }

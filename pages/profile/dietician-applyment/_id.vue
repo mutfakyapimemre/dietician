@@ -79,13 +79,10 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-	import $ from "jquery";
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Sidebar from "~/components/includes/Sidebar.vue";
 	export default {
-		middleware: ["session-control", "guest"],
+		middleware: ["guest2"],
 		name: "profile",
 		components: {
 			ValidationObserver,
@@ -106,10 +103,8 @@
 		data() {
 			return {
 				dietician_check: null,
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !this.isEmpty(this.$store.getters.loggedInUser)
-					? this.$store.getters.loggedInUser
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},
@@ -144,7 +139,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
@@ -182,13 +179,9 @@
 								message: response.data.msg,
 								position: "topCenter"
 							});
-							Cookie.set(
-								"userData",
-								Base64.encode(JSON.stringify(response.data.data))
-							);
-							localStorage.setItem(
-								"userData",
-								Base64.encode(JSON.stringify(response.data.data))
+							this.$auth.$storage.setUniversal("user", response.data.data);
+							this.$auth.strategy.token.set(
+								this.$auth.$storage.getUniversal("user").api_token
 							);
 							setTimeout(() => {
 								this.$router.go(decodeURIComponent("/profile"));

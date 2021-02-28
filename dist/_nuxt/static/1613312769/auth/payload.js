@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/auth", (function(a){return {data:a,fetch:a,mutations:a}}(void 0)));

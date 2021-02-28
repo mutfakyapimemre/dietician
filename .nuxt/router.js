@@ -14,7 +14,6 @@ const _458208a8 = () => interopDefault(import('..\\pages\\login\\index.vue' /* w
 const _456acf2d = () => interopDefault(import('..\\pages\\panel\\index.vue' /* webpackChunkName: "pages/panel/index" */))
 const _805b1eb0 = () => interopDefault(import('..\\pages\\profile\\index.vue' /* webpackChunkName: "pages/profile/index" */))
 const _3c330696 = () => interopDefault(import('..\\pages\\recipe-categories\\index.vue' /* webpackChunkName: "pages/recipe-categories/index" */))
-const _84253b72 = () => interopDefault(import('..\\pages\\search.vue' /* webpackChunkName: "pages/search" */))
 const _837e302c = () => interopDefault(import('..\\pages\\dietician-panel\\consultants\\index.vue' /* webpackChunkName: "pages/dietician-panel/consultants/index" */))
 const _72f0be7d = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\index.vue' /* webpackChunkName: "pages/dietician-panel/recipes/index" */))
 const _67b43e00 = () => interopDefault(import('..\\pages\\panel\\blog-categories\\index.vue' /* webpackChunkName: "pages/panel/blog-categories/index" */))
@@ -124,10 +123,6 @@ export const routerOptions = {
     path: "/recipe-categories",
     component: _3c330696,
     name: "recipe-categories"
-  }, {
-    path: "/search",
-    component: _84253b72,
-    name: "search"
   }, {
     path: "/dietician-panel/consultants",
     component: _837e302c,

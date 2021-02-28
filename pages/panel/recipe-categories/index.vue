@@ -96,12 +96,9 @@
 	</v-app>
 </template>
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	export default {
-		middleware: ["session-control", "admin"],
+		middleware: ["admin"],
 		layout: "admin",
 		components: {
 			ValidationObserver,
@@ -134,15 +131,21 @@
 				pageSize: 25,
 				pageSizes: [25, 50, 100, 200, 500, 1000],
 				loading: false,
-				userData:
-					Cookie.get("userData") !== null &&
-					Cookie.get("userData") !== undefined &&
-					Cookie.get("userData") !== ""
-						? JSON.parse(Base64.decode(Cookie.get("userData")))
-						: null
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
+					: null
 			};
 		},
 		methods: {
+			isEmpty(obj) {
+				if (typeof obj == "number") return false;
+				else if (typeof obj == "string") return obj.length == 0;
+				else if (Array.isArray(obj)) return obj.length == 0;
+				else if (typeof obj == "object")
+					return obj == null || Object.keys(obj).length == 0;
+				else if (typeof obj == "boolean") return false;
+				else return !obj;
+			},
 			getRequestParams(searchTitle, page, pageSize) {
 				let params = {};
 				params["title"] = searchTitle;

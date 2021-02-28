@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<Header />
+		<Header :siteSettings="siteSettings" />
 		<Nuxt />
 		<Footer />
 	</div>
 </template>
 
 <script>
-	import Header from "@/components/includes/Header";
-	import Footer from "@/components/includes/Footer";
+	import Header from "~/components/includes/Header";
+	import Footer from "~/components/includes/Footer";
 
 	export default {
 		head() {
@@ -186,6 +186,11 @@
 		components: {
 			Header,
 			Footer
+		},
+		computed: {
+			siteSettings() {
+				return this.$store.getters.siteSettings;
+			}
 		}
 	};
 </script>

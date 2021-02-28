@@ -125,6 +125,7 @@
 											<button
 												class="btn btn-outline-primary rounded-0 btn-lg"
 												type="button"
+												@click.prevent="e1 = 2"
 											>
 												İlerle
 											</button>
@@ -134,9 +135,16 @@
 											<button
 												class="btn btn-outline-primary rounded-0 btn-lg"
 												role="button"
-												@click.prevent="selectCover"
+												@click.prevent="e1 = 3"
 											>
 												İlerle
+											</button>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												role="button"
+												@click.prevent="e1 = 1"
+											>
+												Geri Dön
 											</button>
 										</v-stepper-content>
 
@@ -214,12 +222,9 @@
 	</v-app>
 </template>
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	export default {
-		middleware: ["session-control", "dietician"],
+		middleware: ["dietician"],
 		layout: "dietician",
 		components: {
 			ValidationObserver,
@@ -257,6 +262,17 @@
 		},
 		data() {
 			return {
+				getUserData: {
+					birthWeight: 3500,
+					gender: "KADIN",
+					userage: 12,
+					weight: 12
+				},
+				oga: null,
+				feedRiskRate: null,
+				feedRisks: null,
+				kCal: null,
+				protein: null,
 				e1: 1,
 				disease: null,
 				diseases: [],
@@ -267,15 +283,36 @@
 				ageGroups: ["0+", "1+", "10+", "18+"],
 				selectedAgeGroups: [],
 				selectedMeals: [],
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},
 		mounted() {
 			this.getDatas();
+			this.calcCalorie();
 		},
 		methods: {
+			calcCalorie() {
+				this.oga =
+					this.getUserData.userage <= 6
+						? this.getUserData.birthWeight + this.getUserData.userage * 800
+						: this.getUserData.birthWeight + this.getUserData.userage * 500;
+				this.feedRiskRate = (this.getUserData.weight / this.oga) * 100;
+				this.feedRisks = {
+					"60": "Ağır Derecede Beslenme Bozukluğu",
+					"79.99": "Orta Derecede Beslenme Bozukluğu",
+					"89.99": "Hafif Derecede Beslenme Bozukluğu",
+					"109.99": "Normal Çocuk",
+					"119.99": "Fazla Tartılı Çocuk"
+				};
+				this.kCal = this.oga * 100;
+				this.protein = {
+					Min: this.getUserData.weight * 2,
+					Max: this.getUserData.weight * 4
+				};
+				this.liquid = this.getUserData.weight * 150;
+			},
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;
 				else if (typeof obj == "string") return obj.length == 0;

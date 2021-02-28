@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/forgot-password", (function(a){return {data:a,fetch:a,mutations:a}}(void 0)));

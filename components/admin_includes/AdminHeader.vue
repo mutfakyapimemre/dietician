@@ -78,19 +78,27 @@
 				>
 					<span class="user-img"
 						><img
-							v-bind:src="img_url + '/public/storage/' + userData.img_url"
+							v-bind:src="
+								img_url +
+									'/public/storage/' +
+									(!isEmpty(userData) ? userData.img_url : null)
+							"
 							width="31"
 							class="rounded-circle"
-							v-bind:alt="userData.name"
+							v-bind:alt="!isEmpty(userData) ? userData.name : null"
 					/></span>
 				</a>
 				<div class="dropdown-menu">
 					<div class="user-header">
 						<div class="avatar avatar-sm">
 							<img
-								v-bind:src="img_url + '/public/storage/' + userData.img_url"
+								v-bind:src="
+									img_url +
+										'/public/storage/' +
+										(!isEmpty(userData) ? userData.img_url : null)
+								"
 								class="avatar-img rounded-circle"
-								v-bind:alt="userData.name"
+								v-bind:alt="!isEmpty(userData) ? userData.name : null"
 							/>
 						</div>
 						<div class="user-text">
@@ -119,9 +127,6 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	export default {
 		layout: "admin",
 		computed: {
@@ -140,7 +145,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
@@ -153,13 +160,11 @@
 		},
 		data() {
 			return {
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !this.isEmpty(this.$store.getters.loggedInUser)
-					? this.$store.getters.loggedInUser
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null,
-				isAuthenticated: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
+				isAuthenticated: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user").api_token
 					: null,
 				siteSettings: this.$store.getters.siteSettings
 			};

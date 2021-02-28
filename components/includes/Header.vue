@@ -10,7 +10,11 @@
 					</span>
 				</a>
 				<nuxt-link to="/" class="navbar-brand logo"
-					><img src="/img/logo.png" class="img-fluid" alt="Logo" />
+					><img
+						src="/img/logo.png"
+						class="img-fluid"
+						v-bind:alt="siteSettings.settings"
+					/>
 				</nuxt-link>
 			</div>
 			<div class="main-menu-wrapper">
@@ -58,7 +62,7 @@
 								v-bind:src="
 									img_url +
 										'/public/storage/' +
-										(userData.status === 'dietician'
+										(!isEmpty(userData) && userData.status === 'dietician'
 											? userData.profile_photo
 											: userData.img_url)
 								"
@@ -103,9 +107,6 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	export default {
 		computed: {
 			img_url() {
@@ -123,7 +124,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
@@ -134,15 +137,17 @@
 				}, 2000);
 			}
 		},
+		props: {
+			siteSettings: { type: Object }
+		},
 		data() {
 			return {
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null,
-				isAuthenticated: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
-					: null,
-				siteSettings: this.$store.getters.siteSettings
+				isAuthenticated: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user").api_token
+					: null
 			};
 		}
 	};

@@ -1,5 +1,14 @@
-export default function (context) {
-  if(!context.store.getters.isAuthenticated || !context.store.getters.isDietician || context.store.getters.loggedInUser.status!== 'dietician'){
-    context.redirect("/dietician-login")
+function isEmpty( obj ) {
+  if ( typeof obj == "number" ) return false;
+  else if ( typeof obj == "string" ) return obj.length == 0;
+  else if ( Array.isArray( obj ) ) return obj.length == 0;
+  else if ( typeof obj == "object" )
+    return obj == null || Object.keys( obj ).length == 0;
+  else if ( typeof obj == "boolean" ) return false;
+  else return !obj;
+};
+export default function ( context ) {
+  if ( ( isEmpty( context.store.$auth.$storage.syncUniversal( "user" ) ) || context.store.$auth.$storage.syncUniversal( "user" ).status !== "dietician" ) ) {
+    context.redirect( "/dietician-login" )
   }
 }

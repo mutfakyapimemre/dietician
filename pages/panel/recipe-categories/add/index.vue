@@ -213,13 +213,10 @@
 	</v-app>
 </template>
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 
 	export default {
-		middleware: ["session-control", "admin"],
+		middleware: ["admin"],
 		layout: "admin",
 		components: {
 			ValidationObserver,
@@ -261,10 +258,8 @@
 					headers: {
 						Authorization:
 							"Bearer " +
-							(Cookie.get("userData") !== null &&
-							Cookie.get("userData") !== undefined &&
-							Cookie.get("userData") !== ""
-								? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
+							(!this.isEmpty(this.$auth.$storage.getUniversal("user"))
+								? this.$auth.$storage.getUniversal("user").api_token
 								: null)
 					},
 					params: {
@@ -273,12 +268,9 @@
 					uploadMultiple: true,
 					parallelUploads: 10
 				},
-				userData:
-					Cookie.get("userData") !== null &&
-					Cookie.get("userData") !== undefined &&
-					Cookie.get("userData") !== ""
-						? JSON.parse(Base64.decode(Cookie.get("userData")))
-						: null
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
+					: null
 			};
 		},
 		computed: {
@@ -287,6 +279,15 @@
 			}
 		},
 		methods: {
+			isEmpty(obj) {
+				if (typeof obj == "number") return false;
+				else if (typeof obj == "string") return obj.length == 0;
+				else if (Array.isArray(obj)) return obj.length == 0;
+				else if (typeof obj == "object")
+					return obj == null || Object.keys(obj).length == 0;
+				else if (typeof obj == "boolean") return false;
+				else return !obj;
+			},
 			saveRecipeCategories() {
 				let formData = new FormData(this.$refs.recipeCategoriesForm);
 

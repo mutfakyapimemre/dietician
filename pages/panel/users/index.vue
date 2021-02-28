@@ -87,12 +87,9 @@
 	</v-app>
 </template>
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	export default {
-		middleware: ["session-control", "admin"],
+		middleware: ["admin"],
 		layout: "admin",
 		components: {
 			ValidationObserver,
@@ -126,8 +123,8 @@
 				pageSize: 25,
 				pageSizes: [25, 50, 100, 200, 500, 1000],
 				loading: false,
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},

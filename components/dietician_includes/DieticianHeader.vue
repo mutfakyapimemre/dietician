@@ -117,9 +117,6 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
-
 	export default {
 		layout: "dietician",
 		computed: {
@@ -138,7 +135,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
@@ -151,13 +150,11 @@
 		},
 		data() {
 			return {
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !this.isEmpty(this.$store.getters.loggedInUser)
-					? this.$store.getters.loggedInUser
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null,
-				isAuthenticated: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData"))).api_token
+				isAuthenticated: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user").api_token
 					: null,
 				siteSettings: this.$store.getters.siteSettings
 			};

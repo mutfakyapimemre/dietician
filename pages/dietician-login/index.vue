@@ -7,7 +7,7 @@
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
-									<nuxt-link to="/" >Anasayfa</nuxt-link>
+									<nuxt-link to="/">Anasayfa</nuxt-link>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Diyetisyen Girişi
@@ -69,7 +69,7 @@
 													<small class="font-weight-normal"
 														>Diyetisyen Girişi</small
 													>
-													<nuxt-link to="/login" 
+													<nuxt-link to="/login"
 														>Kullanıcı Mısınız? Hemen Giriş Yapın</nuxt-link
 													>
 												</h3>
@@ -117,10 +117,7 @@
 														</ValidationProvider>
 													</div>
 													<div class="text-right">
-														<nuxt-link
-															to="/forgot-password"
-															
-															class="forgot-link"
+														<nuxt-link to="/forgot-password" class="forgot-link"
 															>Şifremi Unuttum.</nuxt-link
 														>
 													</div>
@@ -145,7 +142,7 @@
 													<small class="font-weight-normal"
 														>Diyetisyen Kaydı</small
 													>
-													<nuxt-link to="/login" 
+													<nuxt-link to="/login"
 														>Kullanıcı Mısınız? Hemen Kayıt Olun</nuxt-link
 													>
 												</h3>
@@ -697,10 +694,9 @@
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
-	import { mapGetters } from "vuex";
 
 	export default {
-		middleware: ["session-control", "auth"],
+		middleware: ["auth2"],
 		components: {
 			ValidationObserver,
 			ValidationProvider
@@ -737,9 +733,6 @@
 				company_district: null,
 				company_address: null
 			};
-		},
-		computed: {
-			...mapGetters(["isAuthenticated", "loggedInUser"])
 		},
 		methods: {
 			isEmpty(obj) {
@@ -817,29 +810,43 @@
 			/**
 			 * User Login Method
 			 */
-			onLogin() {
+			async onLogin() {
 				let formData = new FormData(this.$refs.userLogin);
 				formData.append("isUser", this.isUser);
 				formData.append("isDietician", this.isDietician);
 				formData.append("isAdmin", this.isAdmin);
-				this.$store.dispatch("LoginUser", formData).then(response => {
-					if (response.success) {
+				try {
+					let response = await this.$auth.loginWith("dietician", {
+						data: formData
+					});
+					if (response.data.success) {
 						this.$izitoast.success({
-							title: response.title,
-							message: response.msg,
+							title: response.data.title,
+							message: response.data.msg,
 							position: "topCenter"
 						});
-						setTimeout(() => {
-							this.$router.go(decodeURIComponent("/profile"));
+						this.$auth.setUser(response.data.user);
+						this.$auth.$storage.setUniversal("user", response.data.user);
+						this.$auth.strategy.token.set(
+							this.$auth.$storage.getUniversal("user").api_token
+						);
+						setTimeout(event => {
+							if (!this.isEmpty(this.$route.query.url)) {
+								window.location.href = decodeURIComponent(this.$route.query.url);
+							} else {
+								this.$router.go(decodeURIComponent("/profile"));
+							}
 						}, 2000);
 					} else {
 						this.$izitoast.error({
-							title: response.title,
-							message: response.msg,
+							title: response.data.title,
+							message: response.data.msg,
 							position: "topCenter"
 						});
 					}
-				});
+				} catch (err) {
+					console.log(err);
+				}
 			},
 			/**
 			 * User Register Method

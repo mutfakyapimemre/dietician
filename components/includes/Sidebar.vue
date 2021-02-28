@@ -28,56 +28,72 @@
 		<div class="dashboard-widget">
 			<nav class="dashboard-menu">
 				<ul>
-					<nuxt-link to="/profile" exact-active-class="active">
+					<nuxt-link to="/profile" tag="li" exact-active-class="active">
 						<a>
 							<i class="fa fa-user-cog"></i>
 							<span>Kayıt Bilgileri</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/diet-list" active-class="active">
+					<nuxt-link to="/profile/diet-list" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-calendar-check"></i>
 							<span>Diyet Listesi</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/my-dietician" active-class="active">
+					<nuxt-link to="/profile/my-dietician" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-user-md"></i>
 							<span>Diyetisyenim</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/liked-foods-list" active-class="active">
+					<nuxt-link
+						to="/profile/liked-foods-list"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-drumstick-bite"></i>
 							<span>Sevdiğim Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/unliked-foods-list" active-class="active">
+					<nuxt-link
+						to="/profile/unliked-foods-list"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-stroopwafel"></i>
 							<span>Sevmediğim Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/allergen-foods-list" active-class="active">
+					<nuxt-link
+						to="/profile/allergen-foods-list"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-cloud-meatball"></i>
 							<span>Alerjen Olduğum Besinler / Yemekler</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/messages" active-class="active">
+					<nuxt-link to="/profile/messages" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-comments"></i>
 							<span>Mesajlar</span>
 							<small class="unread-msg">23</small>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/social-media" active-class="active">
+					<nuxt-link to="/profile/social-media" tag="li" active-class="active">
 						<a>
 							<i class="fa fa-share-alt"></i>
 							<span>Sosyal Medya</span>
 						</a>
 					</nuxt-link>
-					<nuxt-link to="/profile/password-update" active-class="active">
+					<nuxt-link
+						to="/profile/password-update"
+						tag="li"
+						active-class="active"
+					>
 						<a>
 							<i class="fa fa-lock"></i>
 							<span>Şifre Güncelle</span>
@@ -96,10 +112,8 @@
 </template>
 
 <script>
-	import Cookie from "js-cookie";
-	import { Base64 } from "js-base64";
 	export default {
-		middleware: ["session-control", "guest"],
+		middleware: ["guest2"],
 		layout: "default",
 		computed: {
 			img_url() {
@@ -108,10 +122,8 @@
 		},
 		data() {
 			return {
-				userData: !this.isEmpty(Cookie.get("userData"))
-					? JSON.parse(Base64.decode(Cookie.get("userData")))
-					: !this.isEmpty(this.$store.getters.loggedInUser)
-					? this.$store.getters.loggedInUser
+				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
+					? this.$auth.$storage.getUniversal("user")
 					: null
 			};
 		},
@@ -126,7 +138,9 @@
 				else return !obj;
 			},
 			logout() {
-				this.$store.dispatch("logout");
+				this.$auth.logout();
+				this.$auth.$storage.removeUniversal("user");
+				this.$auth.strategy.refreshToken.reset();
 				this.$izitoast.success({
 					title: "Başarılı!",
 					message: "Başarıyla Çıkış Yaptınız Yönlendiriliyorsunuz.",
