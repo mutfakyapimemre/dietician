@@ -114,7 +114,7 @@ input:-webkit-autofill:focus {
 }
 
 a {
-  color: #0dd9f9;
+  color: #0dd9f9 !important;
 }
 
 input,
@@ -1749,7 +1749,7 @@ button.bg-danger:hover {
 }
 
 .user-menu.nav>li>a {
-  color: #333;
+  color: #333 !important;
   font-size: 14px;
   line-height: 58px;
   padding: 0 15px;
@@ -1790,6 +1790,10 @@ button.bg-danger:hover {
 }
 
 .user-menu .dropdown-menu .dropdown-item {
+  color: #212529 !important;
+}
+
+.user-menu .dropdown-menu .dropdown-item {
   display: flex;
   align-items: center;
   border-top: 1px solid #e3e3e3;
@@ -1797,14 +1801,14 @@ button.bg-danger:hover {
 }
 
 .user-menu .dropdown-menu .dropdown-item:hover {
-  color: #fff;
+  color: #fff !important;
   background: #00d0f1;
 }
 
 .header .dropdown-menu>li>a:focus,
 .header .dropdown-menu>li>a:hover {
   background-color: #00d0f1;
-  color: #fff;
+  color: #fff !important;
 }
 
 .header .dropdown-menu>li>a:focus i,
@@ -2039,7 +2043,7 @@ html.menu-opened body {
 }
 
 .sidebar-menu li a {
-  color: #fff;
+  color: #fff !important;
   display: block;
   font-size: 16px;
   height: auto;
@@ -2047,22 +2051,22 @@ html.menu-opened body {
 }
 
 .sidebar-menu li a:hover {
-  color: #5ae8ff;
+  color: #5ae8ff !important;
 }
 
 .sidebar-menu>ul>li>a:hover {
-  background-color: #19c1dc;
-  color: #fff;
+  background-color: #19c1dc !important;
+  color: #fff !important;
 }
 
 .sidebar-menu>ul>li.active>a:hover {
-  background-color: #19c1dc;
-  color: #fff;
+  background-color: #19c1dc !important;
+  color: #fff !important;
 }
 
 .sidebar-menu li.active a {
-  background-color: #00d0f1;
-  color: #fff;
+  background-color: #00d0f1 !important;
+  color: #fff !important;
 }
 
 .menu-title {
@@ -2195,7 +2199,7 @@ html.menu-opened body {
   padding: 8px 15px;
   position: relative;
   transition: all 0.2s ease-in-out 0s;
-  color: #f1f1f1;
+  color: #f1f1f1 !important;
 }
 
 .sidebar-menu ul li a i {
@@ -2382,7 +2386,7 @@ html.menu-opened body {
 }
 
 .page-header .breadcrumb a {
-  color: #333;
+  color: #333 !important;
 }
 
 .page-title {
@@ -2656,7 +2660,7 @@ html.menu-opened body {
 
 .notification-list {
   list-style: none;
-  padding: 0;
+  padding: 0 !important;
   margin: 0;
 }
 
@@ -2693,7 +2697,7 @@ html.menu-opened body {
 }
 
 .topnav-dropdown-header .clear-noti {
-  color: #f83f37;
+  color: #f83f37 !important;
   float: right;
   font-size: 12px;
   text-transform: uppercase;
@@ -5059,7 +5063,7 @@ table.table-inbox tbody tr.checked {
 @media only screen and (min-width: 992px) {
   #toggle_btn {
     align-items: center;
-    color: #333;
+    color: #333 !important;
     display: inline-flex;
     float: left;
     font-size: 30px;

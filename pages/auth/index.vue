@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="login-wrapper align-middle align-items-center text-center justify-content-center m-auto"
+		class="login-wrapper align-middle align-items-center text-center justify-content-center m-auto vh-100 mx-auto w-100 d-flex"
 	>
 		<div class="container">
 			<div class="loginbox">

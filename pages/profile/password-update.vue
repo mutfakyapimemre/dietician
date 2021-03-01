@@ -1,5 +1,5 @@
 <template>
-	<v-app class="h-auto">
+	<div>
 		<div class="breadcrumb-bar">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -144,13 +144,13 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
-	import Sidebar from "~/components/includes/Sidebar";
-	import Dieticiansidebar from "~/components/includes/Dieticiansidebarprofile";
+	import Sidebar from "@/components/includes/Sidebar";
+	import Dieticiansidebar from "@/components/includes/Dieticiansidebarprofile";
 
 	export default {
 		middleware: ["guest2"],

@@ -70,15 +70,6 @@
 		data() {
 			return {};
 		},
-		async asyncData({ error, $axios }) {
-			try {
-				let { data } = await $axios.get(process.env.apiBaseUrl + "home");
-
-				return data.data;
-			} catch (e) {
-				error({ message: "Site Ayarı Bulunamadı.", statusCode: 404 });
-			}
-		},
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

@@ -1,5 +1,5 @@
 <template>
-	<v-app class="h-auto" v-if="userData.status !== 'dietician'">
+	<div v-if="userData.status !== 'dietician'">
 		<div class="breadcrumb-bar">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -75,12 +75,12 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
-	import Sidebar from "~/components/includes/Sidebar.vue";
+	import Sidebar from "@/components/includes/Sidebar.vue";
 	export default {
 		middleware: ["guest2"],
 		name: "profile",

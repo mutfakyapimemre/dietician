@@ -1,8 +1,5 @@
 <template>
-	<v-app
-		class="h-auto"
-		v-if="!isEmpty(userData) && userData.status !== 'dietician'"
-	>
+	<div v-if="!isEmpty(userData) && userData.status !== 'dietician'">
 		<div class="breadcrumb-bar">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -40,7 +37,9 @@
 							</div>
 							<div class="card-body">
 								<div class="appointment-tab">
-									<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
+									<ul
+										class="nav nav-tabs nav-tabs-solid nav-tabs-rounded rounded-0"
+									>
 										<li class="nav-item">
 											<a
 												class="nav-link active"
@@ -968,12 +967,13 @@
 																<tr>
 																	<td colspan="3">
 																		<div class="form-group">
-																			<button
-																				class="btn btn-primary login-btn text-white float-right"
+																			<v-btn
+																				color="primary"
+																				class="float-right"
 																				type="submit"
 																			>
 																				Bilgilerimi Güncelle
-																			</button>
+																			</v-btn>
 																		</div>
 																	</td>
 																</tr>
@@ -991,11 +991,8 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
-	<v-app
-		class="h-auto"
-		v-else-if="!isEmpty(userData) && userData.status === 'dietician'"
-	>
+	</div>
+	<div v-else-if="!isEmpty(userData) && userData.status === 'dietician'">
 		<div class="breadcrumb-bar">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -1033,7 +1030,9 @@
 							</div>
 							<div class="card-body">
 								<div class="appointment-tab">
-									<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
+									<ul
+										class="nav nav-tabs nav-tabs-solid nav-tabs-rounded rounded-0"
+									>
 										<li class="nav-item">
 											<a
 												class="nav-link active"
@@ -1773,12 +1772,13 @@
 																<tr>
 																	<td colspan="3">
 																		<div class="form-group">
-																			<button
-																				class="btn btn-green-light login-btn float-right"
+																			<v-btn
+																				color="primary"
+																				class="float-right"
 																				type="submit"
 																			>
 																				Bilgilerimi Güncelle
-																			</button>
+																			</v-btn>
 																		</div>
 																	</td>
 																</tr>
@@ -1796,13 +1796,13 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
-	import Sidebar from "~/components/includes/Sidebar";
-	import Dieticiansidebarprofile from "~/components/includes/Dieticiansidebarprofile";
+	import Sidebar from "@/components/includes/Sidebar";
+	import Dieticiansidebarprofile from "@/components/includes/Dieticiansidebarprofile";
 
 	export default {
 		middleware: ["guest2"],

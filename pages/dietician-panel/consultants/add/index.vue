@@ -1,123 +1,112 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Danışmanlarım</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Danışmanlarım</li>
-								</ul>
-							</div>
-						</div>
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="page-title">Danışmanlarım</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item">
+								<nuxt-link to="/panel">Anasayfa</nuxt-link>
+							</li>
+							<li class="breadcrumb-item active">Danışmanlarım</li>
+						</ul>
 					</div>
+				</div>
+			</div>
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header d-flex">
-									<h4 class="card-title justify-content-start my-auto py-auto">
-										Danışman Ekle
-									</h4>
-									<v-btn
-										to="/dietician-panel/consultants/new-consultant"
-										class="justify-content-end ml-auto my-auto py-auto"
-										color="primary"
-										><i class="fa fa-plus"></i> Yeni Danışman Kaydet</v-btn
-									>
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header d-flex">
+							<h4 class="card-title justify-content-start my-auto py-auto">
+								Danışman Ekle
+							</h4>
+							<v-btn
+								to="/dietician-panel/consultants/new-consultant"
+								class="justify-content-end ml-auto my-auto py-auto"
+								color="primary"
+								><i class="fa fa-plus"></i> Yeni Danışman Kaydet</v-btn
+							>
+						</div>
+						<div class="card-body">
+							<v-alert
+								color="indigo"
+								dark
+								dense
+								icon="mdi-information"
+								prominent
+							>
+								<h3 class="headline">Bilgi</h3>
+								<div>
+									Danışman Kaydı Yapabilmeniz İçin Aşağıdaki Bilgileri Doldurup
+									Danışmanınıza İstek Gönderebilirsiniz.
 								</div>
-								<div class="card-body">
-									<v-alert
-										color="indigo"
-										dark
-										dense
-										icon="mdi-information"
-										prominent
-									>
-										<h3 class="headline">Bilgi</h3>
-										<div>
-											Danışman Kaydı Yapabilmeniz İçin Aşağıdaki Bilgileri
-											Doldurup Danışmanınıza İstek Gönderebilirsiniz.
-										</div>
 
-										<v-divider
-											class="my-4 info"
-											style="opacity: 0.22"
-										></v-divider>
+								<v-divider class="my-4 info" style="opacity: 0.22"></v-divider>
 
-										<div>
-											Gönderdiğiniz İstek Danışmanınız Tarafından Kabul
-											Edildikten Sonra E-Diyet, Egzersiz, Randevu Oluşturma Gibi
-											İşlemler Yapılabilir.
+								<div>
+									Gönderdiğiniz İstek Danışmanınız Tarafından Kabul Edildikten
+									Sonra E-Diyet, Egzersiz, Randevu Oluşturma Gibi İşlemler
+									Yapılabilir.
+								</div>
+							</v-alert>
+							<ValidationObserver v-slot="{ handleSubmit }">
+								<form
+									@submit.prevent="handleSubmit(saveConsultants)"
+									ref="usersForm"
+									enctype="multipart/form-data"
+								>
+									<v-text-field
+										label="Danışmanın Kimlik Numarası"
+										name="tc"
+										v-model="consultant.tc"
+										required
+										counter="11"
+									></v-text-field>
+									<v-text-field
+										label="Danışmanın Telefon Numarası"
+										name="phone"
+										v-model="consultant.phone"
+										required
+										counter="11"
+									></v-text-field>
+									<div class="form-group">
+										<v-btn color="primary" type="submit">
+											Danışmanı Bul ve Diyetisyen Bildirimi Gönder
+										</v-btn>
+									</div>
+								</form>
+							</ValidationObserver>
+							<div class="profile-header" v-if="!isEmpty(data)">
+								<div class="row align-items-center">
+									<div class="col-auto profile-image">
+										<a href="javascript:void(0)">
+											<img
+												v-bind:src="img_url + '/public/storage/' + data.img_url"
+												class="img-fluid"
+												v-bind:alt="data.name"
+											/>
+										</a>
+									</div>
+									<div class="col ml-md-n2 profile-user-info">
+										<h4 class="user-name mb-0">{{ data.name }}</h4>
+										<h6 class="text-muted">{{ data.email }}</h6>
+										<div class="user-Location">
+											<i class="fa fa-map-marker"></i> {{ data.city }},
+											{{ data.town }}
 										</div>
-									</v-alert>
-									<ValidationObserver v-slot="{ handleSubmit }">
-										<form
-											@submit.prevent="handleSubmit(saveConsultants)"
-											ref="usersForm"
-											enctype="multipart/form-data"
-										>
-											<v-text-field
-												label="Danışmanın Kimlik Numarası"
-												name="tc"
-												v-model="consultant.tc"
-												required
-												counter="11"
-											></v-text-field>
-											<v-text-field
-												label="Danışmanın Telefon Numarası"
-												name="phone"
-												v-model="consultant.phone"
-												required
-												counter="11"
-											></v-text-field>
-											<div class="form-group">
-												<v-btn color="primary" type="submit">
-													Danışmanı Bul ve Diyetisyen Bildirimi Gönder
-												</v-btn>
-											</div>
-										</form>
-									</ValidationObserver>
-									<div class="profile-header" v-if="!isEmpty(data)">
-										<div class="row align-items-center">
-											<div class="col-auto profile-image">
-												<a href="javascript:void(0)">
-													<img
-														v-bind:src="
-															img_url + '/public/storage/' + data.img_url
-														"
-														class="img-fluid"
-														v-bind:alt="data.name"
-													/>
-												</a>
-											</div>
-											<div class="col ml-md-n2 profile-user-info">
-												<h4 class="user-name mb-0">{{ data.name }}</h4>
-												<h6 class="text-muted">{{ data.email }}</h6>
-												<div class="user-Location">
-													<i class="fa fa-map-marker"></i> {{ data.city }},
-													{{ data.town }}
-												</div>
-												<div class="user-Location">
-													<i class="fa fa-phone"></i>
-													<a v-bind:href="'tel:' + data.phone">{{
-														data.phone
-													}}</a>
-												</div>
-												<div class="user-Location">
-													<i class="fa fa-envelope"></i>
-													<a v-bind:href="'mailto:' + data.email">{{
-														data.email
-													}}</a>
-												</div>
-												<div class="about-text">{{ data.about }}</div>
-											</div>
+										<div class="user-Location">
+											<i class="fa fa-phone"></i>
+											<a v-bind:href="'tel:' + data.phone">{{ data.phone }}</a>
 										</div>
+										<div class="user-Location">
+											<i class="fa fa-envelope"></i>
+											<a v-bind:href="'mailto:' + data.email">{{
+												data.email
+											}}</a>
+										</div>
+										<div class="about-text">{{ data.about }}</div>
 									</div>
 								</div>
 							</div>
@@ -126,7 +115,7 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";

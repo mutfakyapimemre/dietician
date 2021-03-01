@@ -1,124 +1,120 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<v-row>
-							<v-col cols="12" sm="12" md="12" lg="12" xl="12">
-								<h3 class="page-title">Danışmanlarım</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Danışmanlarım</li>
-								</ul>
-							</v-col>
-						</v-row>
-					</div>
-
-					<v-card tile>
-						<v-card-title class="d-flex justify-content-between">
-							<span class="justify-content-center flex-grow-1">
-								<v-text-field
-									v-on:keyup.prevent="
-										page = 1;
-										retrieveData('get-by-search');
-									"
-									v-model="searchTitle"
-									label="Arama Yapın..."
-									class="my-auto py-auto"
-								></v-text-field>
-							</span>
-							<span class="justify-content-end flex-shrink-1">
-								<v-btn
-									to="/dietician-panel/consultants/add"
-									class="float-right ml-3 my-auto py-auto"
-									color="primary"
-									><i class="fa fa-plus"></i> Ekle</v-btn
-								>
-							</span>
-						</v-card-title>
-						<v-card-text>
-							<v-data-table
-								:headers="headers"
-								:items="data"
-								disable-pagination
-								:hide-default-footer="true"
-							>
-								<template v-slot:[`item.img_url`]="{ item }">
-									<img v-bind:src="item.img_url" width="150" height="150" />
-								</template>
-								<template v-slot:[`item.actions`]="{ item }">
-									<v-tooltip bottom>
-										<template v-slot:activator="{ on, attrs }">
-											<v-icon
-												small
-												class="mr-2"
-												@click="createEdiet(item.id)"
-												v-bind="attrs"
-												v-on="on"
-												>fas fa-file-signature</v-icon
-											>
-										</template>
-										<span>Yeni E-Diyet Oluştur</span>
-									</v-tooltip>
-									<v-tooltip bottom>
-										<template v-slot:activator="{ on, attrs }">
-											<v-icon
-												small
-												class="mr-2"
-												@click="editData(item.id)"
-												v-bind="attrs"
-												v-on="on"
-											>
-												mdi-pencil
-											</v-icon>
-										</template>
-										<span>Danışmanı Düzenle</span>
-									</v-tooltip>
-									<v-tooltip bottom>
-										<template v-slot:activator="{ on, attrs }">
-											<v-icon
-												small
-												@click="deleteData(item.id)"
-												v-bind="attrs"
-												v-on="on"
-											>
-												mdi-delete
-											</v-icon>
-										</template>
-										<span>Danışmanı Sil</span>
-									</v-tooltip>
-								</template>
-							</v-data-table>
-						</v-card-text>
-					</v-card>
-					<v-row>
-						<v-col cols="12" sm="12" md="12" lg="3" xl="3">
-							<v-select
-								v-model="pageSize"
-								:items="pageSizes"
-								label="Sayfada Görüntüleme Sayısı"
-								@change="handlePageSizeChange"
-							></v-select>
-						</v-col>
-
-						<v-col cols="12" sm="12" md="12" lg="9" xl="9">
-							<v-pagination
-								v-model="page"
-								:length="totalPages"
-								total-visible="7"
-								next-icon="mdi-menu-right"
-								prev-icon="mdi-menu-left"
-								@input="handlePageChange"
-							></v-pagination>
-						</v-col>
-					</v-row>
-				</div>
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="page-header">
+				<v-row>
+					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
+						<h3 class="page-title">Danışmanlarım</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item">
+								<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+							</li>
+							<li class="breadcrumb-item active">Danışmanlarım</li>
+						</ul>
+					</v-col>
+				</v-row>
 			</div>
+
+			<v-card tile>
+				<v-card-title class="d-flex justify-content-between">
+					<span class="justify-content-center flex-grow-1">
+						<v-text-field
+							v-on:keyup.prevent="
+								page = 1;
+								retrieveData('get-by-search');
+							"
+							v-model="searchTitle"
+							label="Arama Yapın..."
+							class="my-auto py-auto"
+						></v-text-field>
+					</span>
+					<span class="justify-content-end flex-shrink-1">
+						<v-btn
+							to="/dietician-panel/consultants/add"
+							class="float-right ml-3 my-auto py-auto"
+							color="primary"
+							><i class="fa fa-plus"></i> Ekle</v-btn
+						>
+					</span>
+				</v-card-title>
+				<v-card-text>
+					<v-data-table
+						:headers="headers"
+						:items="data"
+						disable-pagination
+						:hide-default-footer="true"
+					>
+						<template v-slot:[`item.img_url`]="{ item }">
+							<img v-bind:src="item.img_url" width="150" height="150" />
+						</template>
+						<template v-slot:[`item.actions`]="{ item }">
+							<v-tooltip bottom>
+								<template v-slot:activator="{ on, attrs }">
+									<v-icon
+										small
+										class="mr-2"
+										@click="createEdiet(item.id)"
+										v-bind="attrs"
+										v-on="on"
+										>fas fa-file-signature</v-icon
+									>
+								</template>
+								<span>Yeni E-Diyet Oluştur</span>
+							</v-tooltip>
+							<v-tooltip bottom>
+								<template v-slot:activator="{ on, attrs }">
+									<v-icon
+										small
+										class="mr-2"
+										@click="editData(item.id)"
+										v-bind="attrs"
+										v-on="on"
+									>
+										mdi-pencil
+									</v-icon>
+								</template>
+								<span>Danışmanı Düzenle</span>
+							</v-tooltip>
+							<v-tooltip bottom>
+								<template v-slot:activator="{ on, attrs }">
+									<v-icon
+										small
+										@click="deleteData(item.id)"
+										v-bind="attrs"
+										v-on="on"
+									>
+										mdi-delete
+									</v-icon>
+								</template>
+								<span>Danışmanı Sil</span>
+							</v-tooltip>
+						</template>
+					</v-data-table>
+				</v-card-text>
+			</v-card>
+			<v-row>
+				<v-col cols="12" sm="12" md="12" lg="3" xl="3">
+					<v-select
+						v-model="pageSize"
+						:items="pageSizes"
+						label="Sayfada Görüntüleme Sayısı"
+						@change="handlePageSizeChange"
+					></v-select>
+				</v-col>
+
+				<v-col cols="12" sm="12" md="12" lg="9" xl="9">
+					<v-pagination
+						v-model="page"
+						:length="totalPages"
+						total-visible="7"
+						next-icon="mdi-menu-right"
+						prev-icon="mdi-menu-left"
+						@input="handlePageChange"
+					></v-pagination>
+				</v-col>
+			</v-row>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
