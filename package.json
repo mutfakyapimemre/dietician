@@ -22,14 +22,13 @@
     "pm2": "^4.5.5",
     "vee-validate": "^3.4.5",
     "vue": "^2.6.12",
-    "vue-lazy-hydration": "^2.0.0-beta.4"
-  },
-  "devDependencies": {
+    "vue-lazy-hydration": "^2.0.0-beta.4",
     "@nuxt/types": "^2.15.2",
     "@nuxtjs/auth-next": "^5.0.0-1613647907.37b1156",
     "@nuxtjs/vuetify": "^1.11.3",
     "vuex": "^3.6.2"
   },
+  "devDependencies": {},
   "config": {
     "nuxt": {
       "host": "0.0.0.0",

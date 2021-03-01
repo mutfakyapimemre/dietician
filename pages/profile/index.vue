@@ -1021,7 +1021,7 @@
 					<div
 						class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
 					>
-						<DieticianSidebarProfile></DieticianSidebarProfile>
+						<Dieticiansidebarprofile></Dieticiansidebarprofile>
 					</div>
 
 					<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
@@ -1802,7 +1802,7 @@
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Sidebar from "~/components/includes/Sidebar";
-	import DieticianSidebarProfile from "~/components/includes/DieticianSidebarProfile";
+	import Dieticiansidebarprofile from "~/components/includes/Dieticiansidebarprofile";
 
 	export default {
 		middleware: ["guest2"],
@@ -1811,7 +1811,7 @@
 			ValidationObserver,
 			ValidationProvider,
 			Sidebar,
-			DieticianSidebarProfile
+			Dieticiansidebarprofile
 		},
 		computed: {
 			img_url() {

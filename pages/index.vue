@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<div>
 		<section class="section section-blogs">
 			<div class="container-fluid">
 				<div class="section-header text-center">
@@ -57,7 +57,7 @@
 				</div>
 			</div>
 		</section>
-	</v-app>
+	</div>
 </template>
 
 <script>

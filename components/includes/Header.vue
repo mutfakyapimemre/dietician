@@ -10,11 +10,7 @@
 					</span>
 				</a>
 				<nuxt-link to="/" class="navbar-brand logo"
-					><img
-						src="/img/logo.png"
-						class="img-fluid"
-						v-bind:alt="siteSettings.settings"
-					/>
+					><img src="/img/logo.png" class="img-fluid" v-bind:alt="null" />
 				</nuxt-link>
 			</div>
 			<div class="main-menu-wrapper">
@@ -47,17 +43,29 @@
 					</li>
 				</ul>
 			</div>
-			<client-only>
-				<ul
-					class="nav main-nav header-navbar-rht"
-					v-if="!isEmpty(userData) && isAuthenticated"
+			<ul class="nav header-navbar-rht">
+				<li class="nav-item contact-item">
+					<div class="header-contact-img">
+						<i class="far fa-hospital"></i>
+					</div>
+					<div class="header-contact-detail">
+						<p class="contact-header">İletişim</p>
+						<p class="contact-info-header">+1 315 369 5943</p>
+					</div>
+				</li>
+
+				<!-- User Menu -->
+				<li
+					class="nav-item dropdown has-arrow logged-item"
+					v-if="!isEmpty(userData)"
 				>
-					<li class="has-submenu nav-item my-auto py-auto">
-						<a
-							href="javascript:void(0)"
-							class="my-auto py-auto"
-							v-if="!isEmpty(userData)"
-						>
+					<a
+						href="javascript:void(0)"
+						class="dropdown-toggle nav-link"
+						data-toggle="dropdown"
+						aria-expanded="false"
+					>
+						<span class="user-img">
 							<img
 								v-bind:src="
 									img_url +
@@ -69,39 +77,63 @@
 								width="55"
 								height="55"
 								class="rounded-circle my-auto py-auto"
-								v-bind:alt="userData.name"/>
-							<span class="my-auto py-auto">{{ userData.name }}</span>
-							<i class="fa fa-chevron-down"></i
-						></a>
-						<ul class="submenu">
-							<li>
-								<nuxt-link to="/profile" class="nav-link">Profil</nuxt-link>
-							</li>
-							<li
-								v-if="
-									!isEmpty(userData) &&
-										isAuthenticated &&
-										userData.status === 'dietician'
-								"
-							>
-								<nuxt-link to="/dietician-panel">Diyetisyen Paneli</nuxt-link>
-							</li>
-							<li>
-								<a href="javascript:void(0)" @click.prevent="logout"
-									>Çıkış Yap</a
+								v-bind:alt="userData.name"
+							/>
+						</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<div class="user-header">
+							<div class="avatar avatar-sm">
+								<img
+									v-bind:src="
+										img_url +
+											'/public/storage/' +
+											(!isEmpty(userData) && userData.status === 'dietician'
+												? userData.profile_photo
+												: userData.img_url)
+									"
+									width="55"
+									height="55"
+									class="rounded-circle my-auto py-auto"
+									v-bind:alt="userData.name"
+								/>
+							</div>
+							<div class="user-text">
+								<h6>{{ userData.name }}</h6>
+								<p
+									class="text-muted mb-0"
+									v-show="!isEmpty(userData) && userData.department"
 								>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="nav header-navbar-rht" v-else>
-					<li>
-						<nuxt-link to="/login" class="nav-link header-login"
-							>Giriş Yap / Kayıt Ol</nuxt-link
+									{{ userData.department }}
+								</p>
+							</div>
+						</div>
+						<nuxt-link to="/profile" class="dropdown-item">Profil</nuxt-link>
+						<nuxt-link
+							class="dropdown-item"
+							to="/dietician-panel"
+							v-show="!isEmpty(userData) && userData.status === 'dietician'"
+							>Diyetisyen Paneli</nuxt-link
 						>
-					</li>
-				</ul>
-			</client-only>
+						<nuxt-link
+							class="dropdown-item"
+							to="/panel"
+							v-show="!isEmpty(userData) && userData.status === 'admin'"
+							>Yönetim Paneli</nuxt-link
+						>
+						<a
+							href="javascript:void(0)"
+							class="dropdown-item"
+							@click.prevent="logout"
+							>Çıkış Yap</a
+						>
+					</div>
+				</li>
+				<li class="nav-item dropdown has-arrow logged-item" v-else>
+					<v-btn color="primary" to="/login">Giriş Yap / Kayıt Ol</v-btn>
+				</li>
+				<!-- /User Menu -->
+			</ul>
 		</nav>
 	</div>
 </template>
@@ -133,20 +165,14 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/"));
+					this.$router.go(decodeURIComponent("/login"));
 				}, 2000);
 			}
-		},
-		props: {
-			siteSettings: { type: Object }
 		},
 		data() {
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
-					: null,
-				isAuthenticated: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
-					? this.$auth.$storage.getUniversal("user").api_token
 					: null
 			};
 		}

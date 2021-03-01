@@ -24,10 +24,11 @@
 									<h4 class="card-title justify-content-start my-auto py-auto">
 										Danışman Ekle
 									</h4>
-									<nuxt-link
+									<v-btn
 										to="/dietician-panel/consultants/new-consultant"
-										class="justify-content-end ml-auto btn btn-info-light my-auto py-auto"
-										><i class="fa fa-plus"></i> Yeni Danışman Kaydet</nuxt-link
+										class="justify-content-end ml-auto my-auto py-auto"
+										color="primary"
+										><i class="fa fa-plus"></i> Yeni Danışman Kaydet</v-btn
 									>
 								</div>
 								<div class="card-body">
@@ -76,12 +77,9 @@
 												counter="11"
 											></v-text-field>
 											<div class="form-group">
-												<button
-													class="btn btn-info-light login-btn"
-													type="submit"
-												>
-													Danışmanı Bul ve Diyetisyen Bildirimi Yolla
-												</button>
+												<v-btn color="primary" type="submit">
+													Danışmanı Bul ve Diyetisyen Bildirimi Gönder
+												</v-btn>
 											</div>
 										</form>
 									</ValidationObserver>

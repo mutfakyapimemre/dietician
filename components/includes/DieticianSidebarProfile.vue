@@ -124,8 +124,6 @@
 
 <script>
 	export default {
-		middleware: ["guest2"],
-		layout: "default",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
@@ -133,7 +131,6 @@
 		},
 		data() {
 			return {
-				data: {},
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null
@@ -159,7 +156,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/"));
+					this.$router.go(decodeURIComponent("/dietician-login"));
 				}, 2000);
 			}
 		}

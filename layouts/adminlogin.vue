@@ -1,7 +1,9 @@
 <template>
-	<div class="main-wrapper login-body">
-		<Nuxt></Nuxt>
-	</div>
+	<v-app class="main-wrapper login-body">
+		<v-lazy>
+			<Nuxt></Nuxt>
+		</v-lazy>
+	</v-app>
 </template>
 
 <script>

@@ -113,8 +113,6 @@
 
 <script>
 	export default {
-		middleware: ["guest2"],
-		layout: "default",
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
@@ -147,7 +145,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/"));
+					this.$router.go(decodeURIComponent("/login"));
 				}, 2000);
 			}
 		}

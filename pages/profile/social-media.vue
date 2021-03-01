@@ -26,9 +26,9 @@
 						class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
 					>
 						<Sidebar v-if="userData.status !== 'dietician'"></Sidebar>
-						<DieticianSidebar
+						<Dieticiansidebar
 							v-if="userData.status === 'dietician'"
-						></DieticianSidebar>
+						></Dieticiansidebar>
 					</div>
 
 					<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
@@ -154,7 +154,7 @@
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
 	import Sidebar from "~/components/includes/Sidebar";
-	import DieticianSidebar from "~/components/includes/DieticianSidebarProfile";
+	import Dieticiansidebar from "~/components/includes/Dieticiansidebarprofile";
 
 	export default {
 		middleware: ["guest2"],
@@ -163,7 +163,7 @@
 			ValidationObserver,
 			ValidationProvider,
 			Sidebar,
-			DieticianSidebar
+			Dieticiansidebar
 		},
 		computed: {
 			img_url() {

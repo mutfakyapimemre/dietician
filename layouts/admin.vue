@@ -1,15 +1,24 @@
 <template>
-	<div class="main-wrapper">
-		<AdminHeader></AdminHeader>
-		<AdminSidebar></AdminSidebar>
-		<Nuxt></Nuxt>
-		<div class="sidebar-overlay"></div>
-	</div>
+	<v-app class="main-wrapper">
+		<v-lazy>
+			<client-only>
+				<Adminheader />
+			</client-only>
+		</v-lazy>
+		<v-lazy>
+			<client-only>
+				<Adminsidebar />
+			</client-only>
+		</v-lazy>
+		<v-lazy>
+			<Nuxt></Nuxt>
+		</v-lazy>
+	</v-app>
 </template>
 
 <script>
-	import AdminHeader from "~/components/admin_includes/AdminHeader";
-	import AdminSidebar from "~/components/admin_includes/AdminSidebar";
+	import Adminheader from "@/components/admin/Adminheader";
+	import Adminsidebar from "@/components/admin/Adminsidebar";
 	export default {
 		head() {
 			return {
@@ -189,8 +198,8 @@
 			};
 		},
 		components: {
-			AdminHeader,
-			AdminSidebar
+			Adminheader,
+			Adminsidebar
 		}
 	};
 </script>

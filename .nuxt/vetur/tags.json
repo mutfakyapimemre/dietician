@@ -1,24 +1,27 @@
 {
-  "AdminHeader": {
-    "description": "Auto imported from components/admin_includes/AdminHeader.vue"
+  "DieticianDieticianheader": {
+    "description": "Auto imported from components/dietician/Dieticianheader.vue"
   },
-  "AdminSidebar": {
-    "description": "Auto imported from components/admin_includes/AdminSidebar.vue"
+  "DieticianDieticiansidebar": {
+    "description": "Auto imported from components/dietician/Dieticiansidebar.vue"
   },
-  "DieticianHeader": {
-    "description": "Auto imported from components/dietician_includes/DieticianHeader.vue"
+  "AdminAdminheader": {
+    "description": "Auto imported from components/admin/Adminheader.vue"
   },
-  "DieticianSidebar": {
-    "description": "Auto imported from components/dietician_includes/DieticianSidebar.vue"
+  "AdminAdminsidebar": {
+    "description": "Auto imported from components/admin/Adminsidebar.vue"
   },
-  "IncludesDieticianSidebarProfile": {
-    "description": "Auto imported from components/includes/DieticianSidebarProfile.vue"
+  "IncludesDieticiansidebarprofile": {
+    "description": "Auto imported from components/includes/Dieticiansidebarprofile.vue"
   },
   "IncludesFooter": {
     "description": "Auto imported from components/includes/Footer.vue"
   },
   "IncludesHeader": {
     "description": "Auto imported from components/includes/Header.vue"
+  },
+  "IncludesLoadingBar": {
+    "description": "Auto imported from components/includes/LoadingBar.vue"
   },
   "IncludesSidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"

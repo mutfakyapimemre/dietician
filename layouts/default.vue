@@ -1,14 +1,24 @@
 <template>
-	<div>
-		<Header :siteSettings="siteSettings" />
-		<Nuxt />
-		<Footer />
-	</div>
+	<v-app>
+		<v-lazy>
+			<client-only>
+				<Header />
+			</client-only>
+		</v-lazy>
+		<v-lazy>
+			<Nuxt />
+		</v-lazy>
+		<v-lazy>
+			<client-only>
+				<Footer />
+			</client-only>
+		</v-lazy>
+	</v-app>
 </template>
 
 <script>
-	import Header from "~/components/includes/Header";
-	import Footer from "~/components/includes/Footer";
+	import Header from "@/components/includes/Header";
+	import Footer from "@/components/includes/Footer";
 
 	export default {
 		head() {
@@ -186,11 +196,6 @@
 		components: {
 			Header,
 			Footer
-		},
-		computed: {
-			siteSettings() {
-				return this.$store.getters.siteSettings;
-			}
 		}
 	};
 </script>

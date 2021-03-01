@@ -1,15 +1,24 @@
 <template>
-	<div class="main-wrapper">
-		<Header></Header>
-		<Sidebar></Sidebar>
-		<Nuxt></Nuxt>
-		<div class="sidebar-overlay"></div>
-	</div>
+	<v-app class="main-wrapper">
+		<v-lazy>
+			<client-only>
+				<Dieticianheader />
+			</client-only>
+		</v-lazy>
+		<v-lazy>
+			<client-only>
+				<Dieticiansidebar />
+			</client-only>
+		</v-lazy>
+		<v-lazy>
+			<Nuxt />
+		</v-lazy>
+	</v-app>
 </template>
 
 <script>
-	import Header from "~/components/dietician_includes/DieticianHeader";
-	import Sidebar from "~/components/dietician_includes/DieticianSidebar";
+	import Dieticianheader from "@/components/dietician/Dieticianheader";
+	import Dieticiansidebar from "@/components/dietician/Dieticiansidebar";
 
 	export default {
 		head() {
@@ -190,8 +199,8 @@
 			};
 		},
 		components: {
-			Header,
-			Sidebar
+			Dieticianheader,
+			Dieticiansidebar
 		}
 	};
 </script>

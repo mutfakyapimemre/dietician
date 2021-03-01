@@ -331,30 +331,6 @@
 				} catch (err) {
 					console.log(err);
 				}
-				/*
-																					this.$store.dispatch("LoginUser", formData).then(response => {
-																						if (response.success) {
-																							this.$izitoast.success({
-																								title: response.title,
-																								message: response.msg,
-																								position: "topCenter"
-																							});
-																							setTimeout(event => {
-																								if (!this.isEmpty(this.$route.query.url)) {
-																									window.location.href = decodeURIComponent(this.$route.query.url);
-																								} else {
-																									this.$router.go(decodeURIComponent("/profile"));
-																								}
-																							}, 2000);
-																						} else {
-																							this.$izitoast.error({
-																								title: response.title,
-																								message: response.msg,
-																								position: "topCenter"
-																							});
-																						}
-																					});
-																				*/
 			},
 			/**
 			 * User Register Method

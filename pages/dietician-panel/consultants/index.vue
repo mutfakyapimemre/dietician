@@ -31,66 +31,68 @@
 								></v-text-field>
 							</span>
 							<span class="justify-content-end flex-shrink-1">
-								<nuxt-link
+								<v-btn
 									to="/dietician-panel/consultants/add"
-									class="float-right btn btn-info-light ml-3 my-auto py-auto"
-									><i class="fa fa-plus"></i> Ekle</nuxt-link
+									class="float-right ml-3 my-auto py-auto"
+									color="primary"
+									><i class="fa fa-plus"></i> Ekle</v-btn
 								>
 							</span>
 						</v-card-title>
-
-						<v-data-table
-							:headers="headers"
-							:items="data"
-							disable-pagination
-							:hide-default-footer="true"
-						>
-							<template v-slot:[`item.img_url`]="{ item }">
-								<img v-bind:src="item.img_url" width="150" height="150" />
-							</template>
-							<template v-slot:[`item.actions`]="{ item }">
-								<v-tooltip bottom>
-									<template v-slot:activator="{ on, attrs }">
-										<v-icon
-											small
-											class="mr-2"
-											@click="createEdiet(item.id)"
-											v-bind="attrs"
-											v-on="on"
-											>fas fa-file-signature</v-icon
-										>
-									</template>
-									<span>Yeni E-Diyet Oluştur</span>
-								</v-tooltip>
-								<v-tooltip bottom>
-									<template v-slot:activator="{ on, attrs }">
-										<v-icon
-											small
-											class="mr-2"
-											@click="editData(item.id)"
-											v-bind="attrs"
-											v-on="on"
-										>
-											mdi-pencil
-										</v-icon>
-									</template>
-									<span>Danışmanı Düzenle</span>
-								</v-tooltip>
-								<v-tooltip bottom>
-									<template v-slot:activator="{ on, attrs }">
-										<v-icon
-											small
-											@click="deleteData(item.id)"
-											v-bind="attrs"
-											v-on="on"
-										>
-											mdi-delete
-										</v-icon>
-									</template>
-									<span>Danışmanı Sil</span>
-								</v-tooltip>
-							</template>
-						</v-data-table>
+						<v-card-text>
+							<v-data-table
+								:headers="headers"
+								:items="data"
+								disable-pagination
+								:hide-default-footer="true"
+							>
+								<template v-slot:[`item.img_url`]="{ item }">
+									<img v-bind:src="item.img_url" width="150" height="150" />
+								</template>
+								<template v-slot:[`item.actions`]="{ item }">
+									<v-tooltip bottom>
+										<template v-slot:activator="{ on, attrs }">
+											<v-icon
+												small
+												class="mr-2"
+												@click="createEdiet(item.id)"
+												v-bind="attrs"
+												v-on="on"
+												>fas fa-file-signature</v-icon
+											>
+										</template>
+										<span>Yeni E-Diyet Oluştur</span>
+									</v-tooltip>
+									<v-tooltip bottom>
+										<template v-slot:activator="{ on, attrs }">
+											<v-icon
+												small
+												class="mr-2"
+												@click="editData(item.id)"
+												v-bind="attrs"
+												v-on="on"
+											>
+												mdi-pencil
+											</v-icon>
+										</template>
+										<span>Danışmanı Düzenle</span>
+									</v-tooltip>
+									<v-tooltip bottom>
+										<template v-slot:activator="{ on, attrs }">
+											<v-icon
+												small
+												@click="deleteData(item.id)"
+												v-bind="attrs"
+												v-on="on"
+											>
+												mdi-delete
+											</v-icon>
+										</template>
+										<span>Danışmanı Sil</span>
+									</v-tooltip>
+								</template>
+							</v-data-table>
+						</v-card-text>
 					</v-card>
 					<v-row>
 						<v-col cols="12" sm="12" md="12" lg="3" xl="3">

@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<div>
 		<div class="breadcrumb-bar">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>
