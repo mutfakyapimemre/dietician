@@ -410,7 +410,11 @@
 					work_phone: null,
 					work_phone_2: null
 				},
-				siteSettings: this.$store.getters.siteSettings,
+				siteSettings: !this.isEmpty(
+					this.$auth.$storage.getUniversal("siteSettings")
+				)
+					? this.$auth.$storage.getUniversal("siteSettings")
+					: null,
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null

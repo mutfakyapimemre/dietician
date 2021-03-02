@@ -267,7 +267,11 @@
 					current: 1,
 					total: 1
 				},
-				siteSettings: this.$store.getters.siteSettings
+				siteSettings: !this.isEmpty(
+					this.$auth.$storage.getUniversal("siteSettings")
+				)
+					? this.$auth.$storage.getUniversal("siteSettings")
+					: null
 			};
 		},
 		mounted() {

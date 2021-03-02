@@ -1,16 +1,4 @@
 {
-  "DieticianDieticianheader": {
-    "description": "Auto imported from components/dietician/Dieticianheader.vue"
-  },
-  "DieticianDieticiansidebar": {
-    "description": "Auto imported from components/dietician/Dieticiansidebar.vue"
-  },
-  "AdminAdminheader": {
-    "description": "Auto imported from components/admin/Adminheader.vue"
-  },
-  "AdminAdminsidebar": {
-    "description": "Auto imported from components/admin/Adminsidebar.vue"
-  },
   "IncludesDieticiansidebarprofile": {
     "description": "Auto imported from components/includes/Dieticiansidebarprofile.vue"
   },
@@ -25,5 +13,17 @@
   },
   "IncludesSidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"
+  },
+  "DieticianDieticianheader": {
+    "description": "Auto imported from components/dietician/Dieticianheader.vue"
+  },
+  "DieticianDieticiansidebar": {
+    "description": "Auto imported from components/dietician/Dieticiansidebar.vue"
+  },
+  "AdminAdminheader": {
+    "description": "Auto imported from components/admin/Adminheader.vue"
+  },
+  "AdminAdminsidebar": {
+    "description": "Auto imported from components/admin/Adminsidebar.vue"
   }
 }

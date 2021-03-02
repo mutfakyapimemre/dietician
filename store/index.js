@@ -52,12 +52,21 @@ export const mutations = {
  * @type {{logout(*): void, nuxtServerInit(*, *), RegisterUser(*, *): Promise<*>}}
  */
 export const actions = {
-  nuxtServerInit( vuexContext, context ) {
-    context.$axios.get( process.env.apiBaseUrl + "home" ).then( response => {
-      if ( !isEmpty( response.data.data ) ) {
-        vuexContext.commit( "setSiteSettings", response.data.data )
-      }
-    } )
+  async nuxtServerInit( {
+    commit
+  } ) {
+    try {
+      const {
+        data
+      } = (
+        await this.$axios.get( process.env.apiBaseUrl + "home/" )
+      ).data;
+      this.$auth.$storage.setUniversal( "siteSettings", data );
+      this.$auth.$storage.syncUniversal( "siteSettings" );
+      return data;
+    } catch ( e ) {
+      console.log( e );
+    }
   },
   /**
    * Register User Function

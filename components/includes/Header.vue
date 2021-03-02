@@ -10,7 +10,12 @@
 					</span>
 				</a>
 				<nuxt-link to="/" class="navbar-brand logo"
-					><img src="/img/logo.png" class="img-fluid" v-bind:alt="null" />
+					><img
+						v-if="!isEmpty(siteSettings)"
+						v-bind:src="img_url + siteSettings.settings.logo"
+						class="img-fluid"
+						v-bind:alt="siteSettings.settings.title"
+					/>
 				</nuxt-link>
 			</div>
 			<div class="main-menu-wrapper">
@@ -145,6 +150,9 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		mounted() {
+			console.log(this.siteSettings);
+		},
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;
@@ -173,6 +181,11 @@
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
+					: null,
+				siteSettings: !this.isEmpty(
+					this.$auth.$storage.getUniversal("siteSettings")
+				)
+					? this.$auth.$storage.getUniversal("siteSettings")
 					: null
 			};
 		}

@@ -114,7 +114,7 @@ input:-webkit-autofill:focus {
 }
 
 a {
-  color: #0dd9f9 !important;
+  color: #0dd9f9;
 }
 
 input,

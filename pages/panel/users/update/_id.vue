@@ -254,7 +254,11 @@
 					linkedin: null,
 					img_url: null
 				},
-				siteSettings: this.$store.getters.siteSettings,
+				siteSettings: !this.isEmpty(
+					this.$auth.$storage.getUniversal("siteSettings")
+				)
+					? this.$auth.$storage.getUniversal("siteSettings")
+					: null,
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null

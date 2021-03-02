@@ -1,13 +1,21 @@
 <template>
 	<div>
+		<!-- Home Banner -->
+		<div class="pharmacy-home-slider" v-if="!isEmpty(siteSettings)">
+			<v-carousel cycle>
+				<v-carousel-item
+					v-for="(item, i) in siteSettings.sliders"
+					:key="i"
+					:src="base_img_url + item.img_url"
+				></v-carousel-item>
+			</v-carousel>
+		</div>
+		<!-- /Home Banner -->
 		<section class="section section-blogs">
 			<div class="container-fluid">
 				<div class="section-header text-center">
 					<h2>Blog</h2>
-					<p class="sub-title">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					</p>
+					<p class="sub-title"></p>
 				</div>
 
 				<div class="row blog-grid-row">
@@ -68,7 +76,13 @@
 			}
 		},
 		data() {
-			return {};
+			return {
+				siteSettings: !this.isEmpty(
+					this.$auth.$storage.getUniversal("siteSettings")
+				)
+					? this.$auth.$storage.getUniversal("siteSettings")
+					: null
+			};
 		},
 		methods: {
 			isEmpty(obj) {
@@ -79,15 +93,6 @@
 					return obj == null || Object.keys(obj).length == 0;
 				else if (typeof obj == "boolean") return false;
 				else return !obj;
-			},
-			shuffleArray(array) {
-				for (let i = array.length - 1; i > 0; i--) {
-					const j = Math.floor(Math.random() * (i + 1));
-					[array[i], array[j]] = [array[j], array[i]];
-				}
-			},
-			goToSearch() {
-				this.$router.go(decodeURIComponent("/profile"));
 			}
 		}
 	};
