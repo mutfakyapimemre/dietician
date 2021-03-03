@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<!-- Home Banner -->
-		<div class="pharmacy-home-slider" v-if="!isEmpty(siteSettings)">
+		<div class="pharmacy-home-slider" v-if="!isEmpty(settings)">
 			<v-carousel cycle>
 				<v-carousel-item
-					v-for="(item, i) in siteSettings.sliders"
+					v-for="(item, i) in settings.sliders"
 					:key="i"
 					:src="base_img_url + item.img_url"
 				></v-carousel-item>
@@ -73,14 +73,13 @@
 		computed: {
 			base_img_url() {
 				return process.env.apiPublicUrl;
+			},
+			settings() {
+				return this.$store.state.settings;
 			}
 		},
 		data() {
-			return {
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
-					: null
-			};
+			return {};
 		},
 		methods: {
 			isEmpty(obj) {

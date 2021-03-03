@@ -154,9 +154,7 @@
 				return this.$store.state.settings;
 			}
 		},
-		mounted() {
-			console.log(this.settings);
-		},
+
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

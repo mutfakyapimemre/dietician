@@ -74,9 +74,7 @@
 														<v-list-item-action>
 															<v-icon
 																:color="
-																	selectedDiseases !== undefined &&
-																	selectedDiseases !== null &&
-																	selectedDiseases !== '' &&
+																	!isEmpty(selectedDiseases) &&
 																	selectedDiseases.length > 0
 																		? 'indigo darken-4'
 																		: ''
@@ -120,23 +118,15 @@
 										</div>
 									</ValidationProvider>
 
-									<button
-										class="btn btn-outline-primary rounded-0 btn-lg"
-										type="button"
-										@click.prevent="e1 = 2"
-									>
+									<v-btn color="primary" type="button" @click.prevent="e1 = 2">
 										İlerle
-									</button>
+									</v-btn>
 								</v-stepper-content>
 
 								<v-stepper-content step="2">
-									<button
-										class="btn btn-outline-primary rounded-0 btn-lg"
-										role="button"
-										@click.prevent="e1 = 3"
-									>
+									<v-btn color="primary" role="button" @click.prevent="e1 = 3">
 										İlerle
-									</button>
+									</v-btn>
 									<button
 										class="btn btn-outline-primary rounded-0 btn-lg"
 										role="button"
@@ -167,9 +157,7 @@
 														<v-list-item-action>
 															<v-icon
 																:color="
-																	selectedMeals !== undefined &&
-																	selectedMeals !== null &&
-																	selectedMeals !== '' &&
+																	!isEmpty(selectedMeals) &&
 																	selectedMeals.length > 0
 																		? 'indigo darken-4'
 																		: ''
@@ -239,10 +227,15 @@
 			},
 			likesSomeFruit3() {
 				return (
-					!this.isEmpty(selectedDiseases) &&
+					!this.isEmpty(this.selectedDiseases) &&
 					this.selectedDiseases.length > 0 &&
 					!this.likesAllFruit3
 				);
+			},
+			icon() {
+				if (this.likesAllFruit) return "mdi-close-box";
+				if (this.likesSomeFruit) return "mdi-minus-box";
+				return "mdi-checkbox-blank-outline";
 			},
 			icon3() {
 				if (this.likesAllFruit3) return "mdi-close-box";
@@ -279,10 +272,35 @@
 			};
 		},
 		mounted() {
-			this.getDatas();
 			this.calcCalorie();
 		},
+		validate({ params }) {
+			return params.id !== null ? params.id : null;
+		},
+		async asyncData({ params, error, $axios }) {
+			try {
+				const { data } = await $axios.get(
+					process.env.apiBaseUrl + "dietician/e-diets/create/" + params.id
+				);
+				console.log(data);
+				return data;
+			} catch (e) {
+				error({ message: "Danışman Bilgisi Bulunamadı.", statusCode: 404 });
+			}
+		},
 		methods: {
+			toggle() {
+				this.$nextTick(() => {
+					if (this.likesAllFruit) {
+						this.data.selectedMeals = [];
+					} else {
+						this.data.selectedMeals = [];
+						this.data.meals.forEach((el, index) => {
+							this.data.selectedMeals.push(el._id.$oid);
+						});
+					}
+				});
+			},
 			calcCalorie() {
 				this.oga =
 					this.getUserData.userage <= 6
@@ -312,9 +330,10 @@
 				else if (typeof obj == "boolean") return false;
 				else return !obj;
 			},
+
 			getDatas() {
 				this.$axios
-					.get(`${process.env.apiBaseUrl}dietician/e-diets/create`, {
+					.get(`${process.env.apiBaseUrl}dietician/e-diets/create?id=null`, {
 						json: true,
 						withCredentials: false,
 						mode: "no-cors",
