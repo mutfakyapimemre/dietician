@@ -2,11 +2,15 @@
 	<div class="header">
 		<div class="header-left">
 			<nuxt-link to="/panel">
-				<img src="/img/logo.png" class="logo" alt="Diyetisyen Klinik" />
+				<img
+					v-bind:src="img_url + siteSettings.settings.logo"
+					class="logo"
+					alt="Diyetisyen Klinik"
+				/>
 			</nuxt-link>
 			<nuxt-link to="/panel" class="logo logo-small">
 				<img
-					src="/img/favicon.png"
+					v-bind:src="img_url + siteSettings.settings.favicon"
 					alt="Diyetisyen Klinik"
 					width="30"
 					height="30"
@@ -128,6 +132,9 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		mounted() {
+			console.log(this.siteSettings);
+		},
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;
@@ -157,10 +164,8 @@
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null,
-				siteSettings: !this.isEmpty(
-					this.$auth.$storage.getUniversal("siteSettings")
-				)
-					? this.$auth.$storage.getUniversal("siteSettings")
+				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
+					? this.$auth.$storage.getUniversal("settings")
 					: null
 			};
 		}

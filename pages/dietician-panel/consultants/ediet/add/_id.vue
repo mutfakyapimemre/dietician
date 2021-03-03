@@ -232,20 +232,14 @@
 			},
 			likesAllFruit3() {
 				return (
-					this.selectedDiseases !== undefined &&
-					this.selectedDiseases !== null &&
-					this.selectedDiseases !== "" &&
-					this.diseases !== undefined &&
-					this.diseases !== null &&
-					this.diseases !== "" &&
+					!this.isEmpty(this.selectedDiseases) &&
+					!this.isEmpty(this.diseases) &&
 					this.selectedDiseases.length === this.diseases.length
 				);
 			},
 			likesSomeFruit3() {
 				return (
-					this.selectedDiseases !== undefined &&
-					this.selectedDiseases !== null &&
-					this.selectedDiseases !== "" &&
+					!this.isEmpty(selectedDiseases) &&
 					this.selectedDiseases.length > 0 &&
 					!this.likesAllFruit3
 				);

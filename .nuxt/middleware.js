@@ -15,7 +15,4 @@ middleware['guest2'] = middleware['guest2'].default || middleware['guest2']
 middleware['notadmin'] = require('..\\middleware\\notadmin.js')
 middleware['notadmin'] = middleware['notadmin'].default || middleware['notadmin']
 
-middleware['session-control'] = require('..\\middleware\\session-control.js')
-middleware['session-control'] = middleware['session-control'].default || middleware['session-control']
-
 export default middleware

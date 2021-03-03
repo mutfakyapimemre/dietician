@@ -10,5 +10,6 @@ function isEmpty( obj ) {
 export default function ( context ) {
   if ( ( isEmpty( context.store.$auth.$storage.syncUniversal( "user" ) ) || context.store.$auth.$storage.syncUniversal( "user" ).status !== "dietician" ) ) {
     context.redirect( "/dietician-login" )
+    return
   }
 }

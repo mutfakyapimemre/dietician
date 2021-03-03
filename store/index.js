@@ -1,17 +1,8 @@
-function isEmpty( obj ) {
-  if ( typeof obj == "number" ) return false;
-  else if ( typeof obj == "string" ) return obj.length == 0;
-  else if ( Array.isArray( obj ) ) return obj.length == 0;
-  else if ( typeof obj == "object" )
-    return obj == null || Object.keys( obj ).length == 0;
-  else if ( typeof obj == "boolean" ) return false;
-  else return !obj;
-};
 /**
  * Set State
  */
 export const state = () => ( {
-  siteSettings: {},
+  settings: {},
   nutrients: [],
   empty_url: null,
   recipeCategories: [],
@@ -24,8 +15,8 @@ export const state = () => ( {
  * Set Mutations
  */
 export const mutations = {
-  setSiteSettings( state, siteSettings ) {
-    state.siteSettings = siteSettings
+  setSiteSettings( state, settings ) {
+    state.settings = settings
   },
   setNutrients( state, nutrients ) {
     state.nutrients = nutrients;
@@ -53,20 +44,13 @@ export const mutations = {
  */
 export const actions = {
   async nuxtServerInit( {
-    commit
+    dispatch
   } ) {
-    try {
-      const {
-        data
-      } = (
-        await this.$axios.get( process.env.apiBaseUrl + "home/" )
-      ).data;
-      this.$auth.$storage.setUniversal( "siteSettings", data );
-      this.$auth.$storage.syncUniversal( "siteSettings" );
-      return data;
-    } catch ( e ) {
-      console.log( e );
-    }
+    await dispatch( 'getSettings' )
+  },
+  async getSettings( store ) {
+    let res = await this.$axios.get( process.env.apiBaseUrl + "home/" );
+    store.commit( 'setSiteSettings', res.data.data )
   },
   /**
    * Register User Function
@@ -170,12 +154,6 @@ export const actions = {
 }
 
 export const getters = {
-  /**
-   * Get Site Settings Function
-   */
-  siteSettings( state ) {
-    return state.siteSettings
-  },
   /**
    * Get Nutrients Function
    */

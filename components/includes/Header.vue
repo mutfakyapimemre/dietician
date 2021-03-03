@@ -11,10 +11,10 @@
 				</a>
 				<nuxt-link to="/" class="navbar-brand logo"
 					><img
-						v-if="!isEmpty(siteSettings)"
-						v-bind:src="img_url + siteSettings.settings.logo"
+						v-if="!isEmpty(settings)"
+						v-bind:src="img_url + settings.settings.logo"
 						class="img-fluid"
-						v-bind:alt="siteSettings.settings.title"
+						v-bind:alt="settings.settings.title"
 					/>
 				</nuxt-link>
 			</div>
@@ -144,14 +144,18 @@
 </template>
 
 <script>
+	import { mapState } from "vuex";
 	export default {
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
+			},
+			settings() {
+				return this.$store.state.settings;
 			}
 		},
 		mounted() {
-			console.log(this.siteSettings);
+			console.log(this.settings);
 		},
 		methods: {
 			isEmpty(obj) {
@@ -181,11 +185,6 @@
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
-					: null,
-				siteSettings: !this.isEmpty(
-					this.$auth.$storage.getUniversal("siteSettings")
-				)
-					? this.$auth.$storage.getUniversal("siteSettings")
 					: null
 			};
 		}
