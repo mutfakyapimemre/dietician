@@ -8,9 +8,9 @@ You can directly use them in pages and other components without the need to impo
 
 - `<AdminAdminheader>` | `<admin-adminheader>` (components/admin/Adminheader.vue)
 - `<AdminAdminsidebar>` | `<admin-adminsidebar>` (components/admin/Adminsidebar.vue)
-- `<DieticianDieticianheader>` | `<dietician-dieticianheader>` (components/dietician/Dieticianheader.vue)
-- `<DieticianDieticiansidebar>` | `<dietician-dieticiansidebar>` (components/dietician/Dieticiansidebar.vue)
 - `<IncludesDieticiansidebarprofile>` | `<ıncludes-dieticiansidebarprofile>` (components/includes/Dieticiansidebarprofile.vue)
 - `<IncludesFooter>` | `<ıncludes-footer>` (components/includes/Footer.vue)
 - `<IncludesHeader>` | `<ıncludes-header>` (components/includes/Header.vue)
 - `<IncludesSidebar>` | `<ıncludes-sidebar>` (components/includes/Sidebar.vue)
+- `<DieticianDieticianheader>` | `<dietician-dieticianheader>` (components/dietician/Dieticianheader.vue)
+- `<DieticianDieticiansidebar>` | `<dietician-dieticiansidebar>` (components/dietician/Dieticiansidebar.vue)
