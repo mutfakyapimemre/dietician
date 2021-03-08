@@ -13,5 +13,4 @@ You can directly use them in pages and other components without the need to impo
 - `<IncludesDieticiansidebarprofile>` | `<ıncludes-dieticiansidebarprofile>` (components/includes/Dieticiansidebarprofile.vue)
 - `<IncludesFooter>` | `<ıncludes-footer>` (components/includes/Footer.vue)
 - `<IncludesHeader>` | `<ıncludes-header>` (components/includes/Header.vue)
-- `<IncludesLoadingBar>` | `<ıncludes-loading-bar>` (components/includes/LoadingBar.vue)
 - `<IncludesSidebar>` | `<ıncludes-sidebar>` (components/includes/Sidebar.vue)

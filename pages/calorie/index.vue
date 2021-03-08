@@ -92,10 +92,10 @@
 
 												<div class="row row-sm">
 													<div class="col-12">
-														<nuxt-link
+														<v-btn
 															v-bind:to="/calorie/ + nutrient.slug"
-															class="btn btn-info-light rounded-0 view-btn"
-															>Besin Detayı</nuxt-link
+															color="primary"
+															>Besin Detayı</v-btn
 														>
 													</div>
 												</div>

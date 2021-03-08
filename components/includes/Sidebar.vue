@@ -2,14 +2,25 @@
 	<div class="profile-sidebar">
 		<div class="widget-profile pro-widget-content">
 			<div class="profile-info-widget">
-				<nuxt-link to="/profile" class="booking-doc-img">
-					<img
+				<nuxt-link
+					to="/profile"
+					class="text-center justify-content-center mx-auto px-auto d-flex"
+				>
+					<v-img
+						transition="true"
+						light
 						v-bind:src="
 							img_url +
 								'/public/storage/' +
 								(!isEmpty(userData.img_url) ? userData.img_url : null)
 						"
-						class="img-fluid"
+						v-bind:lazy-src="
+							img_url +
+								'/public/storage/' +
+								(!isEmpty(userData.img_url) ? userData.img_url : null)
+						"
+						:aspect-ratio="16 / 9"
+						contain
 						v-bind:alt="userData.name"
 					/>
 				</nuxt-link>

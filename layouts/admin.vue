@@ -11,7 +11,7 @@
 			</client-only>
 		</v-lazy>
 		<v-lazy>
-			<Nuxt></Nuxt>
+			<Nuxt keep-alive></Nuxt>
 		</v-lazy>
 	</v-app>
 </template>

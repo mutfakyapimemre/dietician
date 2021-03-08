@@ -2,15 +2,21 @@
 	<div class="header">
 		<div class="header-left">
 			<nuxt-link to="/panel">
-				<img
-					v-bind:src="img_url + siteSettings.settings.logo"
-					class="logo"
-					alt="Diyetisyen Klinik"
+				<img class="logo" alt="Diyetisyen Klinik" />
+				<v-img
+					transition="true"
+					light
+					v-if="!isEmpty(settings)"
+					v-bind:src="img_url + settings.settings.logo"
+					lazy-src="/img/footer-logo.png"
+					:aspect-ratio="16 / 9"
+					contain
 				/>
 			</nuxt-link>
 			<nuxt-link to="/panel" class="logo logo-small">
 				<img
-					v-bind:src="img_url + siteSettings.settings.favicon"
+					v-if="!isEmpty(settings)"
+					v-bind:src="img_url + settings.settings.favicon"
 					alt="Diyetisyen Klinik"
 					width="30"
 					height="30"
@@ -133,7 +139,7 @@
 			}
 		},
 		mounted() {
-			console.log(this.siteSettings);
+			console.log(this.settings);
 		},
 		methods: {
 			isEmpty(obj) {
@@ -163,9 +169,6 @@
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
-					: null,
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
 					: null
 			};
 		}

@@ -5,7 +5,6 @@ export { default as DieticianDieticiansidebar } from '../..\\components\\dietici
 export { default as IncludesDieticiansidebarprofile } from '../..\\components\\includes\\Dieticiansidebarprofile.vue'
 export { default as IncludesFooter } from '../..\\components\\includes\\Footer.vue'
 export { default as IncludesHeader } from '../..\\components\\includes\\Header.vue'
-export { default as IncludesLoadingBar } from '../..\\components\\includes\\LoadingBar.vue'
 export { default as IncludesSidebar } from '../..\\components\\includes\\Sidebar.vue'
 
 export const LazyAdminAdminheader = import('../..\\components\\admin\\Adminheader.vue' /* webpackChunkName: "components/admin-adminheader" */).then(c => c.default || c)
@@ -15,5 +14,4 @@ export const LazyDieticianDieticiansidebar = import('../..\\components\\dieticia
 export const LazyIncludesDieticiansidebarprofile = import('../..\\components\\includes\\Dieticiansidebarprofile.vue' /* webpackChunkName: "components/ıncludes-dieticiansidebarprofile" */).then(c => c.default || c)
 export const LazyIncludesFooter = import('../..\\components\\includes\\Footer.vue' /* webpackChunkName: "components/ıncludes-footer" */).then(c => c.default || c)
 export const LazyIncludesHeader = import('../..\\components\\includes\\Header.vue' /* webpackChunkName: "components/ıncludes-header" */).then(c => c.default || c)
-export const LazyIncludesLoadingBar = import('../..\\components\\includes\\LoadingBar.vue' /* webpackChunkName: "components/ıncludes-loading-bar" */).then(c => c.default || c)
 export const LazyIncludesSidebar = import('../..\\components\\includes\\Sidebar.vue' /* webpackChunkName: "components/ıncludes-sidebar" */).then(c => c.default || c)

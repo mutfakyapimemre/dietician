@@ -5,8 +5,17 @@
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
 						<div class="footer-widget footer-about">
-							<div class="footer-logo">
-								<img src="/img/footer-logo.png" alt="logo" />
+							<div
+								class="footer-logo d-flex justify-content-center mx-auto px-auto text-center"
+							>
+								<v-img
+									transition="true"
+									light
+									src="/img/footer-logo.png"
+									lazy-src="/img/footer-logo.png"
+									:aspect-ratio="16 / 9"
+									contain
+								/>
 							</div>
 							<div class="footer-about-content">
 								<p>

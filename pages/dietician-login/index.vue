@@ -1,9 +1,9 @@
 <template>
-	<v-app class="h-auto">
+	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
+			<v-container fluid>
+				<v-row class="align-items-center">
+					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
 						<nav aria-label="breadcrumb" class="page-breadcrumb">
 							<ol class="breadcrumb pl-0">
 								<li class="breadcrumb-item">
@@ -15,30 +15,57 @@
 							</ol>
 						</nav>
 						<h2 class="breadcrumb-title">Diyetisyen Girişi</h2>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 		<div class="content account-page" style="padding: 50px 0">
-			<div class="container-fluid">
-				<div class="row">
-					<div
-						class="col-12 col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2"
+			<v-container fluid>
+				<v-row>
+					<v-col
+						cols="12"
+						sm="12"
+						md="8"
+						offset-md="2"
+						lg="8"
+						offset-lg="2"
+						xl="8"
+						offset-xl="2"
 					>
 						<div class="account-content">
-							<div class="row align-items-center justify-content-center">
-								<div
-									class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-6 login-left"
+							<v-row class="align-items-center justify-content-center">
+								<v-col
+									cols="12"
+									sm="12"
+									md="7"
+									lg="6"
+									xl="6"
+									class="login-left"
 								>
 									<img
 										src="/img/login-banner.png"
 										class="img-fluid"
 										alt="Diyetisyen Klinik"
 									/>
-								</div>
-								<div
-									class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 login-right"
+								</v-col>
+								<v-col
+									cols="12"
+									sm="12"
+									md="12"
+									lg="6"
+									xl="6"
+									class="login-right"
 								>
+									<v-tabs
+										v-model="tab"
+										background-color="primary"
+										dark
+										fixed-tabs
+									>
+										<v-tab v-for="item in tabs" :key="item.tab">
+											{{ item.tab }}
+										</v-tab>
+									</v-tabs>
 									<nav class="user-tabs mb-4">
 										<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
 											<li class="nav-item">
@@ -46,8 +73,7 @@
 													class="nav-link active"
 													href="#login"
 													data-toggle="tab"
-													>Giriş Yap</a
-												>
+												></a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link" href="#register" data-toggle="tab"
@@ -683,14 +709,14 @@
 											</ValidationObserver>
 										</div>
 									</div>
-								</div>
-							</div>
+								</v-col>
+							</v-row>
 						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
@@ -710,6 +736,8 @@
 		},
 		data() {
 			return {
+				tab: null,
+				tabs: [{ tab: "Giriş Yap" }, { tab: "Kayıt Ol" }],
 				e1: 1,
 				country: { cities: [], towns: [], districts: [], neighborhoods: [] },
 				isUser: true,

@@ -8,7 +8,6 @@ const components = {
   IncludesDieticiansidebarprofile: () => import('../..\\components\\includes\\Dieticiansidebarprofile.vue' /* webpackChunkName: "components/ıncludes-dieticiansidebarprofile" */).then(c => c.default || c),
   IncludesFooter: () => import('../..\\components\\includes\\Footer.vue' /* webpackChunkName: "components/ıncludes-footer" */).then(c => c.default || c),
   IncludesHeader: () => import('../..\\components\\includes\\Header.vue' /* webpackChunkName: "components/ıncludes-header" */).then(c => c.default || c),
-  IncludesLoadingBar: () => import('../..\\components\\includes\\LoadingBar.vue' /* webpackChunkName: "components/ıncludes-loading-bar" */).then(c => c.default || c),
   IncludesSidebar: () => import('../..\\components\\includes\\Sidebar.vue' /* webpackChunkName: "components/ıncludes-sidebar" */).then(c => c.default || c)
 }
 

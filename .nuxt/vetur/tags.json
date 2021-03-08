@@ -20,9 +20,6 @@
   "IncludesHeader": {
     "description": "Auto imported from components/includes/Header.vue"
   },
-  "IncludesLoadingBar": {
-    "description": "Auto imported from components/includes/LoadingBar.vue"
-  },
   "IncludesSidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"
   }
