@@ -1,4 +1,4 @@
-global.File = typeof window === 'undefined' ? Object : window.File
+global.File = typeof window === "undefined" ? Object : window.File;
 export default {
   /*
    ** Nuxt rendering mode
@@ -6,7 +6,7 @@ export default {
    */
   //mode: 'universal',
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseUrl: process.env.BASE_URL || "http://localhost:3000",
     apiBaseUrl: "https://api.klinikdiyetisyen.com/api/",
     //apiBaseUrl: "http://192.168.1.23/dietician/api/",
     apiPublicUrl: "https://api.klinikdiyetisyen.com/"
@@ -14,36 +14,38 @@ export default {
   },
   server: {
     port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost
+    host: "0.0.0.0" // default: localhost
   },
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
-  target: 'server',
+  target: "server",
   //target: 'static',
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || '',
-    meta: [ {
-        charset: 'utf-8'
+    title: process.env.npm_package_name || "",
+    meta: [
+      {
+        charset: "utf-8"
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui'
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui"
       },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
     htmlAttrs: {
-      lang: 'tr'
-    },
+      lang: "tr"
+    }
   },
   /*
    ** Global CSS
@@ -53,19 +55,23 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [ {
-    src: "~/plugins/vee-validate",
-    ssr: false,
-    mode: 'client'
-  }, {
-    src: "~/plugins/vuetify",
-    ssr: false,
-    mode: 'client'
-  }, {
-    src: "~/plugins/axios",
-    ssr: false,
-    mode: 'client'
-  }, ],
+  plugins: [
+    {
+      src: "~/plugins/vee-validate",
+      ssr: false,
+      mode: "client"
+    },
+    {
+      src: "~/plugins/vuetify",
+      ssr: false,
+      mode: "client"
+    },
+    {
+      src: "~/plugins/axios",
+      ssr: false,
+      mode: "client"
+    }
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -74,141 +80,134 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    '@nuxtjs/vuetify',
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
-  ],
+  buildModules: ["@nuxtjs/vuetify", "@nuxtjs/axios", "@nuxtjs/auth-next"],
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    'nuxt-izitoast',
-    'dropzone-nuxt',
-  ],
+  modules: ["nuxt-izitoast", "dropzone-nuxt"],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
     extractCSS: true,
-    transpile: [ "vee-validate/dist/rules", "vee-validate/dist/locale" ],
+    transpile: ["vee-validate/dist/rules", "vee-validate/dist/locale"],
     splitChunks: {
       layouts: true
     },
-    extend( config, ctx ) {
-      config.resolve.symlinks = false
+    extend(config, ctx) {
+      config.resolve.symlinks = false;
     }
   },
   auth: {
     strategies: {
       user: {
-        scheme: 'refresh',
+        scheme: "refresh",
         token: {
-          property: 'token',
+          property: "token",
           required: true,
-          type: 'Bearer',
+          type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
-          property: 'token',
-          data: 'token',
-          type: 'Bearer',
+          property: "token",
+          data: "token",
+          type: "Bearer",
           maxAge: 1800
         },
         endpoints: {
           login: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/users/login",
+            method: "post"
           },
           refresh: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/users/login",
+            method: "post"
           },
           logout: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/logout',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/users/logout",
+            method: "post"
           },
           user: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
-            method: 'get',
+            url: "https://api.klinikdiyetisyen.com/api/users/profile",
+            method: "get",
             propertyName: false,
             property: false,
-            autoFetch: true
+            autoFetch: false
           }
         },
         autoLogout: true
       },
       dietician: {
-        scheme: 'refresh',
+        scheme: "refresh",
         token: {
-          property: 'token',
+          property: "token",
           required: true,
-          type: 'Bearer',
+          type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
-          property: 'token',
-          data: 'token',
-          type: 'Bearer',
+          property: "token",
+          data: "token",
+          type: "Bearer",
           maxAge: 1800
         },
         endpoints: {
           login: {
-            url: 'https://api.klinikdiyetisyen.com/api/dietician/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/dietician/login",
+            method: "post"
           },
           refresh: {
-            url: 'https://api.klinikdiyetisyen.com/api/dietician/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/dietician/login",
+            method: "post"
           },
           logout: {
-            url: 'https://api.klinikdiyetisyen.com/api/dietician/logout',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/dietician/logout",
+            method: "post"
           },
           user: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
-            method: 'get',
+            url: "https://api.klinikdiyetisyen.com/api/users/profile",
+            method: "get",
             property: false,
             propertName: false,
-            autoFetch: true
+            autoFetch: false
           }
         },
         autoLogout: true
       },
       admin: {
-        scheme: 'refresh',
+        scheme: "refresh",
         token: {
-          property: 'token',
+          property: "token",
           required: true,
-          type: 'Bearer',
+          type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
-          property: 'token',
-          data: 'token',
-          type: 'Bearer',
+          property: "token",
+          data: "token",
+          type: "Bearer",
           maxAge: 1800
         },
         endpoints: {
           login: {
-            url: 'https://api.klinikdiyetisyen.com/api/panel/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/panel/login",
+            method: "post"
           },
           refresh: {
-            url: 'https://api.klinikdiyetisyen.com/api/panel/login',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/panel/login",
+            method: "post"
           },
           logout: {
-            url: 'https://api.klinikdiyetisyen.com/api/panel/logout',
-            method: 'post'
+            url: "https://api.klinikdiyetisyen.com/api/panel/logout",
+            method: "post"
           },
           user: {
-            url: 'https://api.klinikdiyetisyen.com/api/users/profile',
-            method: 'get',
+            url: "https://api.klinikdiyetisyen.com/api/users/profile",
+            method: "get",
             property: false,
             propertName: false,
-            autoFetch: true
+            autoFetch: false
           }
         },
         autoLogout: true
@@ -216,12 +215,12 @@ export default {
     }
   },
   hooks: {
-    'vue-renderer:ssr:context'( context ) {
-      const routePath = JSON.stringify( context.nuxt.routePath );
+    "vue-renderer:ssr:context"(context) {
+      const routePath = JSON.stringify(context.nuxt.routePath);
       context.nuxt = {
         serverRendered: true,
         routePath
       };
     }
-  },
-}
+  }
+};

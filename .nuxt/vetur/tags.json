@@ -5,6 +5,12 @@
   "AdminAdminsidebar": {
     "description": "Auto imported from components/admin/Adminsidebar.vue"
   },
+  "DieticianDieticianheader": {
+    "description": "Auto imported from components/dietician/Dieticianheader.vue"
+  },
+  "DieticianDieticiansidebar": {
+    "description": "Auto imported from components/dietician/Dieticiansidebar.vue"
+  },
   "IncludesDieticiansidebarprofile": {
     "description": "Auto imported from components/includes/Dieticiansidebarprofile.vue"
   },
@@ -16,11 +22,5 @@
   },
   "IncludesSidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"
-  },
-  "DieticianDieticianheader": {
-    "description": "Auto imported from components/dietician/Dieticianheader.vue"
-  },
-  "DieticianDieticiansidebar": {
-    "description": "Auto imported from components/dietician/Dieticiansidebar.vue"
   }
 }

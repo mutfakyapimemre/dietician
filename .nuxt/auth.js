@@ -72,7 +72,7 @@ export default function (ctx, inject) {
       "method": "get",
       "propertyName": false,
       "property": false,
-      "autoFetch": true
+      "autoFetch": false
     }
   },
   "autoLogout": true,
@@ -111,7 +111,7 @@ export default function (ctx, inject) {
       "method": "get",
       "property": false,
       "propertName": false,
-      "autoFetch": true
+      "autoFetch": false
     }
   },
   "autoLogout": true,
@@ -150,7 +150,7 @@ export default function (ctx, inject) {
       "method": "get",
       "property": false,
       "propertName": false,
-      "autoFetch": true
+      "autoFetch": false
     }
   },
   "autoLogout": true,

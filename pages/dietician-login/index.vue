@@ -22,16 +22,7 @@
 		<div class="content account-page" style="padding: 50px 0">
 			<v-container fluid>
 				<v-row>
-					<v-col
-						cols="12"
-						sm="12"
-						md="8"
-						offset-md="2"
-						lg="8"
-						offset-lg="2"
-						xl="8"
-						offset-xl="2"
-					>
+					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
 						<div class="account-content">
 							<v-row class="align-items-center justify-content-center">
 								<v-col
@@ -52,8 +43,8 @@
 									cols="12"
 									sm="12"
 									md="12"
-									lg="6"
-									xl="6"
+									lg="9"
+									xl="9"
 									class="login-right"
 								>
 									<v-tabs
@@ -66,113 +57,68 @@
 											{{ item.tab }}
 										</v-tab>
 									</v-tabs>
-									<nav class="user-tabs mb-4">
-										<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-											<li class="nav-item">
-												<a
-													class="nav-link active"
-													href="#login"
-													data-toggle="tab"
-												></a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#register" data-toggle="tab"
-													>Kayıt Ol</a
-												>
-											</li>
-										</ul>
-									</nav>
-									<div class="tab-content" id="myTabContent">
-										<div
-											class="tab-pane fade show active"
-											id="login"
-											role="tabpanel"
-											aria-labelledby="login-tab"
-										>
-											<div class="login-header">
-												<h3 class="font-weight-bold">
-													Diyetisyen Klinik
-													<small class="font-weight-normal"
-														>Diyetisyen Girişi</small
-													>
-													<nuxt-link to="/login"
-														>Kullanıcı Mısınız? Hemen Giriş Yapın</nuxt-link
-													>
-												</h3>
-											</div>
+									<v-tabs-items v-model="tab">
+										<v-tab-item>
 											<ValidationObserver v-slot="{ handleSubmit }">
 												<form
 													@submit.prevent="handleSubmit(onLogin)"
 													ref="userLogin"
 													enctype="multipart/form-data"
 												>
-													<div class="form-group form-focus">
-														<ValidationProvider
-															name="Email Adresiniz"
-															rules="required|email"
-															v-slot="{ errors }"
-														>
-															<v-text-field
-																label="Email Adresiniz"
-																hide-details="auto"
-																name="email"
-																v-model="email"
-															></v-text-field>
-															<small class="font-weight-bold text-danger">{{
-																errors[0]
-															}}</small>
-														</ValidationProvider>
-													</div>
+													<v-card tile>
+														<v-card-text>
+															<div class="form-group form-focus">
+																<ValidationProvider
+																	name="Email Adresiniz"
+																	rules="required|email"
+																	v-slot="{ errors }"
+																>
+																	<v-text-field
+																		label="Email Adresiniz"
+																		hide-details="auto"
+																		name="email"
+																		v-model="email"
+																	></v-text-field>
+																	<small class="font-weight-bold text-danger">{{
+																		errors[0]
+																	}}</small>
+																</ValidationProvider>
+															</div>
 
-													<div class="form-group form-focus">
-														<ValidationProvider
-															name="Şifreniz"
-															rules="required"
-															v-slot="{ errors }"
-														>
-															<v-text-field
-																label="Şifreniz"
-																hide-details="auto"
-																type="password"
-																name="password"
-																v-model="password"
-															></v-text-field>
-															<small class="font-weight-bold text-danger">{{
-																errors[0]
-															}}</small>
-														</ValidationProvider>
-													</div>
-													<div class="text-right">
-														<nuxt-link to="/forgot-password" class="forgot-link"
-															>Şifremi Unuttum.</nuxt-link
-														>
-													</div>
-													<button
-														class="btn btn-green-light rounded-0 login-btn"
-														type="submit"
-													>
-														Giriş Yap
-													</button>
+															<div class="form-group form-focus">
+																<ValidationProvider
+																	name="Şifreniz"
+																	rules="required"
+																	v-slot="{ errors }"
+																>
+																	<v-text-field
+																		label="Şifreniz"
+																		hide-details="auto"
+																		type="password"
+																		name="password"
+																		v-model="password"
+																	></v-text-field>
+																	<small class="font-weight-bold text-danger">{{
+																		errors[0]
+																	}}</small>
+																</ValidationProvider>
+															</div>
+															<div class="d-flex">
+																<v-btn color="primary">
+																	Giriş Yap
+																</v-btn>
+																<nuxt-link
+																	to="/forgot-password"
+																	class="forgot-link ml-auto"
+																	>Şifremi Unuttum.</nuxt-link
+																>
+															</div>
+														</v-card-text>
+													</v-card>
 												</form>
 											</ValidationObserver>
-										</div>
-										<div
-											class="tab-pane fade"
-											id="register"
-											role="tabpanel"
-											aria-labelledby="register-tab"
-										>
-											<div class="login-header">
-												<h3 class="font-weight-bold">
-													Diyetisyen Klinik
-													<small class="font-weight-normal"
-														>Diyetisyen Kaydı</small
-													>
-													<nuxt-link to="/login"
-														>Kullanıcı Mısınız? Hemen Kayıt Olun</nuxt-link
-													>
-												</h3>
-											</div>
+										</v-tab-item>
+										<v-tab-item>
 											<ValidationObserver v-slot="{ handleSubmit }">
 												<form
 													@submit.prevent="handleSubmit(onRegister)"
@@ -307,14 +253,9 @@
 																		>
 																	</ValidationProvider>
 																</div>
-																<button
-																	class="btn btn-green-light rounded-0"
-																	role="button"
-																	type="button"
-																	@click="e1 = 2"
-																>
+																<v-btn color="primary" @click="e1 = 2">
 																	Sonraki
-																</button>
+																</v-btn>
 															</v-stepper-content>
 
 															<v-stepper-content step="2">
@@ -687,28 +628,24 @@
 																	/>
 																</div>
 																<div class="form-group pt-3">
-																	<button
-																		class="btn btn-info-light mr-3 rounded-0 float-left"
-																		type="button"
-																		role="button"
+																	<v-btn
+																		color="info"
+																		class="mr-3"
 																		@click="e1 = 1"
 																	>
 																		Geri Dön
-																	</button>
-																	<button
-																		class="btn btn-green-light rounded-0"
-																		type="submit"
-																	>
+																	</v-btn>
+																	<v-btn color="primary">
 																		Kayıt Ol
-																	</button>
+																	</v-btn>
 																</div>
 															</v-stepper-content>
 														</v-stepper-items>
 													</v-stepper>
 												</form>
 											</ValidationObserver>
-										</div>
-									</div>
+										</v-tab-item>
+									</v-tabs-items>
 								</v-col>
 							</v-row>
 						</div>

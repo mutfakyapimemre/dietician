@@ -1,7 +1,7 @@
 <template>
 	<v-app class="main-wrapper login-body">
 		<v-lazy>
-			<Nuxt keep-alive></Nuxt>
+			<Nuxt />
 		</v-lazy>
 	</v-app>
 </template>

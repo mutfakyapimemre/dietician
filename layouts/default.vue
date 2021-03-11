@@ -6,7 +6,7 @@
 			</client-only>
 		</v-lazy>
 		<v-lazy>
-			<Nuxt keep-alive />
+			<Nuxt />
 		</v-lazy>
 		<v-lazy>
 			<client-only>
