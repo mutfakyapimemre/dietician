@@ -28,14 +28,12 @@ export default {
    */
   head: {
     title: process.env.npm_package_name || "",
-    meta: [
-      {
+    meta: [ {
         charset: "utf-8"
       },
       {
         name: "viewport",
-        content:
-          "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui"
+        content: "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui"
       },
       {
         hid: "description",
@@ -55,8 +53,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [
-    {
+  plugins: [ {
       src: "~/plugins/vee-validate",
       ssr: false,
       mode: "client"
@@ -67,9 +64,7 @@ export default {
       mode: "client"
     },
     {
-      src: "~/plugins/axios",
-      ssr: false,
-      mode: "client"
+      src: "~/plugins/axios"
     }
   ],
   /*
@@ -80,22 +75,22 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/vuetify", "@nuxtjs/axios", "@nuxtjs/auth-next"],
+  buildModules: [ "@nuxtjs/vuetify", "@nuxtjs/axios", "@nuxtjs/auth-next" ],
   /*
    ** Nuxt.js modules
    */
-  modules: ["nuxt-izitoast", "dropzone-nuxt"],
+  modules: [ "nuxt-izitoast", "dropzone-nuxt" ],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
     extractCSS: true,
-    transpile: ["vee-validate/dist/rules", "vee-validate/dist/locale"],
+    transpile: [ "vee-validate/dist/rules", "vee-validate/dist/locale" ],
     splitChunks: {
       layouts: true
     },
-    extend(config, ctx) {
+    extend( config, ctx ) {
       config.resolve.symlinks = false;
     }
   },
@@ -215,8 +210,8 @@ export default {
     }
   },
   hooks: {
-    "vue-renderer:ssr:context"(context) {
-      const routePath = JSON.stringify(context.nuxt.routePath);
+    "vue-renderer:ssr:context"( context ) {
+      const routePath = JSON.stringify( context.nuxt.routePath );
       context.nuxt = {
         serverRendered: true,
         routePath

@@ -10,7 +10,7 @@
     "update:packages": "npm update --save-dev && npm update --save"
   },
   "dependencies": {
-    "@nuxt/types": "^2.15.2",
+    "@nuxt/types": "^2.15.3",
     "@nuxtjs/auth-next": "^5.0.0-1613647907.37b1156",
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/vuetify": "^1.11.3",

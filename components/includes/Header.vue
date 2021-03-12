@@ -150,11 +150,11 @@
 			img_url() {
 				return process.env.apiPublicUrl;
 			},
-			settings() {
-				return this.$store.state.settings;
-			}
+			...mapState(["settings"])
 		},
-
+		mounted() {
+			console.log(this.settings);
+		},
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

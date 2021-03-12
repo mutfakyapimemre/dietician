@@ -20,7 +20,7 @@ import nuxt_plugin_nuxtizitoastplugin43e29816_2f4df6d3 from 'nuxt_plugin_nuxtizi
 import nuxt_plugin_axios_a0ef125a from 'nuxt_plugin_axios_a0ef125a' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_veevalidate_6e5ad03a from 'nuxt_plugin_veevalidate_6e5ad03a' // Source: ..\\plugins\\vee-validate (mode: 'client')
 import nuxt_plugin_vuetify_165b1c58 from 'nuxt_plugin_vuetify_165b1c58' // Source: ..\\plugins\\vuetify (mode: 'client')
-import nuxt_plugin_axios_3566aa80 from 'nuxt_plugin_axios_3566aa80' // Source: ..\\plugins\\axios (mode: 'client')
+import nuxt_plugin_axios_3566aa80 from 'nuxt_plugin_axios_3566aa80' // Source: ..\\plugins\\axios (mode: 'all')
 import nuxt_plugin_auth_5050e806 from 'nuxt_plugin_auth_5050e806' // Source: .\\auth.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -242,7 +242,7 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_vuetify_165b1c58(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_axios_3566aa80 === 'function') {
+  if (typeof nuxt_plugin_axios_3566aa80 === 'function') {
     await nuxt_plugin_axios_3566aa80(app.context, inject)
   }
 
