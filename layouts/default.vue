@@ -19,7 +19,7 @@
 <script>
 	import Header from "@/components/includes/Header";
 	import Footer from "@/components/includes/Footer";
-
+	import { mapState } from "vuex";
 	export default {
 		head() {
 			return {
@@ -192,6 +192,18 @@
 					{ src: "/js/script.js", ssr: false }
 				]
 			};
+		},
+		computed: {
+			...mapState(["settings"]),
+			testSettings() {
+				return this.settings;
+			}
+		},
+		mounted() {
+			this.$store.dispatch("LOAD_WEBSITEDATA").then(res => {
+				console.log(res);
+			});
+			//console.log(this.testSettings);
 		},
 		components: {
 			Header,

@@ -43,13 +43,13 @@ export default function (ctx, inject) {
   // user
   $auth.registerStrategy('user', new RefreshScheme($auth, {
   "token": {
-    "property": "token",
+    "property": "api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
-    "property": "token",
+    "property": "api_token",
     "data": "token",
     "type": "Bearer",
     "maxAge": 1800
@@ -82,14 +82,14 @@ export default function (ctx, inject) {
   // dietician
   $auth.registerStrategy('dietician', new RefreshScheme($auth, {
   "token": {
-    "property": "token",
+    "property": "api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
-    "property": "token",
-    "data": "token",
+    "property": "api_token",
+    "data": "api_token",
     "type": "Bearer",
     "maxAge": 1800
   },
@@ -121,14 +121,14 @@ export default function (ctx, inject) {
   // admin
   $auth.registerStrategy('admin', new RefreshScheme($auth, {
   "token": {
-    "property": "token",
+    "property": "api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
-    "property": "token",
-    "data": "token",
+    "property": "api_token",
+    "data": "api_token",
     "type": "Bearer",
     "maxAge": 1800
   },

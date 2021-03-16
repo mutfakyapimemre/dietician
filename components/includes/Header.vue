@@ -21,7 +21,12 @@
 			<div class="main-menu-wrapper">
 				<div class="menu-header">
 					<nuxt-link to="/" class="menu-logo"
-						><img src="/img/logo.png" class="img-fluid" alt="Logo" />
+						><img
+							v-if="!isEmpty(settings)"
+							v-bind:src="img_url + settings.settings.logo"
+							class="img-fluid"
+							v-bind:alt="settings.settings.title"
+						/>
 					</nuxt-link>
 					<a id="menu_close" class="menu-close" href="javascript:void(0);">
 						<i class="fa fa-times"></i>
@@ -151,9 +156,6 @@
 				return process.env.apiPublicUrl;
 			},
 			...mapState(["settings"])
-		},
-		mounted() {
-			console.log(this.settings);
 		},
 		methods: {
 			isEmpty(obj) {
