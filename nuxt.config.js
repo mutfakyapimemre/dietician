@@ -9,7 +9,7 @@ export default {
     baseUrl: process.env.BASE_URL || "http://localhost:3000",
     apiBaseUrl: "https://api.klinikdiyetisyen.com/api/",
     //apiBaseUrl: "http://192.168.1.23/dietician/api/",
-    apiPublicUrl: "https://api.klinikdiyetisyen.com/"
+    apiPublicUrl: "https://api.klinikdiyetisyen.com/storage/"
     //apiPublicUrl:"http://192.168.1.23/dietician/"
   },
   server: {
@@ -98,14 +98,14 @@ export default {
       user: {
         scheme: "refresh",
         token: {
-          property: "api_token",
+          property: "user.api_token",
           required: true,
           type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
           property: "api_token",
-          data: "token",
+          data: "api_token",
           type: "Bearer",
           maxAge: 1800
         },
@@ -125,9 +125,7 @@ export default {
           user: {
             url: "https://api.klinikdiyetisyen.com/api/users/profile",
             method: "get",
-            propertyName: false,
-            property: false,
-            autoFetch: false
+            autoFetch: true
           }
         },
         autoLogout: true
@@ -135,14 +133,14 @@ export default {
       dietician: {
         scheme: "refresh",
         token: {
-          property: "api_token",
+          property: "user.api_token",
           required: true,
           type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
-          property: "api_token",
-          data: "api_token",
+          property: "user.api_token",
+          data: "user.api_token",
           type: "Bearer",
           maxAge: 1800
         },
@@ -162,9 +160,7 @@ export default {
           user: {
             url: "https://api.klinikdiyetisyen.com/api/users/profile",
             method: "get",
-            property: false,
-            propertName: false,
-            autoFetch: false
+            autoFetch: true
           }
         },
         autoLogout: true
@@ -172,14 +168,14 @@ export default {
       admin: {
         scheme: "refresh",
         token: {
-          property: "api_token",
+          property: "user.api_token",
           required: true,
           type: "Bearer",
           maxAge: 1800
         },
         refreshToken: {
-          property: "api_token",
-          data: "api_token",
+          property: "user.api_token",
+          data: "user",
           type: "Bearer",
           maxAge: 1800
         },
@@ -199,9 +195,7 @@ export default {
           user: {
             url: "https://api.klinikdiyetisyen.com/api/users/profile",
             method: "get",
-            property: false,
-            propertName: false,
-            autoFetch: false
+            autoFetch: true
           }
         },
         autoLogout: true

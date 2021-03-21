@@ -32,7 +32,7 @@
 						<i class="fa fa-times"></i>
 					</a>
 				</div>
-				<ul class="main-nav">
+				<ul class="main-nav pl-0">
 					<li>
 						<nuxt-link to="/">Anasayfa</nuxt-link>
 					</li>
@@ -75,7 +75,13 @@
 						data-toggle="dropdown"
 						aria-expanded="false"
 					>
-						<span class="user-img">
+						<span
+							class="user-img"
+							v-if="
+								!isEmpty(userData) &&
+									(userData.profile_photo || userData.img_url)
+							"
+						>
 							<img
 								v-bind:src="
 									img_url +
@@ -90,10 +96,19 @@
 								v-bind:alt="userData.name"
 							/>
 						</span>
+						<span class="user-img" v-else>
+							<i class="fa fa-user text-dark"></i>
+						</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<div class="user-header">
-							<div class="avatar avatar-sm">
+							<div
+								class="avatar avatar-sm"
+								v-if="
+									!isEmpty(userData) &&
+										(userData.profile_photo || userData.img_url)
+								"
+							>
 								<img
 									v-bind:src="
 										img_url +
@@ -107,6 +122,9 @@
 									class="rounded-circle my-auto py-auto"
 									v-bind:alt="userData.name"
 								/>
+							</div>
+							<div class="avatar avatar-sm" v-else>
+								<i class="fa fa-user fa-2x"></i>
 							</div>
 							<div class="user-text">
 								<h6>{{ userData.name }}</h6>

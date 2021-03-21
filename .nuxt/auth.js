@@ -43,14 +43,14 @@ export default function (ctx, inject) {
   // user
   $auth.registerStrategy('user', new RefreshScheme($auth, {
   "token": {
-    "property": "api_token",
+    "property": "user.api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
     "property": "api_token",
-    "data": "token",
+    "data": "api_token",
     "type": "Bearer",
     "maxAge": 1800
   },
@@ -70,9 +70,7 @@ export default function (ctx, inject) {
     "user": {
       "url": "https://api.klinikdiyetisyen.com/api/users/profile",
       "method": "get",
-      "propertyName": false,
-      "property": false,
-      "autoFetch": false
+      "autoFetch": true
     }
   },
   "autoLogout": true,
@@ -82,14 +80,14 @@ export default function (ctx, inject) {
   // dietician
   $auth.registerStrategy('dietician', new RefreshScheme($auth, {
   "token": {
-    "property": "api_token",
+    "property": "user.api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
-    "property": "api_token",
-    "data": "api_token",
+    "property": "user.api_token",
+    "data": "user.api_token",
     "type": "Bearer",
     "maxAge": 1800
   },
@@ -109,9 +107,7 @@ export default function (ctx, inject) {
     "user": {
       "url": "https://api.klinikdiyetisyen.com/api/users/profile",
       "method": "get",
-      "property": false,
-      "propertName": false,
-      "autoFetch": false
+      "autoFetch": true
     }
   },
   "autoLogout": true,
@@ -121,14 +117,14 @@ export default function (ctx, inject) {
   // admin
   $auth.registerStrategy('admin', new RefreshScheme($auth, {
   "token": {
-    "property": "api_token",
+    "property": "user.api_token",
     "required": true,
     "type": "Bearer",
     "maxAge": 1800
   },
   "refreshToken": {
-    "property": "api_token",
-    "data": "api_token",
+    "property": "user.api_token",
+    "data": "user",
     "type": "Bearer",
     "maxAge": 1800
   },
@@ -148,9 +144,7 @@ export default function (ctx, inject) {
     "user": {
       "url": "https://api.klinikdiyetisyen.com/api/users/profile",
       "method": "get",
-      "property": false,
-      "propertName": false,
-      "autoFetch": false
+      "autoFetch": true
     }
   },
   "autoLogout": true,
