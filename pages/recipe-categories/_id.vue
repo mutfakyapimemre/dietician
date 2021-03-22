@@ -81,7 +81,7 @@
 																	img_url +
 																		(!isEmpty(recipe.dietician)
 																			? recipe.dietician.profile_photo
-																			: siteSettings.logo)
+																			: settings.logo)
 																"
 															/>
 														</v-list-item-avatar>
@@ -207,6 +207,7 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		props: ["settings"],
 		validate({ params }) {
 			return params.id !== null ? params.id : null;
 		},
@@ -278,10 +279,7 @@
 				pagination: {
 					current: 1,
 					total: 1
-				},
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
-					: null
+				}
 			};
 		},
 		mounted() {

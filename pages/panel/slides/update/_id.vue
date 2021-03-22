@@ -65,7 +65,7 @@
 								<v-row>
 									<v-col cols="12" sm="12" md="3" lg="3" xl="3">
 										<img
-											v-bind:src="base_img_url + data.img_url"
+											v-bind:src="img_url + data.img_url"
 											v-bind:alt="data.title"
 											class="img-fluid"
 										/>
@@ -117,7 +117,7 @@
 			};
 		},
 		computed: {
-			base_img_url() {
+			img_url() {
 				return process.env.apiPublicUrl;
 			}
 		},

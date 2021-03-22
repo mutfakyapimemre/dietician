@@ -81,10 +81,7 @@
 										<v-row>
 											<v-col cols="12" sm="12" md="3" lg="3" xl="3">
 												<img
-													v-bind:src="
-														decodeURIComponent(siteSettings.baseURL) +
-															data.img_url
-													"
+													v-bind:src="img_url + data.img_url"
 													v-bind:alt="data.name"
 													width="300"
 													height="300"
@@ -238,9 +235,6 @@
 					linkedin: null,
 					img_url: null
 				},
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
-					: null,
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null

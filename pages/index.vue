@@ -6,7 +6,7 @@
 				<v-carousel-item
 					v-for="(item, i) in settings.sliders"
 					:key="i"
-					:src="base_img_url + item.img_url"
+					:src="img_url + item.img_url"
 				></v-carousel-item>
 			</v-carousel>
 		</div>
@@ -71,7 +71,7 @@
 <script>
 	export default {
 		computed: {
-			base_img_url() {
+			img_url() {
 				return process.env.apiPublicUrl;
 			},
 			settings() {

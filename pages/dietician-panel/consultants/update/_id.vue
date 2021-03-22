@@ -629,9 +629,6 @@
 					"KASIM",
 					"ARALIK"
 				],
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
-					: null,
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null

@@ -107,9 +107,7 @@
 										<v-row>
 											<v-col cols="12" sm="12" md="3" lg="3" xl="3">
 												<img
-													v-bind:src="
-														decodeURIComponent(siteSettings.baseURL) + data.logo
-													"
+													v-bind:src="img_url + data.logo"
 													v-bind:alt="data.company_name"
 												/>
 											</v-col>
@@ -129,10 +127,7 @@
 										<v-row>
 											<v-col cols="12" sm="12" md="3" lg="3" xl="3">
 												<img
-													v-bind:src="
-														decodeURIComponent(siteSettings.baseURL) +
-															data.favicon
-													"
+													v-bind:src="img_url + data.favicon"
 													v-bind:alt="data.company_name"
 												/>
 											</v-col>
@@ -444,9 +439,6 @@
 					logo: null,
 					favicon: null
 				},
-				siteSettings: !this.isEmpty(this.$auth.$storage.getUniversal("settings"))
-					? this.$auth.$storage.getUniversal("settings")
-					: null,
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))
 					? this.$auth.$storage.getUniversal("user")
 					: null

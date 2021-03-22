@@ -66,9 +66,7 @@
 													class="img-fluid"
 													style="min-height: 273px"
 													v-bind:alt="doctor.name"
-													v-bind:src="
-														base_img_url + doctor.profile_photo.img_url
-													"
+													v-bind:src="img_url + doctor.profile_photo.img_url"
 												/>
 											</nuxt-link>
 										</div>
@@ -127,7 +125,7 @@
 <script>
 	export default {
 		computed: {
-			base_img_url() {
+			img_url() {
 				return process.env.apiPublicUrl;
 			}
 		},

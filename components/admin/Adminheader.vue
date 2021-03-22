@@ -2,22 +2,16 @@
 	<div class="header">
 		<div class="header-left">
 			<nuxt-link to="/panel">
-				<img class="logo" alt="Diyetisyen Klinik" />
-				<v-img
-					transition="true"
-					light
+				<img
 					v-if="!isEmpty(settings)"
 					v-bind:src="img_url + settings.settings.logo"
-					lazy-src="/img/footer-logo.png"
-					:aspect-ratio="16 / 9"
-					contain
 				/>
 			</nuxt-link>
 			<nuxt-link to="/panel" class="logo logo-small">
 				<img
 					v-if="!isEmpty(settings)"
 					v-bind:src="img_url + settings.settings.favicon"
-					alt="Diyetisyen Klinik"
+					v-bind:alt="settings.company_name"
 					width="30"
 					height="30"
 				/>
@@ -88,24 +82,29 @@
 				>
 					<span class="user-img"
 						><img
+							v-if="!isEmpty(userData.img_url)"
 							v-bind:src="
 								img_url + (!isEmpty(userData) ? userData.img_url : null)
 							"
 							width="31"
 							class="rounded-circle"
 							v-bind:alt="!isEmpty(userData) ? userData.name : null"
-					/></span>
+						/>
+						<i class="fa fa-user fa-2x mt-3" v-else></i>
+					</span>
 				</a>
 				<div class="dropdown-menu">
 					<div class="user-header">
 						<div class="avatar avatar-sm">
 							<img
+								v-if="!isEmpty(userData.img_url)"
 								v-bind:src="
 									img_url + (!isEmpty(userData) ? userData.img_url : null)
 								"
 								class="avatar-img rounded-circle"
 								v-bind:alt="!isEmpty(userData) ? userData.name : null"
 							/>
+							<i class="fa fa-user fa-2x my-auto" v-else></i>
 						</div>
 						<div class="user-text">
 							<h6>
