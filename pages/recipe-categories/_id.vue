@@ -1,30 +1,26 @@
 <template>
 	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item">
-									<nuxt-link to="/recipe-categories">Yemek Tarifleri</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									{{ categories.name }}
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">{{ categories.name }}</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item">
+							<nuxt-link to="/recipe-categories">Yemek Tarifleri</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							{{ categories.name }}
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">{{ categories.name }}</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<section class="section section-search py-5">
-				<div class="container-fluid">
+				<v-container fluid>
 					<div class="banner-wrapper">
 						<div class="banner-header text-center">
 							<h1>Yemek Tarifi Ara</h1>
@@ -45,12 +41,12 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</v-container>
 			</section>
 			<div class="content">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+				<v-container fluid>
+					<v-row>
+						<v-col cols="12" sm="12" md="9" lg="9" xl="9">
 							<h3 class="text-center" v-if="!isEmpty(search)">
 								"{{ search }}" Aramasıyla İle İlgili "{{ categories.name }}"
 								Kategorisine Ait Yemek Tarifleri
@@ -61,10 +57,14 @@
 							>
 								"{{ categories.name }}" Kategorisine Ait Tüm Yemek Tarifleri
 							</h3>
-							<div class="row" v-if="!isEmpty(recipes)">
+							<v-row v-if="!isEmpty(recipes)">
 								<client-only>
-									<div
-										class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+									<v-col
+										cols="12"
+										sm="12"
+										md="12"
+										lg="6"
+										xl="6"
 										v-bind:key="index"
 										v-for="(recipe, index) in recipes"
 									>
@@ -79,7 +79,6 @@
 																v-bind:alt="recipe.name"
 																v-bind:src="
 																	img_url +
-																		'public/storage/' +
 																		(!isEmpty(recipe.dietician)
 																			? recipe.dietician.profile_photo
 																			: siteSettings.logo)
@@ -112,9 +111,7 @@
 														<v-list-item-avatar tile size="165" class="rounded">
 															<img
 																v-bind:alt="recipe.name"
-																v-bind:src="
-																	img_url + 'public/storage/' + recipe.img_url
-																"
+																v-bind:src="img_url + recipe.img_url"
 															/>
 														</v-list-item-avatar>
 													</nuxt-link>
@@ -137,9 +134,14 @@
 													<v-list-item-content
 														class="align-items-top align-top d-flex align-start align-self-start flex-wrap"
 													>
-														<div class="row d-flex flex-wrap">
-															<div
-																class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center justify-content-center align-middle"
+														<v-row class="d-flex flex-wrap">
+															<v-col
+																cols="12"
+																sm="12"
+																md="8"
+																lg="8"
+																xl="8"
+																class="text-center justify-content-center align-middle"
 															>
 																<div
 																	class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
@@ -147,35 +149,45 @@
 																	<div class="d-block">1 Porsiyon</div>
 																	{{ recipe.calorie }}
 																</div>
-															</div>
-															<div
-																class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center justify-content-center align-middle"
+															</v-col>
+															<v-col
+																cols="12"
+																sm="12"
+																md="4"
+																lg="4"
+																xl="4"
+																class="text-center justify-content-center align-middle"
 															>
 																<div
 																	class="bg-light p-3 font-weight-bold text-center justify-content-center align-middle"
 																>
 																	{{ recipe.portion }}
 																</div>
-															</div>
-														</div>
+															</v-col>
+														</v-row>
 													</v-list-item-content>
 												</div>
 											</v-list-item>
 										</v-card>
-									</div>
+									</v-col>
 								</client-only>
-							</div>
+							</v-row>
 							<v-pagination
 								v-model="pagination.current"
 								:length="pagination.total"
 								@input="onPageChange"
 							></v-pagination>
-						</div>
-						<div
-							class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 theiaStickySidebar"
-						></div>
-					</div>
-				</div>
+						</v-col>
+						<v-col
+							cols="12"
+							sm="12"
+							md="3"
+							lg="3"
+							xl="3"
+							class="theiaStickySidebar"
+						></v-col>
+					</v-row>
+				</v-container>
 			</div>
 		</div>
 	</div>

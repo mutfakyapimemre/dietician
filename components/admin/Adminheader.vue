@@ -89,9 +89,7 @@
 					<span class="user-img"
 						><img
 							v-bind:src="
-								img_url +
-									'/public/storage/' +
-									(!isEmpty(userData) ? userData.img_url : null)
+								img_url + (!isEmpty(userData) ? userData.img_url : null)
 							"
 							width="31"
 							class="rounded-circle"
@@ -103,9 +101,7 @@
 						<div class="avatar avatar-sm">
 							<img
 								v-bind:src="
-									img_url +
-										'/public/storage/' +
-										(!isEmpty(userData) ? userData.img_url : null)
+									img_url + (!isEmpty(userData) ? userData.img_url : null)
 								"
 								class="avatar-img rounded-circle"
 								v-bind:alt="!isEmpty(userData) ? userData.name : null"
@@ -138,9 +134,7 @@
 				return process.env.apiPublicUrl;
 			}
 		},
-		mounted() {
-			console.log(this.settings);
-		},
+		props: ["settings"],
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

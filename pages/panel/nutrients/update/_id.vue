@@ -1,567 +1,539 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Besin Düzenle</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Besin Düzenle</li>
-								</ul>
-							</div>
-						</div>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<v-container fluid class="content">
+				<div class="page-header">
+					<h3 class="page-title">Besin Düzenle</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/panel">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active">Besin Düzenle</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Besin Düzenle</h4>
 					</div>
+					<div class="card-body">
+						<ValidationObserver v-slot="{ handleSubmit }">
+							<form
+								@submit.prevent="handleSubmit(editNutrients)"
+								ref="nutrientsForm"
+								enctype="multipart/form-data"
+							>
+								<v-stepper v-model="e1">
+									<v-stepper-header>
+										<v-stepper-step :complete="e1 > 1" step="1">
+											Besin Bilgileri
+										</v-stepper-step>
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title">Besin Düzenle</h4>
-								</div>
-								<div class="card-body">
-									<ValidationObserver v-slot="{ handleSubmit }">
-										<form
-											@submit.prevent="handleSubmit(editNutrients)"
-											ref="nutrientsForm"
-											enctype="multipart/form-data"
-										>
-											<v-stepper v-model="e1">
-												<v-stepper-header>
-													<v-stepper-step :complete="e1 > 1" step="1">
-														Besin Bilgileri
-													</v-stepper-step>
+										<v-divider></v-divider>
 
-													<v-divider></v-divider>
+										<v-stepper-step :complete="e1 > 2" step="2">
+											Besin Görselleri
+										</v-stepper-step>
+										<v-divider></v-divider>
 
-													<v-stepper-step :complete="e1 > 2" step="2">
-														Besin Görselleri
-													</v-stepper-step>
-													<v-divider></v-divider>
+										<v-stepper-step :complete="e1 > 3" step="3">
+											Kapak Fotoğrafı Seçimi
+										</v-stepper-step>
+									</v-stepper-header>
 
-													<v-stepper-step :complete="e1 > 3" step="3">
-														Kapak Fotoğrafı Seçimi
-													</v-stepper-step>
-												</v-stepper-header>
-
-												<v-stepper-items>
-													<v-stepper-content step="1">
-														<ValidationProvider
-															name="Besin Adı"
-															rules="required"
-															v-slot="{ errors }"
-														>
-															<div class="form-group">
-																<label for="title">Besin Adı</label>
-																<input
-																	id="title"
-																	type="text"
-																	class="form-control"
-																	name="name"
-																	v-model="data.name"
-																/>
-																<small class="font-weight-bold text-danger">{{
-																	errors[0]
-																}}</small>
-															</div>
-														</ValidationProvider>
-														<ValidationProvider
-															name="Besin Açıklaması"
-															rules="required"
-															v-slot="{ errors }"
-														>
-															<div class="form-group">
-																<label for="description"
-																	>Besin Açıklaması</label
-																>
-																<textarea
-																	id="description"
-																	class="form-control"
-																	name="description"
-																	v-model="data.description"
-																></textarea>
-																<small class="font-weight-bold text-danger">{{
-																	errors[0]
-																}}</small>
-															</div>
-														</ValidationProvider>
-														<v-tabs
-															v-model="tab"
-															background-color="primary"
-															dark
+									<v-stepper-items>
+										<v-stepper-content step="1">
+											<ValidationProvider
+												name="Besin Adı"
+												rules="required"
+												v-slot="{ errors }"
+											>
+												<div class="form-group">
+													<label for="title">Besin Adı</label>
+													<input
+														id="title"
+														type="text"
+														class="form-control"
+														name="name"
+														v-model="data.name"
+													/>
+													<small class="font-weight-bold text-danger">{{
+														errors[0]
+													}}</small>
+												</div>
+											</ValidationProvider>
+											<ValidationProvider
+												name="Besin Açıklaması"
+												rules="required"
+												v-slot="{ errors }"
+											>
+												<div class="form-group">
+													<label for="description">Besin Açıklaması</label>
+													<textarea
+														id="description"
+														class="form-control"
+														name="description"
+														v-model="data.description"
+													></textarea>
+													<small class="font-weight-bold text-danger">{{
+														errors[0]
+													}}</small>
+												</div>
+											</ValidationProvider>
+											<v-tabs v-model="tab" background-color="primary" dark>
+												<client-only>
+													<v-tab v-for="item in items" :key="item.tab">
+														{{ item.tab }}
+													</v-tab>
+												</client-only>
+											</v-tabs>
+											<v-tabs-items v-model="tab">
+												<v-tab-item eager>
+													<v-card flat>
+														<v-card-text
+															v-if="
+																data.values !== null &&
+																	data.values !== undefined &&
+																	data.values !== '' &&
+																	data.values.length > 0
+															"
 														>
 															<client-only>
-																<v-tab v-for="item in items" :key="item.tab">
-																	{{ item.tab }}
-																</v-tab>
-															</client-only>
-														</v-tabs>
-														<v-tabs-items v-model="tab">
-															<v-tab-item eager>
-																<v-card flat>
-																	<v-card-text
-																		v-if="
-																			data.values !== null &&
-																				data.values !== undefined &&
-																				data.values !== '' &&
-																				data.values.length > 0
-																		"
+																<v-row
+																	v-bind:key="index"
+																	v-for="(input, index) in data.values"
+																>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="4"
+																		xl="4"
 																	>
-																		<client-only>
-																			<div
-																				class="row"
-																				v-bind:key="index"
-																				v-for="(input, index) in data.values"
-																			>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
+																		<ValidationProvider
+																			name="Besin Değeri Adı"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label v-bind:for="'vitamin' + index"
+																					>Besin Değeri Adı</label
 																				>
-																					<ValidationProvider
-																						name="Besin Değeri Adı"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="'vitamin' + index"
-																								>Besin Değeri Adı</label
-																							>
-																							<input
-																								v-bind:id="'vitamin' + index"
-																								type="text"
-																								class="form-control"
-																								name="vitaminName[]"
-																								v-model="input.title"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
+																				<input
+																					v-bind:id="'vitamin' + index"
+																					type="text"
+																					class="form-control"
+																					name="vitaminName[]"
+																					v-model="input.title"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
 																				>
-																					<ValidationProvider
-																						name="Besin Değeri"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'vitaminValue' + index
-																								"
-																								>Besin Değeri</label
-																							>
-																							<input
-																								v-bind:id="
-																									'vitaminValue' + index
-																								"
-																								type="text"
-																								class="form-control"
-																								name="vitaminValue[]"
-																								v-model="input.value"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-																				>
-																					<ValidationProvider
-																						name="Besin Değeri Türü"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'vitaminType' + index
-																								"
-																								>Besin Değeri Türü</label
-																							>
-																							<input
-																								v-bind:id="
-																									'vitaminType' + index
-																								"
-																								type="text"
-																								class="form-control"
-																								name="vitaminType[]"
-																								v-model="input.type"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																				>
-																					<button
-																						@click.prevent="cloneProperty"
-																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																						role="button"
-																					>
-																						<i class="fa fa-plus"></i>
-																					</button>
-																					<button
-																						v-if="data.values.length > 1"
-																						@click.prevent="
-																							removeProperty(index)
-																						"
-																						role="button"
-																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
-																					>
-																						<i class="fa fa-times"></i>
-																					</button>
-																				</div>
 																			</div>
-																		</client-only>
-																	</v-card-text>
-																</v-card>
-															</v-tab-item>
-															<v-tab-item eager>
-																<v-card flat>
-																	<v-card-text
-																		v-if="
-																			data.criteria_values !== null &&
-																				data.criteria_values !== undefined &&
-																				data.criteria_values !== '' &&
-																				data.criteria_values.length > 0
-																		"
-																	>
-																		<client-only>
-																			<div
-																				class="row"
-																				v-bind:key="index"
-																				v-for="(input,
-																				index) in data.criteria_values"
-																			>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
-																				>
-																					<ValidationProvider
-																						name="Ölçüt Değeri Adı"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="'criteria' + index"
-																								>Ölçüt Değeri Adı</label
-																							>
-																							<select
-																								name="criteriaName[]"
-																								v-bind:id="'criteria' + index"
-																								class="form-control"
-																								v-if="
-																									data.criterias !== null &&
-																										data.criterias !==
-																											undefined &&
-																										data.criterias !== '' &&
-																										data.criterias.length > 0
-																								"
-																							>
-																								<option value="" selected>
-																									Ölçüt Seçiniz
-																								</option>
-																								<client-only>
-																									<option
-																										v-bind:value="criteria.name"
-																										:selected="
-																											criteria.name ===
-																												input.title
-																										"
-																										v-bind:key="index"
-																										v-for="(criteria,
-																										index) in data.criterias"
-																									>
-																										{{ criteria.name }}
-																									</option>
-																								</client-only>
-																							</select>
-																							<select
-																								name="criteriaName[]"
-																								v-bind:id="'criteria' + index"
-																								class="form-control"
-																								v-if="
-																									data.criterias === null &&
-																										data.criterias ===
-																											undefined &&
-																										data.criterias === '' &&
-																										data.criterias.length <= 0
-																								"
-																							>
-																								<option
-																									v-bind:value="null"
-																									selected
-																								>
-																									Ölçüt Seçiniz
-																								</option>
-																							</select>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-																				>
-																					<ValidationProvider
-																						name="Ölçüt Değeri"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'criteriaValue' + index
-																								"
-																								>Ölçüt Değeri</label
-																							>
-																							<input
-																								v-bind:id="
-																									'criteriaValue' + index
-																								"
-																								type="text"
-																								class="form-control"
-																								name="criteriaValue[]"
-																								v-model="input.value"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-																				>
-																					<ValidationProvider
-																						name="Ölçüt Değeri Türü"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'criteriaType' + index
-																								"
-																								>Ölçüt Değeri Türü</label
-																							>
-																							<input
-																								v-bind:id="
-																									'criteriaType' + index
-																								"
-																								type="text"
-																								class="form-control"
-																								name="criteriaType[]"
-																								v-model="input.type"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																				>
-																					<button
-																						@click.prevent="cloneProperty2"
-																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																						role="button"
-																					>
-																						<i class="fa fa-plus"></i>
-																					</button>
-																					<button
-																						v-if="
-																							data.criteria_values.length > 1
-																						"
-																						@click.prevent="
-																							removeProperty2(index)
-																						"
-																						role="button"
-																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
-																					>
-																						<i class="fa fa-times"></i>
-																					</button>
-																				</div>
-																			</div>
-																		</client-only>
-																	</v-card-text>
-																</v-card>
-															</v-tab-item>
-														</v-tabs-items>
-
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															role="button"
-															@click.prevent="e1 = 2"
-														>
-															Görsel Yüklemeye Geç
-														</button>
-													</v-stepper-content>
-
-													<v-stepper-content step="2">
-														<div class="row">
-															<div
-																class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
-															>
-																<dropzone
-																	@vdropzone-complete="onComplete"
-																	ref="myDropzone"
-																	id="dropzone"
-																	:options="options"
-																	:headers="options.headers"
-																></dropzone>
-															</div>
-														</div>
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															role="button"
-															@click.prevent="e1 = 1"
-														>
-															Geri Dön
-														</button>
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															role="button"
-															@click.prevent="selectCover"
-														>
-															Kapak Fotoğrafı Seç
-														</button>
-													</v-stepper-content>
-
-													<v-stepper-content step="3">
-														<div class="card">
-															<div class="card-header">
-																<h4 class="card-title">Görseller</h4>
-															</div>
-															<div class="card-body">
-																<v-card tile>
-																	<v-data-table
-																		:headers="headers"
-																		:items="imageData"
-																		disable-pagination
-																		:hide-default-footer="true"
-																	>
-																		<template
-																			v-slot:[`item.img_url`]="{ item }"
-																		>
-																			<img
-																				v-bind:src="item.img_url"
-																				width="150"
-																				height="150"
-																			/>
-																		</template>
-																		<template
-																			v-slot:[`item.isCover`]="{ item }"
-																		>
-																			<v-layout justify-center>
-																				<v-switch
-																					class="d-flex justify-content-center mx-auto px-auto text-center"
-																					v-model="item.isCover"
-																					color="success"
-																					:key="item.id"
-																					@click="isCoverSetter(item.id)"
-																				></v-switch>
-																			</v-layout>
-																		</template>
-																		<template
-																			v-slot:[`item.isActive`]="{ item }"
-																		>
-																			<v-layout justify-center>
-																				<v-switch
-																					class="d-flex justify-content-center mx-auto px-auto text-center"
-																					v-model="item.isActive"
-																					color="success"
-																					:key="item.id"
-																					@click="isActiveSetter(item.id)"
-																				></v-switch>
-																			</v-layout>
-																		</template>
-																		<template
-																			v-slot:[`item.actions`]="{ item }"
-																		>
-																			<v-icon
-																				small
-																				@click="deleteData(item.id)"
-																			>
-																				mdi-delete
-																			</v-icon>
-																		</template>
-																	</v-data-table>
-																</v-card>
-																<div class="row">
-																	<v-col cols="12" sm="12">
-																		<div class="row">
-																			<v-col cols="12" lg="3">
-																				<v-select
-																					v-model="pageSize"
-																					:items="pageSizes"
-																					label="Sayfada Görüntüleme Sayısı"
-																					@change="handlePageSizeChange"
-																				></v-select>
-																			</v-col>
-
-																			<v-col cols="12" lg="9">
-																				<v-pagination
-																					v-model="page"
-																					:length="totalPages"
-																					total-visible="7"
-																					next-icon="mdi-menu-right"
-																					prev-icon="mdi-menu-left"
-																					@input="handlePageChange"
-																				></v-pagination>
-																			</v-col>
-																		</div>
+																		</ValidationProvider>
 																	</v-col>
-																</div>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="3"
+																		xl="3"
+																	>
+																		<ValidationProvider
+																			name="Besin Değeri"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label
+																					v-bind:for="'vitaminValue' + index"
+																					>Besin Değeri</label
+																				>
+																				<input
+																					v-bind:id="'vitaminValue' + index"
+																					type="text"
+																					class="form-control"
+																					name="vitaminValue[]"
+																					v-model="input.value"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="3"
+																		xl="3"
+																	>
+																		<ValidationProvider
+																			name="Besin Değeri Türü"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label
+																					v-bind:for="'vitaminType' + index"
+																					>Besin Değeri Türü</label
+																				>
+																				<input
+																					v-bind:id="'vitaminType' + index"
+																					type="text"
+																					class="form-control"
+																					name="vitaminType[]"
+																					v-model="input.type"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																		class="py-auto my-auto text-center align-bottom"
+																	>
+																		<button
+																			@click.prevent="cloneProperty"
+																			class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																			role="button"
+																		>
+																			<i class="fa fa-plus"></i>
+																		</button>
+																		<button
+																			v-if="data.values.length > 1"
+																			@click.prevent="removeProperty(index)"
+																			role="button"
+																			class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																		>
+																			<i class="fa fa-times"></i>
+																		</button>
+																	</v-col>
+																</v-row>
+															</client-only>
+														</v-card-text>
+													</v-card>
+												</v-tab-item>
+												<v-tab-item eager>
+													<v-card flat>
+														<v-card-text
+															v-if="
+																data.criteria_values !== null &&
+																	data.criteria_values !== undefined &&
+																	data.criteria_values !== '' &&
+																	data.criteria_values.length > 0
+															"
+														>
+															<client-only>
+																<v-row
+																	v-bind:key="index"
+																	v-for="(input, index) in data.criteria_values"
+																>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="4"
+																		xl="4"
+																	>
+																		<ValidationProvider
+																			name="Ölçüt Değeri Adı"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label v-bind:for="'criteria' + index"
+																					>Ölçüt Değeri Adı</label
+																				>
+																				<select
+																					name="criteriaName[]"
+																					v-bind:id="'criteria' + index"
+																					class="form-control"
+																					v-if="
+																						data.criterias !== null &&
+																							data.criterias !== undefined &&
+																							data.criterias !== '' &&
+																							data.criterias.length > 0
+																					"
+																				>
+																					<option value="" selected>
+																						Ölçüt Seçiniz
+																					</option>
+																					<client-only>
+																						<option
+																							v-bind:value="criteria.name"
+																							:selected="
+																								criteria.name === input.title
+																							"
+																							v-bind:key="index"
+																							v-for="(criteria,
+																							index) in data.criterias"
+																						>
+																							{{ criteria.name }}
+																						</option>
+																					</client-only>
+																				</select>
+																				<select
+																					name="criteriaName[]"
+																					v-bind:id="'criteria' + index"
+																					class="form-control"
+																					v-if="
+																						data.criterias === null &&
+																							data.criterias === undefined &&
+																							data.criterias === '' &&
+																							data.criterias.length <= 0
+																					"
+																				>
+																					<option v-bind:value="null" selected>
+																						Ölçüt Seçiniz
+																					</option>
+																				</select>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="3"
+																		xl="3"
+																	>
+																		<ValidationProvider
+																			name="Ölçüt Değeri"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label
+																					v-bind:for="'criteriaValue' + index"
+																					>Ölçüt Değeri</label
+																				>
+																				<input
+																					v-bind:id="'criteriaValue' + index"
+																					type="text"
+																					class="form-control"
+																					name="criteriaValue[]"
+																					v-model="input.value"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="3"
+																		xl="3"
+																	>
+																		<ValidationProvider
+																			name="Ölçüt Değeri Türü"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label
+																					v-bind:for="'criteriaType' + index"
+																					>Ölçüt Değeri Türü</label
+																				>
+																				<input
+																					v-bind:id="'criteriaType' + index"
+																					type="text"
+																					class="form-control"
+																					name="criteriaType[]"
+																					v-model="input.type"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																		class="py-auto my-auto text-center align-bottom"
+																	>
+																		<button
+																			@click.prevent="cloneProperty2"
+																			class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																			role="button"
+																		>
+																			<i class="fa fa-plus"></i>
+																		</button>
+																		<button
+																			v-if="data.criteria_values.length > 1"
+																			@click.prevent="removeProperty2(index)"
+																			role="button"
+																			class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																		>
+																			<i class="fa fa-times"></i>
+																		</button>
+																	</v-col>
+																</v-row>
+															</client-only>
+														</v-card-text>
+													</v-card>
+												</v-tab-item>
+											</v-tabs-items>
+
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												role="button"
+												@click.prevent="e1 = 2"
+											>
+												Görsel Yüklemeye Geç
+											</button>
+										</v-stepper-content>
+
+										<v-stepper-content step="2">
+											<v-row>
+												<v-col cols="12" sm="12" md="12" lg="12" xl="12">
+													<dropzone
+														@vdropzone-complete="onComplete"
+														ref="myDropzone"
+														id="dropzone"
+														:options="options"
+														:headers="options.headers"
+													></dropzone>
+												</v-col>
+											</v-row>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												role="button"
+												@click.prevent="e1 = 1"
+											>
+												Geri Dön
+											</button>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												role="button"
+												@click.prevent="selectCover"
+											>
+												Kapak Fotoğrafı Seç
+											</button>
+										</v-stepper-content>
+
+										<v-stepper-content step="3">
+											<div class="card">
+												<div class="card-header">
+													<h4 class="card-title">Görseller</h4>
+												</div>
+												<div class="card-body">
+													<v-card tile>
+														<v-data-table
+															:headers="headers"
+															:items="imageData"
+															disable-pagination
+															:hide-default-footer="true"
+														>
+															<template v-slot:[`item.img_url`]="{ item }">
+																<img
+																	v-bind:src="item.img_url"
+																	width="150"
+																	height="150"
+																/>
+															</template>
+															<template v-slot:[`item.isCover`]="{ item }">
+																<v-layout justify-center>
+																	<v-switch
+																		class="d-flex justify-content-center mx-auto px-auto text-center"
+																		v-model="item.isCover"
+																		color="success"
+																		:key="item.id"
+																		@click="isCoverSetter(item.id)"
+																	></v-switch>
+																</v-layout>
+															</template>
+															<template v-slot:[`item.isActive`]="{ item }">
+																<v-layout justify-center>
+																	<v-switch
+																		class="d-flex justify-content-center mx-auto px-auto text-center"
+																		v-model="item.isActive"
+																		color="success"
+																		:key="item.id"
+																		@click="isActiveSetter(item.id)"
+																	></v-switch>
+																</v-layout>
+															</template>
+															<template v-slot:[`item.actions`]="{ item }">
+																<v-icon small @click="deleteData(item.id)">
+																	mdi-delete
+																</v-icon>
+															</template>
+														</v-data-table>
+													</v-card>
+													<div class="row">
+														<v-col cols="12" sm="12">
+															<div class="row">
+																<v-col cols="12" lg="3">
+																	<v-select
+																		v-model="pageSize"
+																		:items="pageSizes"
+																		label="Sayfada Görüntüleme Sayısı"
+																		@change="handlePageSizeChange"
+																	></v-select>
+																</v-col>
+
+																<v-col cols="12" lg="9">
+																	<v-pagination
+																		v-model="page"
+																		:length="totalPages"
+																		total-visible="7"
+																		next-icon="mdi-menu-right"
+																		prev-icon="mdi-menu-left"
+																		@input="handlePageChange"
+																	></v-pagination>
+																</v-col>
 															</div>
-														</div>
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															role="button"
-															@click.prevent="e1 = 2"
-														>
-															Geri Dön
-														</button>
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															type="submit"
-														>
-															Besini Güncelle
-														</button>
-													</v-stepper-content>
-												</v-stepper-items>
-											</v-stepper>
-										</form>
-									</ValidationObserver>
-								</div>
-							</div>
-						</div>
+														</v-col>
+													</div>
+												</div>
+											</div>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												role="button"
+												@click.prevent="e1 = 2"
+											>
+												Geri Dön
+											</button>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												type="submit"
+											>
+												Besini Güncelle
+											</button>
+										</v-stepper-content>
+									</v-stepper-items>
+								</v-stepper>
+							</form>
+						</ValidationObserver>
 					</div>
 				</div>
-			</div>
+			</v-container>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
@@ -902,7 +874,7 @@
 				return {
 					rank: data.rank,
 					id: data._id.$oid,
-					img_url: this.img_url + "public/storage/" + data.img_url,
+					img_url: this.img_url + data.img_url,
 					isCover: data.isCover,
 					isActive: data.isActive
 				};

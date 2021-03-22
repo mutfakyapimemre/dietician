@@ -1,106 +1,96 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Yemek Tarifleri</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Yemek Tarifleri</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<v-card tile>
-						<v-card-title class="d-flex justify-content-between">
-							<span class="justify-content-center flex-grow-1">
-								<v-text-field
-									v-model="searchTitle"
-									label="Arama Yapın..."
-									class="my-auto py-auto"
-									v-on:keyup.prevent="
-										page = 1;
-										retrieveData('get-by-search');
-									"
-								></v-text-field>
-							</span>
-							<span class="justify-content-end flex-shrink-1">
-								<v-btn
-									to="/dietician-panel/recipes/add"
-									color="primary"
-									class="float-right ml-3 my-auto py-auto"
-								>
-									<i class="fa fa-plus"></i> Ekle
-								</v-btn>
-							</span>
-						</v-card-title>
-						<v-card-text>
-							<v-data-table
-								:headers="headers"
-								:items="data"
-								disable-pagination
-								:hide-default-footer="true"
-							>
-								<template v-slot:[`item.img_url`]="{ item }">
-									<img v-bind:src="item.img_url" width="150" height="150" />
-								</template>
-								<template v-slot:[`item.isActive`]="{ item }">
-									<v-layout justify-center>
-										<v-switch
-											class="d-flex justify-content-center mx-auto px-auto text-center"
-											v-model="item.isActive"
-											color="success"
-											:key="item.id"
-											@click="isActiveSetter(item.id)"
-										></v-switch>
-									</v-layout>
-								</template>
-								<template v-slot:[`item.actions`]="{ item }">
-									<v-icon small class="mr-2" @click="editData(item.id)">
-										mdi-pencil
-									</v-icon>
-									<v-icon small @click="deleteData(item.id)">
-										mdi-delete
-									</v-icon>
-								</template>
-							</v-data-table>
-						</v-card-text>
-					</v-card>
-					<div class="row">
-						<v-col cols="12" sm="12">
-							<div class="row">
-								<v-col cols="12" lg="3">
-									<v-select
-										v-model="pageSize"
-										:items="pageSizes"
-										label="Sayfada Görüntüleme Sayısı"
-										@change="handlePageSizeChange"
-									></v-select>
-								</v-col>
-
-								<v-col cols="12" lg="9">
-									<v-pagination
-										v-model="page"
-										:length="totalPages"
-										total-visible="7"
-										next-icon="mdi-menu-right"
-										prev-icon="mdi-menu-left"
-										@input="handlePageChange"
-									></v-pagination>
-								</v-col>
-							</div>
-						</v-col>
-					</div>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<v-container fluid class="content">
+				<div class="page-header">
+					<h3 class="page-title">Yemek Tarifleri</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active">Yemek Tarifleri</li>
+					</ul>
 				</div>
-			</div>
+
+				<v-card tile>
+					<v-card-title class="d-flex justify-content-between">
+						<span class="justify-content-center flex-grow-1">
+							<v-text-field
+								v-model="searchTitle"
+								label="Arama Yapın..."
+								class="my-auto py-auto"
+								v-on:keyup.prevent="
+									page = 1;
+									retrieveData('get-by-search');
+								"
+							></v-text-field>
+						</span>
+						<span class="justify-content-end flex-shrink-1">
+							<v-btn
+								to="/dietician-panel/recipes/add"
+								color="primary"
+								class="float-right ml-3 my-auto py-auto"
+							>
+								<i class="fa fa-plus"></i> Ekle
+							</v-btn>
+						</span>
+					</v-card-title>
+					<v-card-text>
+						<v-data-table
+							:headers="headers"
+							:items="data"
+							disable-pagination
+							:hide-default-footer="true"
+						>
+							<template v-slot:[`item.img_url`]="{ item }">
+								<img v-bind:src="item.img_url" width="150" height="150" />
+							</template>
+							<template v-slot:[`item.isActive`]="{ item }">
+								<v-layout justify-center>
+									<v-switch
+										class="d-flex justify-content-center mx-auto px-auto text-center"
+										v-model="item.isActive"
+										color="success"
+										:key="item.id"
+										@click="isActiveSetter(item.id)"
+									></v-switch>
+								</v-layout>
+							</template>
+							<template v-slot:[`item.actions`]="{ item }">
+								<v-icon small class="mr-2" @click="editData(item.id)">
+									mdi-pencil
+								</v-icon>
+								<v-icon small @click="deleteData(item.id)">
+									mdi-delete
+								</v-icon>
+							</template>
+						</v-data-table>
+					</v-card-text>
+				</v-card>
+				<v-row>
+					<v-col cols="12" lg="3">
+						<v-select
+							v-model="pageSize"
+							:items="pageSizes"
+							label="Sayfada Görüntüleme Sayısı"
+							@change="handlePageSizeChange"
+						></v-select>
+					</v-col>
+
+					<v-col cols="12" lg="9">
+						<v-pagination
+							v-model="page"
+							:length="totalPages"
+							total-visible="7"
+							next-icon="mdi-menu-right"
+							prev-icon="mdi-menu-left"
+							@input="handlePageChange"
+						></v-pagination>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
@@ -292,7 +282,7 @@
 					rank: data.rank,
 					id: data._id,
 					name: data.name,
-					img_url: this.img_url + "public/storage/" + data.img_url,
+					img_url: this.img_url + data.img_url,
 					isActive: data.isActive
 				};
 			}

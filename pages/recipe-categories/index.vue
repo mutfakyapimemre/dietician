@@ -1,27 +1,23 @@
 <template>
 	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Yemek Tarifi Türleri
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Yemek Tarifi Türleri</h2>
-					</v-col>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Yemek Tarifi Türleri
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Yemek Tarifi Türleri</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<section class="section section-search">
-				<div class="container-fluid">
+				<v-container fluid>
 					<div class="banner-wrapper">
 						<div class="banner-header text-center">
 							<h1>Yemek Tarifi Türü Ara</h1>
@@ -42,7 +38,7 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</v-container>
 			</section>
 			<div class="content">
 				<div class="container-fluid">
@@ -59,10 +55,14 @@
 							</h3>
 							<div class="row row-grid" v-if="!isEmpty(recipeCategories)">
 								<client-only>
-									<div
+									<v-col
+										cols="12"
+										sm="12"
+										md="6"
+										lg="4"
+										xl="3"
 										v-bind:key="index"
 										v-for="(recipeCategory, index) in recipeCategories"
-										class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
 									>
 										<div class="profile-widget">
 											<div class="doc-img">
@@ -72,11 +72,7 @@
 													<img
 														height="300"
 														v-bind:alt="recipeCategory.name"
-														v-bind:src="
-															img_url +
-																'public/storage/' +
-																recipeCategory.img_url
-														"
+														v-bind:src="img_url + recipeCategory.img_url"
 													/>
 												</nuxt-link>
 											</div>
@@ -93,8 +89,8 @@
 													{{ recipeCategory.description }}
 												</p>
 
-												<div class="row row-sm">
-													<div class="col-12">
+												<v-row>
+													<v-col cols="12" sm="12" md="12" lg="12" xl="12">
 														<nuxt-link
 															v-bind:to="
 																/recipe-categories/ + recipeCategory.slug
@@ -102,11 +98,11 @@
 															class="btn btn-info-light rounded-0 view-btn"
 															>Yemek Tarifleri</nuxt-link
 														>
-													</div>
-												</div>
+													</v-col>
+												</v-row>
 											</div>
 										</div>
-									</div>
+									</v-col>
 								</client-only>
 							</div>
 							<v-pagination
@@ -115,9 +111,14 @@
 								@input="onPageChange"
 							></v-pagination>
 						</v-col>
-						<div
-							class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
-						></div>
+						<v-col
+							cols="12"
+							sm="12"
+							md="5"
+							lg="4"
+							xl="3"
+							class="theiaStickySidebar"
+						></v-col>
 					</div>
 				</div>
 			</div>

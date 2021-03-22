@@ -1,18 +1,14 @@
 <template>
 	<div class="page-wrapper">
-		<div class="content container-fluid vh-100">
+		<v-container fluid class="content">
 			<div class="page-header">
-				<div class="row">
-					<div class="col-sm-12">
-						<h3 class="page-title">Yemek Tarifleri</h3>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item">
-								<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-							</li>
-							<li class="breadcrumb-item active">Yemek Tarifleri</li>
-						</ul>
-					</div>
-				</div>
+				<h3 class="page-title">Yemek Tarifleri</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+					</li>
+					<li class="breadcrumb-item active">Yemek Tarifleri</li>
+				</ul>
 			</div>
 
 			<ValidationObserver v-slot="{ handleSubmit }">
@@ -540,7 +536,7 @@
 					</v-stepper>
 				</form>
 			</ValidationObserver>
-		</div>
+		</v-container>
 	</div>
 </template>
 <script>
@@ -867,7 +863,7 @@
 				return {
 					rank: data.rank,
 					id: data._id.$oid,
-					img_url: this.img_url + "public/storage/" + data.img_url,
+					img_url: this.img_url + data.img_url,
 					isCover: data.isCover,
 					isActive: data.isActive
 				};

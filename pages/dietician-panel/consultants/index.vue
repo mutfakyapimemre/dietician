@@ -1,18 +1,14 @@
 <template>
 	<div class="page-wrapper">
-		<div class="content container-fluid">
+		<v-container fluid class="content">
 			<div class="page-header">
-				<v-row>
-					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
-						<h3 class="page-title">Danışmanlarım</h3>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item">
-								<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-							</li>
-							<li class="breadcrumb-item active">Danışmanlarım</li>
-						</ul>
-					</v-col>
-				</v-row>
+				<h3 class="page-title">Danışmanlarım</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+					</li>
+					<li class="breadcrumb-item active">Danışmanlarım</li>
+				</ul>
 			</div>
 
 			<v-card tile>
@@ -113,7 +109,7 @@
 					></v-pagination>
 				</v-col>
 			</v-row>
-		</div>
+		</v-container>
 	</div>
 </template>
 <script>
@@ -280,7 +276,6 @@
 					tc: data.tc,
 					img_url:
 						this.img_url +
-						"public/storage/" +
 						(data.status === "dietician" ? data.profile_photo : data.img_url),
 					isActive: data.isActive
 				};

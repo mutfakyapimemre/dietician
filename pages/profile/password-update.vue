@@ -1,29 +1,30 @@
 <template>
 	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Profil
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Profil</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Profil
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Profil</h2>
+			</v-container>
 		</div>
 		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-					<div
-						class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+			<v-container fluid>
+				<v-row>
+					<v-col
+						cols="12"
+						sm="12"
+						md="5"
+						lg="4"
+						xl="3"
+						class="theiaStickySidebar"
 					>
 						<Sidebar
 							v-if="!isEmpty(userData) && userData.status !== 'dietician'"
@@ -31,9 +32,9 @@
 						<Dieticiansidebar
 							v-else-if="!isEmpty(userData) && userData.status === 'dietician'"
 						></Dieticiansidebar>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+					<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 						<div class="card card-table">
 							<div class="card-header">
 								<div class="card-title my-auto">
@@ -140,9 +141,9 @@
 								</ValidationObserver>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 	</div>
 </template>

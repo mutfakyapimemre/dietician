@@ -85,7 +85,6 @@
 							<img
 								v-bind:src="
 									img_url +
-										'/public/storage/' +
 										(!isEmpty(userData) && userData.status === 'dietician'
 											? userData.profile_photo
 											: userData.img_url)
@@ -112,7 +111,6 @@
 								<img
 									v-bind:src="
 										img_url +
-											'/public/storage/' +
 											(!isEmpty(userData) && userData.status === 'dietician'
 												? userData.profile_photo
 												: userData.img_url)
@@ -175,6 +173,7 @@
 			},
 			...mapState(["settings"])
 		},
+		props: ["settings"],
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

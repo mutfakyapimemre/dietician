@@ -1,12 +1,13 @@
 <template>
 	<v-app class="main-wrapper login-body">
 		<v-lazy>
-			<Nuxt />
+			<Nuxt :settings="settings" />
 		</v-lazy>
 	</v-app>
 </template>
 
 <script>
+	import { mapState } from "vuex";
 	export default {
 		head() {
 			return {
@@ -185,6 +186,15 @@
 					{ src: "/js/admin_script.js", ssr: false }
 				]
 			};
+		},
+		computed: {
+			...mapState(["settings"])
+		},
+		mounted() {
+			this.$store.dispatch("LOAD_WEBSITEDATA").then(res => {
+				console.log(res);
+			});
+			//console.log(this.testSettings);
 		}
 	};
 </script>

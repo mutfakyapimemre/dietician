@@ -18,8 +18,8 @@
 					<p class="sub-title"></p>
 				</div>
 
-				<div class="row blog-grid-row">
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+				<v-row class="blog-grid-row">
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3">
 						<div class="blog grid-blog">
 							<div class="blog-image">
 								<a href="blog-details.html">
@@ -56,8 +56,8 @@
 								</p>
 							</div>
 						</div>
-					</div>
-				</div>
+					</v-col>
+				</v-row>
 				<div class="view-all text-center">
 					<nuxt-link to="/blogs" class="btn btn-info-light rounded-0"
 						>Tümünü Görüntüle</nuxt-link

@@ -1,275 +1,266 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Hastalık Düzenle</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Hastalık Düzenle</li>
-								</ul>
-							</div>
-						</div>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<v-container fluid class="content">
+				<div class="page-header">
+					<h3 class="page-title">Hastalık Düzenle</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/panel">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active">Hastalık Düzenle</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Hastalık Düzenle</h4>
 					</div>
+					<div class="card-body">
+						<ValidationObserver v-slot="{ handleSubmit }">
+							<form
+								@submit.prevent="handleSubmit(editDiseases)"
+								ref="diseasesForm"
+								enctype="multipart/form-data"
+							>
+								<v-stepper v-model="e1">
+									<v-stepper-header>
+										<v-stepper-step :complete="e1 > 1" step="1">
+											Hastalık Bilgileri
+										</v-stepper-step>
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title">Hastalık Düzenle</h4>
-								</div>
-								<div class="card-body">
-									<ValidationObserver v-slot="{ handleSubmit }">
-										<form
-											@submit.prevent="handleSubmit(editDiseases)"
-											ref="diseasesForm"
-											enctype="multipart/form-data"
-										>
-											<v-stepper v-model="e1">
-												<v-stepper-header>
-													<v-stepper-step :complete="e1 > 1" step="1">
-														Hastalık Bilgileri
-													</v-stepper-step>
+										<v-divider></v-divider>
+									</v-stepper-header>
 
-													<v-divider></v-divider>
-												</v-stepper-header>
-
-												<v-stepper-items>
-													<v-stepper-content step="1">
-														<ValidationProvider
-															name="Hastalık Adı"
-															rules="required"
-															v-slot="{ errors }"
-														>
-															<div class="form-group">
-																<label for="title">Hastalık Adı</label>
-																<input
-																	id="title"
-																	type="text"
-																	class="form-control"
-																	name="name"
-																	v-model="data.name"
-																/>
-																<small class="font-weight-bold text-danger">{{
-																	errors[0]
-																}}</small>
-															</div>
-														</ValidationProvider>
-														<ValidationProvider
-															name="Hastalık Açıklaması"
-															rules="required"
-															v-slot="{ errors }"
-														>
-															<div class="form-group">
-																<label for="description"
-																	>Hastalık Açıklaması</label
-																>
-																<textarea
-																	id="description"
-																	class="form-control"
-																	name="description"
-																	v-model="data.description"
-																></textarea>
-																<small class="font-weight-bold text-danger">{{
-																	errors[0]
-																}}</small>
-															</div>
-														</ValidationProvider>
-														<v-tabs
-															v-model="tab"
-															background-color="primary"
-															dark
+									<v-stepper-items>
+										<v-stepper-content step="1">
+											<ValidationProvider
+												name="Hastalık Adı"
+												rules="required"
+												v-slot="{ errors }"
+											>
+												<div class="form-group">
+													<label for="title">Hastalık Adı</label>
+													<input
+														id="title"
+														type="text"
+														class="form-control"
+														name="name"
+														v-model="data.name"
+													/>
+													<small class="font-weight-bold text-danger">{{
+														errors[0]
+													}}</small>
+												</div>
+											</ValidationProvider>
+											<ValidationProvider
+												name="Hastalık Açıklaması"
+												rules="required"
+												v-slot="{ errors }"
+											>
+												<div class="form-group">
+													<label for="description">Hastalık Açıklaması</label>
+													<textarea
+														id="description"
+														class="form-control"
+														name="description"
+														v-model="data.description"
+													></textarea>
+													<small class="font-weight-bold text-danger">{{
+														errors[0]
+													}}</small>
+												</div>
+											</ValidationProvider>
+											<v-tabs v-model="tab" background-color="primary" dark>
+												<client-only>
+													<v-tab v-for="item in items" :key="item.tab">
+														{{ item.tab }}
+													</v-tab>
+												</client-only>
+											</v-tabs>
+											<v-tabs-items v-model="tab">
+												<v-tab-item eager>
+													<v-card flat>
+														<v-card-text
+															v-if="
+																data.values !== null &&
+																	data.values !== undefined &&
+																	data.values !== '' &&
+																	data.values.length > 0
+															"
 														>
 															<client-only>
-																<v-tab v-for="item in items" :key="item.tab">
-																	{{ item.tab }}
-																</v-tab>
-															</client-only>
-														</v-tabs>
-														<v-tabs-items v-model="tab">
-															<v-tab-item eager>
-																<v-card flat>
-																	<v-card-text
-																		v-if="
-																			data.values !== null &&
-																				data.values !== undefined &&
-																				data.values !== '' &&
-																				data.values.length > 0
-																		"
+																<v-row
+																	v-bind:key="index"
+																	v-for="(input, index) in data.values"
+																>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="4"
+																		xl="4"
 																	>
-																		<client-only>
-																			<div
-																				class="row"
-																				v-bind:key="index"
-																				v-for="(input, index) in data.values"
-																			>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"
+																		<ValidationProvider
+																			name="Hastalık Değeri Adı"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label v-bind:for="'disease' + index"
+																					>Hastalık Değeri Adı</label
 																				>
-																					<ValidationProvider
-																						name="Hastalık Değeri Adı"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="'disease' + index"
-																								>Hastalık Değeri Adı</label
-																							>
-																							<input
-																								v-bind:id="'disease' + index"
-																								type="text"
-																								class="form-control"
-																								name="diseaseName[]"
-																								v-model="input.title"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
+																				<input
+																					v-bind:id="'disease' + index"
+																					type="text"
+																					class="form-control"
+																					name="diseaseName[]"
+																					v-model="input.title"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
 																				>
-																					<ValidationProvider
-																						name="Minimum Hastalık Değeri"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'diseaseMin' + index
-																								"
-																								>Minimum Hastalık Değeri</label
-																							>
-																							<input
-																								v-bind:id="'diseaseMin' + index"
-																								type="text"
-																								class="form-control"
-																								name="diseaseMin[]"
-																								v-model="input.min"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																				>
-																					<ValidationProvider
-																						name="Maximum Hastalık Değeri"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'diseaseMax' + index
-																								"
-																								>Maximum Hastalık Değeri</label
-																							>
-																							<input
-																								v-bind:id="'diseaseMax' + index"
-																								type="text"
-																								class="form-control"
-																								name="diseaseMax[]"
-																								v-model="input.max"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"
-																				>
-																					<ValidationProvider
-																						name="Hastalık Değeri Türü"
-																						rules="required"
-																						v-slot="{ errors }"
-																					>
-																						<div class="form-group">
-																							<label
-																								v-bind:for="
-																									'diseaseType' + index
-																								"
-																								>Hastalık Değeri Türü</label
-																							>
-																							<input
-																								v-bind:id="
-																									'diseaseType' + index
-																								"
-																								type="text"
-																								class="form-control"
-																								name="diseaseType[]"
-																								v-model="input.type"
-																							/>
-																							<small
-																								class="font-weight-bold text-danger"
-																								>{{ errors[0] }}</small
-																							>
-																						</div>
-																					</ValidationProvider>
-																				</div>
-																				<div
-																					class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 py-auto my-auto text-center align-bottom"
-																				>
-																					<button
-																						@click.prevent="cloneProperty"
-																						class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
-																						role="button"
-																					>
-																						<i class="fa fa-plus"></i>
-																					</button>
-																					<button
-																						v-if="data.values.length > 1"
-																						@click.prevent="
-																							removeProperty(index)
-																						"
-																						role="button"
-																						class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
-																					>
-																						<i class="fa fa-times"></i>
-																					</button>
-																				</div>
 																			</div>
-																		</client-only>
-																	</v-card-text>
-																</v-card>
-															</v-tab-item>
-														</v-tabs-items>
-														<button
-															class="btn btn-outline-primary rounded-0 btn-lg"
-															type="submit"
-														>
-															Hastalığı Güncelle
-														</button>
-													</v-stepper-content>
-												</v-stepper-items>
-											</v-stepper>
-										</form>
-									</ValidationObserver>
-								</div>
-							</div>
-						</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																	>
+																		<ValidationProvider
+																			name="Minimum Hastalık Değeri"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label v-bind:for="'diseaseMin' + index"
+																					>Minimum Hastalık Değeri</label
+																				>
+																				<input
+																					v-bind:id="'diseaseMin' + index"
+																					type="text"
+																					class="form-control"
+																					name="diseaseMin[]"
+																					v-model="input.min"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																	>
+																		<ValidationProvider
+																			name="Maximum Hastalık Değeri"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label v-bind:for="'diseaseMax' + index"
+																					>Maximum Hastalık Değeri</label
+																				>
+																				<input
+																					v-bind:id="'diseaseMax' + index"
+																					type="text"
+																					class="form-control"
+																					name="diseaseMax[]"
+																					v-model="input.max"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																	>
+																		<ValidationProvider
+																			name="Hastalık Değeri Türü"
+																			rules="required"
+																			v-slot="{ errors }"
+																		>
+																			<div class="form-group">
+																				<label
+																					v-bind:for="'diseaseType' + index"
+																					>Hastalık Değeri Türü</label
+																				>
+																				<input
+																					v-bind:id="'diseaseType' + index"
+																					type="text"
+																					class="form-control"
+																					name="diseaseType[]"
+																					v-model="input.type"
+																				/>
+																				<small
+																					class="font-weight-bold text-danger"
+																					>{{ errors[0] }}</small
+																				>
+																			</div>
+																		</ValidationProvider>
+																	</v-col>
+																	<v-col
+																		cols="12"
+																		sm="12"
+																		md="12"
+																		lg="2"
+																		xl="2"
+																		class="py-auto my-auto text-center align-bottom"
+																	>
+																		<button
+																			@click.prevent="cloneProperty"
+																			class="btn btn-lg btn-primary text-white rounded-circle align-bottom text-center"
+																			role="button"
+																		>
+																			<i class="fa fa-plus"></i>
+																		</button>
+																		<button
+																			v-if="data.values.length > 1"
+																			@click.prevent="removeProperty(index)"
+																			role="button"
+																			class="btn btn-lg btn-danger text-white rounded-circle align-bottom text-center"
+																		>
+																			<i class="fa fa-times"></i>
+																		</button>
+																	</v-col>
+																</v-row>
+															</client-only>
+														</v-card-text>
+													</v-card>
+												</v-tab-item>
+											</v-tabs-items>
+											<button
+												class="btn btn-outline-primary rounded-0 btn-lg"
+												type="submit"
+											>
+												Hastalığı Güncelle
+											</button>
+										</v-stepper-content>
+									</v-stepper-items>
+								</v-stepper>
+							</form>
+						</ValidationObserver>
 					</div>
 				</div>
-			</div>
+			</v-container>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";
@@ -573,7 +564,7 @@
 				return {
 					rank: data.rank,
 					id: data._id.$oid,
-					img_url: this.img_url + "public/storage/" + data.img_url,
+					img_url: this.img_url + data.img_url,
 					isCover: data.isCover,
 					isActive: data.isActive
 				};

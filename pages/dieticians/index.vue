@@ -1,27 +1,23 @@
 <template>
 	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Diyetisyenler
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Diyetisyenler</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Diyetisyenler
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Diyetisyenler</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<section class="section section-search pt-5 bg-white">
-				<div class="container-fluid">
+				<v-container fluid>
 					<div class="banner-wrapper">
 						<div class="banner-header text-center">
 							<h1>Diyetisyen Ara</h1>
@@ -47,11 +43,11 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</v-container>
 			</section>
 			<section>
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9">
+				<v-row>
+					<v-col cols="12" sm="12" md="6" lg="9" xl="9">
 						<v-row v-if="!isEmpty(doctors)">
 							<client-only>
 								<v-col
@@ -71,9 +67,7 @@
 													style="min-height: 273px"
 													v-bind:alt="doctor.name"
 													v-bind:src="
-														base_img_url +
-															'/public/storage/' +
-															doctor.profile_photo.img_url
+														base_img_url + doctor.profile_photo.img_url
 													"
 												/>
 											</nuxt-link>
@@ -122,9 +116,9 @@
 							:length="pagination.total"
 							@input="onPageChange"
 						></v-pagination>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"></div>
-				</div>
+					</v-col>
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3"></v-col>
+				</v-row>
 			</section>
 		</div>
 	</div>

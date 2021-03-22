@@ -1,32 +1,28 @@
 <template>
-	<v-app>
+	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item">
-									<nuxt-link to="/calorie">Kaç Kalori?</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									{{ data.name }}
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">{{ data.name }}</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item">
+							<nuxt-link to="/calorie">Kaç Kalori?</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							{{ data.name }}
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">{{ data.name }}</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+				<v-container fluid>
+					<v-row>
+						<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 							<div class="card">
 								<div class="card-body">
 									<div class="doctor-widget">
@@ -36,9 +32,7 @@
 													<img
 														v-bind:key="index"
 														v-for="(image, index) in images"
-														v-bind:src="
-															img_url + 'public/storage/' + image.img_url
-														"
+														v-bind:src="img_url + image.img_url"
 														class="img-fluid"
 														v-bind:alt="data.name"
 													/>
@@ -221,9 +215,14 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div
-							class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+						</v-col>
+						<v-col
+							cols="12"
+							sm="12"
+							md="5"
+							lg="4"
+							xl="3"
+							class="theiaStickySidebar"
 						>
 							<div class="profile-sidebar">
 								<div class="widget-profile pro-widget-content border-bottom-0">
@@ -326,12 +325,12 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
+						</v-col>
+					</v-row>
+				</v-container>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>

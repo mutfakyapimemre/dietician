@@ -1,9 +1,9 @@
 <template>
 	<footer class="footer">
 		<div class="footer-top">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+			<v-container fluid>
+				<v-row>
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3">
 						<div class="footer-widget footer-about">
 							<div
 								class="footer-logo d-flex justify-content-center mx-auto px-auto text-center"
@@ -53,9 +53,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3">
 						<div class="footer-widget footer-menu">
 							<h2 class="footer-title">For Patients</h2>
 							<ul>
@@ -76,9 +76,9 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3">
 						<div class="footer-widget footer-menu">
 							<h2 class="footer-title">For Doctors</h2>
 							<ul>
@@ -99,9 +99,9 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+					<v-col cols="12" sm="12" md="6" lg="3" xl="3">
 						<div class="footer-widget footer-contact">
 							<h2 class="footer-title">Contact Us</h2>
 							<div class="footer-contact-info">
@@ -124,59 +124,63 @@
 								</p>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 
 		<div class="footer-bottom">
-			<div class="container-fluid">
-				<div class="copyright">
-					<div class="row">
-						<div
-							class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-auto my-auto"
-						>
-							<div class="copyright-text py-auto my-auto">
-								<p class="mb-0 py-auto my-auto">
-									&copy; 2020
-									<nuxt-link to="/">Diyetisyen Klinik</nuxt-link>. Tüm Hakları
-									Saklıdır.
-								</p>
-							</div>
+			<v-container fluid class="copyright">
+				<v-row>
+					<v-col cols="12" sm="12" md="4" lg="4" xl="4" class="py-auto my-auto">
+						<div class="copyright-text py-auto my-auto">
+							<p class="mb-0 py-auto my-auto">
+								&copy; 2020
+								<nuxt-link to="/">Diyetisyen Klinik</nuxt-link>. Tüm Hakları
+								Saklıdır.
+							</p>
 						</div>
-						<div
-							class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center py-auto my-auto"
+					</v-col>
+					<v-col
+						cols="12"
+						sm="12"
+						md="4"
+						lg="4"
+						xl="4"
+						class="text-center py-auto my-auto"
+					>
+						<a
+							href="https://mutfakyapim.com"
+							target="_blank"
+							class="text-center py-auto my-auto"
 						>
-							<a
-								href="https://mutfakyapim.com"
-								target="_blank"
-								class="text-center py-auto my-auto"
-							>
-								<img
-									src="/img/my-logo.png"
-									alt="Mutfak Yapım"
-									class="py-auto my-auto"
-									height="50"
-								/>
-							</a>
+							<img
+								src="/img/my-logo.png"
+								alt="Mutfak Yapım"
+								class="py-auto my-auto"
+								height="50"
+							/>
+						</a>
+					</v-col>
+					<v-col cols="12" sm="12" md="4" lg="4" xl="4" class="py-auto my-auto">
+						<div class="copyright-menu py-auto my-auto">
+							<ul class="policy-menu">
+								<li>
+									<a href="term-condition.html">Terms and Conditions</a>
+								</li>
+								<li>
+									<a href="privacy-policy.html">Policy</a>
+								</li>
+							</ul>
 						</div>
-						<div
-							class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-auto my-auto"
-						>
-							<div class="copyright-menu py-auto my-auto">
-								<ul class="policy-menu">
-									<li>
-										<a href="term-condition.html">Terms and Conditions</a>
-									</li>
-									<li>
-										<a href="privacy-policy.html">Policy</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 	</footer>
 </template>
+<script>
+	export default {
+		props: ["settings"]
+	};
+</script>

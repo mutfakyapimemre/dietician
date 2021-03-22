@@ -1,27 +1,23 @@
 <template>
-	<v-app>
+	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/" custom>Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Kaç Kalori?
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Kaç Kalori?</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/" custom>Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Kaç Kalori?
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Kaç Kalori?</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<section class="section section-search py-5">
-				<div class="container-fluid">
+				<v-container fluid>
 					<div class="banner-wrapper">
 						<div class="banner-header text-center">
 							<h1>Besin Ara</h1>
@@ -42,12 +38,12 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</v-container>
 			</section>
 			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+				<v-container fluid>
+					<v-row>
+						<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 							<h1 class="text-center" v-if="!isEmpty(search)">
 								"{{ search }}" Aramasıyla İle İlgili Besinler
 							</h1>
@@ -58,12 +54,16 @@
 								Tüm Besinler
 							</h1>
 							<hr />
-							<div class="row row-grid" v-if="!isEmpty(nutrients)">
+							<v-row class="row-grid" v-if="!isEmpty(nutrients)">
 								<client-only>
-									<div
+									<v-col
+										cols="12"
+										sm="12"
+										md="6"
+										lg="4"
+										xl="3"
 										v-bind:key="index"
 										v-for="(nutrient, index) in nutrients"
-										class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"
 									>
 										<div class="profile-widget">
 											<div class="doc-img">
@@ -73,7 +73,6 @@
 														v-bind:alt="nutrient.name"
 														v-bind:src="
 															img_url +
-																'public/storage/' +
 																(!isEmpty(nutrient.nutrients) &&
 																!isEmpty(nutrient.nutrients.img_url)
 																	? nutrient.nutrients.img_url
@@ -90,20 +89,20 @@
 												</h3>
 												<p class="speciality">{{ nutrient.description }}</p>
 
-												<div class="row row-sm">
-													<div class="col-12">
+												<v-row>
+													<v-col cols="12" sm="12" md="12" lg="12" xl="12">
 														<v-btn
 															v-bind:to="/calorie/ + nutrient.slug"
 															color="primary"
 															>Besin Detayı</v-btn
 														>
-													</div>
-												</div>
+													</v-col>
+												</v-row>
 											</div>
 										</div>
-									</div>
+									</v-col>
 								</client-only>
-							</div>
+							</v-row>
 							<div class="container">
 								<v-pagination
 									class="my-3"
@@ -113,15 +112,20 @@
 									total-visible="11"
 								></v-pagination>
 							</div>
-						</div>
-						<div
-							class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
-						></div>
-					</div>
-				</div>
+						</v-col>
+						<v-col
+							cols="12"
+							sm="12"
+							md="5"
+							lg="4"
+							xl="3"
+							class="theiaStickySidebar"
+						></v-col>
+					</v-row>
+				</v-container>
 			</div>
 		</div>
-	</v-app>
+	</div>
 </template>
 
 <script>

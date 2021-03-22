@@ -182,6 +182,20 @@
     "_name": "_33b1e5bf"
   },
   {
+    "name": "profile-allergen-foods-list",
+    "path": "/profile/allergen-foods-list",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\allergen-foods-list.vue",
+    "chunkName": "pages/profile/allergen-foods-list",
+    "_name": "_6ee87f97"
+  },
+  {
+    "name": "profile-liked-foods-list",
+    "path": "/profile/liked-foods-list",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\liked-foods-list.vue",
+    "chunkName": "pages/profile/liked-foods-list",
+    "_name": "_45aae050"
+  },
+  {
     "name": "profile-password-update",
     "path": "/profile/password-update",
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\password-update.vue",
@@ -194,6 +208,13 @@
     "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\social-media.vue",
     "chunkName": "pages/profile/social-media",
     "_name": "_56f3b61e"
+  },
+  {
+    "name": "profile-unliked-foods-list",
+    "path": "/profile/unliked-foods-list",
+    "component": "C:\\\\Users\\\\adorr\\\\Desktop\\\\dietician\\\\pages\\\\profile\\\\unliked-foods-list.vue",
+    "chunkName": "pages/profile/unliked-foods-list",
+    "_name": "_297eefe9"
   },
   {
     "name": "dietician-panel-consultants-add",

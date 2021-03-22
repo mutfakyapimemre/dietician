@@ -30,8 +30,11 @@ const _357e807c = () => interopDefault(import('..\\pages\\panel\\recipes\\index.
 const _0c063bea = () => interopDefault(import('..\\pages\\panel\\settings\\index.vue' /* webpackChunkName: "pages/panel/settings/index" */))
 const _cca672ea = () => interopDefault(import('..\\pages\\panel\\slides\\index.vue' /* webpackChunkName: "pages/panel/slides/index" */))
 const _33b1e5bf = () => interopDefault(import('..\\pages\\panel\\users\\index.vue' /* webpackChunkName: "pages/panel/users/index" */))
+const _6ee87f97 = () => interopDefault(import('..\\pages\\profile\\allergen-foods-list.vue' /* webpackChunkName: "pages/profile/allergen-foods-list" */))
+const _45aae050 = () => interopDefault(import('..\\pages\\profile\\liked-foods-list.vue' /* webpackChunkName: "pages/profile/liked-foods-list" */))
 const _38ab0a11 = () => interopDefault(import('..\\pages\\profile\\password-update.vue' /* webpackChunkName: "pages/profile/password-update" */))
 const _56f3b61e = () => interopDefault(import('..\\pages\\profile\\social-media.vue' /* webpackChunkName: "pages/profile/social-media" */))
+const _297eefe9 = () => interopDefault(import('..\\pages\\profile\\unliked-foods-list.vue' /* webpackChunkName: "pages/profile/unliked-foods-list" */))
 const _048a3a29 = () => interopDefault(import('..\\pages\\dietician-panel\\consultants\\add\\index.vue' /* webpackChunkName: "pages/dietician-panel/consultants/add/index" */))
 const _75081aa2 = () => interopDefault(import('..\\pages\\dietician-panel\\consultants\\new-consultant\\index.vue' /* webpackChunkName: "pages/dietician-panel/consultants/new-consultant/index" */))
 const _0d288776 = () => interopDefault(import('..\\pages\\dietician-panel\\recipes\\add\\index.vue' /* webpackChunkName: "pages/dietician-panel/recipes/add/index" */))
@@ -188,6 +191,14 @@ export const routerOptions = {
     component: _33b1e5bf,
     name: "panel-users"
   }, {
+    path: "/profile/allergen-foods-list",
+    component: _6ee87f97,
+    name: "profile-allergen-foods-list"
+  }, {
+    path: "/profile/liked-foods-list",
+    component: _45aae050,
+    name: "profile-liked-foods-list"
+  }, {
     path: "/profile/password-update",
     component: _38ab0a11,
     name: "profile-password-update"
@@ -195,6 +206,10 @@ export const routerOptions = {
     path: "/profile/social-media",
     component: _56f3b61e,
     name: "profile-social-media"
+  }, {
+    path: "/profile/unliked-foods-list",
+    component: _297eefe9,
+    name: "profile-unliked-foods-list"
   }, {
     path: "/dietician-panel/consultants/add",
     component: _048a3a29,

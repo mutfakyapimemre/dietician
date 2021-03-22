@@ -142,6 +142,7 @@ a:focus {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px white inset !important;
   -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
 
@@ -2914,7 +2915,7 @@ html.menu-opened body {
   min-height: 450px;
   position: relative;
   background-blend-mode: Darken;
-  background-repeat-x: repeat;
+  background-repeat: repeat-x;
 }
 
 .section-header {
@@ -2989,11 +2990,11 @@ html.menu-opened body {
 }
 
 .search-box .search-info {
-  -ms-flex: 0 0 490px;
-  flex: 0 0 490px;
+  -ms-flex: 1;
+  flex: 1;
   margin-right: 12px;
   position: relative;
-  width: 490px;
+  width: 100%;
 }
 
 .search-info .form-control {
@@ -3161,11 +3162,11 @@ html.menu-opened body {
 }
 
 .search-box .search-info {
-  -ms-flex: 0 0 490px;
-  flex: 0 0 490px;
+  -ms-flex: 1;
+  flex: 1;
   margin-right: 12px;
   position: relative;
-  width: 490px;
+  width: 100%;
 }
 
 .search-info .form-control {
@@ -3750,11 +3751,11 @@ html.menu-opened body {
 }
 
 .search-box1 .search-info {
-  -ms-flex: 0 0 490px;
-  flex: 0 0 490px;
+  -ms-flex: 1;
+  flex: 1;
   margin-right: 12px;
   position: relative;
-  width: 490px;
+  width: 100%;
 }
 
 .search-box1 .search-info .form-control {
@@ -7840,7 +7841,6 @@ html.menu-opened body {
 }
 
 .social-share>li {
-  display: inline-block;
   float: left;
   margin-left: 10px;
   text-align: center;
@@ -8276,8 +8276,6 @@ ul.benifits-col li i {
   display: -webkit-flex;
   width: 100%;
 }
-
-.custom-increment .input-group-btn {}
 
 .custom-increment.cart .input-group1 {
   justify-content: center;

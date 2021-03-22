@@ -1,35 +1,45 @@
 <template>
 	<div class="page-wrapper">
-		<div class="content container-fluid">
+		<v-container fluid class="content">
 			<div class="page-header">
-				<div class="row">
-					<div class="col-sm-12">
-						<h3 class="page-title">Danışman Düzenle</h3>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item">
-								<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-							</li>
-							<li class="breadcrumb-item active">Danışman Düzenle</li>
-						</ul>
-					</div>
-				</div>
+				<h3 class="page-title">Danışman Düzenle</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+					</li>
+					<li class="breadcrumb-item active">Danışman Düzenle</li>
+				</ul>
 			</div>
 
 			<v-card tile>
 				<v-card-title>Danışman Düzenle</v-card-title>
 				<v-card-text>
 					<div class="profile-header">
-						<div class="row align-items-center">
-							<div class="col-auto profile-image">
+						<v-row class="align-items-center">
+							<v-col
+								cols="12"
+								sm="12"
+								md="4"
+								lg="4"
+								xl="4"
+								class="profile-image"
+							>
 								<a href="javascript:void(0)">
 									<img
-										v-bind:src="img_url + '/public/storage/' + data.img_url"
+										v-bind:src="img_url + data.img_url"
 										class="img-fluid"
 										v-bind:alt="data.name"
 									/>
 								</a>
-							</div>
-							<div class="col ml-md-n2 profile-user-info">
+							</v-col>
+							<v-col
+								cols="12"
+								sm="12"
+								md="8"
+								lg="8"
+								xl="8"
+								class="profile-user-info"
+							>
 								<h4 class="user-name mb-0">{{ data.name }}</h4>
 								<h6 class="text-muted">{{ data.email }}</h6>
 								<div class="user-Location">
@@ -45,8 +55,8 @@
 									<a v-bind:href="'mailto:' + data.email">{{ data.email }}</a>
 								</div>
 								<div class="about-text">{{ data.about }}</div>
-							</div>
-						</div>
+							</v-col>
+						</v-row>
 					</div>
 
 					<div class="appointment-tab">
@@ -588,7 +598,7 @@
 					</div>
 				</v-card-text>
 			</v-card>
-		</div>
+		</v-container>
 	</div>
 </template>
 <script>

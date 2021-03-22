@@ -46,3 +46,8 @@
 		</div>
 	</div>
 </template>
+<script>
+	export default {
+		props: ["settings"]
+	};
+</script>

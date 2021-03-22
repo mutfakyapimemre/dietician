@@ -1,31 +1,27 @@
 <template>
 	<div>
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<v-col cols="12" sm="12" md="12" lg="12" xl="12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item">
-									<nuxt-link to="/calorie">Kaç Kalori?</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									{{ data.name }}
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">{{ data.name }}</h2>
-					</v-col>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item">
+							<nuxt-link to="/calorie">Kaç Kalori?</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							{{ data.name }}
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">{{ data.name }}</h2>
+			</v-container>
 		</div>
 		<div class="main-wrapper">
 			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
+				<v-container fluid>
+					<v-row>
 						<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 							<div class="card">
 								<div class="card-body">
@@ -39,9 +35,7 @@
 													<img
 														v-bind:key="index"
 														v-for="(image, index) in images"
-														v-bind:src="
-															img_url + 'public/storage/' + image.img_url
-														"
+														v-bind:src="img_url + image.img_url"
 														class="img-fluid"
 														v-bind:alt="data.name"
 													/>
@@ -56,10 +50,8 @@
 										</div>
 										<div class="doc-info-right">
 											<div class="clini-infos">
-												<div class="row">
-													<div
-														class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-													>
+												<v-row>
+													<v-col cols="12" sm="12" md="12" lg="6" xl="6">
 														<div class="form-group">
 															<label for="unit">Birim</label>
 															<input
@@ -73,10 +65,8 @@
 																class="form-control rounded-0"
 															/>
 														</div>
-													</div>
-													<div
-														class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-													>
+													</v-col>
+													<v-col cols="12" sm="12" md="12" lg="6" xl="6">
 														<div class="form-group">
 															<label for="criteriaValue">Ölçüt</label>
 															<select
@@ -123,8 +113,8 @@
 																</option>
 															</select>
 														</div>
-													</div>
-												</div>
+													</v-col>
+												</v-row>
 											</div>
 										</div>
 									</div>
@@ -160,9 +150,16 @@
 											id="nutrients_value"
 											class="tab-pane fade show active"
 										>
-											<div class="row">
-												<div
-													class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3"
+											<v-row>
+												<v-col
+													cols="12"
+													sm="12"
+													md="6"
+													lg="6"
+													xl="6"
+													offset-md="3"
+													offset-lg="3"
+													offset-xl="3"
 												>
 													<div class="widget business-widget">
 														<div class="widget-content">
@@ -206,26 +203,22 @@
 															</div>
 														</div>
 													</div>
-												</div>
-											</div>
+												</v-col>
+											</v-row>
 										</div>
 
 										<div role="tabpanel" id="description" class="tab-pane fade">
-											<div class="row">
-												<div
-													class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9"
-												>
+											<v-row>
+												<v-col cols="12" sm="12" md="12" lg="9" xl="9">
 													<div class="widget about-widget">
 														<h4 class="widget-title">Besin Hakkında</h4>
 														<p>
 															{{ data.description }}
 														</p>
 													</div>
-												</div>
-												<div
-													class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"
-												></div>
-											</div>
+												</v-col>
+												<v-col cols="12" sm="12" md="12" lg="3" xl="3"></v-col>
+											</v-row>
 										</div>
 									</div>
 								</div>
@@ -240,8 +233,8 @@
 							class="theiaStickySidebar"
 						>
 						</v-col>
-					</div>
-				</div>
+					</v-row>
+				</v-container>
 			</div>
 		</div>
 	</div>

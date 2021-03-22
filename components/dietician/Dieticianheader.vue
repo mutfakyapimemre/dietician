@@ -77,7 +77,7 @@
 				>
 					<span class="user-img"
 						><img
-							v-bind:src="img_url + '/public/storage/' + userData.profile_photo"
+							v-bind:src="img_url + userData.profile_photo"
 							width="31"
 							class="rounded-circle"
 							v-bind:alt="userData.name"
@@ -87,9 +87,7 @@
 					<div class="user-header">
 						<div class="avatar avatar-sm">
 							<img
-								v-bind:src="
-									img_url + '/public/storage/' + userData.profile_photo
-								"
+								v-bind:src="img_url + userData.profile_photo"
 								class="avatar-img rounded-circle"
 								v-bind:alt="userData.name"
 							/>
@@ -123,6 +121,7 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		props: ["settings"],
 		methods: {
 			isEmpty(obj) {
 				if (typeof obj == "number") return false;

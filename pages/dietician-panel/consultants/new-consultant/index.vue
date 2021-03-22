@@ -1,18 +1,14 @@
 <template>
 	<div class="page-wrapper">
-		<div class="content container-fluid vh-100">
+		<v-container fluid class="content">
 			<div class="page-header">
-				<div class="row">
-					<div class="col-sm-12">
-						<h3 class="page-title">Yeni Danışman Kaydet</h3>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item">
-								<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
-							</li>
-							<li class="breadcrumb-item active">Yeni Danışman Kaydet</li>
-						</ul>
-					</div>
-				</div>
+				<h3 class="page-title">Yeni Danışman Kaydet</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<nuxt-link to="/dietician-panel">Anasayfa</nuxt-link>
+					</li>
+					<li class="breadcrumb-item active">Yeni Danışman Kaydet</li>
+				</ul>
 			</div>
 			<v-card tile>
 				<v-card-title>
@@ -808,7 +804,7 @@
 					</ValidationObserver>
 				</v-card-text>
 			</v-card>
-		</div>
+		</v-container>
 	</div>
 </template>
 <script>

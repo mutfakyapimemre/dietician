@@ -6,7 +6,7 @@
 			<div class="profile-info-widget text-center justify-content-center">
 				<nuxt-link to="/profile" class="booking-doc-img">
 					<img
-						v-bind:src="img_url + '/public/storage/' + userData.profile_photo"
+						v-bind:src="img_url + userData.profile_photo"
 						class="img-fluid text-center justify-content-center"
 						v-bind:alt="userData.name"
 					/>
@@ -40,12 +40,12 @@
 								>
 									<a
 										v-if="index <= 3"
-										v-bind:href="img_url + '/public/storage/' + item.img_url"
+										v-bind:href="img_url + item.img_url"
 										data-fancybox="gallery"
 									>
 										<img
 											v-if="index <= 3"
-											v-bind:src="img_url + '/public/storage/' + item.img_url"
+											v-bind:src="img_url + item.img_url"
 											alt="Klinik'ten Görüntüler"
 										/>
 									</a>
@@ -129,6 +129,7 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		props: ["settings"],
 		data() {
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))

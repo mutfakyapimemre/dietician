@@ -2,15 +2,15 @@
 	<v-app>
 		<v-lazy>
 			<client-only>
-				<Header />
+				<Header :settings="settings" />
 			</client-only>
 		</v-lazy>
 		<v-lazy>
-			<Nuxt />
+			<Nuxt :settings="settings" />
 		</v-lazy>
 		<v-lazy>
 			<client-only>
-				<Footer />
+				<Footer :settings="settings" />
 			</client-only>
 		</v-lazy>
 	</v-app>
@@ -194,10 +194,7 @@
 			};
 		},
 		computed: {
-			...mapState(["settings"]),
-			testSettings() {
-				return this.settings;
-			}
+			...mapState(["settings"])
 		},
 		mounted() {
 			this.$store.dispatch("LOAD_WEBSITEDATA").then(res => {

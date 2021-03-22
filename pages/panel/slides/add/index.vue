@@ -1,100 +1,90 @@
 <template>
-	<v-app>
-		<div class="main-wrapper">
-			<div class="page-wrapper">
-				<div class="content container-fluid">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Slaytlar</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-										<nuxt-link to="/panel">Anasayfa</nuxt-link>
-									</li>
-									<li class="breadcrumb-item active">Slaytlar</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<v-container fluid class="content">
+				<div class="page-header">
+					<h3 class="page-title">Slaytlar</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/panel">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active">Slaytlar</li>
+					</ul>
+				</div>
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title">Slayt Ekle</h4>
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Slayt Ekle</h4>
+					</div>
+					<div class="card-body">
+						<ValidationObserver v-slot="{ handleSubmit }">
+							<form
+								@submit.prevent="handleSubmit(saveSlides)"
+								ref="slidesForm"
+								enctype="multipart/form-data"
+							>
+								<ValidationProvider
+									name="Slayt Adı"
+									rules="required"
+									v-slot="{ errors }"
+								>
+									<div class="form-group">
+										<label for="title">Slayt Adı</label>
+										<input
+											id="title"
+											type="text"
+											class="form-control"
+											name="title"
+											v-model="title"
+										/>
+										<small class="font-weight-bold text-danger">{{
+											errors[0]
+										}}</small>
+									</div>
+								</ValidationProvider>
+								<ValidationProvider
+									name="Slayt Açıklaması"
+									rules="required"
+									v-slot="{ errors }"
+								>
+									<div class="form-group">
+										<label for="description">Slayt Açıklaması</label>
+										<textarea
+											name="description"
+											id="description"
+											class="form-control"
+											cols="30"
+											rows="10"
+											v-model="description"
+										></textarea>
+										<small class="font-weight-bold text-danger">{{
+											errors[0]
+										}}</small>
+									</div>
+								</ValidationProvider>
+								<div class="form-group">
+									<label for="img_url">Slayt Görseli</label>
+									<input
+										id="img_url"
+										type="file"
+										class="form-control"
+										name="img_url"
+										required
+									/>
 								</div>
-								<div class="card-body">
-									<ValidationObserver v-slot="{ handleSubmit }">
-										<form
-											@submit.prevent="handleSubmit(saveSlides)"
-											ref="slidesForm"
-											enctype="multipart/form-data"
-										>
-											<ValidationProvider
-												name="Slayt Adı"
-												rules="required"
-												v-slot="{ errors }"
-											>
-												<div class="form-group">
-													<label for="title">Slayt Adı</label>
-													<input
-														id="title"
-														type="text"
-														class="form-control"
-														name="title"
-														v-model="title"
-													/>
-													<small class="font-weight-bold text-danger">{{
-														errors[0]
-													}}</small>
-												</div>
-											</ValidationProvider>
-											<ValidationProvider
-												name="Slayt Açıklaması"
-												rules="required"
-												v-slot="{ errors }"
-											>
-												<div class="form-group">
-													<label for="description">Slayt Açıklaması</label>
-													<textarea
-														name="description"
-														id="description"
-														class="form-control"
-														cols="30"
-														rows="10"
-														v-model="description"
-													></textarea>
-													<small class="font-weight-bold text-danger">{{
-														errors[0]
-													}}</small>
-												</div>
-											</ValidationProvider>
-											<div class="form-group">
-												<label for="img_url">Slayt Görseli</label>
-												<input
-													id="img_url"
-													type="file"
-													class="form-control"
-													name="img_url"
-													required
-												/>
-											</div>
-											<button
-												class="btn btn-outline-primary rounded-0 btn-lg"
-												type="submit"
-											>
-												Slaytı Kayıt Et
-											</button>
-										</form>
-									</ValidationObserver>
-								</div>
-							</div>
-						</div>
+								<button
+									class="btn btn-outline-primary rounded-0 btn-lg"
+									type="submit"
+								>
+									Slaytı Kayıt Et
+								</button>
+							</form>
+						</ValidationObserver>
 					</div>
 				</div>
-			</div>
+			</v-container>
 		</div>
-	</v-app>
+	</div>
 </template>
 <script>
 	import { ValidationObserver, ValidationProvider } from "vee-validate";

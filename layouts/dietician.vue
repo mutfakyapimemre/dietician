@@ -2,16 +2,16 @@
 	<v-app class="main-wrapper">
 		<v-lazy>
 			<client-only>
-				<Dieticianheader />
+				<Dieticianheader :settings="settings" />
 			</client-only>
 		</v-lazy>
 		<v-lazy>
 			<client-only>
-				<Dieticiansidebar />
+				<Dieticiansidebar :settings="settings" />
 			</client-only>
 		</v-lazy>
 		<v-lazy>
-			<Nuxt />
+			<Nuxt :settings="settings" />
 		</v-lazy>
 	</v-app>
 </template>
@@ -19,7 +19,7 @@
 <script>
 	import Dieticianheader from "@/components/dietician/Dieticianheader";
 	import Dieticiansidebar from "@/components/dietician/Dieticiansidebar";
-
+	import { mapState } from "vuex";
 	export default {
 		head() {
 			return {
@@ -197,6 +197,15 @@
 					{ src: "/js/admin_script.js", ssr: false }
 				]
 			};
+		},
+		computed: {
+			...mapState(["settings"])
+		},
+		mounted() {
+			this.$store.dispatch("LOAD_WEBSITEDATA").then(res => {
+				console.log(res);
+			});
+			//console.log(this.testSettings);
 		},
 		components: {
 			Dieticianheader,

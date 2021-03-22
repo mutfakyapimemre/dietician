@@ -6,23 +6,12 @@
 					to="/profile"
 					class="text-center justify-content-center mx-auto px-auto d-flex"
 				>
-					<v-img
-						transition="true"
-						light
-						v-bind:src="
-							img_url +
-								'/public/storage/' +
-								(!isEmpty(userData.img_url) ? userData.img_url : null)
-						"
-						v-bind:lazy-src="
-							img_url +
-								'/public/storage/' +
-								(!isEmpty(userData.img_url) ? userData.img_url : null)
-						"
-						:aspect-ratio="16 / 9"
-						contain
+					<img
+						v-if="!isEmpty(userData.img_url)"
+						v-bind:src="img_url + userData.img_url"
 						v-bind:alt="userData.name"
 					/>
+					<span v-else class="mb-3"><i class="fa fa-user fa-5x"></i></span>
 				</nuxt-link>
 				<div class="profile-det-info">
 					<h3>{{ userData.name }}</h3>
@@ -129,6 +118,7 @@
 				return process.env.apiPublicUrl;
 			}
 		},
+		props: ["settings"],
 		data() {
 			return {
 				userData: !this.isEmpty(this.$auth.$storage.getUniversal("user"))

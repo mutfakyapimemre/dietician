@@ -1,34 +1,35 @@
 <template>
 	<div v-if="!isEmpty(userData) && userData.status !== 'dietician'">
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Profil
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Profil</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Profil
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Profil</h2>
+			</v-container>
 		</div>
 		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-					<div
-						class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+			<v-container fluid>
+				<v-row>
+					<v-col
+						cols="12"
+						sm="12"
+						md="5"
+						lg="4"
+						xl="3"
+						class="theiaStickySidebar"
 					>
 						<Sidebar></Sidebar>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+					<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 						<div class="card card-table mb-0">
 							<div class="card-header">
 								<div class="card-title my-0">
@@ -934,22 +935,31 @@
 																		<b>Profil Resminiz :</b>
 																	</td>
 																	<td colspan="2" class="align-middle">
-																		<div class="row">
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto"
+																		<v-row>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="4"
+																				xl="4"
+																				class="text-center align-middle py-auto my-auto"
 																			>
 																				<img
 																					v-bind:src="
 																						img_url +
-																							'/public/storage/' +
 																							userData.img_url
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
 																				/>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto"
+																			</v-col>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="8"
+																				xl="8"
+																				class="align-middle py-auto my-auto"
 																			>
 																				<input
 																					type="file"
@@ -958,8 +968,8 @@
 																					placeholder="Profil Resminiz"
 																					name="img_url"
 																				/>
-																			</div>
-																		</div>
+																			</v-col>
+																		</v-row>
 																	</td>
 																</tr>
 															</tbody>
@@ -987,41 +997,42 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 	</div>
 	<div v-else-if="!isEmpty(userData) && userData.status === 'dietician'">
 		<div class="breadcrumb-bar">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-12 col-sm-12 col-md-12 col-12 col-xl-12">
-						<nav aria-label="breadcrumb" class="page-breadcrumb">
-							<ol class="breadcrumb pl-0">
-								<li class="breadcrumb-item">
-									<nuxt-link to="/">Anasayfa</nuxt-link>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Profil
-								</li>
-							</ol>
-						</nav>
-						<h2 class="breadcrumb-title">Profil</h2>
-					</div>
-				</div>
-			</div>
+			<v-container fluid>
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb pl-0">
+						<li class="breadcrumb-item">
+							<nuxt-link to="/">Anasayfa</nuxt-link>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Profil
+						</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Profil</h2>
+			</v-container>
 		</div>
 		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-					<div
-						class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 theiaStickySidebar"
+			<v-container>
+				<v-row>
+					<v-col
+						cols="12"
+						sm="12"
+						md="5"
+						lg="4"
+						xl="3"
+						class="theiaStickySidebar"
 					>
 						<Dieticiansidebarprofile></Dieticiansidebarprofile>
-					</div>
+					</v-col>
 
-					<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+					<v-col cols="12" sm="12" md="7" lg="8" xl="9">
 						<div class="card card-table mb-0">
 							<div class="card-header">
 								<div class="card-title my-auto">
@@ -1693,22 +1704,31 @@
 																<tr>
 																	<td><b>Profil Resminiz :</b></td>
 																	<td colspan="2" class="align-middle">
-																		<div class="row">
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto"
+																		<v-row>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="4"
+																				xl="4"
+																				class="text-center align-middle py-auto my-auto"
 																			>
 																				<img
 																					v-bind:src="
 																						img_url +
-																							'/public/storage/' +
 																							userData.profile_photo
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
 																				/>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto"
+																			</v-col>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="8"
+																				xl="8"
+																				class="align-middle py-auto my-auto"
 																			>
 																				<input
 																					type="file"
@@ -1717,21 +1737,25 @@
 																					placeholder="Profil Resminiz"
 																					name="profile_photo"
 																				/>
-																			</div>
-																		</div>
+																			</v-col>
+																		</v-row>
 																	</td>
 																</tr>
 																<tr>
 																	<td><b>İşyerinizin Logosu :</b></td>
 																	<td colspan="2" class="align-middle">
-																		<div class="row">
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center align-middle py-auto my-auto"
+																		<v-row>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="4"
+																				xl="4"
+																				class="text-center align-middle py-auto my-auto"
 																			>
 																				<img
 																					v-bind:src="
 																						img_url +
-																							'/public/storage/' +
 																							userData.company_logo
 																					"
 																					class="img-fluid align-middle py-auto my-auto"
@@ -1739,9 +1763,14 @@
 																					height="80"
 																					alt="İşyerinizin Logosu"
 																				/>
-																			</div>
-																			<div
-																				class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 align-middle py-auto my-auto"
+																			</v-col>
+																			<v-col
+																				cols="12"
+																				sm="12"
+																				md="12"
+																				lg="8"
+																				xl="8"
+																				class="align-middle py-auto my-auto"
 																			>
 																				<input
 																					type="file"
@@ -1750,8 +1779,8 @@
 																					placeholder="İşyerinizin Logosu"
 																					name="company_logo"
 																				/>
-																			</div>
-																		</div>
+																			</v-col>
+																		</v-row>
 																	</td>
 																</tr>
 																<tr>
@@ -1792,9 +1821,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</v-col>
+				</v-row>
+			</v-container>
 		</div>
 	</div>
 </template>
