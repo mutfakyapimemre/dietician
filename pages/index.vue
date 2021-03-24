@@ -73,11 +73,9 @@
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
-			settings() {
-				return this.$store.state.settings;
 			}
 		},
+		props: ["settings"],
 		data() {
 			return {};
 		},

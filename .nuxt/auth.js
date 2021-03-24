@@ -105,7 +105,7 @@ export default function (ctx, inject) {
       "method": "post"
     },
     "user": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/profile",
+      "url": "https://api.klinikdiyetisyen.com/api/dietician/profile",
       "method": "get",
       "autoFetch": true
     }

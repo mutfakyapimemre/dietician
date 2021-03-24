@@ -8,11 +8,11 @@
 							<nuxt-link to="/">Anasayfa</nuxt-link>
 						</li>
 						<li class="breadcrumb-item active" aria-current="page">
-							Sosyal Medya Ayarlarım
+							Alerjen Olduğum Besinler / Yemekler
 						</li>
 					</ol>
 				</nav>
-				<h2 class="breadcrumb-title">Sosyal Medya Ayarlarım</h2>
+				<h2 class="breadcrumb-title">Alerjen Olduğum Besinler / Yemekler</h2>
 			</v-container>
 		</div>
 		<div class="content">
@@ -36,112 +36,88 @@
 						<div class="card card-table my-0">
 							<div class="card-header">
 								<div class="card-title my-auto">
-									<h4 class="my-auto">Sosyal Medya Ayarlarım</h4>
+									<h4 class="my-auto">Alerjen Olduğum Besinler / Yemekler</h4>
 								</div>
 							</div>
 							<div class="card-body">
 								<ValidationObserver v-slot="{ handleSubmit }">
 									<form
-										@submit.prevent="handleSubmit(updateSocialMedia)"
-										ref="socialMediaUpdateForm"
+										@submit.prevent="handleSubmit(updateAllergenFoods)"
+										ref="allergenFoodsUpdateForm"
 										enctype="multipart/form-data"
 									>
-										<div class="table-responsive">
-											<table
-												class="table table-striped table-hover table-center table-borderless mb-0"
-												style="border-top: none"
-											>
-												<tbody>
-													<tr>
-														<td><b>Facebook :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="facebook"
-																id="facebook"
-																class="form-control"
-																v-model="userData.facebook"
-															/>
-														</td>
-													</tr>
-													<tr>
-														<td><b>Instagram :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="instagram"
-																id="instagram"
-																class="form-control"
-																v-model="userData.instagram"
-															/>
-														</td>
-													</tr>
-													<tr>
-														<td><b>Linkedin :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="linkedin"
-																id="linkedin"
-																class="form-control"
-																v-model="userData.linkedin"
-															/>
-														</td>
-													</tr>
-													<tr>
-														<td><b>Twitter :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="twitter"
-																id="twitter"
-																class="form-control"
-																v-model="userData.twitter"
-															/>
-														</td>
-													</tr>
-													<tr>
-														<td><b>Youtube :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="youtube"
-																id="youtube"
-																class="form-control"
-																v-model="userData.youtube"
-															/>
-														</td>
-													</tr>
-													<tr>
-														<td><b>Medium :</b></td>
-														<td colspan="2">
-															<input
-																type="text"
-																name="medium"
-																id="medium"
-																class="form-control"
-																v-model="userData.medium"
-															/>
-														</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="3">
-															<div class="form-group">
-																<v-btn
-																	color="primary"
-																	class="float-right"
-																	type="submit"
+										<ValidationProvider
+											name="Hastalık"
+											rules="required"
+											v-slot="{ errors }"
+										>
+											<div class="form-group">
+												<v-autocomplete
+													name="selectedDiseases[]"
+													v-model="data.selectedDiseases"
+													:items="data.diseases"
+													chips
+													label="Hastalık Seçin"
+													item-text="name"
+													item-value="_id.$oid"
+													multiple
+												>
+													<template v-slot:selection="data">
+														<v-chip
+															v-bind="data.attrs"
+															:input-value="data.selected"
+															close
+															@click="data.select"
+															@click:close="remove(data.item)"
+														>
+															{{ data.item.name }}
+														</v-chip>
+													</template>
+													<template v-slot:prepend-item>
+														<v-list-item ripple @click="toggle3">
+															<v-list-item-action>
+																<v-icon
+																	:color="
+																		!isEmpty(data.selectedDiseases) &&
+																		data.selectedDiseases.length > 0
+																			? 'indigo darken-4'
+																			: null
+																	"
 																>
-																	Sosyal Medya Bilgilerimi Güncelle
-																</v-btn>
-															</div>
-														</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
+																	{{ icon3 }}
+																</v-icon>
+															</v-list-item-action>
+															<v-list-item-content>
+																<v-list-item-title>
+																	Tümünü Seç
+																</v-list-item-title>
+															</v-list-item-content>
+														</v-list-item>
+														<v-divider class="mt-2"></v-divider>
+													</template>
+													<template v-slot:item="data">
+														<template v-if="typeof data.item !== 'object'">
+															<v-list-item-content
+																v-text="data.item"
+															></v-list-item-content>
+														</template>
+														<template v-else>
+															<v-list-item-content>
+																<v-list-item-title
+																	v-html="data.item.name"
+																></v-list-item-title>
+																<v-list-item-subtitle
+																	v-html="data.item.group"
+																></v-list-item-subtitle>
+															</v-list-item-content>
+														</template>
+													</template>
+												</v-autocomplete>
+												<small class="font-weight-bold text-danger">{{
+													errors[0]
+												}}</small>
+											</div>
+										</ValidationProvider>
 									</form>
 								</ValidationObserver>
 							</div>
@@ -209,33 +185,26 @@
 					this.$router.go(decodeURIComponent("/"));
 				}, 2000);
 			},
-			updateSocialMedia() {
-				let formData = new FormData(this.$refs.socialMediaUpdateForm);
+			updateAllergenFoods() {
+				let formData = new FormData(this.$refs.allergenFoodsUpdateForm);
 				formData.append("api_token", this.userData.api_token);
 				this.$axios
-					.post(
-						process.env.apiBaseUrl +
-							(this.userData.status === "dietician"
-								? "dietician/profile/update"
-								: "users/update"),
-						formData,
-						{
-							json: true,
-							withCredentials: false,
-							mode: "no-cors",
-							headers: {
-								"Access-Control-Allow-Origin": "*",
-								"Access-Control-Allow-Headers":
-									"Origin, Content-Type, X-Auth-Token, Authorization",
-								"Access-Control-Allow-Methods":
-									"GET, POST, PATCH, PUT, DELETE, OPTIONS",
-								"Access-Control-Allow-Credentials": true,
-								"Content-Type":
-									"multipart/form-data; boundary=" + formData._boundary,
-								Authorization: "Bearer " + this.userData.api_token
-							}
+					.post(process.env.apiBaseUrl + "users/update", formData, {
+						json: true,
+						withCredentials: false,
+						mode: "no-cors",
+						headers: {
+							"Access-Control-Allow-Origin": "*",
+							"Access-Control-Allow-Headers":
+								"Origin, Content-Type, X-Auth-Token, Authorization",
+							"Access-Control-Allow-Methods":
+								"GET, POST, PATCH, PUT, DELETE, OPTIONS",
+							"Access-Control-Allow-Credentials": true,
+							"Content-Type":
+								"multipart/form-data; boundary=" + formData._boundary,
+							Authorization: "Bearer " + this.userData.api_token
 						}
-					)
+					})
 					.then(response => {
 						if (response.data.success) {
 							this.$izitoast.success({

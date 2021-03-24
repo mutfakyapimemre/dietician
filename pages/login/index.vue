@@ -269,9 +269,6 @@
 						this.$auth.setUser(response.data.user);
 
 						this.$auth.$storage.setUniversal("user", response.data.user);
-						this.$auth.strategy.token.set(
-							this.$auth.$storage.getUniversal("user").api_token
-						);
 						setTimeout(event => {
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);

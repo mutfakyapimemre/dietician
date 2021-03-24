@@ -378,12 +378,12 @@
 			},
 			toggle() {
 				this.$nextTick(() => {
-					if (this.likesAllFruit3) {
+					if (this.likesAllFruit) {
 						this.showName = [];
 					} else {
 						this.showName = [];
 						this.fordata.forEach((el, index) => {
-							this.showName.push(el.value);
+							this.showName.push(el.title);
 						});
 					}
 				});

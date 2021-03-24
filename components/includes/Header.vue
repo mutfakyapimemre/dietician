@@ -165,13 +165,11 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
 	export default {
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			},
-			...mapState(["settings"])
+			}
 		},
 		props: ["settings"],
 		methods: {

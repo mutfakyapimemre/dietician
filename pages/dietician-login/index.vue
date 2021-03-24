@@ -79,7 +79,7 @@
 														</ValidationProvider>
 													</div>
 													<div class="d-flex flex-wrap">
-														<v-btn color="primary">
+														<v-btn color="primary" type="submit">
 															Giriş Yap
 														</v-btn>
 														<div class="ml-auto">
@@ -596,7 +596,7 @@
 															<v-btn color="info" class="mr-3" @click="e1 = 1">
 																Geri Dön
 															</v-btn>
-															<v-btn color="primary">
+															<v-btn color="primary" type="submit">
 																Kayıt Ol
 															</v-btn>
 															<v-btn to="/login" color="warning" class="ml-auto"
@@ -754,9 +754,6 @@
 						});
 						this.$auth.setUser(response.data.user);
 						this.$auth.$storage.setUniversal("user", response.data.user);
-						this.$auth.strategy.token.set(
-							this.$auth.$storage.getUniversal("user").api_token
-						);
 						setTimeout(event => {
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);
