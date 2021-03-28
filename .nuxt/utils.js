@@ -178,7 +178,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {"baseUrl":"http://localhost:3000","apiBaseUrl":"http://localhost/dietician/api/","apiPublicUrl":"http://localhost/dietician/storage/"}
+      env: {"baseUrl":"process.env.BASE_URL || http://localhost:5000","apiBaseUrl":"http://localhost/dieticianapi/api/","apiPublicUrl":"http://localhost/dieticianapi/storage/"}
     }
     // Only set once
 

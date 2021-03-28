@@ -56,19 +56,19 @@ export default function (ctx, inject) {
   },
   "endpoints": {
     "login": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/login",
+      "url": "http://localhost/dieticianapi/api/users/login",
       "method": "post"
     },
     "refresh": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/login",
+      "url": "http://localhost/dieticianapi/api/users/login",
       "method": "post"
     },
     "logout": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/logout",
+      "url": "http://localhost/dieticianapi/api/users/logout",
       "method": "post"
     },
     "user": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/profile",
+      "url": "http://localhost/dieticianapi/api/users/profile",
       "method": "get",
       "autoFetch": true
     }
@@ -93,19 +93,19 @@ export default function (ctx, inject) {
   },
   "endpoints": {
     "login": {
-      "url": "https://api.klinikdiyetisyen.com/api/dietician/login",
+      "url": "http://localhost/dieticianapi/api/dietician/login",
       "method": "post"
     },
     "refresh": {
-      "url": "https://api.klinikdiyetisyen.com/api/dietician/login",
+      "url": "http://localhost/dieticianapi/api/dietician/login",
       "method": "post"
     },
     "logout": {
-      "url": "https://api.klinikdiyetisyen.com/api/dietician/logout",
+      "url": "http://localhost/dieticianapi/api/dietician/logout",
       "method": "post"
     },
     "user": {
-      "url": "https://api.klinikdiyetisyen.com/api/dietician/profile",
+      "url": "http://localhost/dieticianapi/api/dietician/profile",
       "method": "get",
       "autoFetch": true
     }
@@ -130,19 +130,19 @@ export default function (ctx, inject) {
   },
   "endpoints": {
     "login": {
-      "url": "https://api.klinikdiyetisyen.com/api/panel/login",
+      "url": "http://localhost/dieticianapi/api/panel/login",
       "method": "post"
     },
     "refresh": {
-      "url": "https://api.klinikdiyetisyen.com/api/panel/login",
+      "url": "http://localhost/dieticianapi/api/panel/login",
       "method": "post"
     },
     "logout": {
-      "url": "https://api.klinikdiyetisyen.com/api/panel/logout",
+      "url": "http://localhost/dieticianapi/api/panel/logout",
       "method": "post"
     },
     "user": {
-      "url": "https://api.klinikdiyetisyen.com/api/users/profile",
+      "url": "http://localhost/dieticianapi/api/users/profile",
       "method": "get",
       "autoFetch": true
     }

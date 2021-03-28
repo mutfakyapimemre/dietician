@@ -3,7 +3,7 @@ export default function ( {
   redirect
 } ) {
   $axios.create( {
-    baseURL: process.env.apiBaseUrl,
+    baseURL: `${process.env.apiBaseUrl}`,
     json: true,
     withCredentials: false,
     mode: 'no-cors',

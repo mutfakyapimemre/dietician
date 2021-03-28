@@ -1,10 +1,4 @@
 {
-  "AdminAdminheader": {
-    "description": "Auto imported from components/admin/Adminheader.vue"
-  },
-  "AdminAdminsidebar": {
-    "description": "Auto imported from components/admin/Adminsidebar.vue"
-  },
   "DieticianDieticianheader": {
     "description": "Auto imported from components/dietician/Dieticianheader.vue"
   },
@@ -22,5 +16,11 @@
   },
   "IncludesSidebar": {
     "description": "Auto imported from components/includes/Sidebar.vue"
+  },
+  "AdminAdminheader": {
+    "description": "Auto imported from components/admin/Adminheader.vue"
+  },
+  "AdminAdminsidebar": {
+    "description": "Auto imported from components/admin/Adminsidebar.vue"
   }
 }

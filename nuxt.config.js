@@ -5,15 +5,15 @@ export default {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   //mode: 'universal',
-  env: {
-    baseUrl: process.env.BASE_URL || "http://localhost:3000",
+  /*env: {
+    baseUrl: process.env.BASE_URL || "http://localhost:5000",
     //apiBaseUrl: "https://api.klinikdiyetisyen.com/api/",
-    apiBaseUrl: "http://localhost/dietician/api/",
+    apiBaseUrl: "http://localhost/dieticianapi/api/",
     //apiPublicUrl: "https://api.klinikdiyetisyen.com/storage/"
-    apiPublicUrl: "http://localhost/dietician/storage/"
-  },
+    apiPublicUrl: "http://localhost/dieticianapi/storage/"
+  },*/
   server: {
-    port: 3000, // default: 3000
+    port: 5000, // default: 3000
     host: "0.0.0.0" // default: localhost
   },
   /*
@@ -71,7 +71,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [ "@nuxtjs/vuetify", "@nuxtjs/axios", "@nuxtjs/auth-next" ],
+  buildModules: [ "@nuxtjs/vuetify", "@nuxtjs/axios", "@nuxtjs/auth-next", '@nuxtjs/dotenv', 'dotenv-parse-variables' ],
   /*
    ** Nuxt.js modules
    */
@@ -108,19 +108,19 @@ export default {
         },
         endpoints: {
           login: {
-            url: "https://api.klinikdiyetisyen.com/api/users/login",
+            url: `${process.env.apiBaseUrl}users/login`,
             method: "post"
           },
           refresh: {
-            url: "https://api.klinikdiyetisyen.com/api/users/login",
+            url: `${process.env.apiBaseUrl}users/login`,
             method: "post"
           },
           logout: {
-            url: "https://api.klinikdiyetisyen.com/api/users/logout",
+            url: `${process.env.apiBaseUrl}users/logout`,
             method: "post"
           },
           user: {
-            url: "https://api.klinikdiyetisyen.com/api/users/profile",
+            url: `${process.env.apiBaseUrl}users/profile`,
             method: "get",
             autoFetch: true
           }
@@ -143,19 +143,19 @@ export default {
         },
         endpoints: {
           login: {
-            url: "https://api.klinikdiyetisyen.com/api/dietician/login",
+            url: process.env.apiBaseUrl + "dietician/login",
             method: "post"
           },
           refresh: {
-            url: "https://api.klinikdiyetisyen.com/api/dietician/login",
+            url: process.env.apiBaseUrl + "dietician/login",
             method: "post"
           },
           logout: {
-            url: "https://api.klinikdiyetisyen.com/api/dietician/logout",
+            url: process.env.apiBaseUrl + "dietician/logout",
             method: "post"
           },
           user: {
-            url: "https://api.klinikdiyetisyen.com/api/dietician/profile",
+            url: process.env.apiBaseUrl + "dietician/profile",
             method: "get",
             autoFetch: true
           }
@@ -178,19 +178,19 @@ export default {
         },
         endpoints: {
           login: {
-            url: "https://api.klinikdiyetisyen.com/api/panel/login",
+            url: process.env.apiBaseUrl + "panel/login",
             method: "post"
           },
           refresh: {
-            url: "https://api.klinikdiyetisyen.com/api/panel/login",
+            url: process.env.apiBaseUrl + "panel/login",
             method: "post"
           },
           logout: {
-            url: "https://api.klinikdiyetisyen.com/api/panel/logout",
+            url: process.env.apiBaseUrl + "panel/logout",
             method: "post"
           },
           user: {
-            url: "https://api.klinikdiyetisyen.com/api/users/profile",
+            url: process.env.apiBaseUrl + "users/profile",
             method: "get",
             autoFetch: true
           }
