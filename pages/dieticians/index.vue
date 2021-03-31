@@ -176,14 +176,14 @@
 				else return !obj;
 			},
 			getDieticians() {
-				let url = "dieticians?page=" + this.pagination.current;
+				let url = "dieticians/dieticians?page=" + this.pagination.current;
 				this.$store
 					.dispatch("getDieticians", {
 						dieticiansURL:
 							url +
 							(this.search !== null
 								? "&search=" + decodeURIComponent(this.search)
-								: null)
+								: "")
 					})
 					.then(response => {
 						this.dieticians = this.$store.getters.dieticians.data;
