@@ -549,7 +549,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/recipe-categories"));
+								this.$router.go("/panel/recipe-categories");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

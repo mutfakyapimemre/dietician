@@ -1099,7 +1099,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/recipes"));
+								this.$router.go("/panel/recipes");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

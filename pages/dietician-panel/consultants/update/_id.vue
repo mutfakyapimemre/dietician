@@ -696,7 +696,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/profile"));
+								this.$router.go("/profile");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

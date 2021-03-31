@@ -169,7 +169,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/criterias"));
+								this.$router.go("/panel/criterias");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

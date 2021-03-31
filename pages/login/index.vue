@@ -273,7 +273,7 @@
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);
 							} else {
-								this.$router.go(decodeURIComponent("/profile"));
+								this.$router.go("/profile");
 							}
 						}, 2000);
 					} else {

@@ -1,7 +1,7 @@
 <template>
 	<v-app class="main-wrapper login-body">
 		<v-lazy>
-			<Nuxt :settings="settings" />
+			<Nuxt />
 		</v-lazy>
 	</v-app>
 </template>

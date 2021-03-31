@@ -146,7 +146,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/login"));
+					this.$router.go("/login");
 				}, 2000);
 			}
 		}

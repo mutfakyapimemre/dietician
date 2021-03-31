@@ -501,7 +501,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/settings"));
+								this.$router.go("/panel/settings");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

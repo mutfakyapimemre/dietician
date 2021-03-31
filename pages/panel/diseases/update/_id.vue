@@ -641,7 +641,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/diseases"));
+								this.$router.go("/panel/diseases");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

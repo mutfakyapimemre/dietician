@@ -158,7 +158,7 @@
 				);
 				this.$axios
 					.get(
-						`${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=doctors&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone`,
+						`${process.env.apiBaseUrl}panel/datatables/${urlParam}?table=dieticians&page=${params.page}&per_page=${params.size}&search=${params.title}&search_columns=name,email,phone`,
 						{
 							json: true,
 							withCredentials: false,
@@ -201,7 +201,7 @@
 			},
 			deleteData(id) {
 				this.$axios
-					.delete(process.env.apiBaseUrl + "panel/doctors/delete/" + id, {
+					.delete(process.env.apiBaseUrl + "panel/dieticians/delete/" + id, {
 						json: true,
 						withCredentials: false,
 						mode: "no-cors",
@@ -238,7 +238,7 @@
 				this.$axios
 					.get(
 						process.env.apiBaseUrl +
-							"panel/datatables/is-active-setter?table=doctors&id=" +
+							"panel/datatables/is-active-setter?table=dieticians&id=" +
 							id,
 						{
 							json: true,

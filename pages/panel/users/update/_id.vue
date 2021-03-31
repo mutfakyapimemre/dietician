@@ -295,7 +295,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/users"));
+								this.$router.go("/panel/users");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

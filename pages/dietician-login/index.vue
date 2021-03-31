@@ -758,7 +758,7 @@
 							if (!this.isEmpty(this.$route.query.url)) {
 								window.location.href = decodeURIComponent(this.$route.query.url);
 							} else {
-								this.$router.go(decodeURIComponent("/profile"));
+								this.$router.go("/profile");
 							}
 						}, 2000);
 					} else {
@@ -788,7 +788,7 @@
 							position: "topCenter"
 						});
 						setTimeout(() => {
-							this.$router.go(decodeURIComponent("/dietician-login"));
+							this.$router.go("/dietician-login");
 						}, 2000);
 					} else {
 						this.$izitoast.error({

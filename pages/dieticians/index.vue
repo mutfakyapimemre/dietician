@@ -35,7 +35,7 @@
 									<input
 										type="text"
 										class="form-control rounded-0"
-										v-on:keyup.prevent="getDoctors()"
+										v-on:keyup.prevent="getDieticians()"
 										v-model="search"
 										placeholder="Diyetisyen Aramak İçin Buraya Yazın..."
 									/>
@@ -45,78 +45,101 @@
 					</div>
 				</v-container>
 			</section>
-			<section>
-				<v-row>
-					<v-col cols="12" sm="12" md="6" lg="9" xl="9">
-						<v-row v-if="!isEmpty(doctors)">
-							<client-only>
-								<v-col
-									v-bind:key="index"
-									v-for="(doctor, index) in doctors"
-									cols="12"
-									sm="6"
-									md="6"
-									lg="4"
-									xl="3"
+			<section class="section">
+				<div class="content">
+					<v-container fluid>
+						<v-row>
+							<v-col cols="12" sm="12" md="6" lg="9" xl="9">
+								<h1 class="text-center" v-if="!isEmpty(search)">
+									"{{ search }}" Aramasıyla İle İlgili Eşleşen Diyetisyenler
+								</h1>
+								<h1
+									class="text-center"
+									v-if="
+										search === null || search === '' || search === undefined
+									"
 								>
-									<div class="h-100 profile-widget mx-1">
-										<div class="doc-img">
-											<nuxt-link v-bind:to="'/profile/' + doctor.slug">
-												<img
-													class="img-fluid"
-													style="min-height: 273px"
-													v-bind:alt="doctor.name"
-													v-bind:src="img_url + doctor.profile_photo.img_url"
-												/>
-											</nuxt-link>
-										</div>
-										<div class="pro-content h-100">
-											<h3 class="title">
-												<nuxt-link v-bind:to="'/profile/' + doctor.slug">{{
-													doctor.name
-												}}</nuxt-link>
-												<i class="fa fa-check-circle verified"></i>
-											</h3>
-											<p class="speciality">
-												{{ doctor.hospitalName }} - {{ doctor.department }}
-											</p>
-											<ul class="available-info">
-												<li>
-													<i class="fa fa-map-marker-alt"></i>
-													{{ doctor.company_city }},
-													{{ doctor.company_town }}
-												</li>
-												<li v-if="!isEmpty(doctor.appointment_hour)">
-													<i class="fa fa-clock"></i>
-													{{ doctor.appointment_hour }}
-												</li>
-												<li v-if="!isEmpty(doctor.price)">
-													<i class="fa fa-money-bill-alt"></i> {{ doctor.price
-													}}<i
-														class="fa fa-info-circle"
-														data-toggle="tooltip"
-														title="Fiyatlar Değişkenlik Gösterebilir"
-													></i>
-												</li>
-											</ul>
-											<nuxt-link
-												v-bind:to="'/make-appointment/' + doctor.slug"
-												class="btn btn-info-light rounded-0 w-100"
-												>Randevu Al</nuxt-link
-											>
-										</div>
-									</div>
-								</v-col>
-							</client-only>
+									Tüm Diyetisyenler
+								</h1>
+								<hr />
+								<v-row v-if="!isEmpty(dieticians)">
+									<client-only>
+										<v-col
+											v-bind:key="index"
+											v-for="(dietician, index) in dieticians"
+											cols="12"
+											sm="6"
+											md="6"
+											lg="4"
+											xl="3"
+										>
+											<div class="h-100 profile-widget mx-1">
+												<div class="doc-img">
+													<nuxt-link v-bind:to="'/profile/' + dietician.slug">
+														<img
+															v-if="!isEmpty(dietician.profile_photo)"
+															class="img-fluid"
+															style="min-height: 273px"
+															v-bind:alt="dietician.name"
+															v-bind:src="
+																img_url + dietician.profile_photo.img_url
+															"
+														/>
+													</nuxt-link>
+												</div>
+												<div class="pro-content h-100">
+													<h3 class="title">
+														<nuxt-link
+															v-bind:to="'/profile/' + dietician.slug"
+															>{{ dietician.name }}</nuxt-link
+														>
+														<i class="fa fa-check-circle verified"></i>
+													</h3>
+													<p class="speciality">
+														{{ dietician.hospitalName }} -
+														{{ dietician.department }}
+													</p>
+													<ul class="available-info">
+														<li>
+															<i class="fa fa-map-marker-alt"></i>
+															{{ dietician.company_city }},
+															{{ dietician.company_town }}
+														</li>
+														<li v-if="!isEmpty(dietician.appointment_hour)">
+															<i class="fa fa-clock"></i>
+															{{ dietician.appointment_hour }}
+														</li>
+														<li v-if="!isEmpty(dietician.price)">
+															<i class="fa fa-money-bill-alt"></i>
+															{{ dietician.price
+															}}<i
+																class="fa fa-info-circle"
+																data-toggle="tooltip"
+																title="Fiyatlar Değişkenlik Gösterebilir"
+															></i>
+														</li>
+													</ul>
+													<nuxt-link
+														v-bind:to="'/make-appointment/' + dietician.slug"
+														class="btn btn-info-light rounded-0 w-100"
+														>Randevu Al</nuxt-link
+													>
+												</div>
+											</div>
+										</v-col>
+									</client-only>
+								</v-row>
+								<v-pagination
+									class="my-3"
+									v-model="pagination.current"
+									:length="pagination.total"
+									@input="onPageChange"
+								></v-pagination>
+							</v-col>
+							<v-col cols="12" sm="12" md="6" lg="3" xl="3"></v-col>
 						</v-row>
-						<v-pagination
-							v-model="pagination.current"
-							:length="pagination.total"
-							@input="onPageChange"
-						></v-pagination>
-					</v-col>
-					<v-col cols="12" sm="12" md="6" lg="3" xl="3"></v-col>
-				</v-row>
+					</v-container>
+				</div>
 			</section>
 		</div>
 	</div>
@@ -131,7 +154,7 @@
 		},
 		data() {
 			return {
-				doctors: [],
+				dieticians: [],
 				search: null,
 				pagination: {
 					current: 1,
@@ -140,7 +163,7 @@
 			};
 		},
 		mounted() {
-			this.getDoctors();
+			this.getDieticians();
 		},
 		methods: {
 			isEmpty(obj) {
@@ -152,45 +175,25 @@
 				else if (typeof obj == "boolean") return false;
 				else return !obj;
 			},
-			getDoctors(param) {
-				if (this.search !== null) {
-					this.$store
-						.dispatch("getDoctors", {
-							doctorsURL:
-								"doctors?page=" +
-								this.pagination.current +
-								"&search=" +
-								decodeURIComponent(this.search)
-						})
-						.then(response => {
-							this.doctors = this.$store.getters.doctors.data;
-							this.pagination.current = this.$store.getters.doctors.current_page;
-							this.pagination.total = this.$store.getters.doctors.last_page;
-						});
-				} else {
-					if (param) {
-						this.$store
-							.dispatch("getDoctors", { doctorsURL: param })
-							.then(response => {
-								this.doctors = this.$store.getters.doctors.data;
-								this.pagination.current = this.$store.getters.doctors.current_page;
-								this.pagination.total = this.$store.getters.doctors.last_page;
-							});
-					} else {
-						this.$store
-							.dispatch("getDoctors", {
-								doctorsURL: "doctors?page=" + this.pagination.current
-							})
-							.then(response => {
-								this.doctors = this.$store.getters.doctors.data;
-								this.pagination.current = this.$store.getters.doctors.current_page;
-								this.pagination.total = this.$store.getters.doctors.last_page;
-							});
-					}
-				}
+			getDieticians() {
+				let url = "dieticians?page=" + this.pagination.current;
+				this.$store
+					.dispatch("getDieticians", {
+						dieticiansURL:
+							url +
+							(this.search !== null
+								? "&search=" + decodeURIComponent(this.search)
+								: null)
+					})
+					.then(response => {
+						this.dieticians = this.$store.getters.dieticians.data;
+						console.log(this.dieticians);
+						this.pagination.current = this.$store.getters.dieticians.current_page;
+						this.pagination.total = this.$store.getters.dieticians.last_page;
+					});
 			},
 			onPageChange() {
-				this.getDoctors();
+				this.getDieticians();
 			}
 		}
 	};

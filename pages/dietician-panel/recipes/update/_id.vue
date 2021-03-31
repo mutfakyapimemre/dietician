@@ -1005,7 +1005,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/dietician-panel/recipes"));
+								this.$router.go("/dietician-panel/recipes");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

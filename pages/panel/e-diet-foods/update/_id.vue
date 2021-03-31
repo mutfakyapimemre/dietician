@@ -1250,7 +1250,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/e-diet-foods"));
+								this.$router.go("/panel/e-diet-foods");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

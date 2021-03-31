@@ -444,7 +444,7 @@
 				let formData = new FormData(this.$refs.dieticiansForm);
 
 				this.$axios
-					.post(process.env.apiBaseUrl + "panel/doctors/create", formData, {
+					.post(process.env.apiBaseUrl + "panel/dieticians/create", formData, {
 						json: true,
 						withCredentials: false,
 						mode: "no-cors",
@@ -469,7 +469,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/dieticians"));
+								this.$router.go("/panel/dieticians");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

@@ -946,8 +946,7 @@
 																			>
 																				<img
 																					v-bind:src="
-																						img_url +
-																							userData.img_url
+																						img_url + userData.img_url
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
@@ -1715,8 +1714,7 @@
 																			>
 																				<img
 																					v-bind:src="
-																						img_url +
-																							userData.profile_photo
+																						img_url + userData.profile_photo
 																					"
 																					class="img-fluid rounded-profile"
 																					alt="Profil Resminiz"
@@ -1755,8 +1753,7 @@
 																			>
 																				<img
 																					v-bind:src="
-																						img_url +
-																							userData.company_logo
+																						img_url + userData.company_logo
 																					"
 																					class="img-fluid align-middle py-auto my-auto"
 																					width="225"
@@ -1929,7 +1926,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/"));
+					this.$router.go("/");
 				}, 2000);
 			},
 			getCities() {
@@ -2169,11 +2166,8 @@
 							});
 							this.$auth.setUser(response.data.data);
 							this.$auth.$storage.setUniversal("user", response.data.data);
-							this.$auth.strategy.token.set(
-								this.$auth.$storage.getUniversal("user").api_token
-							);
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/profile"));
+								this.$router.go("/profile");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

@@ -398,7 +398,7 @@
 		async asyncData({ params, error, $axios }) {
 			try {
 				const { data } = await $axios.get(
-					process.env.apiBaseUrl + "panel/doctors/update/" + params.id
+					process.env.apiBaseUrl + "panel/dieticians/update/" + params.id
 				);
 
 				return data;
@@ -420,7 +420,7 @@
 				let formData = new FormData(this.$refs.dieticiansForm);
 				this.$axios
 					.post(
-						process.env.apiBaseUrl + "panel/doctors/update/" + this.data._id,
+						process.env.apiBaseUrl + "panel/dieticians/update/" + this.data._id,
 						formData,
 						{
 							json: true,
@@ -447,7 +447,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/dieticians"));
+								this.$router.go("/panel/dieticians");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

@@ -11,7 +11,7 @@
 			</client-only>
 		</v-lazy>
 		<v-lazy>
-			<Nuxt :settings="settings" />
+			<Nuxt />
 		</v-lazy>
 	</v-app>
 </template>

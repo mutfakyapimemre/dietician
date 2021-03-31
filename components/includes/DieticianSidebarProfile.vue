@@ -157,7 +157,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/dietician-login"));
+					this.$router.go("/dietician-login");
 				}, 2000);
 			}
 		}

@@ -154,7 +154,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/auth"));
+					this.$router.go("/auth");
 				}, 2000);
 			}
 		},

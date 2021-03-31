@@ -546,7 +546,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/exercise-categories"));
+								this.$router.go("/panel/exercise-categories");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

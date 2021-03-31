@@ -630,7 +630,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/exercises"));
+								this.$router.go("/panel/exercises");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

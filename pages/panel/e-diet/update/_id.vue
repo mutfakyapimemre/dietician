@@ -952,7 +952,7 @@
 								position: "topCenter"
 							});
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/nutrients"));
+								this.$router.go("/panel/nutrients");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

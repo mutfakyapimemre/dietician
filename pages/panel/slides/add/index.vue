@@ -149,7 +149,7 @@
 							});
 
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/panel/slides"));
+								this.$router.go("/panel/slides");
 							}, 2000);
 						} else {
 							this.$izitoast.error({

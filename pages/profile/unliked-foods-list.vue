@@ -206,7 +206,7 @@
 					position: "topCenter"
 				});
 				setTimeout(() => {
-					this.$router.go(decodeURIComponent("/"));
+					this.$router.go("/");
 				}, 2000);
 			},
 			updateSocialMedia() {
@@ -249,7 +249,7 @@
 								this.$auth.$storage.getUniversal("user").api_token
 							);
 							setTimeout(() => {
-								this.$router.go(decodeURIComponent("/profile"));
+								this.$router.go("/profile");
 							}, 2000);
 						} else {
 							this.$izitoast.error({
