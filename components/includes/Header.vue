@@ -60,7 +60,11 @@
 					</div>
 					<div class="header-contact-detail">
 						<p class="contact-header">İletişim</p>
-						<p class="contact-info-header">+1 315 369 5943</p>
+						<p class="contact-info-header" v-if="!isEmpty(settings)">
+							<a v-bind:href="'tel:' + settings.settings.phone">{{
+								settings.settings.phone
+							}}</a>
+						</p>
 					</div>
 				</li>
 

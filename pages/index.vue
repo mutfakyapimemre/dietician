@@ -12,7 +12,7 @@
 		</div>
 		<!-- /Home Banner -->
 		<section class="section section-blogs">
-			<div class="container-fluid">
+			<v-container fluid>
 				<div class="section-header text-center">
 					<h2>Blog</h2>
 					<p class="sub-title"></p>
@@ -63,19 +63,20 @@
 						>Tümünü Görüntüle</nuxt-link
 					>
 				</div>
-			</div>
+			</v-container>
 		</section>
 	</div>
 </template>
 
 <script>
+	import { mapState } from "vuex";
 	export default {
 		computed: {
 			img_url() {
 				return process.env.apiPublicUrl;
-			}
+			},
+			...mapState(["settings"])
 		},
-		props: ["settings"],
 		data() {
 			return {};
 		},

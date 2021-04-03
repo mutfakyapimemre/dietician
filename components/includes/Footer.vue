@@ -8,13 +8,11 @@
 							<div
 								class="footer-logo d-flex justify-content-center mx-auto px-auto text-center"
 							>
-								<v-img
-									transition="true"
-									light
-									src="/img/footer-logo.png"
-									lazy-src="/img/footer-logo.png"
-									:aspect-ratio="16 / 9"
-									contain
+								<img
+									v-if="!isEmpty(settings)"
+									v-bind:src="img_url + settings.settings.logo"
+									class="img-fluid"
+									v-bind:alt="settings.settings.title"
 								/>
 							</div>
 							<div class="footer-about-content">
@@ -130,14 +128,16 @@
 		</div>
 
 		<div class="footer-bottom">
-			<v-container fluid class="copyright">
+			<v-container fluid class="copyright px-3">
 				<v-row>
 					<v-col cols="12" sm="12" md="4" lg="4" xl="4" class="py-auto my-auto">
 						<div class="copyright-text py-auto my-auto">
 							<p class="mb-0 py-auto my-auto">
-								&copy; 2020
-								<nuxt-link to="/">Diyetisyen Klinik</nuxt-link>. Tüm Hakları
-								Saklıdır.
+								&copy; {{ new Date().getFullYear() }}
+								<nuxt-link to="/" v-if="!isEmpty(settings)">{{
+									settings.settings.company_name
+								}}</nuxt-link
+								>. Tüm Hakları Saklıdır.
 							</p>
 						</div>
 					</v-col>
@@ -166,10 +166,10 @@
 						<div class="copyright-menu py-auto my-auto">
 							<ul class="policy-menu">
 								<li>
-									<a href="term-condition.html">Terms and Conditions</a>
+									<a href="javascript:void(0)">Kullanım Koşulları</a>
 								</li>
 								<li>
-									<a href="privacy-policy.html">Policy</a>
+									<a href="javascript:void(0)">Gizlilik Şözleşmesi</a>
 								</li>
 							</ul>
 						</div>
@@ -181,6 +181,25 @@
 </template>
 <script>
 	export default {
-		props: ["settings"]
+		props: ["settings"],
+		computed: {
+			img_url() {
+				return process.env.apiPublicUrl;
+			}
+		},
+		data() {
+			return {};
+		},
+		methods: {
+			isEmpty(obj) {
+				if (typeof obj == "number") return false;
+				else if (typeof obj == "string") return obj.length == 0;
+				else if (Array.isArray(obj)) return obj.length == 0;
+				else if (typeof obj == "object")
+					return obj == null || Object.keys(obj).length == 0;
+				else if (typeof obj == "boolean") return false;
+				else return !obj;
+			}
+		}
 	};
 </script>

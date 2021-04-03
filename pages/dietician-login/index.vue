@@ -33,7 +33,7 @@
 								</v-tab>
 							</v-tabs>
 							<v-tabs-items v-model="tab">
-								<v-tab-item>
+								<v-tab-item eager>
 									<ValidationObserver v-slot="{ handleSubmit }">
 										<form
 											@submit.prevent="handleSubmit(onLogin)"
@@ -96,7 +96,7 @@
 										</form>
 									</ValidationObserver>
 								</v-tab-item>
-								<v-tab-item>
+								<v-tab-item eager>
 									<ValidationObserver v-slot="{ handleSubmit }">
 										<form
 											@submit.prevent="handleSubmit(onRegister)"

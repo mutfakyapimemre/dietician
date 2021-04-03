@@ -4,38 +4,38 @@ Template Name: Doccure - Bootstrap Admin Template
 Version      : 1.3
 */
 
-(function ($) {
+( function ( $ ) {
   "use strict";
 
   // Variables declarations
 
-  let $wrapper = $('.main-wrapper');
-  let $pageWrapper = $('.page-wrapper');
-  let $slimScrolls = $('.slimscroll');
+  let $wrapper = $( '.main-wrapper' );
+  let $pageWrapper = $( '.page-wrapper' );
+  let $slimScrolls = $( '.slimscroll' );
   // Sidebar
 
   let Sidemenu = function () {
-    this.$menuItem = $('#sidebar-menu a');
+    this.$menuItem = $( '#sidebar-menu a' );
   };
 
   function init() {
     let $this = Sidemenu;
-    $(document).on('click', '#sidebar-menu a', function (e) {
-      if ($(this).parent().hasClass('submenu')) {
+    $( document ).on( 'click', '#sidebar-menu a', function ( e ) {
+      if ( $( this ).parent().hasClass( 'submenu' ) ) {
         e.preventDefault();
         e.stopImmediatePropagation();
       }
-      if (!$(this).hasClass('subdrop')) {
-        $('ul', $(this).parents('ul:first')).slideUp(350);
-        $('a', $(this).parents('ul:first')).removeClass('subdrop');
-        $(this).next('ul').slideDown(350);
-        $(this).addClass('subdrop');
-      } else if ($(this).hasClass('subdrop')) {
-        $(this).removeClass('subdrop');
-        $(this).next('ul').slideUp(350);
+      if ( !$( this ).hasClass( 'subdrop' ) ) {
+        $( 'ul', $( this ).parents( 'ul:first' ) ).slideUp( 350 );
+        $( 'a', $( this ).parents( 'ul:first' ) ).removeClass( 'subdrop' );
+        $( this ).next( 'ul' ).slideDown( 350 );
+        $( this ).addClass( 'subdrop' );
+      } else if ( $( this ).hasClass( 'subdrop' ) ) {
+        $( this ).removeClass( 'subdrop' );
+        $( this ).next( 'ul' ).slideUp( 350 );
       }
-    });
-    $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
+    } );
+    $( '#sidebar-menu ul li.submenu a.active' ).parents( 'li:last' ).children( 'a:first' ).addClass( 'active' ).trigger( 'click' );
   }
 
   // Sidebar Initiate
@@ -43,50 +43,50 @@ Version      : 1.3
 
   // Mobile menu sidebar overlay
 
-  $(".main-wrapper").append('<div class="sidebar-overlay"></div>');
-  $(document).on('click', '#mobile_btn', function () {
-    $('.main-wrapper').toggleClass('slide-nav');
-    $(".main-wrapper").find('.sidebar-overlay').toggleClass('opened');
-    $('html').addClass('menu-opened');
+  $( ".main-wrapper" ).append( '<div class="sidebar-overlay"></div>' );
+  $( document ).on( 'click', '#mobile_btn', function () {
+    $( '.main-wrapper' ).toggleClass( 'slide-nav' );
+    $( ".main-wrapper" ).find( '.sidebar-overlay' ).toggleClass( 'opened' );
+    $( 'html' ).addClass( 'menu-opened' );
     return false;
-  });
+  } );
 
   // Sidebar overlay
 
-  $(document).on("click", ".sidebar-overlay", function () {
-    $('.main-wrapper').removeClass('slide-nav');
-    $(".sidebar-overlay").removeClass("opened");
-    $('html').removeClass('menu-opened');
-  });
+  $( document ).on( "click", ".sidebar-overlay", function () {
+    $( '.main-wrapper' ).removeClass( 'slide-nav' );
+    $( ".sidebar-overlay" ).removeClass( "opened" );
+    $( 'html' ).removeClass( 'menu-opened' );
+  } );
 
   // Page Content Height
-  if ($pageWrapper.length > 0) {
-    let height = $(window).height();
-    $pageWrapper.css("min-height", height);
+  if ( $pageWrapper.length > 0 ) {
+    let height = $( window ).height();
+    $pageWrapper.css( "min-height", height );
   }
 
   // Page Content Height Resize
 
-  $(window).resize(function () {
-    if ($pageWrapper.length > 0) {
-      let height = $(window).height();
-      $pageWrapper.css("min-height", height);
+  $( window ).resize( function () {
+    if ( $pageWrapper.length > 0 ) {
+      let height = $( window ).height();
+      $pageWrapper.css( "min-height", height );
     }
-  });
+  } );
 
   // Select 2
-  let select2 = $('.select');
-  if (select2.length > 0) {
-    select2.select2({
+  let select2 = $( '.select' );
+  if ( select2.length > 0 ) {
+    select2.select2( {
       minimumResultsForSearch: -1,
       width: '100%'
-    });
+    } );
   }
 
   // Datetimepicker
-  let datetimepicker = $('.datetimepicker');
-  if (datetimepicker.length > 0) {
-    datetimepicker.datetimepicker({
+  let datetimepicker = $( '.datetimepicker' );
+  if ( datetimepicker.length > 0 ) {
+    datetimepicker.datetimepicker( {
       format: 'DD/MM/YYYY',
       icons: {
         up: "fa fa-angle-up",
@@ -94,100 +94,103 @@ Version      : 1.3
         next: 'fa fa-angle-right',
         previous: 'fa fa-angle-left'
       }
-    });
-    $(document).on('dp.show', '.datetimepicker', function () {
-      $(this).closest('.table-responsive').removeClass('table-responsive').addClass('temp');
-    });
-    $(document).on('dp.hide', '.datetimepicker', function () {
-      $(this).closest('.temp').addClass('table-responsive').removeClass('temp')
-    });
+    } );
+    $( document ).on( 'dp.show', '.datetimepicker', function () {
+      $( this ).closest( '.table-responsive' ).removeClass( 'table-responsive' ).addClass( 'temp' );
+    } );
+    $( document ).on( 'dp.hide', '.datetimepicker', function () {
+      $( this ).closest( '.temp' ).addClass( 'table-responsive' ).removeClass( 'temp' )
+    } );
   }
 
   // Tooltip
-  let tooltip = $('[data-toggle="tooltip"]');
-  if (tooltip.length > 0) {
+  let tooltip = $( '[data-toggle="tooltip"]' );
+  if ( tooltip.length > 0 ) {
     tooltip.tooltip();
   }
 
   // Datatable
-  let datatable = $('.datatable');
-  if (datatable.length > 0) {
-    datatable.DataTable({
+  let datatable = $( '.datatable' );
+  if ( datatable.length > 0 ) {
+    datatable.DataTable( {
       "bFilter": false,
       "pageLength": 2,
       "iDisplayLength": 2,
-      "lengthMenu": [[2, 50, 100, 250], [2, 50, 100, 250]],
-    });
+      "lengthMenu": [
+        [ 2, 50, 100, 250 ],
+        [ 2, 50, 100, 250 ]
+      ],
+    } );
   }
 
   // Email Inbox
 
-  if ($('.clickable-row').length > 0) {
-    $(document).on('click', '.clickable-row', function () {
-      window.location = $(this).data("href");
-    });
+  if ( $( '.clickable-row' ).length > 0 ) {
+    $( document ).on( 'click', '.clickable-row', function () {
+      window.location = $( this ).data( "href" );
+    } );
   }
 
   // Check all email
-  let checkmail = $(".checkmail");
-  $(document).on('click', '#check_all', function () {
+  let checkmail = $( ".checkmail" );
+  $( document ).on( 'click', '#check_all', function () {
     checkmail.click();
     return false;
-  });
-  if (checkmail.length > 0) {
-    checkmail.each(function () {
-      $(this).on('click', function () {
-        if ($(this).closest('tr').hasClass('checked')) {
-          $(this).closest('tr').removeClass('checked');
+  } );
+  if ( checkmail.length > 0 ) {
+    checkmail.each( function () {
+      $( this ).on( 'click', function () {
+        if ( $( this ).closest( 'tr' ).hasClass( 'checked' ) ) {
+          $( this ).closest( 'tr' ).removeClass( 'checked' );
         } else {
-          $(this).closest('tr').addClass('checked');
+          $( this ).closest( 'tr' ).addClass( 'checked' );
         }
-      });
-    });
+      } );
+    } );
   }
 
   // Mail important
 
-  $(document).on('click', '.mail-important', function () {
-    $(this).find('i.fa').toggleClass('fa-star').toggleClass('fa-star-o');
-  });
+  $( document ).on( 'click', '.mail-important', function () {
+    $( this ).find( 'i.fa' ).toggleClass( 'fa-star' ).toggleClass( 'fa-star-o' );
+  } );
 
   // Summernote
-  let summernote = $('.summernote');
-  if (summernote.length > 0) {
-    summernote.summernote({
-      height: 200,                 // set editor height
-      minHeight: null,             // set minimum height of editor
-      maxHeight: null,             // set maximum height of editor
-      focus: false                 // set focus to editable area after initializing summernote
-    });
+  let summernote = $( '.summernote' );
+  if ( summernote.length > 0 ) {
+    summernote.summernote( {
+      height: 200, // set editor height
+      minHeight: null, // set minimum height of editor
+      maxHeight: null, // set maximum height of editor
+      focus: false // set focus to editable area after initializing summernote
+    } );
   }
 
   // Product thumb images
-  let proImage = $(".pro-image img");
-  if ($('.proimage-thumb li a').length > 0) {
-    let full_image = $(this).attr("href");
-    $(".proimage-thumb li a").click(function () {
-      full_image = $(this).attr("href");
-      proImage.attr("src", full_image);
-      proImage.parent().attr("href", full_image);
+  let proImage = $( ".pro-image img" );
+  if ( $( '.proimage-thumb li a' ).length > 0 ) {
+    let full_image = $( this ).attr( "href" );
+    $( ".proimage-thumb li a" ).click( function () {
+      full_image = $( this ).attr( "href" );
+      proImage.attr( "src", full_image );
+      proImage.parent().attr( "href", full_image );
       return false;
-    });
+    } );
   }
 
   // Lightgallery
-  let proPopup = $("#pro_popup");
-  if (proPopup.length > 0) {
-    proPopup.lightGallery({
+  let proPopup = $( "#pro_popup" );
+  if ( proPopup.length > 0 ) {
+    proPopup.lightGallery( {
       thumbnail: true,
       selector: 'a'
-    });
+    } );
   }
 
   // Sidebar Slimscroll
 
-  if ($slimScrolls.length > 0) {
-    $slimScrolls.slimScroll({
+  if ( $slimScrolls.length > 0 ) {
+    $slimScrolls.slimScroll( {
       height: 'auto',
       width: '100%',
       position: 'right',
@@ -196,42 +199,74 @@ Version      : 1.3
       allowPageScroll: false,
       wheelStep: 10,
       touchScrollStep: 100
-    });
-    let wHeight = $(window).height() - 60;
-    $slimScrolls.height(wHeight);
-    $('.sidebar .slimScrollDiv').height(wHeight);
-    $(window).resize(function () {
-      let rHeight = $(window).height() - 60;
-      $slimScrolls.height(rHeight);
-      $('.sidebar .slimScrollDiv').height(rHeight);
-    });
+    } );
+    let wHeight = $( window ).height() - 60;
+    $slimScrolls.height( wHeight );
+    $( '.sidebar .slimScrollDiv' ).height( wHeight );
+    $( window ).resize( function () {
+      let rHeight = $( window ).height() - 60;
+      $slimScrolls.height( rHeight );
+      $( '.sidebar .slimScrollDiv' ).height( rHeight );
+    } );
   }
 
   // Small Sidebar
-  $(document).on('click', '#toggle_btn', function () {
-    if ($("body").hasClass('mini-sidebar')) {
-      $("body").removeClass('mini-sidebar');
-      $('.subdrop + ul').slideDown();
+  $( document ).on( 'click', '#toggle_btn', function () {
+    if ( $( "body" ).hasClass( 'mini-sidebar' ) ) {
+      $( "body" ).removeClass( 'mini-sidebar' );
+      $( '.subdrop + ul' ).slideDown();
     } else {
-      $("body").addClass('mini-sidebar');
-      $('.subdrop + ul').slideUp();
+      $( "body" ).addClass( 'mini-sidebar' );
+      $( '.subdrop + ul' ).slideUp();
     }
 
     return false;
-  });
-  $(document).on('mouseover', function (e) {
-    if ($("body").hasClass('mini-sidebar') && $('#toggle_btn').is(':visible')) {
-      let targ = $(e.target).closest('.sidebar').length;
-      if (targ) {
-        $("body").addClass('expand-menu');
-        $('.subdrop + ul').slideDown();
+  } );
+  $( document ).on( 'mouseover', function ( e ) {
+    if ( $( "body" ).hasClass( 'mini-sidebar' ) && $( '#toggle_btn' ).is( ':visible' ) ) {
+      let targ = $( e.target ).closest( '.sidebar' ).length;
+      if ( targ ) {
+        $( "body" ).addClass( 'expand-menu' );
+        $( '.subdrop + ul' ).slideDown();
       } else {
-        $("body").removeClass('expand-menu');
-        $('.subdrop + ul').slideUp();
+        $( "body" ).removeClass( 'expand-menu' );
+        $( '.subdrop + ul' ).slideUp();
       }
       return false;
     }
-  });
+  } );
 
 
-})(jQuery);
+} )( jQuery );
+/** TinyMCE */
+function TinyMCEInit( height = 300, fullpage = false, selector = '.tinymce' ) {
+  /* TinyMCE */
+  if ( $( "textarea" + selector ).length <= 0 ) {
+    return false;
+  }
+  tinymce.remove();
+  tinymce.init( {
+    selector: selector,
+    entity_encoding: ( fullpage ? "''" : "'raw'" ),
+    forced_root_block: "",
+    paste_auto_cleanup_on_paste: true,
+    language: 'tr_TR', // select language
+    language_url: 'https://cdn.jsdelivr.net/npm/tinymce-lang/langs/tr_TR.js',
+    branding: false,
+    image_advtab: true,
+    plugins: ( fullpage ? "fullpage " : "" ) + 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    height: height,
+    mobile: {
+      theme: 'silver'
+    },
+    setup: function ( editor ) {
+      editor.on( 'change', function () {
+        editor.save();
+      } );
+    },
+    convert_urls: false,
+  } );
+  /* TinyMCE */
+}
+/** TinyMCE */

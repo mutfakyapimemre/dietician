@@ -4,341 +4,275 @@ Template Name: Doccure - Bootstrap Template
 Version      : 1.3
 */
 
-(function($) {
-    "use strict";
+( function ( $ ) {
+  "use strict";
 
-	// Stick Sidebar
+  // Stick Sidebar
 
-	if ($(window).width() > 767) {
-	  let theiaStickySidebar = $('.theiaStickySidebar');
-		if(theiaStickySidebar.length > 0) {
-			theiaStickySidebar.theiaStickySidebar({
-			  // Settings
-			  additionalMarginTop: 30
-			});
-		}
-	}
+  if ( $( window ).width() > 767 ) {
+    let theiaStickySidebar = $( '.theiaStickySidebar' );
+    if ( theiaStickySidebar.length > 0 ) {
+      theiaStickySidebar.theiaStickySidebar( {
+        // Settings
+        additionalMarginTop: 30
+      } );
+    }
+  }
 
-	// Sidebar
+  // Sidebar
 
-	if($(window).width() <= 991){
-	let Sidemenu = function() {
-		this.$menuItem = $('.main-nav a');
-	};
+  if ( $( window ).width() <= 991 ) {
+    let Sidemenu = function () {
+      this.$menuItem = $( '.main-nav a' );
+    };
 
-	function init() {
-		let $this = Sidemenu;
-		$('.main-nav a').on('click', function(e) {
-			if($(this).parent().hasClass('has-submenu')) {
-				e.preventDefault();
-			}
-			if(!$(this).hasClass('submenu')) {
-				$('ul', $(this).parents('ul:first')).slideUp(350);
-				$('a', $(this).parents('ul:first')).removeClass('submenu');
-				$(this).next('ul').slideDown(350);
-				$(this).addClass('submenu');
-			} else if($(this).hasClass('submenu')) {
-				$(this).removeClass('submenu');
-				$(this).next('ul').slideUp(350);
-			}
-		});
-	}
+    function init() {
+      let $this = Sidemenu;
+      $( '.main-nav a' ).on( 'click', function ( e ) {
+        if ( $( this ).parent().hasClass( 'has-submenu' ) ) {
+          e.preventDefault();
+        }
+        if ( !$( this ).hasClass( 'submenu' ) ) {
+          $( 'ul', $( this ).parents( 'ul:first' ) ).slideUp( 350 );
+          $( 'a', $( this ).parents( 'ul:first' ) ).removeClass( 'submenu' );
+          $( this ).next( 'ul' ).slideDown( 350 );
+          $( this ).addClass( 'submenu' );
+        } else if ( $( this ).hasClass( 'submenu' ) ) {
+          $( this ).removeClass( 'submenu' );
+          $( this ).next( 'ul' ).slideUp( 350 );
+        }
+      } );
+    }
 
-	// Sidebar Initiate
-	init();
-	}
+    // Sidebar Initiate
+    init();
+  }
 
-	// Textarea Text Count
+  // Textarea Text Count
 
-	let maxLength = 100;
-	$('#review_desc').on('keyup change', function () {
-		let length = $(this).val().length;
-		 length = maxLength-length;
-		$('#chars').text(length);
-	});
+  let maxLength = 100;
+  $( '#review_desc' ).on( 'keyup change', function () {
+    let length = $( this ).val().length;
+    length = maxLength - length;
+    $( '#chars' ).text( length );
+  } );
 
-	// Select 2
-  let select2 = $('.select');
-	if(select2.length > 0) {
-		select2.select2({
-			minimumResultsForSearch: -1,
-			width: '100%'
-		});
-	}
+  // Select 2
+  let select2 = $( '.select' );
+  if ( select2.length > 0 ) {
+    select2.select2( {
+      minimumResultsForSearch: -1,
+      width: '100%'
+    } );
+  }
 
-	// Date Time Picker
-  let datetimepicker = $('.datetimepicker');
-	if(datetimepicker.length > 0) {
-		datetimepicker.datetimepicker({
-			format: 'DD/MM/YYYY',
-			icons: {
-				up: "fa fa-chevron-up",
-				down: "fa fa-chevron-down",
-				next: 'fa fa-chevron-right',
-				previous: 'fa fa-chevron-left'
-			}
-		});
-	}
+  // Date Time Picker
+  let datetimepicker = $( '.datetimepicker' );
+  if ( datetimepicker.length > 0 ) {
+    datetimepicker.datetimepicker( {
+      format: 'DD/MM/YYYY',
+      icons: {
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        next: 'fa fa-chevron-right',
+        previous: 'fa fa-chevron-left'
+      }
+    } );
+  }
 
-	// Floating Label
-  let floating = $('.floating');
-	if(floating.length > 0 ){
-		floating.on('focus blur', function (e) {
-		$(this).parents('.form-focus').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
-		}).trigger('blur');
-	}
+  // Floating Label
+  let floating = $( '.floating' );
+  if ( floating.length > 0 ) {
+    floating.on( 'focus blur', function ( e ) {
+      $( this ).parents( '.form-focus' ).toggleClass( 'focused', ( e.type === 'focus' || this.value.length > 0 ) );
+    } ).trigger( 'blur' );
+  }
 
-	// Mobile menu sidebar overlay
+  // Mobile menu sidebar overlay
 
-	$('body').append('<div class="sidebar-overlay"></div>');
-	$(document).on('click', '#mobile_btn', function() {
-		$('main-wrapper').toggleClass('slide-nav');
-		$('.sidebar-overlay').toggleClass('opened');
-		$('html').addClass('menu-opened');
-		return false;
-	});
+  $( 'body' ).append( '<div class="sidebar-overlay"></div>' );
+  $( document ).on( 'click', '#mobile_btn', function () {
+    $( 'main-wrapper' ).toggleClass( 'slide-nav' );
+    $( '.sidebar-overlay' ).toggleClass( 'opened' );
+    $( 'html' ).addClass( 'menu-opened' );
+    return false;
+  } );
 
-	$(document).on('click', '.sidebar-overlay', function() {
-		$('html').removeClass('menu-opened');
-		$(this).removeClass('opened');
-		$('main-wrapper').removeClass('slide-nav');
-	});
+  $( document ).on( 'click', '.sidebar-overlay', function () {
+    $( 'html' ).removeClass( 'menu-opened' );
+    $( this ).removeClass( 'opened' );
+    $( 'main-wrapper' ).removeClass( 'slide-nav' );
+  } );
 
-	$(document).on('click', '#menu_close', function() {
-		$('html').removeClass('menu-opened');
-		$('.sidebar-overlay').removeClass('opened');
-		$('main-wrapper').removeClass('slide-nav');
-	});
+  $( document ).on( 'click', '#menu_close', function () {
+    $( 'html' ).removeClass( 'menu-opened' );
+    $( '.sidebar-overlay' ).removeClass( 'opened' );
+    $( 'main-wrapper' ).removeClass( 'slide-nav' );
+  } );
 
-	// Tooltip
-  let tooltip = $('[data-toggle="tooltip"]');
-	if(tooltip.length > 0 ){
-		tooltip.tooltip();
-	}
+  // Tooltip
+  let tooltip = $( '[data-toggle="tooltip"]' );
+  if ( tooltip.length > 0 ) {
+    tooltip.tooltip();
+  }
 
-	// Add More Hours
+  // Add More Hours
 
-    $(".hours-info").on('click','.trash', function () {
-		$(this).closest('.hours-cont').remove();
-		return false;
-    });
+  $( ".hours-info" ).on( 'click', '.trash', function () {
+    $( this ).closest( '.hours-cont' ).remove();
+    return false;
+  } );
 
-    $(".add-hours").on('click', function () {
+  $( ".add-hours" ).on( 'click', function () {
 
-		let hourscontent = '<div class="row form-row hours-cont">' +
-			'<div class="col-12 col-md-10">' +
-				'<div class="row form-row">' +
-					'<div class="col-12 col-md-6">' +
-						'<div class="form-group">' +
-							'<label>Start Time</label>' +
-							'<select class="form-control">' +
-								'<option>-</option>' +
-								'<option>12.00 am</option>' +
-								'<option>12.30 am</option>' +
-								'<option>1.00 am</option>' +
-								'<option>1.30 am</option>' +
-							'</select>' +
-						'</div>' +
-					'</div>' +
-					'<div class="col-12 col-md-6">' +
-						'<div class="form-group">' +
-							'<label>End Time</label>' +
-							'<select class="form-control">' +
-								'<option>-</option>' +
-								'<option>12.00 am</option>' +
-								'<option>12.30 am</option>' +
-								'<option>1.00 am</option>' +
-								'<option>1.30 am</option>' +
-							'</select>' +
-						'</div>' +
-					'</div>' +
-				'</div>' +
-			'</div>' +
-			'<div class="col-12 col-md-2"><label class="d-md-block d-sm-none d-none">&nbsp;</label><a href="#" class="btn btn-danger trash"><i class="fa fa-trash-alt"></i></a></div>' +
-		'</div>';
+    let hourscontent = '<div class="row form-row hours-cont">' +
+      '<div class="col-12 col-md-10">' +
+      '<div class="row form-row">' +
+      '<div class="col-12 col-md-6">' +
+      '<div class="form-group">' +
+      '<label>Start Time</label>' +
+      '<select class="form-control">' +
+      '<option>-</option>' +
+      '<option>12.00 am</option>' +
+      '<option>12.30 am</option>' +
+      '<option>1.00 am</option>' +
+      '<option>1.30 am</option>' +
+      '</select>' +
+      '</div>' +
+      '</div>' +
+      '<div class="col-12 col-md-6">' +
+      '<div class="form-group">' +
+      '<label>End Time</label>' +
+      '<select class="form-control">' +
+      '<option>-</option>' +
+      '<option>12.00 am</option>' +
+      '<option>12.30 am</option>' +
+      '<option>1.00 am</option>' +
+      '<option>1.30 am</option>' +
+      '</select>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '<div class="col-12 col-md-2"><label class="d-md-block d-sm-none d-none">&nbsp;</label><a href="#" class="btn btn-danger trash"><i class="fa fa-trash-alt"></i></a></div>' +
+      '</div>';
 
-        $(".hours-info").append(hourscontent);
-        return false;
-    });
+    $( ".hours-info" ).append( hourscontent );
+    return false;
+  } );
 
-	// Content div min height set
+  // Content div min height set
 
-	function resizeInnerDiv() {
-		let height = $(window).height();
-		let header_height = $(".header").height();
-		let footer_height = $(".footer").height();
-		let setheight = height - header_height;
-		let trueheight = setheight - footer_height;
-		$(".content").css("min-height", trueheight);
-	}
+  function resizeInnerDiv() {
+    let height = $( window ).height();
+    let header_height = $( ".header" ).height();
+    let footer_height = $( ".footer" ).height();
+    let setheight = height - header_height;
+    let trueheight = setheight - footer_height;
+    $( ".content" ).css( "min-height", trueheight );
+  }
 
-	if($('.content').length > 0 ){
-		resizeInnerDiv();
-	}
+  if ( $( '.content' ).length > 0 ) {
+    resizeInnerDiv();
+  }
 
-	$(window).resize(function(){
-		if($('.content').length > 0 ){
-			resizeInnerDiv();
-		}
-	});
+  $( window ).resize( function () {
+    if ( $( '.content' ).length > 0 ) {
+      resizeInnerDiv();
+    }
+  } );
+  // Chat
 
-	// Slick Slider
-  let specialitiesSlider = $('.specialities-slider');
-	if(specialitiesSlider.length > 0) {
-		specialitiesSlider.slick({
-			dots: true,
-			autoplay:false,
-			infinite: true,
-			variableWidth: true,
-			prevArrow: false,
-			nextArrow: false
-		});
-	}
-  let doctorSlider = $('.doctor-slider');
-	if(doctorSlider.length > 0) {
-		doctorSlider.slick({
-			dots: false,
-			autoplay:false,
-			infinite: true,
-			variableWidth: true,
-		});
-	}
-	let featuresSlider = $('.features-slider');
-	if(featuresSlider.length > 0) {
-		featuresSlider.slick({
-			dots: true,
-			infinite: true,
-			centerMode: true,
-			slidesToShow: 3,
-			speed: 500,
-			variableWidth: true,
-			arrows: false,
-			autoplay:false,
-			responsive: [{
-				  breakpoint: 992,
-				  settings: {
-					slidesToShow: 1
-				  }
+  let chatAppTarget = $( '.chat-window' );
+  ( function () {
+    if ( $( window ).width() > 991 )
+      chatAppTarget.removeClass( 'chat-slide' );
 
-			}]
-		});
-	}
+    $( document ).on( "click", ".chat-window .chat-users-list a.media", function () {
+      if ( $( window ).width() <= 991 ) {
+        chatAppTarget.addClass( 'chat-slide' );
+      }
+      return false;
+    } );
+    $( document ).on( "click", "#back_user_list", function () {
+      if ( $( window ).width() <= 991 ) {
+        chatAppTarget.removeClass( 'chat-slide' );
+      }
+      return false;
+    } );
+  } )();
 
-	// Date Range Picker
-  let bookingRange = $('.bookingrange');
-	if(bookingRange.length > 0) {
-		let start = moment().subtract(6, 'days');
-		let end = moment();
+  // Circle Progress Bar
 
-		function booking_range(start, end) {
-			$('.bookingrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-		}
+  function animateElements() {
+    $( '.circle-bar1' ).each( function () {
+      let elementPos = $( this ).offset().top;
+      let topOfWindow = $( window ).scrollTop();
+      let percent = $( this ).find( '.circle-graph1' ).attr( 'data-percent' );
+      let animate = $( this ).data( 'animate' );
+      if ( elementPos < topOfWindow + $( window ).height() - 30 && !animate ) {
+        $( this ).data( 'animate', true );
+        $( this ).find( '.circle-graph1' ).circleProgress( {
+          value: percent / 100,
+          size: 400,
+          thickness: 30,
+          fill: {
+            color: '#da3f81'
+          }
+        } );
+      }
+    } );
+    $( '.circle-bar2' ).each( function () {
+      let elementPos = $( this ).offset().top;
+      let topOfWindow = $( window ).scrollTop();
+      let percent = $( this ).find( '.circle-graph2' ).attr( 'data-percent' );
+      let animate = $( this ).data( 'animate' );
+      if ( elementPos < topOfWindow + $( window ).height() - 30 && !animate ) {
+        $( this ).data( 'animate', true );
+        $( this ).find( '.circle-graph2' ).circleProgress( {
+          value: percent / 100,
+          size: 400,
+          thickness: 30,
+          fill: {
+            color: '#68dda9'
+          }
+        } );
+      }
+    } );
+    $( '.circle-bar3' ).each( function () {
+      let elementPos = $( this ).offset().top;
+      let topOfWindow = $( window ).scrollTop();
+      let percent = $( this ).find( '.circle-graph3' ).attr( 'data-percent' );
+      let animate = $( this ).data( 'animate' );
+      if ( elementPos < topOfWindow + $( window ).height() - 30 && !animate ) {
+        $( this ).data( 'animate', true );
+        $( this ).find( '.circle-graph3' ).circleProgress( {
+          value: percent / 100,
+          size: 400,
+          thickness: 30,
+          fill: {
+            color: '#1b5a90'
+          }
+        } );
+      }
+    } );
+  }
 
-		bookingRange.daterangepicker({
-			startDate: start,
-			endDate: end,
-			ranges: {
-				'Today': [moment(), moment()],
-				'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-				'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-				'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-				'This Month': [moment().startOf('month'), moment().endOf('month')],
-				'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-			}
-		}, booking_range);
+  if ( $( '.circle-bar' ).length > 0 ) {
+    animateElements();
+  }
+  $( window ).scroll( animateElements );
 
-		booking_range(start, end);
-	}
-	// Chat
+  // Preloader
 
-	let chatAppTarget = $('.chat-window');
-	(function() {
-		if ($(window).width() > 991)
-			chatAppTarget.removeClass('chat-slide');
+  $( window ).on( 'load', function () {
+    let loader = $( "#loader" );
+    if ( loader.length > 0 ) {
+      loader.delay( 350 ).fadeOut( 'slow' );
+      $( 'body' ).delay( 350 ).css( {
+        'overflow': 'visible'
+      } );
+    }
+  } )
 
-		$(document).on("click",".chat-window .chat-users-list a.media",function () {
-			if ($(window).width() <= 991) {
-				chatAppTarget.addClass('chat-slide');
-			}
-			return false;
-		});
-		$(document).on("click","#back_user_list",function () {
-			if ($(window).width() <= 991) {
-				chatAppTarget.removeClass('chat-slide');
-			}
-			return false;
-		});
-	})();
-
-	// Circle Progress Bar
-
-	function animateElements() {
-		$('.circle-bar1').each(function () {
-			let elementPos = $(this).offset().top;
-			let topOfWindow = $(window).scrollTop();
-			let percent = $(this).find('.circle-graph1').attr('data-percent');
-			let animate = $(this).data('animate');
-			if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
-				$(this).data('animate', true);
-				$(this).find('.circle-graph1').circleProgress({
-					value: percent / 100,
-					size : 400,
-					thickness: 30,
-					fill: {
-						color: '#da3f81'
-					}
-				});
-			}
-		});
-		$('.circle-bar2').each(function () {
-			let elementPos = $(this).offset().top;
-			let topOfWindow = $(window).scrollTop();
-			let percent = $(this).find('.circle-graph2').attr('data-percent');
-			let animate = $(this).data('animate');
-			if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
-				$(this).data('animate', true);
-				$(this).find('.circle-graph2').circleProgress({
-					value: percent / 100,
-					size : 400,
-					thickness: 30,
-					fill: {
-						color: '#68dda9'
-					}
-				});
-			}
-		});
-		$('.circle-bar3').each(function () {
-			let elementPos = $(this).offset().top;
-			let topOfWindow = $(window).scrollTop();
-			let percent = $(this).find('.circle-graph3').attr('data-percent');
-			let animate = $(this).data('animate');
-			if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
-				$(this).data('animate', true);
-				$(this).find('.circle-graph3').circleProgress({
-					value: percent / 100,
-					size : 400,
-					thickness: 30,
-					fill: {
-						color: '#1b5a90'
-					}
-				});
-			}
-		});
-	}
-
-	if($('.circle-bar').length > 0) {
-		animateElements();
-	}
-	$(window).scroll(animateElements);
-
-	// Preloader
-
-	$(window).on('load', function () {
-		let loader = $("#loader");
-	  if(loader.length > 0) {
-			loader.delay(350).fadeOut('slow');
-			$('body').delay(350).css({ 'overflow': 'visible' });
-		}
-	})
-
-})(jQuery);
+} )( jQuery );

@@ -43,7 +43,7 @@ export default {
     ],
     htmlAttrs: {
       lang: "tr"
-    }
+    },
   },
   /*
    ** Global CSS
